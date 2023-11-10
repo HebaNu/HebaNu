@@ -3,7 +3,7 @@
     "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/About.qmd",
     "project_path": "About.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "112397974",
     "contents": "",
     "dirty": false,
     "created": 1699607786324.0,
@@ -18,14 +18,14 @@
         "rmdVisualCollapsedChunks": "",
         "cursorPosition": "0,0",
         "scrollLine": "0",
-        "rmdVisualModeLocation": "906:0"
+        "rmdVisualModeLocation": "1007:320"
     },
     "folds": "",
-    "lastKnownWriteTime": 1699607903,
+    "lastKnownWriteTime": 1699612035,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1699607903742,
+    "last_content_update": 1699612035817,
     "read_only": false,
     "read_only_alternatives": []
 }
