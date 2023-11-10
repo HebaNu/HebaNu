@@ -5,9 +5,9 @@ website:
   title: Blogs for my scholarly Observations using ML
   navbar:
     right:
+      - About.qmd
       - Work from Home and cityscape.qmd
       - The Dataset used.qmd
-      - About.qmd
       - icon: github
         href: 'https://github.com/'
       - icon: twitter
