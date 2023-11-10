@@ -3,7 +3,7 @@
     "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/Work from Home and cityscape.qmd",
     "project_path": "Work from Home and cityscape.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "3781479893",
     "contents": "",
     "dirty": false,
     "created": 1699608787292.0,
@@ -16,16 +16,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "cursorPosition": "19,0",
+        "cursorPosition": "0,0",
         "scrollLine": "0",
-        "rmdVisualModeLocation": "1596:314"
+        "rmdVisualModeLocation": "30:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1699608989,
+    "lastKnownWriteTime": 1699609342,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1699608990120,
+    "last_content_update": 1699609342723,
     "read_only": false,
     "read_only_alternatives": []
 }
