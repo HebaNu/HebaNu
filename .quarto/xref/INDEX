@@ -1,0 +1,74 @@
+{
+  "index.qmd": {
+    "index.html": "3b952594"
+  },
+  "about.qmd": {
+    "about.html": "04903292"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "e35462ea"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "184b4761"
+  },
+  "posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.qmd": {
+    "index.html": "e69363d8"
+  },
+  "posts/Classification/index.qmd": {
+    "index.html": "41daf271"
+  },
+  "posts/Clustering/index.qmd": {
+    "index.html": "3a8f26b6"
+  },
+  "posts/Linear and nonlinear regression/index.qmd": {
+    "index.html": "2dcdd1dc"
+  },
+  "posts/Probability theory and random variables/index.qmd": {
+    "index.html": "c029cd3f"
+  },
+  "posts/Probability theory and random variables/index.rmarkdown": {
+    "index.html": "fa57da47"
+  },
+  "Work from Home and cityscape.qmd": {
+    "Work from Home and cityscape.html": "a0f2a678"
+  },
+  "index.ipynb": {
+    "index.html": "ee54be13"
+  },
+  "Research Insights Explorer Using Machine learning.qmd": {
+    "Research Insights Explorer Using Machine learning.html": "4a5d0697"
+  },
+  "HebaNu.github.io-blogs/about.qmd": {
+    "about.html": "ef99e7c9"
+  },
+  "HebaNu.github.io-blogs/index.ipynb": {
+    "index.html": "18311646"
+  },
+  "HebaNu.github.io-blogs/posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.qmd": {
+    "index.html": "75a113ca"
+  },
+  "HebaNu.github.io-blogs/posts/Classification/index.qmd": {
+    "index.html": "01501f5e"
+  },
+  "HebaNu.github.io-blogs/posts/Clustering/index.qmd": {
+    "index.html": "33a72266"
+  },
+  "HebaNu.github.io-blogs/posts/Linear and nonlinear regression/index.qmd": {
+    "index.html": "096d36b9"
+  },
+  "HebaNu.github.io-blogs/posts/Probability theory and random variables/index.qmd": {
+    "index.html": "1db06a48"
+  },
+  "HebaNu.github.io-blogs/Research Insights Explorer Using Machine learning.qmd": {
+    "Research Insights Explorer Using Machine learning.html": "5dc4c4a7"
+  },
+  "HebaNu.github.io-blogs/Work from Home and cityscape.qmd": {
+    "Work from Home and cityscape.html": "f933fcb8"
+  },
+  "The Dataset used.qmd": {
+    "The Dataset used.html": "eb312613"
+  },
+  "docs/About.qmd": {
+    "About.html": "048e9a9a"
+  }
+}
