@@ -39,7 +39,7 @@
     "href": "About.html",
     "title": "About!",
     "section": "",
-    "text": "Hi,\nThis is Heba Nusair, a Ph.D. Candidate in Landscape Architecture at Virginia Tech. My doctoral research focuses on predicting the impact of the Work-from-Home paradigm on urban sprawl using Agent-Based Models and Artificial Intelligence.\nBut that’s not all – I’m here to share my findings with you through a series of engaging blog posts. In some of these, I’ve even used synthesized data sets to shed light on different facets of the outcomes. So, whether you’re passionate about urban planning or just curious about the future of work, let’s dive into the world of the changing nature of work and urban development."
+    "text": "Hi,\nThis is Heba Nusair, a Ph.D. Candidate in Landscape Architecture at Virginia Tech. My doctoral research focuses on predicting the impact of the Work-from-Home paradigm on urban sprawl using Agent-Based Models and Artificial Intelligence.\nI’m here to share my findings with you through a series of engaging blog posts. In some of these, I’ve even used synthesized data sets to shed light on different facets of the outcomes. So, whether you’re passionate about urban planning or just curious about the future of work, let’s dive into the world of the changing nature of work and urban development."
   },
   {
     "objectID": "posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
@@ -67,6 +67,6 @@
     "href": "The Dataset used.html",
     "title": "Datasets Used",
     "section": "",
-    "text": "Datasets\nExperience the transformative shift in work dynamics worldwide. Fueled by factors like flexibility and propelled by the seismic impact of the Covid-19 pandemic, remote work, particularly Working From Home (WFH), has become a prevailing trend. This change in work culture is not merely a temporary response but a catalyst for a prolonged paradigm shift in workplaces globally."
+    "text": "Survey Overview\nThe datasets for this survey focus on examining the profound impact of remote work on urban expansion and residential choices. Participants across various occupations have provided valuable insights through a comprehensive questionnaire. This data delves into working methods—remote or in-person—and their influence on housing location preferences. Additionally, it explores behavioral patterns relative to one’s working mode, shedding light on human-environment interactions and spatial dynamics.\nImportant Note: The datasets used on these posts are modified and synthesized, so they should be used solely for educational purposes and to demonstrate data analysis techniques. Please refrain from using this data for any genuine applications."
   }
 ]
