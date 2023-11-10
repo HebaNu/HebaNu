@@ -7,7 +7,6 @@ website:
     right:
       - About.qmd
       - Work from Home and cityscape.qmd
-      - The Dataset used.qmd
       - icon: github
         href: 'https://github.com/'
       - icon: twitter
