@@ -4,7 +4,7 @@ author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
 image: "Capture.JPG"
-code-fold: true
+code-viewfold: true
 ---
 
 ***Categorical Naive Bayes***
