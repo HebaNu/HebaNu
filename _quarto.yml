@@ -4,7 +4,8 @@ project:
 website:
   title: Blogs for my scholarly Observations using ML
   navbar:
-    right:
+   type: grid
+   right:
       - About.qmd
       - Research Overview.qmd
       - icon: github
@@ -15,8 +16,9 @@ format:
   html:
     grid:
       sidebar-width: 350px
-    theme: Quartz
+    theme: Darkly
     css: styles.css
 editor: visual
+
 
 
