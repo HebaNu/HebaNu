@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
 website:
-  title: Blogs for my scholarly Observations using ML
+  title: Blogs_ Scholarly Observations using machine learning
   navbar:
    type: grid
    right:
