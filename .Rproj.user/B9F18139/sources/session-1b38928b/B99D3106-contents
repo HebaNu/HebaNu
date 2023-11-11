@@ -15,7 +15,10 @@ website:
 format:
   html:
     grid:
-      sidebar-width: 350px
+      sidebar-width: 250px
+      body-width: 800px
+      margin-width: 250px
+      gutter-width: 1.5em
     theme: Darkly
     css: styles.css
 editor: visual
