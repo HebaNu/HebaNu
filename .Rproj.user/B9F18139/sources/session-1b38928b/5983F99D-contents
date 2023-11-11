@@ -9,6 +9,12 @@ listing:
   filter-ui: true
 page-layout: full
 title-block-banner: true
+sidebar:
+    grid:
+      sidebar-width: 250px
+      body-width: 600px
+      margin-width: 450px
+      gutter-width: 1.5em
 ---
 
 **Important Note:** The datasets used on these posts are modified and synthesized, so they should be used solely for educational purposes and to demonstrate data analysis techniques. Please refrain from using this data for any genuine applications.
