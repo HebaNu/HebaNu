@@ -1,0 +1,70 @@
+---
+title: "Probability theory and random variables"
+author: "Heba Nusair"
+date: "2023-11-06"
+categories: [news, code, analysis]
+image: "Capture.JPG"
+code-viewfold: true
+---
+
+***Categorical Naive Bayes***
+
+This project requires Python 3.7 or above:
+
+```{python}
+
+import sys
+
+assert sys.version_info >= (3, 7)
+```
+
+For the analysis I a planning, Python libraries like Pandas, Matplotlib, and Scikit-learn will be handy. Here's a high-level step-by-step guide to get you started: First I need to make Exploratory Data Analysis (EDA):
+
+```{python}
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import classification_report, accuracy_score
+from sklearn.preprocessing import OneHotEncoder
+
+# Step 1: Load the dataset
+df = pd.read_excel('CategoricalNB.xlsx')
+
+# Print the column names to check for any discrepancies
+print(df.columns)
+
+# Step 2: Encode the 'Industry sector' using one-hot encoding
+# Notice the space before 'Industry sector' in the column name
+encoder = OneHotEncoder(sparse=False)
+X = encoder.fit_transform(df[[' Industry sector']])
+
+# The 'Working Method' feature is your target variable
+y = df['Working Method']
+
+# Step 3: Split the dataset into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 4: Train the Multinomial Naive Bayes model
+model = MultinomialNB()
+model.fit(X_train, y_train)
+
+# Step 5: Make predictions and evaluate the model
+y_pred = model.predict(X_test)
+
+# Use the classification report to handle divisions by zero
+print(classification_report(y_test, y_pred, zero_division=0))
+print(f'Accuracy: {accuracy_score(y_test, y_pred)}')
+
+```
+
+The output indicates that the code has successfully run and produced a classification report, but it shows that the Multinomial Naive Bayes classifier is not performing well for some classes (especially class 4). The FutureWarning is just to inform you about a future change in the scikit-learn library and doesn't impact the current execution of your code. It suggests that in the future version, the sparse parameter in OneHotEncoder will be removed and recommends using sparse_output instead. Since it's just a warning about future changes, you can ignore it for now.
+
+The classification report shows the following:
+
+Class 1 has a precision of 0.50 and recall of 0.29. Class 2 has a precision of 0.47 and recall of 0.91, which is quite good. Class 3 has a precision of 0.45 and recall of 0.13, indicating the model struggles to correctly identify this class. Class 4 has both precision and recall of 0.00, which means the model fails to identify any samples of this class correctly. This poor performance for some classes may be due to class imbalance, insufficient features, or the model's inability to capture the complexities of the dataset.
+
+Here are a few recommendations to improve the model's performance:
+
+Address Class Imbalance: Use techniques like SMOTE, ADASYN, or simply oversampling the minority class to balance the dataset. Feature Engineering: Add more features that could help the classifier distinguish between classes. Hyperparameter Tuning: Experiment with different hyperparameters for the MultinomialNB classifier. Try Different Models: Since Naive Bayes assumes feature independence and your features might be correlated, other models like Random Forest or Gradient Boosting might perform better. Evaluation Metrics: Use other evaluation metrics like AUC-ROC curve, especially when dealing with imbalanced classes. 
+
+

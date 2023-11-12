@@ -17,7 +17,7 @@ about:
 ---
 
 Hi,\
-This is Heba Nusair, a Ph.D. Candidate in Landscape Architecture at Virginia Tech. I am passionate about promoting sustainability and resilience in cities, with expertise in modeling urban growth planning using Geospatial Information Science. I have a broad background in land analysis and evaluation, urban planning, and design using GIS, honed through years of extensive experience in the field. \
+This is Heba Nusair, a Ph.D. Candidate in Landscape Architecture at Virginia Tech. I am passionate about promoting sustainability and resilience in cities, with expertise in modeling urban growth planning using Geospatial Information Science. I have a broad background in land analysis and evaluation, urban planning, and design using GIS, honed through years of extensive experience in the field.\
 \
 My current doctoral dissertation, 'Predicting the Impact of Shifting to Work-from-Home Paradigm on Urban Sprawl Using Agent-Based Model and Artificial Intelligence,' demonstrates my commitment to developing innovative solutions that address complex urban challenges on a large and medium city scale.
 

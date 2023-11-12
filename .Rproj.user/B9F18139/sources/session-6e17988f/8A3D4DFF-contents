@@ -1,0 +1,46 @@
+---
+title: "Exploratory Data Analysis (EDA)"
+author: "Heba Nusair"
+date: "2023-11-11"
+categories: [news, code, analysis]
+image: "Capture.JPG"
+code-viewfold: true
+---
+
+
+```{python}
+# Load necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load your dataset without specifying encoding
+data = pd.read_excel('CategoricalNB.xlsx')
+
+# Summary statistics for Industry sector
+industry_stats = data[' Industry sector'].value_counts()
+
+# Summary statistics for Working Method
+method_stats = data['Working Method'].value_counts()
+
+# Plotting
+plt.figure(figsize=(12, 6))
+plt.subplot(1, 2, 1)
+sns.countplot(data=data, x=' Industry sector')
+plt.title('Distribution of Industry Sectors')
+
+plt.subplot(1, 2, 2)
+sns.countplot(data=data, x='Working Method')
+plt.title('Distribution of Working Methods')
+
+plt.tight_layout()
+plt.show()
+
+# Display summary statistics
+print("Summary statistics for Industry sector:")
+print(industry_stats)
+
+print("\nSummary statistics for Working Method:")
+print(method_stats)
+
+```

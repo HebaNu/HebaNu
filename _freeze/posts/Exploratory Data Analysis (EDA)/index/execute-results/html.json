@@ -1,0 +1,11 @@
+{
+  "hash": "349ace92f064194d328ce0c4e481618e",
+  "result": {
+    "markdown": "---\ntitle: \"Exploratory Data Analysis (EDA)\"\nauthor: \"Heba Nusair\"\ndate: \"2023-11-11\"\ncategories: [news, code, analysis]\nimage: \"Capture.JPG\"\ncode-viewfold: true\n---\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\n# Load necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Load your dataset without specifying encoding\ndata = pd.read_excel('CategoricalNB.xlsx')\n\n# Summary statistics for Industry sector\nindustry_stats = data[' Industry sector'].value_counts()\n\n# Summary statistics for Working Method\nmethod_stats = data['Working Method'].value_counts()\n\n# Plotting\nplt.figure(figsize=(12, 6))\nplt.subplot(1, 2, 1)\nsns.countplot(data=data, x=' Industry sector')\nplt.title('Distribution of Industry Sectors')\n\nplt.subplot(1, 2, 2)\nsns.countplot(data=data, x='Working Method')\nplt.title('Distribution of Working Methods')\n\nplt.tight_layout()\nplt.show()\n\n# Display summary statistics\nprint(\"Summary statistics for Industry sector:\")\nprint(industry_stats)\n\nprint(\"\\nSummary statistics for Working Method:\")\nprint(method_stats)\n```\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-html/cell-2-output-1.png){width=1141 height=564}\n:::\n\n::: {.cell-output .cell-output-stdout}\n```\nSummary statistics for Industry sector:\n5     90\n7     62\n9     55\n15    47\n4     42\n12    41\n13    40\n10    40\n8     37\n6     33\n3     29\n1     27\n19    25\n16    22\n18    21\n2     17\n11    16\n17    16\n14    16\n20    13\nName:  Industry sector, dtype: int64\n\nSummary statistics for Working Method:\n2    320\n3    173\n1    120\n4     76\nName: Working Method, dtype: int64\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

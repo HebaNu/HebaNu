@@ -11,21 +11,28 @@
     "href": "posts/Probability theory and random variables/index.html",
     "title": "Probability theory and random variables",
     "section": "",
-    "text": "Categorical Naive Bayes\nThis project requires Python 3.7 or above:\n\nimport sys\n\nassert sys.version_info &gt;= (3, 7)\n\nScikit-Learn ≥1.0.1 is required:\n\nfrom packaging import version\nimport sklearn\n\nassert version.parse(sklearn.__version__) &gt;= version.parse(\"1.0.1\")\n\nLet’s define the default font sizes, to plot pretty figures:\n\nimport matplotlib.pyplot as plt\n\nplt.rc('font', size=12)\nplt.rc('axes', labelsize=14, titlesize=14)\nplt.rc('legend', fontsize=12)\nplt.rc('xtick', labelsize=10)\nplt.rc('ytick', labelsize=10)\n\nMake this notebook’s output stable across runs:\n\nimport numpy as np\n\nnp.random.seed(42)\n\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns"
+    "text": "Categorical Naive Bayes\nThis project requires Python 3.7 or above:\n\nimport sys\n\nassert sys.version_info &gt;= (3, 7)\n\nFor the analysis I a planning, Python libraries like Pandas, Matplotlib, and Scikit-learn will be handy. Here’s a high-level step-by-step guide to get you started: First I need to make Exploratory Data Analysis (EDA):\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.naive_bayes import MultinomialNB\nfrom sklearn.metrics import classification_report, accuracy_score\nfrom sklearn.preprocessing import OneHotEncoder\n\n# Step 1: Load the dataset\n# Make sure to replace 'path_to_file.xlsx' with the actual path to your Excel file\ndf = pd.read_excel('CategoricalNB.xlsx')\n\n# Print the column names to check for any discrepancies\nprint(df.columns)\n\n# Step 2: Encode the 'Industry sector' using one-hot encoding\n# Notice the space before 'Industry sector' in the column name\nencoder = OneHotEncoder(sparse=False)\nX = encoder.fit_transform(df[[' Industry sector']])\n\n# The 'Working Method' feature is your target variable\ny = df['Working Method']\n\n# Step 3: Split the dataset into training and test sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Step 4: Train the Multinomial Naive Bayes model\nmodel = MultinomialNB()\nmodel.fit(X_train, y_train)\n\n# Step 5: Make predictions and evaluate the model\ny_pred = model.predict(X_test)\n\n# Use the classification report to handle divisions by zero\nprint(classification_report(y_test, y_pred, zero_division=0))\nprint(f'Accuracy: {accuracy_score(y_test, y_pred)}')\n\nIndex(['Response ID', ' Industry sector', 'Working Method',\n       'What is your job title?'],\n      dtype='object')\n              precision    recall  f1-score   support\n\n           1       0.50      0.29      0.37        24\n           2       0.47      0.91      0.62        58\n           3       0.45      0.13      0.20        38\n           4       0.00      0.00      0.00        18\n\n    accuracy                           0.47       138\n   macro avg       0.36      0.33      0.30       138\nweighted avg       0.41      0.47      0.38       138\n\nAccuracy: 0.47101449275362317\n\n\nC:\\Users\\NUSAI\\anaconda3\\Lib\\site-packages\\sklearn\\preprocessing\\_encoders.py:972: FutureWarning:\n\n`sparse` was renamed to `sparse_output` in version 1.2 and will be removed in 1.4. `sparse_output` is ignored unless you leave `sparse` to its default value.\n\n\n\nThe output indicates that the code has successfully run and produced a classification report, but it shows that the Multinomial Naive Bayes classifier is not performing well for some classes (especially class 4). The FutureWarning is just to inform you about a future change in the scikit-learn library and doesn’t impact the current execution of your code. It suggests that in the future version, the sparse parameter in OneHotEncoder will be removed and recommends using sparse_output instead. Since it’s just a warning about future changes, you can ignore it for now.\nThe classification report shows the following:\nClass 1 has a precision of 0.50 and recall of 0.29. Class 2 has a precision of 0.47 and recall of 0.91, which is quite good. Class 3 has a precision of 0.45 and recall of 0.13, indicating the model struggles to correctly identify this class. Class 4 has both precision and recall of 0.00, which means the model fails to identify any samples of this class correctly. This poor performance for some classes may be due to class imbalance, insufficient features, or the model’s inability to capture the complexities of the dataset.\nHere are a few recommendations to improve the model’s performance:\nAddress Class Imbalance: Use techniques like SMOTE, ADASYN, or simply oversampling the minority class to balance the dataset. Feature Engineering: Add more features that could help the classifier distinguish between classes. Hyperparameter Tuning: Experiment with different hyperparameters for the MultinomialNB classifier. Try Different Models: Since Naive Bayes assumes feature independence and your features might be correlated, other models like Random Forest or Gradient Boosting might perform better. Evaluation Metrics: Use other evaluation metrics like AUC-ROC curve, especially when dealing with imbalanced classes."
   },
   {
-    "objectID": "posts/Clustering/index.html",
-    "href": "posts/Clustering/index.html",
-    "title": "Clustering",
+    "objectID": "posts/Exploratory Data Analysis (EDA)/index.html",
+    "href": "posts/Exploratory Data Analysis (EDA)/index.html",
+    "title": "Exploratory Data Analysis (EDA)",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "# Load necessary libraries\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Load your dataset without specifying encoding\ndata = pd.read_excel('CategoricalNB.xlsx')\n\n# Summary statistics for Industry sector\nindustry_stats = data[' Industry sector'].value_counts()\n\n# Summary statistics for Working Method\nmethod_stats = data['Working Method'].value_counts()\n\n# Plotting\nplt.figure(figsize=(12, 6))\nplt.subplot(1, 2, 1)\nsns.countplot(data=data, x=' Industry sector')\nplt.title('Distribution of Industry Sectors')\n\nplt.subplot(1, 2, 2)\nsns.countplot(data=data, x='Working Method')\nplt.title('Distribution of Working Methods')\n\nplt.tight_layout()\nplt.show()\n\n# Display summary statistics\nprint(\"Summary statistics for Industry sector:\")\nprint(industry_stats)\n\nprint(\"\\nSummary statistics for Working Method:\")\nprint(method_stats)\n\n\n\n\nSummary statistics for Industry sector:\n5     90\n7     62\n9     55\n15    47\n4     42\n12    41\n13    40\n10    40\n8     37\n6     33\n3     29\n1     27\n19    25\n16    22\n18    21\n2     17\n11    16\n17    16\n14    16\n20    13\nName:  Industry sector, dtype: int64\n\nSummary statistics for Working Method:\n2    320\n3    173\n1    120\n4     76\nName: Working Method, dtype: int64"
   },
   {
-    "objectID": "posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
-    "href": "posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
-    "title": "Anomaly-outlier detection DBSCAN labels for scatter plot",
+    "objectID": "posts/Classification/index.html",
+    "href": "posts/Classification/index.html",
+    "title": "Classificcation",
     "section": "",
     "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to my posts",
+    "section": "",
+    "text": "quarto render\ngit push\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nExploratory Data Analysis (EDA)\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nAnomaly-outlier detection DBSCAN labels for scatter plot\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nClassificcation\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nLinear and nonlinear regression\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nProbability theory and random variables\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nplot\n\n\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "About.html",
@@ -35,18 +42,18 @@
     "text": "Hi,\nThis is Heba Nusair, a Ph.D. Candidate in Landscape Architecture at Virginia Tech. I am passionate about promoting sustainability and resilience in cities, with expertise in modeling urban growth planning using Geospatial Information Science. I have a broad background in land analysis and evaluation, urban planning, and design using GIS, honed through years of extensive experience in the field.\n\nMy current doctoral dissertation, ‘Predicting the Impact of Shifting to Work-from-Home Paradigm on Urban Sprawl Using Agent-Based Model and Artificial Intelligence,’ demonstrates my commitment to developing innovative solutions that address complex urban challenges on a large and medium city scale.\nI’m here to share my findings with you through a series of engaging blog posts. In some of these, I’ve even used synthesized data sets to shed light on different facets of the outcomes. So, whether you’re passionate about urban planning or just curious about the future of work, let’s dive into the world of the changing nature of work and urban development."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to my posts",
-    "section": "",
-    "text": "quarto render\ngit push\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nAnomaly-outlier detection DBSCAN labels for scatter plot\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nClassificcation\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nLinear and nonlinear regression\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nProbability theory and random variables\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nplot\n\n\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/Classification/index.html",
-    "href": "posts/Classification/index.html",
-    "title": "Classificcation",
+    "objectID": "posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
+    "href": "posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
+    "title": "Anomaly-outlier detection DBSCAN labels for scatter plot",
     "section": "",
     "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/Clustering/index.html",
+    "href": "posts/Clustering/index.html",
+    "title": "Clustering",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
     "objectID": "posts/Linear and nonlinear regression/index.html",
@@ -60,6 +67,6 @@
     "href": "Research Insights Explorer Using Machine learning.html",
     "title": "Research Insights Explorer Using Machine learning",
     "section": "",
-    "text": "Important Note: The datasets used on these posts are modified and synthesized, so they should be used solely for educational purposes and to demonstrate data analysis techniques. Please refrain from using this data for any genuine applications.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nAnomaly-outlier detection DBSCAN labels for scatter plot\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClassificcation\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLinear and nonlinear regression\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProbability theory and random variables\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nClustering\n\n\n\nnews\n\n\ncode\n\n\nplot\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 3, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Important Note: The datasets used on these posts are modified and synthesized, so they should be used solely for educational purposes and to demonstrate data analysis techniques. Please refrain from using this data for any genuine applications.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nExploratory Data Analysis (EDA)\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 11, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnomaly-outlier detection DBSCAN labels for scatter plot\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClassificcation\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLinear and nonlinear regression\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProbability theory and random variables\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nClustering\n\n\n\nnews\n\n\ncode\n\n\nplot\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 3, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

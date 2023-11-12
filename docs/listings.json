@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Exploratory Data Analysis (EDA)/index.html",
       "/posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
       "/posts/Classification/index.html",
       "/posts/Linear and nonlinear regression/index.html",
@@ -12,6 +13,7 @@
   {
     "listing": "/Research Insights Explorer Using Machine learning.html",
     "items": [
+      "/posts/Exploratory Data Analysis (EDA)/index.html",
       "/posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
       "/posts/Classification/index.html",
       "/posts/Linear and nonlinear regression/index.html",

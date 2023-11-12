@@ -1,0 +1,8 @@
+"0","import matplotlib.pyplot as plt"
+"0",""
+"0","plt.rc('font', size=12)"
+"0","plt.rc('axes', labelsize=14, titlesize=14)"
+"0","plt.rc('legend', fontsize=12)"
+"0","plt.rc('xtick', labelsize=10)"
+"0","plt.rc('ytick', labelsize=10)"
+"0",""
