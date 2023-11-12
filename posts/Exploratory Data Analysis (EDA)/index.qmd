@@ -7,7 +7,6 @@ image: "Capture.JPG"
 code-viewfold: true
 ---
 
-
 ```{python}
 # Load necessary libraries
 import pandas as pd
@@ -42,5 +41,68 @@ print(industry_stats)
 
 print("\nSummary statistics for Working Method:")
 print(method_stats)
+
+```
+
+**Study the relationship between nominal variables (Industry sector and Working Method)statistical analyses:**\
+1- **Chi-Square Test of Independence**: The Chi-Square test can be used to determine whether there is an association (relationship) between two categorical variables. In your case, you can use it to test if there is a relationship between Industry sector and Working Method. The null hypothesis (H0) is that the two variables are independent, and the alternative hypothesis (Ha) is that there is a significant association between them.
+
+```{python}
+
+# Load necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import chi2_contingency
+
+# Load your dataset without specifying encoding
+data = pd.read_excel('CategoricalNB.xlsx')
+
+
+from scipy.stats import chi2_contingency
+
+# Summary statistics for Industry sector
+industry_stats = data[' Industry sector'].value_counts()
+
+# Summary statistics for Working Method
+method_stats = data['Working Method'].value_counts()
+
+# Plotting
+plt.figure(figsize=(12, 6))
+plt.subplot(1, 2, 1)
+sns.countplot(data=data, x=' Industry sector')
+plt.title('Distribution of Industry Sectors')
+
+plt.subplot(1, 2, 2)
+sns.countplot(data=data, x='Working Method')
+plt.title('Distribution of Working Methods')
+
+plt.tight_layout()
+plt.show()
+
+# Perform Chi-Square test of independence
+contingency_table = pd.crosstab(data[' Industry sector'], data['Working Method'])
+chi2, p, dof, expected = chi2_contingency(contingency_table)
+
+# Check the p-value
+if p < 0.05:
+    print("There is a significant relationship between Industry sector and Working Method.")
+else:
+    print("There is no significant relationship between Industry sector and Working Method.")
+
+# Display summary statistics
+print("Summary statistics for Industry sector:")
+print(industry_stats)
+
+print("\nSummary statistics for Working Method:")
+print(method_stats)
+
+```
+
+**2-Visualization**: You can create visualizations to explore the relationship visually. For example, you can create a stacked bar chart to see how the distribution of Working Method varies across different Industry sectors. This can help you identify patterns or differences.
+
+```{python}
+crosstab = pd.crosstab(data[' Industry sector'], data['Working Method'])
+crosstab.plot(kind='bar', stacked=True)
 
 ```

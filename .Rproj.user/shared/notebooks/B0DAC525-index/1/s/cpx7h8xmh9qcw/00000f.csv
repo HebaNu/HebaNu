@@ -1,0 +1,87 @@
+"0",""
+"0","# Load necessary libraries"
+"0","import pandas as pd"
+"0","import matplotlib.pyplot as plt"
+"0","import seaborn as sns"
+"0","from scipy.stats import chi2_contingency"
+"0",""
+"0","# Load your dataset without specifying encoding"
+"0","data = pd.read_excel('CategoricalNB.xlsx')"
+"0",""
+"0",""
+"0","from scipy.stats import chi2_contingency"
+"0",""
+"0","# Summary statistics for Industry sector"
+"0","industry_stats = data[' Industry sector'].value_counts()"
+"0",""
+"0","# Summary statistics for Working Method"
+"0","method_stats = data['Working Method'].value_counts()"
+"0",""
+"0","# Plotting"
+"0","plt.figure(figsize=(12, 6))"
+"1","<Figure size 1200x600 with 0 Axes>
+"
+"1","<Axes: >
+"
+"0","plt.title('Distribution of Industry Sectors')"
+"1","Text(0.5, 1.0, 'Distribution of Industry Sectors')
+"
+"0","plt.subplot(1, 2, 2)"
+"1","<Axes: >
+"
+"1","<Axes: xlabel='Working Method', ylabel='count'>
+"
+"0","plt.title('Distribution of Working Methods')"
+"1","Text(0.5, 1.0, 'Distribution of Working Methods')
+"
+"0","plt.tight_layout()"
+"0","plt.show()"
+"0",""
+"0","# Perform Chi-Square test of independence"
+"0","contingency_table = pd.crosstab(data[' Industry sector'], data['Working Method'])"
+"0","chi2, p, dof, expected = chi2_contingency(contingency_table)"
+"0",""
+"0","# Check the p-value"
+"0","if p < 0.05:"
+"0","    print(""There is a significant relationship between Industry sector and Working Method."")"
+"0","else:"
+"0","    print(""There is no significant relationship between Industry sector and Working Method."")"
+"0","    "
+"0","# Display summary statistics"
+"0","print(""Summary statistics for Industry sector:"")"
+"1","There is a significant relationship between Industry sector and Working Method.
+Summary statistics for Industry sector:
+"
+"1","5     90
+7     62
+9     55
+15    47
+4     42
+12    41
+13    40
+10    40
+8     37
+6     33
+3     29
+1     27
+19    25
+16    22
+18    21
+2     17
+11    16
+17    16
+14    16
+20    13
+Name:  Industry sector, dtype: int64
+"
+"0","print(""\nSummary statistics for Working Method:"")"
+"1","
+Summary statistics for Working Method:
+"
+"0","print(method_stats)"
+"1","2    320
+3    173
+1    120
+4     76
+Name: Working Method, dtype: int64
+"
