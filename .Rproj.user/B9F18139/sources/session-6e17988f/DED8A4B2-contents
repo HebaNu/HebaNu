@@ -10,8 +10,6 @@ code-viewfold: true
 
 ## **Naive Bayes classifier for multivariate Bernoulli models**
 
-Why I used this kind of analysis?
-
 ```{python}
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -21,11 +19,7 @@ from sklearn.preprocessing import OneHotEncoder
 import os
 
 # Load the dataset
-df = pd.read_csv('C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Probability theory and random variables/POST1.csv')
-
-# Replace values in column 'Work Method'
-df['Work Method'] = df['Work Method'].replace(3, 2)
-df['Work Method'] = df['Work Method'].replace(4, 1)
+df = pd.read_csv('C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Probability theory and random variables/updated_POST1.csv')
 
 # Drop rows where any cell is NaN in the 'Work Method' column
 df = df.dropna(subset=['Work Method'])
@@ -48,18 +42,11 @@ model.fit(X_train, y_train)
 # Make predictions and evaluate the model
 y_pred = model.predict(X_test)
 
-# Save the updated DataFrame back to CSV
-# Define the full path for the output file
-output_path = 'C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Probability theory and random variables/updated_POST1.csv'
 
-# Create the directory if it does not exist
-os.makedirs(os.path.dirname(output_path), exist_ok=True)
-df.to_csv(output_path, index=False)
 
 # Output the classification report and accuracy
 print(classification_report(y_test, y_pred, zero_division=0))
 print(f'Accuracy: {accuracy_score(y_test, y_pred)}')
-
 
 ```
 
