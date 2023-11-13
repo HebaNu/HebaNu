@@ -8,7 +8,12 @@ code-fold: true
 code-viewfold: true
 ---
 
-## **Naive Bayes classifier for multivariate Bernoulli models**
+**Naive Bayes classifier for multivariate Bernoulli models**
+
+The Model is designed to classify the jobs working methods based on the industry sectors according to ....**\
+1:** Fully remote (working from home or another location)
+
+2: Fully in-person (working at a physical office or location)
 
 ```{python}
 import pandas as pd
