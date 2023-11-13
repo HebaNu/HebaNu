@@ -3,10 +3,10 @@
     "listing": "/index.html",
     "items": [
       "/posts/Exploratory Data Analysis (EDA)/index.html",
+      "/posts/Probability theory and random variables/index.html",
       "/posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
       "/posts/Classification/index.html",
       "/posts/Linear and nonlinear regression/index.html",
-      "/posts/Probability theory and random variables/index.html",
       "/posts/Clustering/index.html"
     ]
   },
@@ -14,10 +14,10 @@
     "listing": "/Research Insights Explorer Using Machine learning.html",
     "items": [
       "/posts/Exploratory Data Analysis (EDA)/index.html",
+      "/posts/Probability theory and random variables/index.html",
       "/posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html",
       "/posts/Classification/index.html",
       "/posts/Linear and nonlinear regression/index.html",
-      "/posts/Probability theory and random variables/index.html",
       "/posts/Clustering/index.html"
     ]
   }
