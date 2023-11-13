@@ -193,75 +193,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong><em>Categorical Naive Bayes</em></strong></p>
 <p>This project requires Python 3.7 or above:</p>
 <div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> sys.version_info <span class="op">&gt;=</span> (<span class="dv">3</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>For the analysis I a planning, Python libraries like Pandas, Matplotlib, and Scikit-learn will be handy. Here’s a high-level step-by-step guide to get you started: First I need to make Exploratory Data Analysis (EDA):</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> MultinomialNB</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Load the dataset</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure to replace 'path_to_file.xlsx' with the actual path to your Excel file</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">'CategoricalNB.xlsx'</span>)</span>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> MultinomialNB</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, accuracy_score</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the current working directory</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Current Working Directory:"</span>, os.getcwd())</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the column names to check for any discrepancies</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Probability theory and random variables/For RSTUDIO_NOV12.csv'</span>)</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Encode the 'Industry sector' using one-hot encoding</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice the space before 'Industry sector' in the column name</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> OneHotEncoder(sparse<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> encoder.fit_transform(df[[<span class="st">' Industry sector'</span>]])</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'Working Method' feature is your target variable</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'Working Method'</span>]</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Split the dataset into training and test sets</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Train the Multinomial Naive Bayes model</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> MultinomialNB()</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Make predictions and evaluate the model</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the classification report to handle divisions by zero</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred, zero_division<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Accuracy: </span><span class="sc">{</span>accuracy_score(y_test, y_pred)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values in 'current job' column (target variable)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">'current job'</span>])  <span class="co"># This line removes rows where 'current job' is NaN</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the column names to check for any discrepancies</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># One-hot encoding</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>)  <span class="co"># Change to sparse_output if using scikit-learn 1.2 or later</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> encoder.fit_transform(df[[<span class="st">' industry sector'</span>]])</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Target variable</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'current job'</span>]</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the dataset</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the Multinomial Naive Bayes model</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> MultinomialNB()</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions and evaluate the model</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred, zero_division<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Accuracy: </span><span class="sc">{</span>accuracy_score(y_test, y_pred)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Index(['Response ID', ' Industry sector', 'Working Method',
-       'What is your job title?'],
+<pre><code>Current Working Directory: C:\Users\NUSAI\Desktop\Machine learning\HebaNu.github.io\HebaNu.github.io\HebaNu\posts\Probability theory and random variables
+Index(['Response ID', 'Response Status', 'Duplicate',
+       'Time Taken to Complete (Seconds)', 'Country Code', 'Region', 'Country',
+       'Longitude', 'Latitude', 'With which gender do you identify?&nbsp;',
+       'What is your age?&nbsp;', 'What is your marital status?&nbsp;',
+       'What is your race?&nbsp;', 'What is your education level?&nbsp;',
+       '&nbsp;If you work partially in-person,&nbsp;how many days a week do you work in person?&nbsp;',
+       'In which City/County within the Roanoke Metropolitan Area do you live?&nbsp;',
+       'Please Enter the zip code for your homeplace',
+       'In which City/County within the Roanoke Metropolitan Area&nbsp;do you work?&nbsp;',
+       'Please Enter the zip code for your&nbsp;workplace',
+       'What is the age of the firm/company/association you work in?',
+       'What is your (firm/company/association)' s&nbsp;size? (# number of employees or workers)',
+       'If you commute to work, how far is your work from your homeplace?&nbsp;',
+       'Are you the&nbsp;owner&nbsp;or&nbsp;renter&nbsp;of your house?&nbsp;',
+       'How many people in your household have jobs?',
+       'How many people currently live in your household?',
+       'What is your expected/desired family size in the future, including yourself and any dependents?',
+       'What is your monthly&nbsp;earning?&nbsp;', ' industry sector',
+       'What is your job title?',
+       'How many hours do you typically work per week at your current job?',
+       'current job',
+       'What is the level of importance of physical interactions with a team in order to perform your current job?',
+       'Regardless of your current working style (Remote or in-person), have you heard about anyone who works in the same profession as you but remotely, no matter where?',
+       'Regardless of your current working style (Remote or in-person),&nbsp;have you come across any news or information sources indicating that your profession might be shifted, either partially or completely, towards remote work in the future?',
+       'On a scale of 1-5, please rate your agreement with the following statement: 'During the COVID-19 pandemic, working from home using technological advancements in communication (e.g., Zoom, Skype, Teams) was efficient in performing my job tasks.'',
+       'How do you usually transport to your workplace?', 'Unnamed: 36',
+       'Unnamed: 37', 'Unnamed: 38', 'Unnamed: 39', 'Unnamed: 40',
+       'Regardless of your current working style, what is the future&nbsp;work style do you prefer?&nbsp;',
+       'If you work in-person (commute to work), how would you rank your preferred living area within Roanoke Metropolitan Area, considering your income and affordability?&nbsp;(1 is the most preferred)?&nbsp;',
+       'Unnamed: 43', 'Unnamed: 44', 'Unnamed: 45',
+       'If you work remotely, how would you rank your preferred areas to live within Roanoke Metropolitan Area, considering your income and affordability?&nbsp;(1 is the most preferred)?',
+       'Unnamed: 47', 'Unnamed: 48', 'Unnamed: 49',
+       'In the past ten years, how many times have you relocated your&nbsp;living place?',
+       'If you currently work in person in an urban area and live close to your workplace, but your job is shifting to a partially remote, you may be thinking about whether it makes sense to move to a suburban area. How would you contemplate relocating to the suburbs in this scenario?',
+       'If you currently&nbsp;work in person&nbsp;in an urban area and live close to your workplace, but your job is shifting&nbsp;completely remote, you may be thinking about whether it makes sense to move to a suburban area. How would you contemplate relocating to the suburbs in this scenario?',
+       'Your colleagues/friends have shifted to remote work and moved from an urban area to a suburban or rural area. Would you be able to consider a move to a rural area if you also have the option to work remotely like them?',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.1',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.2',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.3',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.4',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.5',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.6',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.7',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.8',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.9',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.10',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.11',
+       'How important are these factors&nbsp;when deciding your residential location?&nbsp;.12'],
       dtype='object')
               precision    recall  f1-score   support
 
-           1       0.50      0.29      0.37        24
-           2       0.47      0.91      0.62        58
-           3       0.45      0.13      0.20        38
-           4       0.00      0.00      0.00        18
+         1.0       0.28      0.20      0.23        25
+         2.0       0.53      0.74      0.62        86
+         3.0       0.23      0.16      0.19        44
+         4.0       0.00      0.00      0.00        15
 
-    accuracy                           0.47       138
-   macro avg       0.36      0.33      0.30       138
-weighted avg       0.41      0.47      0.38       138
+    accuracy                           0.45       170
+   macro avg       0.26      0.28      0.26       170
+weighted avg       0.37      0.45      0.40       170
 
-Accuracy: 0.47101449275362317</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\NUSAI\anaconda3\Lib\site-packages\sklearn\preprocessing\_encoders.py:972: FutureWarning:
-
-`sparse` was renamed to `sparse_output` in version 1.2 and will be removed in 1.4. `sparse_output` is ignored unless you leave `sparse` to its default value.
-</code></pre>
+Accuracy: 0.4470588235294118</code></pre>
 </div>
 </div>
-<p>The output indicates that the code has successfully run and produced a classification report, but it shows that the Multinomial Naive Bayes classifier is not performing well for some classes (especially class 4). The FutureWarning is just to inform you about a future change in the scikit-learn library and doesn’t impact the current execution of your code. It suggests that in the future version, the sparse parameter in OneHotEncoder will be removed and recommends using sparse_output instead. Since it’s just a warning about future changes, you can ignore it for now.</p>
-<p>The classification report shows the following:</p>
-<p>Class 1 has a precision of 0.50 and recall of 0.29. Class 2 has a precision of 0.47 and recall of 0.91, which is quite good. Class 3 has a precision of 0.45 and recall of 0.13, indicating the model struggles to correctly identify this class. Class 4 has both precision and recall of 0.00, which means the model fails to identify any samples of this class correctly. This poor performance for some classes may be due to class imbalance, insufficient features, or the model’s inability to capture the complexities of the dataset.</p>
-<p>Here are a few recommendations to improve the model’s performance:</p>
-<p>Address Class Imbalance: Use techniques like SMOTE, ADASYN, or simply oversampling the minority class to balance the dataset. Feature Engineering: Add more features that could help the classifier distinguish between classes. Hyperparameter Tuning: Experiment with different hyperparameters for the MultinomialNB classifier. Try Different Models: Since Naive Bayes assumes feature independence and your features might be correlated, other models like Random Forest or Gradient Boosting might perform better. Evaluation Metrics: Use other evaluation metrics like AUC-ROC curve, especially when dealing with imbalanced classes.</p>
+<p>The output you provided is the result of the classification report and accuracy score from your Multinomial Naive Bayes model. Here’s a breakdown of what it means:</p>
+<p>Classification Report: This report shows several metrics for each class in your target variable (current job), which seems to have four classes (1.0, 2.0, 3.0, 4.0). The metrics are:</p>
+<p>Precision: The ratio of correctly predicted positive observations to the total predicted positives. Higher precision relates to a lower false positive rate. Recall (Sensitivity): The ratio of correctly predicted positive observations to all observations in the actual class. F1-Score: The weighted average of Precision and Recall. An F1-Score reaches its best value at 1 (perfect precision and recall) and worst at 0. Support: The number of actual occurrences of the class in the specified dataset. Accuracy: This is the ratio of correctly predicted observations to the total observations. An accuracy of 0.4470588235294118 means that about 44.71% of your model’s predictions are correct.</p>
+<p>Interpretation Your model shows varying performance across different classes. For instance, it performs relatively better for class 2.0 than for other classes. The accuracy is 44.71%, which suggests that the model correctly predicts the class about 45% of the time. This is not particularly high, indicating there’s room for improvement. The macro average and weighted average scores are relatively low, especially in precision and F1-score, which suggests that the model’s performance is not consistent across all classes.</p>
 
 
 

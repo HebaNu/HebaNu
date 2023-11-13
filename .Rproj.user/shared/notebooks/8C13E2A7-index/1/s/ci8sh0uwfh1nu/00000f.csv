@@ -1,0 +1,15 @@
+"0","import os"
+"0","import pandas as pd"
+"0","from sklearn.model_selection import train_test_split"
+"0","from sklearn.naive_bayes import MultinomialNB"
+"0","from sklearn.metrics import classification_report, accuracy_score"
+"0","from sklearn.preprocessing import OneHotEncoder"
+"0",""
+"0",""
+"0","# Load the dataset"
+"0","df = pd.read_csv('C:\Users\NUSAI\Desktop\Machine learning\HebaNu.github.io\HebaNu.github.io\HebaNu\posts\Probability theory and random variables\POST1')"
+"2","  File ""<string>"", line 1
+    df = pd.read_csv('C:\Users\NUSAI\Desktop\Machine learning\HebaNu.github.io\HebaNu.github.io\HebaNu\posts\Probability theory and random variables\POST1')
+                                                                                                                                                           ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
+"

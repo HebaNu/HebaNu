@@ -14,10 +14,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load your dataset without specifying encoding
-data = pd.read_excel('CategoricalNB.xlsx')
+data = pd.read_excel('Updated dataset_NOV12.xlsx')
 
 # Summary statistics for Industry sector
-industry_stats = data[' Industry sector'].value_counts()
+industry_stats = data[''].value_counts()
 
 # Summary statistics for Working Method
 method_stats = data['Working Method'].value_counts()

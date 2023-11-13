@@ -1,0 +1,107 @@
+"0","import os"
+"0","import pandas as pd"
+"0","from sklearn.model_selection import train_test_split"
+"0","from sklearn.naive_bayes import MultinomialNB"
+"0","from sklearn.metrics import classification_report, accuracy_score"
+"0","from sklearn.preprocessing import OneHotEncoder"
+"0",""
+"0",""
+"0","# Load the dataset"
+"0","df = pd.read_csv('C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Probability theory and random variables/For RSTUDIO_NOV12.csv')"
+"0",""
+"0","# Handle missing values in 'current job' column (target variable)"
+"0","df = df.dropna(subset=['current job'])  # This line removes rows where 'current job' is NaN"
+"0",""
+"0","# Print the column names to check for any discrepancies"
+"0","print(df.columns)"
+"1","Index(['Response ID', 'Response Status', 'Duplicate',
+       'Time Taken to Complete (Seconds)', 'Country Code', 'Region', 'Country',
+       'Longitude', 'Latitude', 'With which gender do you identify? ',
+       'What is your age? ', 'What is your marital status? ',
+       'What is your race? ', 'What is your education level? ',
+       ' If you work partially in-person, how many days a week do you work in person? ',
+       'In which City/County within the Roanoke Metropolitan Area do you live?"
+"1"," ',
+       'Please Enter the zip code for your homeplace',
+       'In which City/County within the Roanoke Metropolitan Area do you work? ',
+       'Please Enter the zip code for your workplace',
+       'What is the age of the firm/company/association you work in?',
+       'What is your (firm/company/association)' s size? (# number of employees or workers)',
+       'If you commute to work, how far is your work from your homeplace? ',
+       'Are you the owner or renter of your house? ',
+ "
+"1","      'How many people in your household have jobs?',
+       'How many people currently live in your household?',
+       'What is your expected/desired family size in the future, including yourself and any dependents?',
+       'What is your monthly earning? ', ' industry sector',
+       'What is your job title?',
+       'How many hours do you typically work per week at your current job?',
+       'current job',
+       'What is the level of importance of physical interactions with a team in order to "
+"0","# One-hot encoding"
+"1","perform your current job?',
+       'Regardless of your current working style (Remote or in-person), have you heard about anyone who works in the same profession as you but remotely, no matter where?',
+       'Regardless of your current working style (Remote or in-person), have you come across any news or information sources indicating that your profession might be shifted, either partially or completely, towards remote work in the future?',
+       'On a scale of 1-5, please rate your agreement with the "
+"1","following statement: 'During the COVID-19 pandemic, working from home using technological advancements in communication (e.g., Zoom, Skype, Teams) was efficient in performing my job tasks.'',
+       'How do you usually transport to your workplace?', 'Unnamed: 36',
+       'Unnamed: 37', 'Unnamed: 38', 'Unnamed: 39', 'Unnamed: 40',
+       'Regardless of your current working style, what is the future work style do you prefer? ',
+       'If you work in-person (commute to work), how would you rank your pre"
+"1","ferred living area within Roanoke Metropolitan Area, considering your income and affordability? (1 is the most preferred)? ',
+       'Unnamed: 43', 'Unnamed: 44', 'Unnamed: 45',
+       'If you work remotely, how would you rank your preferred areas to live within Roanoke Metropolitan Area, considering your income and affordability? (1 is the most preferred)?',
+       'Unnamed: 47', 'Unnamed: 48', 'Unnamed: 49',
+       'In the past ten years, how many times have you relocated your living place?',
+   "
+"1","    'If you currently work in person in an urban area and live close to your workplace, but your job is shifting to a partially remote, you may be thinking about whether it makes sense to move to a suburban area. How would you contemplate relocating to the suburbs in this scenario?',
+       'If you currently work in person in an urban area and live close to your workplace, but your job is shifting completely remote, you may be thinking about whether it makes sense to move to a suburban area. How would y"
+"1","ou contemplate relocating to the suburbs in this scenario?',
+       'Your colleagues/friends have shifted to remote work and moved from an urban area to a suburban or rural area. Would you be able to consider a move to a rural area if you also have the option to work remotely like them?',
+       'How important are these factors when deciding your residential location? ',
+       'How important are these factors when deciding your residential location? .1',
+       'How important are these factors whe"
+"1","n deciding your residential location? .2',
+       'How important are these factors when deciding your residential location? .3',
+       'How important are these factors when deciding your residential location? .4',
+       'How important are these factors when deciding your residential location? .5',
+       'How important are these factors when deciding your residential location? .6',
+       'How important are these factors when deciding your residential location? .7',
+       'How important "
+"1","are these factors when deciding your residential location? .8',
+       'How important are these factors when deciding your residential location? .9',
+       'How important are these factors when deciding your residential location? .10',
+       'How important are these factors when deciding your residential location? .11',
+       'How important are these factors when deciding your residential location? .12'],
+      dtype='object')
+"
+"0","X = encoder.fit_transform(df[[' industry sector']])"
+"0",""
+"0","# Target variable"
+"0","y = df['current job']"
+"0",""
+"0","# Split the dataset"
+"0","X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
+"0",""
+"0","# Train the Multinomial Naive Bayes model"
+"0","model = MultinomialNB()"
+"0","model.fit(X_train, y_train)"
+"1","MultinomialNB()
+"
+"0","# Make predictions and evaluate the model"
+"0","y_pred = model.predict(X_test)"
+"0","print(classification_report(y_test, y_pred, zero_division=0))"
+"1","              precision    recall  f1-score   support
+
+         1.0       0.28      0.20      0.23        25
+         2.0       0.53      0.74      0.62        86
+         3.0       0.23      0.16      0.19        44
+         4.0       0.00      0.00      0.00        15
+
+    accuracy                           0.45       170
+   macro avg       0.26      0.28      0.26       170
+weighted avg       0.37      0.45      0.40       170
+
+"
+"1","Accuracy: 0.4470588235294118
+"

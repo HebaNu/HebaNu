@@ -1,0 +1,61 @@
+"0","import pandas as pd"
+"0","from sklearn.model_selection import train_test_split"
+"0","from sklearn.naive_bayes import BernoulliNB"
+"0","from sklearn.metrics import classification_report, accuracy_score"
+"0","from sklearn.preprocessing import OneHotEncoder"
+"0","import os"
+"0",""
+"0","# Load the dataset"
+"0","df = pd.read_csv('C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Probability theory and random variables/POST1.csv')"
+"0",""
+"0","# Replace values in column 'Work Method'"
+"0","df['Work Method'] = df['Work Method'].replace(3, 2)"
+"0","df['Work Method'] = df['Work Method'].replace(4, 1)"
+"0",""
+"0","# Drop rows where any cell is NaN in the 'Work Method' column"
+"0","df = df.dropna(subset=['Work Method'])"
+"0",""
+"0","# One-hot encoding"
+"0","encoder = OneHotEncoder(sparse=False)"
+"0","X = encoder.fit_transform(df[[' industry sector']])  "
+"2","C:\Users\NUSAI\ANACON~1\Lib\site-packages\sklearn\preprocessing\_encoders.py:972: FutureWarning: `sparse` was renamed to `sparse_output` in version 1.2 and will be removed in 1.4. `sparse_output` is ignored unless you leave `sparse` to its default value.
+  warnings.warn(
+"
+"0","# Use the correct column name"
+"0",""
+"0","# Target variable"
+"0","y = df['Work Method']"
+"0",""
+"0","# Split the dataset"
+"0","X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
+"0",""
+"0","# Train the Bernoulli Naive Bayes model"
+"0","model = BernoulliNB()"
+"0","model.fit(X_train, y_train)"
+"1","BernoulliNB()
+"
+"0","# Make predictions and evaluate the model"
+"0","y_pred = model.predict(X_test)"
+"0",""
+"0","# Save the updated DataFrame back to CSV"
+"0","# Define the full path for the output file"
+"0","output_path = 'C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Probability theory and random variables/updated_POST1.csv'"
+"0",""
+"0","# Create the directory if it does not exist"
+"0","os.makedirs(os.path.dirname(output_path), exist_ok=True)"
+"0","df.to_csv(output_path, index=False)"
+"0",""
+"0","# Output the classification report and accuracy"
+"0","print(classification_report(y_test, y_pred, zero_division=0))"
+"1","              precision    recall  f1-score   support
+
+         1.0       0.00      0.00      0.00        40
+         2.0       0.76      1.00      0.87       130
+
+    accuracy                           0.76       170
+   macro avg       0.38      0.50      0.43       170
+weighted avg       0.58      0.76      0.66       170
+
+"
+"1","Accuracy: 0.7647058823529411
+"
