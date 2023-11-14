@@ -1,4 +1,50 @@
-"0","#| echo: false"
-"0","import warnings"
-"0","warnings.filterwarnings(""ignore"")"
+"0","import pandas as pd"
+"0","from sklearn.model_selection import train_test_split"
+"0","from sklearn.naive_bayes import BernoulliNB"
+"0","from sklearn.metrics import classification_report, accuracy_score"
+"0","from sklearn.preprocessing import OneHotEncoder"
+"0","import os"
 "0",""
+"0","# Load the dataset"
+"0","df = pd.read_csv('C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Probability theory and random variables/updated_POST1.csv')"
+"0",""
+"0","# Drop rows where any cell is NaN in the 'Work Method' column"
+"0","df = df.dropna(subset=['Work Method'])"
+"0",""
+"0","# One-hot encoding"
+"0","encoder = OneHotEncoder(sparse=False)"
+"0","X = encoder.fit_transform(df[[' industry sector']])  "
+"0","# includes 20 occupation types from NAICS for 6-digit SOC- U.S. BLS"
+"0",""
+"0","# Target variable"
+"0","y = df['Work Method']"
+"0","# 1 for WOS [Work on Site], 2 for WFH [Work From Home]"
+"0",""
+"0","# Split the dataset"
+"0","X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
+"0",""
+"0","# Train the Bernoulli Naive Bayes model"
+"0","model = BernoulliNB()"
+"0","model.fit(X_train, y_train)"
+"1","BernoulliNB()
+"
+"0","# Make predictions and evaluate the model"
+"0","y_pred = model.predict(X_test)"
+"0",""
+"0",""
+"0",""
+"0","# Output the classification report and accuracy"
+"0","print(classification_report(y_test, y_pred, zero_division=0))"
+"1","              precision    recall  f1-score   support
+
+         1.0       0.00      0.00      0.00        40
+         2.0       0.76      1.00      0.87       130
+
+    accuracy                           0.76       170
+   macro avg       0.38      0.50      0.43       170
+weighted avg       0.58      0.76      0.66       170
+
+"
+"0","print(f'Accuracy: {accuracy_score(y_test, y_pred)}')"
+"1","Accuracy: 0.7647058823529411
+"

@@ -15,7 +15,9 @@ As we navigate through the evolving landscape of the 2023 job market, we're witn
 
 **About the Data:** The data comes from a 2023 survey of 850 participants from various occupations. They were asked about their industry sector and working method. To respect privacy and data confidentiality, we've modified and anonymized the dataset. This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
 
-**Industry Breakdown:** Our study spans numerous occupation types categorized under the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of the sectors:
+![The survey participants from workers and their working method (WFH, or WON). ](Survey participants.png)
+
+**Industry Breakdown:** Our study spans 20 main occupation categories under the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of the sectors:
 
 +------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 | ###### \#  | ###### The **o**ccupations categories are based on the 6-digit (SOC) system from the U.S. (BLS) | ###### Industry Sector: **O**ccupational **C**lassification                       |
@@ -87,10 +89,11 @@ df = df.dropna(subset=['Work Method'])
 # One-hot encoding
 encoder = OneHotEncoder(sparse=False)
 X = encoder.fit_transform(df[[' industry sector']])  
-# Use the correct column name
+# includes 20 occupation types from NAICS for 6-digit SOC- U.S. BLS
 
 # Target variable
 y = df['Work Method']
+# 1 for WOS [Work on Site], 2 for WFH [Work From Home]
 
 # Split the dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
