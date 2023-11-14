@@ -105,9 +105,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(5)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(6)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(6)</span></div><div class="category" data-category="plot">plot <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(5)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(6)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(6)</span></div><div class="category" data-category="plot">plot <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -258,17 +258,17 @@ Heba Nusair
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="news,code,analysis" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1699858468898" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="1" data-categories="news,code,analysis,plot" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1699953925134" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
 <div class="thumbnail">
 <p><a href="./posts/Probability theory and random variables/index.html"> <img src="./posts/Probability theory and random variables/Capture.JPG" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./posts/Probability theory and random variables/index.html">
 <h3 class="no-anchor listing-title">
-Probability theory and random variables
+Decoding Work Patterns: Navigating the Remote vs.&nbsp;On-Site Landscape in Today’s Job Market
 </h3>
 <div class="listing-subtitle">
-
+Probability theory and random variables: Naive Bayes classifier for multivariate Bernoulli models
 </div>
 </a>
 <div class="listing-categories">
@@ -281,10 +281,13 @@ code
 <div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
 analysis
 </div>
+<div class="listing-category" onclick="window.quartoListingCategory('plot'); return false;">
+plot
+</div>
 </div>
 <a href="./posts/Probability theory and random variables/index.html">
 <div class="listing-description">
-Why I used this kind of analysis?
+<strong>Welcome to Our Analysis:</strong> As we navigate through the evolving landscape of the 2023 job market, we’re witnessing a significant shift in work methods. More people are embracing Work…
 </div>
 </a>
 </div>
