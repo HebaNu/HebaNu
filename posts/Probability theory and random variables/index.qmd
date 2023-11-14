@@ -13,11 +13,11 @@ As we navigate through the evolving landscape of the 2023 job market, we are wit
 
 **My Approach:** For this analysis, I've utilized the Naive Bayes classifier for multivariate Bernoulli models. This method is excellent for sorting jobs into two main categories: WFH and WOS. It's a practical choice for my study because it efficiently handles binary data---like choosing between remote or on-site work.
 
-**About the Data:** The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. To respect data confidentiality, we've modified and anonymized the dataset. This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
+**About the Data:** The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. ***To respect data confidentiality, we've modified and anonymized the dataset.*** This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
 
 ![The survey participants from workers and their working method (WFH, or WON). ](Survey participants.png)
 
-**Industry Breakdown:** The study occupation category has 20 main category according to the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of the industry sectors:
+**Industry Breakdown:** The study categorized 20 main category for jobs according to the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of these industry sectors:
 
 +------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 | ###### \#  | ###### The **o**ccupations categories are based on the 6-digit (SOC) system from the U.S. (BLS) | ###### Industry Sector: **O**ccupational **C**lassification                       |
@@ -63,14 +63,14 @@ As we navigate through the evolving landscape of the 2023 job market, we are wit
 | ###### 20  | ###### cns20 Number of jobs in NAICS sector 92                                                  | ###### (Public Administration)                                                    |
 +------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 
-**Our Goal:**
+**Goal:**
 My goal is to provide a clear and real picture of the changing work styles. I am not just analyzing numbers; I am uncovering the stories they tell about how people are adapting to new work environments, be it remotely or on-site.
 
 **Why I Chose the Naive Bayes Classifier for Multivariate Bernoulli Models:**
 
-In the realm of data analysis, especially when dealing with binary classifications like distinguishing between remote and on-site work methods, the Naive Bayes classifier for multivariate Bernoulli models stands out for its simplicity and efficiency. This algorithm is particularly adept at calculating probabilities within our two primary categories -- remote and on-site work -- across various industry sectors.
-
-What makes this classifier a go-to choice for our study is its ability to provide a baseline assessment of the likelihood that a job falls into either of these categories, based on its industry sector.
+In my exploration of work methods---remote and on-site---the Naive Bayes classifier for multivariate Bernoulli models shines with its simplicity and effectiveness. It excels at evaluating probabilities, helping determine whether a job is more likely to be remote or on-site based on its industry sector. This algorithm's strength lies in its straightforward approach, providing clear baseline assessments that guide our analysis across different industry sectors. Dive Into the Code Behind the Analysis:\
+x: The industry sector: \[jobs categories From 1 to 20\]\
+y: The work method: 1 for WOS \[Work on Site\], 2 for WFH \[Work From Home\]\
 
 ```{python}
 import pandas as pd
@@ -119,15 +119,15 @@ import warnings
 warnings.filterwarnings("ignore")
 ```
 
-The results from your BernoulliNB model show that:
+**Insights from Our Model: Understanding the Work Trends**
 
-The model is predicting class 2.0 with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).
+The results from our BernoulliNB model offer fascinating insights into the current work trends. The model is predicting class 2.0 for WFH \[Work From Home\] with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).
 
-For class 1.0, however, the model does not predict any instances correctly, which suggests that either there's an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.
+For class 1.0, however, the model does not predict any instances correctly, which suggests that either there's an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. **The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.**
 
 The macro avg and weighted avg for precision, recall, and f1-score provide a summary of the effectiveness of the model across the classes. The low macro avg for precision and f1-score indicates that one of the classes does not perform well, which we already know is class 1.0.
 
-The f1-score is a harmonic mean of precision and recall and is a useful metric when you have classes that are imbalanced. In your case, the f1-score for class 1.0 is 0.00, indicating poor performance for this class.
+The f1-score is a harmonic mean of precision and recall and is a useful metric when you have classes that are imbalanced. In my case, the f1-score for class 1.0 \[WOS\] is 0.00, indicating poor performance for this class.
 
 Generally, the Naive Bayes classifier for multivariate Bernoulli models proves to be an effective and reliable tool for classification tasks. Its ability to handle binary data, like our work method categories, contributes to its robustness and applicability in various analytical scenarios.
 
