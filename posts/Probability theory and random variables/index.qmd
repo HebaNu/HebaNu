@@ -9,15 +9,15 @@ code-fold: true
 code-viewfold: true
 ---
 
-As we navigate through the evolving landscape of the 2023 job market, we're witnessing a significant shift in work methods. More people are embracing Work From Home (WFH) while others continue with Work On Site (WOS). Our study aims to understand how these work styles vary across different jobs in the USA.
+As we navigate through the evolving landscape of the 2023 job market, we are witnessing a significant shift in work methods. More people are embracing Work From Home (WFH) while others continue with Work On Site (WOS). This post helps to understand how these work methods vary across different jobs in the USA.
 
-**Our Approach:** For this analysis, I've utilized the Naive Bayes classifier for multivariate Bernoulli models. This method is excellent for sorting jobs into two main categories: WFH and WOS. It's a practical choice for our study because it efficiently handles binary data---like choosing between remote or on-site work.
+**My Approach:** For this analysis, I've utilized the Naive Bayes classifier for multivariate Bernoulli models. This method is excellent for sorting jobs into two main categories: WFH and WOS. It's a practical choice for my study because it efficiently handles binary data---like choosing between remote or on-site work.
 
-**About the Data:** The data comes from a 2023 survey of 850 participants from various occupations. They were asked about their industry sector and working method. To respect privacy and data confidentiality, we've modified and anonymized the dataset. This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
+**About the Data:** The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. To respect data confidentiality, we've modified and anonymized the dataset. This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
 
 ![The survey participants from workers and their working method (WFH, or WON). ](Survey participants.png)
 
-**Industry Breakdown:** Our study spans 20 main occupation categories under the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of the sectors:
+**Industry Breakdown:** The study occupation category has 20 main category according to the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of the industry sectors:
 
 +------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 | ###### \#  | ###### The **o**ccupations categories are based on the 6-digit (SOC) system from the U.S. (BLS) | ###### Industry Sector: **O**ccupational **C**lassification                       |
@@ -64,7 +64,7 @@ As we navigate through the evolving landscape of the 2023 job market, we're witn
 +------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 **Our Goal:**
-We aim to provide a clear and real picture of the changing work styles. We're not just analyzing numbers; we're uncovering the stories they tell about how people are adapting to new work environments, be it remotely or on-site.
+My goal is to provide a clear and real picture of the changing work styles. I am not just analyzing numbers; I am uncovering the stories they tell about how people are adapting to new work environments, be it remotely or on-site.
 
 **Why I Chose the Naive Bayes Classifier for Multivariate Bernoulli Models:**
 
