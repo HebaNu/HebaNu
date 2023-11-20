@@ -1,4 +1,0 @@
-"0","crosstab = pd.crosstab(data[' Industry sector'], data['Working Method'])"
-"0","crosstab.plot(kind='bar', stacked=True)"
-"1","<Axes: xlabel=' Industry sector'>
-"
