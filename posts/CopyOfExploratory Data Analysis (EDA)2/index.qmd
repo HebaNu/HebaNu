@@ -3,6 +3,7 @@ title: "EDA 2"
 author: "Heba Nusair"
 date: "2023-11-11"
 categories: [news, code, analysis]
+type: grid
 image: "Capture.JPG"
 code-viewfold: true
 ---

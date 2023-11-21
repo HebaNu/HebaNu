@@ -3,6 +3,7 @@ title: "Exploratory Data Analysis (EDA)"
 author: "Heba Nusair"
 date: "2023-11-11"
 categories: [news, code, analysis]
+type: grid
 image: "Capture.JPG"
 code-viewfold: true
 ---
@@ -10,8 +11,8 @@ code-viewfold: true
 The study and the attained dataset mainly focus on exploring the dynamic of the job market and its impact on the urban cityscape. Recent years marked a notable transformation in work methodologies. Many professionals are adopting the Work From Home (WFH) model, while many still adhere to traditional Work On Site (WOS) practices. My study delves into 20 distinct industry sectors, examining four unique classes of working methods and styles, as detailed below:
 
 |     |                                                                                                                                            |
-|-----|--------------------------------------------------------------------------------------------------------------------------------------------|
-|     | Working Method                                                                                                                             |
+|-----------|-------------------------------------------------------------|
+| \#  | Working Method                                                                                                                             |
 | 1   | Fully remote (working from home or another location)                                                                                       |
 | 2   | Fully in-person (working at a physical office or location)                                                                                 |
 | 3   | Hybrid, dominated by in-person work (spending the majority of your work time at a physical office or location, with some remote work)      |
