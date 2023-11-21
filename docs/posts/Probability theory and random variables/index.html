@@ -326,7 +326,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p><strong>Goal:</strong> My goal is to provide a clear and real picture of the changing work styles. I am not just analyzing numbers; I am uncovering the stories they tell about how people are adapting to new work environments, be it remotely or on-site.</p>
 <p><strong>Why I Chose the Naive Bayes Classifier for Multivariate Bernoulli Models:</strong></p>
-<p>In my exploration of work methods—remote and on-site—the Naive Bayes classifier for multivariate Bernoulli models shines with its simplicity and effectiveness. It excels at evaluating probabilities, helping determine whether a job is more likely to be remote or on-site based on its industry sector. This algorithm’s strength lies in its straightforward approach, providing clear baseline assessments that guide our analysis across different industry sectors. Dive Into the Code Behind the Analysis:</p>
+<p>In my exploration of work methods—remote and on-site—the Naive Bayes classifier for multivariate Bernoulli models shines with its simplicity and effectiveness. It excels at evaluating probabilities, helping determine whether a job is more likely to be remote or on-site based on its industry sector. This algorithm’s strength lies in its straightforward approach, providing clear baseline assessments that guide our analysis across different industry sectors. Dive Into the Code Behind the Analysis:<br>
+x: The industry sector: [jobs categories From 1 to 20]<br>
+y: The work method: 1 for WOS [Work on Site], 2 for WFH [Work From Home]<br>
+</p>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
@@ -387,11 +390,11 @@ Accuracy: 0.7647058823529411</code></pre>
 </code></pre>
 </div>
 </div>
-<p><strong>The results from your BernoulliNB model show that:</strong></p>
-<p>The model is predicting class 2.0 with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).</p>
-<p>For class 1.0, however, the model does not predict any instances correctly, which suggests that either there’s an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.</p>
+<p><strong>Insights from Our Model: Understanding the Work Trends</strong></p>
+<p>The results from our BernoulliNB model offer fascinating insights into the current work trends. The model is predicting class 2.0 for WFH [Work From Home] with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).</p>
+<p>For class 1.0, however, the model does not predict any instances correctly, which suggests that either there’s an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. <strong>The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.</strong></p>
 <p>The macro avg and weighted avg for precision, recall, and f1-score provide a summary of the effectiveness of the model across the classes. The low macro avg for precision and f1-score indicates that one of the classes does not perform well, which we already know is class 1.0.</p>
-<p>The f1-score is a harmonic mean of precision and recall and is a useful metric when you have classes that are imbalanced. In your case, the f1-score for class 1.0 is 0.00, indicating poor performance for this class.</p>
+<p>The f1-score is a harmonic mean of precision and recall and is a useful metric when you have classes that are imbalanced. In my case, the f1-score for class 1.0 [WOS] is 0.00, indicating poor performance for this class.</p>
 <p>Generally, the Naive Bayes classifier for multivariate Bernoulli models proves to be an effective and reliable tool for classification tasks. Its ability to handle binary data, like our work method categories, contributes to its robustness and applicability in various analytical scenarios.</p>
 <p><strong><em>To create plots</em></strong> that visualize the performance of your <strong><code>BernoulliNB</code></strong> model, you would typically look at the confusion matrix, precision-recall, and possibly ROC curves. Below are examples of how you could generate each of these plots using <strong><code>matplotlib</code></strong> and <strong><code>scikit-learn</code></strong>:</p>
 <ol type="1">
