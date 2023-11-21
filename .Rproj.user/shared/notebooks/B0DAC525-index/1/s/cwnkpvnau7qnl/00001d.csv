@@ -6,29 +6,9 @@
 "0","from scipy.stats import chi2_contingency"
 "0",""
 "0","# Load your dataset without specifying encoding"
-"0","data = pd.read_excel('posts/Exploratory Data Analysis (EDA)/Industry sector and working method.xlsx')"
-"2","Traceback (most recent call last):
-  File ""<string>"", line 1, in <module>
-  File ""[90m]8;line = 211;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\util\_decorators.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\util\_decorators.py]8;;[39m"", line 211, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File ""[90m]8;line = 331;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\util\_decorators.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\util\_decorators.py]8;;[39m"", line 331, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File ""[90m]8;line = 482;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\excel\_base.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\excel\_base.py]8;;[39m"", line 482, in read_excel
-    io = ExcelFile(io, storage_options=storage_options, engine=engine)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""[90m]8;line = 1652;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\excel\_base.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\excel\_base.py]8;;[39m"", line 1652, in __init__
-    ext = inspect_excel_format(
-          ^^^^^^^^^^^^^^^^^^^^^
-  File ""[90m]8;line = 1525;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\excel\_base.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\excel\_base.py]8;;[39m"", line 1525, in inspect_excel_format
-    with get_handle(
-         ^^^^^^^^^^^
-  File ""[90m]8;line = 865;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\common.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\common.py]8;;[39m"", line 865, in get_handle
-    handle = open(handle, ioargs.mode)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: 'posts/Exploratory Data Analysis (EDA)/Industry sector and working method.xlsx'
-"
+"0","data = pd.read_excel('Industry sector and working method.xlsx')"
+"0",""
+"0",""
 "0","from scipy.stats import chi2_contingency"
 "0",""
 "0","# Summary statistics for Industry sector"
@@ -41,10 +21,11 @@ FileNotFoundError: [Errno 2] No such file or directory: 'posts/Exploratory Data 
 "0","plt.figure(figsize=(12, 6))"
 "1","<Figure size 1200x600 with 0 Axes>
 "
-"0","plt.subplot(1, 2, 1)"
 "1","<Axes: >
 "
 "0","sns.countplot(data=data, x=' Industry sector')"
+"1","<Axes: xlabel=' Industry sector', ylabel='count'>
+"
 "0","plt.title('Distribution of Industry Sectors')"
 "1","Text(0.5, 1.0, 'Distribution of Industry Sectors')
 "
@@ -53,6 +34,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'posts/Exploratory Data 
 "
 "1","<Axes: xlabel='Working Method', ylabel='count'>
 "
+"0","plt.title('Distribution of Working Methods')"
 "1","Text(0.5, 1.0, 'Distribution of Working Methods')
 "
 "0","plt.tight_layout()"
@@ -73,7 +55,6 @@ FileNotFoundError: [Errno 2] No such file or directory: 'posts/Exploratory Data 
 "1","There is a significant relationship between Industry sector and Working Method.
 Summary statistics for Industry sector:
 "
-"0","print(industry_stats)"
 "1","5     80
 7     73
 9     64
@@ -100,6 +81,7 @@ Name:  Industry sector, dtype: int64
 "1","
 Summary statistics for Working Method:
 "
+"0","print(method_stats)"
 "1","2    413
 3    233
 1    131
