@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Work-from-Home and cityscape - Welcome to my posts</title>
+<title>Urban Transformation in the Work From Home Era: Machine Learning-Based Analysis - Welcome to my posts</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -37,10 +71,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,9 +105,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -91,10 +125,30 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Urban Transformation in the Work From Home Era: Machine Learning-Based Analysis - Welcome to my posts">
+<meta property="og:image" content="./posts/CopyOfExploratory Data Analysis (EDA)2/Capture.JPG">
+<meta property="og:site-name" content="Urban Transformation in the Work From Home Era: Machine Learning-Based Analysis">
+<meta name="twitter:title" content="Urban Transformation in the Work From Home Era: Machine Learning-Based Analysis - Welcome to my posts">
+<meta name="twitter:image" content="./posts/CopyOfExploratory Data Analysis (EDA)2/Capture.JPG">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -105,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Work-from-Home and cityscape</span>
+    <span class="navbar-title">Urban Transformation in the Work From Home Era: Machine Learning-Based Analysis</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -114,22 +168,27 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About!</span></a>
+  <li class="nav-item compact">
+    <a class="nav-link" href="./about.qmd" rel="" target="">
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/yourusername" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/yourusername" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -157,27 +216,31 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(6)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(7)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(7)</span></div><div class="category" data-category="plot">plot <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>quarto render</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>git push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1699332415096" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="0" data-categories="news,code,analysis" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1700526685945" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./posts/post-with-code/index.html"> <img src="./posts/post-with-code/image.jpg" class="thumbnail-image"> </a></p>
+<p><a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html"> <img src="./posts/CopyOfExploratory Data Analysis (EDA)2/Capture.JPG" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html">
 <h3 class="no-anchor listing-title">
-Post With Code
+EDA 2
 </h3>
 <div class="listing-subtitle">
 
@@ -194,31 +257,31 @@ code
 analysis
 </div>
 </div>
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html">
 <div class="listing-description">
-This is a post with executable code.
+The study and the attained dataset mainly focus on exploring the dynamic of the job market and its impact on the urban cityscape. Recent years marked a notable…
 </div>
 </a>
 </div>
 <div class="metadata">
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html">
 <div class="listing-date">
-Nov 6, 2023
+Nov 11, 2023
 </div>
 <div class="listing-author">
-Harlow Malloc
+Heba Nusair
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="news" data-listing-date-sort="1698984000000" data-listing-file-modified-sort="1699332415089" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="1" data-categories="news,code,analysis" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1700526766118" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
 <div class="thumbnail">
-<p><a href="./posts/welcome/index.html"> <p class="card-img-top"><img src="posts\welcome\thumbnail.jpg"  class="thumbnail-image card-img"/></p> </a></p>
+<p><a href="./posts/Exploratory Data Analysis (EDA)/index.html"> <img src="./posts/Exploratory Data Analysis (EDA)/Capture.JPG" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
-<a href="./posts/welcome/index.html">
+<a href="./posts/Exploratory Data Analysis (EDA)/index.html">
 <h3 class="no-anchor listing-title">
-Welcome To My Blog
+Exploratory Data Analysis (EDA)
 </h3>
 <div class="listing-subtitle">
 
@@ -228,20 +291,235 @@ Welcome To My Blog
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
 </div>
+<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
+code
 </div>
-<a href="./posts/welcome/index.html">
+<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
+analysis
+</div>
+</div>
+<a href="./posts/Exploratory Data Analysis (EDA)/index.html">
+<div class="listing-description">
+Study the relationship between nominal variables (Industry sector and Working Method)statistical analyses:<br>
+<strong>Chi-Square Test of Independence</strong>: The Chi-Square test can be used to determine whether there is an association (relationship) between two categorical variables. In your case, you can use it to test if…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/Exploratory Data Analysis (EDA)/index.html">
+<div class="listing-date">
+Nov 11, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="news,code,analysis,plot" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1700526868590" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
+<div class="thumbnail">
+<p><a href="./posts/Probability theory and random variables/index.html"> <img src="./posts/Probability theory and random variables/Capture.JPG" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Probability theory and random variables/index.html">
+<h3 class="no-anchor listing-title">
+Decoding Work Patterns: Navigating the Remote vs.&nbsp;On-Site Landscape in Today’s Job Market
+</h3>
+<div class="listing-subtitle">
+Probability theory and random variables: Naive Bayes classifier for multivariate Bernoulli models
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
+news
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
+code
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
+analysis
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('plot'); return false;">
+plot
+</div>
+</div>
+<a href="./posts/Probability theory and random variables/index.html">
+<div class="listing-description">
+As we navigate through the evolving landscape of the 2023 job market, we are witnessing a significant shift in work methods. More…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/Probability theory and random variables/index.html">
+<div class="listing-date">
+Nov 11, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1699585325148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html"> <img src="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/image.jpg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html">
+<h3 class="no-anchor listing-title">
+Anomaly-outlier detection DBSCAN labels for scatter plot
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
+news
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
+code
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
+analysis
+</div>
+</div>
+<a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html">
+<div class="listing-description">
+This is a post with executable code.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html">
+<div class="listing-date">
+Nov 6, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1699585325148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/Classification/index.html"> <img src="./posts/Classification/image.jpg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Classification/index.html">
+<h3 class="no-anchor listing-title">
+Classificcation
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
+news
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
+code
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
+analysis
+</div>
+</div>
+<a href="./posts/Classification/index.html">
+<div class="listing-description">
+This is a post with executable code.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/Classification/index.html">
+<div class="listing-date">
+Nov 6, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1699585325148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/Linear and nonlinear regression/index.html"> <img src="./posts/Linear and nonlinear regression/image.jpg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Linear and nonlinear regression/index.html">
+<h3 class="no-anchor listing-title">
+Linear and nonlinear regression
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
+news
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
+code
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
+analysis
+</div>
+</div>
+<a href="./posts/Linear and nonlinear regression/index.html">
+<div class="listing-description">
+This is a post with executable code.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/Linear and nonlinear regression/index.html">
+<div class="listing-date">
+Nov 6, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="news,code,plot" data-listing-date-sort="1698984000000" data-listing-file-modified-sort="1699585325148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/Clustering/index.html"> <p class="card-img-top"><img src="posts\Clustering\thumbnail.jpg"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Clustering/index.html">
+<h3 class="no-anchor listing-title">
+Clustering
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
+news
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
+code
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('plot'); return false;">
+plot
+</div>
+</div>
+<a href="./posts/Clustering/index.html">
 <div class="listing-description">
 This is the first post in a Quarto blog. Welcome!
 </div>
 </a>
 </div>
 <div class="metadata">
-<a href="./posts/welcome/index.html">
+<a href="./posts/Clustering/index.html">
 <div class="listing-date">
 Nov 3, 2023
 </div>
 <div class="listing-author">
-Tristan O’Malley
+Heba Nusair
 </div>
 </a>
 </div>
@@ -485,6 +763,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Heba Nusair</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/HebaNu">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

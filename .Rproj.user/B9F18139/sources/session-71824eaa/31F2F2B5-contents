@@ -1,37 +1,42 @@
 project:
   type: website
-  output-dir: docs
-  resources: gitlab-ci.yml
-  post-render: date.py
 website:
-  back-to-top-navigation: true
+  title: >-
+    Urban Transformation in the Work From Home Era: Machine Learning-Based
+    Analysis
+  description: Provide a machine learning code example along with a brief summary.
+  twitter-card: true
+  open-graph: true
   reader-mode: true
   page-navigation: true
-  favicon: path/to/favicon.ico
-  title: MY BLOGS
-
+  repo-branch: main
+  repo-url: 'https://github.com/HebaNu/HebaNu'
   navbar:
-    type: grid
+    search: true
     right:
-      - About.qmd
-      - Research Overview.qmd
+      - about.qmd
       - icon: github
-        href: 'https://github.com/'
+        href: 'https://github.com/yourusername'  # Replace with your GitHub URL
+      - icon: twitter
+        href: 'https://twitter.com/yourusername'  # Replace with your Twitter URL
+  # Removed invalid properties
+  page-footer:
+    left: 'Copyright 2023, Heba Nusair'
+    right:
+      - icon: github
+        href: 'https://github.com/HebaNu'
       - icon: twitter
         href: 'https://twitter.com'
-      - icon: facebook
-        href: 'https://www.facebook.com/heba.nsair'
 format:
   html:
-    grid:
-      sidebar-width: 250px
-      body-width: 600px
-      margin-width: 450px
-      gutter-width: 1.5em
-    theme: Darkly
-editor: visual
-
-
-
-
+    theme: darkly
+    css: styles.css
+    toc: true
+    toc-depth: 2
+    toc-expand: 2
+    max-width: 500px
+    html-math-method: katex
+    code-fold: false
+    code-summary: Show the code
+    e-summary: Show the code
 

@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "About.html",
+    "href": "About.html",
+    "title": "About!",
+    "section": "",
+    "text": "Hi,\nThis is Heba Nusair, a Ph.D. Candidate in Landscape Architecture at Virginia Tech. I am passionate about promoting sustainability and resilience in cities, with expertise in modeling urban growth planning using Geospatial Information Science. I have a broad background in land analysis and evaluation, urban planning, and design using GIS, honed through years of extensive experience in the field.\n\nMy current doctoral dissertation, ‘Predicting the Impact of Shifting to Work-from-Home Paradigm on Urban Sprawl Using Agent-Based Model and Artificial Intelligence,’ demonstrates my commitment to developing innovative solutions that address complex urban challenges on a large and medium city scale.\nI’m here to share my findings with you through a series of engaging blog posts. In some of these, I’ve even used synthesized data sets to shed light on different facets of the outcomes. So, whether you’re passionate about urban planning or just curious about the future of work, let’s dive into the world of the changing nature of work and urban development.\n\n\n\n\n\n Back to top"
+  },
+  {
     "objectID": "Research Overview.html",
     "href": "Research Overview.html",
     "title": "Research Overview",
@@ -35,20 +42,6 @@
     "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "About.html",
-    "href": "About.html",
-    "title": "About!",
-    "section": "",
-    "text": "Hi,\nThis is Heba Nusair, a Ph.D. Candidate in Landscape Architecture at Virginia Tech. I am passionate about promoting sustainability and resilience in cities, with expertise in modeling urban growth planning using Geospatial Information Science. I have a broad background in land analysis and evaluation, urban planning, and design using GIS, honed through years of extensive experience in the field.\n\nMy current doctoral dissertation, ‘Predicting the Impact of Shifting to Work-from-Home Paradigm on Urban Sprawl Using Agent-Based Model and Artificial Intelligence,’ demonstrates my commitment to developing innovative solutions that address complex urban challenges on a large and medium city scale.\nI’m here to share my findings with you through a series of engaging blog posts. In some of these, I’ve even used synthesized data sets to shed light on different facets of the outcomes. So, whether you’re passionate about urban planning or just curious about the future of work, let’s dive into the world of the changing nature of work and urban development.\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to my posts",
-    "section": "",
-    "text": "quarto render\ngit push\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nEDA 2\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nExploratory Data Analysis (EDA)\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nDecoding Work Patterns: Navigating the Remote vs. On-Site Landscape in Today’s Job Market\n\n\nProbability theory and random variables: Naive Bayes classifier for multivariate Bernoulli models\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\nplot\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nAnomaly-outlier detection DBSCAN labels for scatter plot\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nClassificcation\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nLinear and nonlinear regression\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nplot\n\n\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\nNo matching items\n\n Back to top"
-  },
-  {
     "objectID": "posts/Classification/index.html",
     "href": "posts/Classification/index.html",
     "title": "Classificcation",
@@ -75,5 +68,12 @@
     "title": "Research Insights Explorer Using Machine learning",
     "section": "",
     "text": "Important Note: The datasets used on these posts are modified and synthesized, so they should be used solely for educational purposes and to demonstrate data analysis techniques. Please refrain from using this data for any genuine applications.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nEDA 2\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 11, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExploratory Data Analysis (EDA)\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 11, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDecoding Work Patterns: Navigating the Remote vs. On-Site Landscape in Today’s Job Market\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\nplot\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 11, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnomaly-outlier detection DBSCAN labels for scatter plot\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClassificcation\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLinear and nonlinear regression\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nClustering\n\n\n\nnews\n\n\ncode\n\n\nplot\n\n\n\n\n\n\n\nHeba Nusair\n\n\nNov 3, 2023\n\n\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to my posts",
+    "section": "",
+    "text": "quarto render\ngit push\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nEDA 2\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nExploratory Data Analysis (EDA)\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nDecoding Work Patterns: Navigating the Remote vs. On-Site Landscape in Today’s Job Market\n\n\nProbability theory and random variables: Naive Bayes classifier for multivariate Bernoulli models\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\nplot\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nAnomaly-outlier detection DBSCAN labels for scatter plot\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nClassificcation\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nLinear and nonlinear regression\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nplot\n\n\n\n\n\n\n\n\n\n\n\nNov 3, 2023\n\n\nHeba Nusair\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   }
 ]
