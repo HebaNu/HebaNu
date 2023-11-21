@@ -16,7 +16,7 @@ website:
     right:
       - about.qmd
       - icon: github
-        href: 'https://github.com/yourusername'  # Replace with your GitHub URL
+        href: 'https://github.com/HebaNu'  # Replace with your GitHub URL
       - icon: twitter
         href: 'https://twitter.com/yourusername'  # Replace with your Twitter URL
   # Removed invalid properties
