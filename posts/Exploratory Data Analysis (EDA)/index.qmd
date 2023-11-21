@@ -1,9 +1,8 @@
 ---
 title: "Exploratory Data Analysis (EDA)"
 author: "Heba Nusair"
-date: "2023-11-11"
+date: "11.3.2023"
 categories: [news, code, analysis]
-type: grid
 image: "Capture.JPG"
 code-viewfold: true
 ---
@@ -11,7 +10,7 @@ code-viewfold: true
 The study and the attained dataset mainly focus on exploring the dynamic of the job market and its impact on the urban cityscape. Recent years marked a notable transformation in work methodologies. Many professionals are adopting the Work From Home (WFH) model, while many still adhere to traditional Work On Site (WOS) practices. My study delves into 20 distinct industry sectors, examining four unique classes of working methods and styles, as detailed below:
 
 |     |                                                                                                                                            |
-|-----------|-------------------------------------------------------------|
+|--------------------|----------------------------------------------------|
 | \#  | Working Method                                                                                                                             |
 | 1   | Fully remote (working from home or another location)                                                                                       |
 | 2   | Fully in-person (working at a physical office or location)                                                                                 |
@@ -27,10 +26,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load your dataset without specifying encoding
-data = pd.read_excel('Updated dataset_NOV12.xlsx')
+data = pd.read_excel('Industry sector and working method.xlsx')
+print(data.columns)
+
+
 
 # Summary statistics for Industry sector
-industry_stats = data[''].value_counts()
+industry_stats = data[' Industry sector'].value_counts()
+
 
 # Summary statistics for Working Method
 method_stats = data['Working Method'].value_counts()
@@ -69,7 +72,7 @@ import seaborn as sns
 from scipy.stats import chi2_contingency
 
 # Load your dataset without specifying encoding
-data = pd.read_excel('CategoricalNB.xlsx')
+data = pd.read_excel('Industry sector and working method.xlsx')
 
 
 from scipy.stats import chi2_contingency
@@ -110,11 +113,14 @@ print(industry_stats)
 print("\nSummary statistics for Working Method:")
 print(method_stats)
 
+crosstab = pd.crosstab(data[' Industry sector'], data['Working Method'])
+crosstab.plot(kind='bar', stacked=True)
 ```
 
 **2-Visualization**: You can create visualizations to explore the relationship visually. For example, you can create a stacked bar chart to see how the distribution of Working Method varies across different Industry sectors. This can help you identify patterns or differences.
 
 ```{python}
+
 crosstab = pd.crosstab(data[' Industry sector'], data['Working Method'])
 crosstab.plot(kind='bar', stacked=True)
 
