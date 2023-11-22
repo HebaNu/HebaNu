@@ -3,7 +3,7 @@ title: "Exploratory Data Analysis (EDA)"
 author: "Heba Nusair"
 date: "11.3.2023"
 categories: [news, code, analysis]
-image: "Capture.JPG"
+image: "OutPIC.png"
 code-viewfold: true
 ---
 
