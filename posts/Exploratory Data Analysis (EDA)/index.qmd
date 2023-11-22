@@ -112,3 +112,34 @@ crosstab = pd.crosstab(data[' Industry sector'], data['Working Method'])
 crosstab.plot(kind='bar', stacked=True)
 
 ```
+
+Additionally, the dataset contains several key elements that will be crucial for our upcoming statistical analyses. The most important elements include:
+
+|            |                                           |               |
+|------------|-------------------------------------------|---------------|
+| ELement \# | **Description**                           | **Data Type** |
+| 1          | Unique identifier for each response       | Numerical     |
+| 2          | Abbreviation for country names            | Categorical   |
+| 3          | State or region within the country        | Categorical   |
+| 4          | Gender identity of the respondent         | Categorical   |
+| 5          | Age range or specific age                 | Ordinal       |
+| 6          | Marital status of the respondent          | Categorical   |
+| 7          | Race identification of the respondent     | Categorical   |
+| 8          | Highest level of education achieved       | Ordinal       |
+| 9          | Number of days working in person          | Numerical     |
+| 10         | Specific city or county of residence      | Categorical   |
+| 11         | Specific city or county of work           | Categorical   |
+| 12         | Age of the company                        | Numerical     |
+| 13         | Number of employees or workers            | Numerical     |
+| 14         | Distance to work                          | Numerical     |
+| 15         | Housing status                            | Categorical   |
+| 16         | Number of employed household members      | Numerical     |
+| 17         | Household size                            | Numerical     |
+| 18         | Desired family size                       | Numerical     |
+| 19         | Income amount                             | Numerical     |
+| 20         | Sector of employment                      | Categorical   |
+| 21         | Position held at work                     | Textual       |
+| 22         | Weekly working hours                      | Numerical     |
+| 23         | Work mode (e.g., remote, in-person        | Categorical   |
+| 24         | Importance of physical interaction        | Ordinal       |
+| 25         | Mode of transportation                    | Categorical   |
