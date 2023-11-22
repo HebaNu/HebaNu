@@ -197,11 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>The study and the attained dataset mainly focus on exploring the dynamic of the job market and its impact on the urban cityscape. Recent years marked a notable transformation in work methodologies. Many professionals are adopting the Work From Home (WFH) model, while many still adhere to traditional Work On Site (WOS) practices. My study delves into 20 distinct industry sectors, examining four unique classes of working methods and styles, as detailed below:</p>
+<p>The study mainly focus on exploring the dynamic of the job market and its impact on the urban cityscape. The dataset is attained from a 2023 survey of 850 participants from various occupations in USA. Participants were asked about their industry sector and working method. <strong><em>To respect data confidentiality, we’ve modified and anonymized the dataset.</em></strong> This ensures compliance with data privacy guidelines without affecting the overall analysis and insights..</p>
+<p>Recent years marked a notable transformation in work methodologies. Many professionals are adopting the Work From Home (WFH) model, while many still adhere to traditional Work On Site (WOS) practices. My study delves into 20 distinct industry sectors, examining four unique classes of working methods, as detailed below:</p>
 <table class="table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
+<col style="width: 24%">
+<col style="width: 75%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -226,9 +227,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>The data comes from a 2023 survey of 850 participants from various occupations in USA. Participants were asked about their industry sector and working method. <strong><em>To respect data confidentiality, we’ve modified and anonymized the dataset.</em></strong> This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.</p>
-<p><strong>Study the relationship between nominal variables (Industry sector and Working Method)statistical analyses:</strong><br>
-1- <strong>Chi-Square Test of Independence</strong>: The Chi-Square test can be used to determine whether there is an association (relationship) between two categorical variables. In your case, you can use it to test if there is a relationship between Industry sector and Working Method. The null hypothesis (H0) is that the two variables are independent, and the alternative hypothesis (Ha) is that there is a significant association between them.</p>
+<p>In our survey ,twenty “industry sectors”or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>The number of industry sectors in NAICS</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sector 11</td>
+<td>Agriculture, Forestry, Fishing and Hunting</td>
+</tr>
+<tr class="even">
+<td>sector 21</td>
+<td>Mining, Quarrying, and Oil and Gas Extraction</td>
+</tr>
+<tr class="odd">
+<td>sector 22</td>
+<td>Utilities</td>
+</tr>
+<tr class="even">
+<td>sector 23</td>
+<td>Construction</td>
+</tr>
+<tr class="odd">
+<td>sector 31-33</td>
+<td>Manufacturing</td>
+</tr>
+<tr class="even">
+<td>sector 42</td>
+<td>Wholesale Trade</td>
+</tr>
+<tr class="odd">
+<td>sector 44-45</td>
+<td>Retail Trade</td>
+</tr>
+<tr class="even">
+<td>sector 48-49</td>
+<td>Transportation and Warehousing</td>
+</tr>
+<tr class="odd">
+<td>sector 51</td>
+<td>Information</td>
+</tr>
+<tr class="even">
+<td>sector 52</td>
+<td>Finance and Insurance</td>
+</tr>
+<tr class="odd">
+<td>sector 53</td>
+<td>Real Estate and Rental and Leasing</td>
+</tr>
+<tr class="even">
+<td>sector 54</td>
+<td>Professional, Scientific, and Technical Services</td>
+</tr>
+<tr class="odd">
+<td>sector 55</td>
+<td>Management of Companies and Enterprises</td>
+</tr>
+<tr class="even">
+<td>sector 56</td>
+<td>Administrative and Support and Waste Management and Remediation Services)</td>
+</tr>
+<tr class="odd">
+<td>sector 61</td>
+<td>Educational Services</td>
+</tr>
+<tr class="even">
+<td>sector 62</td>
+<td>Health Care and Social Assistance</td>
+</tr>
+<tr class="odd">
+<td>sector 71</td>
+<td>Arts, Entertainment, and Recreation</td>
+</tr>
+<tr class="even">
+<td>sector 72</td>
+<td>Accommodation and Food Services</td>
+</tr>
+<tr class="odd">
+<td>sector 81</td>
+<td>Other Services (except Public Administration)</td>
+</tr>
+<tr class="even">
+<td>sector 92</td>
+<td>Public Administration (not covered in economic census)</td>
+</tr>
+</tbody>
+</table>
+<p>Essentially, we want to see if the way people work is related to the industry they work in.<strong>, Chi-Square Test of Independence</strong> is used to determine whether there is an association (relationship) between two categorical variables.</p>
+<p>In our analysis, we’re testing two ideas:</p>
+<ul>
+<li><p>The null hypothesis (H0): There’s no link between an employee’s industry sector and their working method. They’re independent of each other.</p></li>
+<li><p>The alternative hypothesis (Ha): There is a significant link between the industry sector and the working method of employees.</p></li>
+</ul>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -317,7 +416,7 @@ Name: Working Method, dtype: int64</code></pre>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>crosstab <span class="op">=</span> pd.crosstab(data[<span class="st">' Industry sector'</span>], data[<span class="st">'Working Method'</span>])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>crosstab.plot(kind<span class="op">=</span><span class="st">'bar'</span>, stacked<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>&lt;Axes: xlabel=' Industry sector'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
