@@ -3,11 +3,11 @@
     "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Exploratory Data Analysis (EDA)/index.qmd",
     "project_path": "posts/Exploratory Data Analysis (EDA)/index.qmd",
     "type": "quarto_markdown",
-    "hash": "912476680",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1699688832761.0,
-    "source_on_save": false,
+    "source_on_save": true,
     "relative_order": 3,
     "properties": {
         "rmdVisualMode": "true",
@@ -18,7 +18,7 @@
         "rmdVisualCollapsedChunks": "",
         "cursorPosition": "108,0",
         "scrollLine": "0",
-        "rmdVisualModeLocation": "6762:4174.5"
+        "rmdVisualModeLocation": "6762:0"
     },
     "folds": "",
     "lastKnownWriteTime": 1700631910,
