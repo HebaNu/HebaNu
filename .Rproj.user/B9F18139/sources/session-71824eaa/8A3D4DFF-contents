@@ -7,12 +7,12 @@ image: "OutPIC.png"
 code-viewfold: true
 ---
 
-The study mainly focus on exploring the dynamic of the job market and its impact on the urban cityscape. The dataset is attained from a 2023 survey of 850 participants from various occupations in USA. Participants were asked about their industry sector and working method. ***To respect data confidentiality, we've modified and anonymized the dataset.*** This ensures compliance with data privacy guidelines without affecting the overall analysis and insights..
+The dataset for this study is maily attained from a 2023 survey of 850 participants from various occupations in USA. The primary objective of these datasets is to facilitate an exploration of the job market's dynamics and their influence on urban landscapes. Specifically, participants in the study were queried about their industry sector and their preferred working method. ***To respect data confidentiality, we've modified and anonymized the dataset.*** This ensures compliance with data privacy guidelines without affecting the overall analysis.
 
 Recent years marked a notable transformation in work methodologies. Many professionals are adopting the Work From Home (WFH) model, while many still adhere to traditional Work On Site (WOS) practices. My study delves into 20 distinct industry sectors, examining four unique classes of working methods, as detailed below:
 
 |     |                                                                                                                                            |
-|-----|--------------------------------------------------------------------------------------------------------------------------------------------|
+|-----------|-------------------------------------------------------------|
 | \#  | Working Method                                                                                                                             |
 | 1   | Fully remote (working from home or another location)                                                                                       |
 | 2   | Fully in-person (working at a physical office or location)                                                                                 |
@@ -22,7 +22,7 @@ Recent years marked a notable transformation in work methodologies. Many profess
 In our survey ,twenty "industry sectors"or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:
 
 | The number of industry sectors in NAICS | Description                                                               |
-|-----------------------------------------|---------------------------------------------------------------------------|
+|--------------------------|----------------------------------------------|
 | sector 11                               | Agriculture, Forestry, Fishing and Hunting                                |
 | sector 21                               | Mining, Quarrying, and Oil and Gas Extraction                             |
 | sector 22                               | Utilities                                                                 |
@@ -53,7 +53,6 @@ In our analysis, we're testing two ideas:
 -   The alternative hypothesis (Ha): There is a significant link between the industry sector and the working method of employees.
 
 ```{python}
-
 # Load necessary libraries
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -63,24 +62,28 @@ from scipy.stats import chi2_contingency
 # Load your dataset without specifying encoding
 data = pd.read_excel('Industry sector and working method.xlsx')
 
-
-from scipy.stats import chi2_contingency
-
 # Summary statistics for Industry sector
 industry_stats = data[' Industry sector'].value_counts()
 
 # Summary statistics for Working Method
 method_stats = data['Working Method'].value_counts()
 
+# Custom labels for Working Method
+working_method_labels = ['Fully remote', 'Fully in-person', 'Hybrid, dominated by in-person work', 'Hybrid, dominated by remote work']
+
 # Plotting
 plt.figure(figsize=(12, 6))
+
+# Industry Sector plot
 plt.subplot(1, 2, 1)
 sns.countplot(data=data, x=' Industry sector')
 plt.title('Distribution of Industry Sectors')
 
+# Working Method plot
 plt.subplot(1, 2, 2)
 sns.countplot(data=data, x='Working Method')
 plt.title('Distribution of Working Methods')
+plt.xticks(range(len(working_method_labels)), working_method_labels)  # Set custom labels
 
 plt.tight_layout()
 plt.show()
@@ -101,6 +104,7 @@ print(industry_stats)
 
 print("\nSummary statistics for Working Method:")
 print(method_stats)
+
 
 ```
 
