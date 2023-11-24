@@ -10,7 +10,7 @@ website:
   reader-mode: true
   page-navigation: true
   repo-branch: main
-  repo-url: 'https://github.com/HebaNu/HebaNu'
+  repo-url: 'https://hebanu.github.io/HebaNu/About.html'
   navbar:
     search: true
     right:
