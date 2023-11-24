@@ -68,11 +68,16 @@ industry_stats = data[' Industry sector'].value_counts()
 # Summary statistics for Working Method
 method_stats = data['Working Method'].value_counts()
 
-# Custom labels for Working Method
-working_method_labels = ['Fully remote', 'Fully in-person', 'Hybrid, dominated by in-person work', 'Hybrid, dominated by remote work']
+# Custom labels for Working Method, with line breaks
+working_method_labels = [
+    'Fully remote\n(working from home or another location)',
+    'Fully in-person\n(working at a physical office or location)',
+    'Hybrid, dominated by\nin-person work',
+    'Hybrid, dominated by\nremote work'
+]
 
-# Plotting
-plt.figure(figsize=(12, 6))
+# Plotting with adjusted figure size and subplot parameters
+plt.figure(figsize=(18, 8))  # Further increase the figure size
 
 # Industry Sector plot
 plt.subplot(1, 2, 1)
@@ -83,27 +88,18 @@ plt.title('Distribution of Industry Sectors')
 plt.subplot(1, 2, 2)
 sns.countplot(data=data, x='Working Method')
 plt.title('Distribution of Working Methods')
-plt.xticks(range(len(working_method_labels)), working_method_labels)  # Set custom labels
+plt.xticks(range(len(working_method_labels)), working_method_labels)  # Updated labels
+
+# Plotting with horizontal bar chart
+plt.figure(figsize=(12, 8))  # Adjust figure size for horizontal plot
+
+# Working Method plot (horizontal)
+sns.countplot(data=data, y='Working Method')
+plt.title('Distribution of Working Methods')
+plt.yticks(range(len(working_method_labels)), working_method_labels)  # Set y-axis labels
 
 plt.tight_layout()
 plt.show()
-
-# Perform Chi-Square test of independence
-contingency_table = pd.crosstab(data[' Industry sector'], data['Working Method'])
-chi2, p, dof, expected = chi2_contingency(contingency_table)
-
-# Check the p-value
-if p < 0.05:
-    print("There is a significant relationship between Industry sector and Working Method.")
-else:
-    print("There is no significant relationship between Industry sector and Working Method.")
-
-# Display summary statistics
-print("Summary statistics for Industry sector:")
-print(industry_stats)
-
-print("\nSummary statistics for Working Method:")
-print(method_stats)
 
 
 ```

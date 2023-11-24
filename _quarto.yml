@@ -14,7 +14,8 @@ website:
   navbar:
     search: true
     right:
-      - about.qmd
+      - About.qmd
+      - Research Overview.qmd
       - icon: github
         href: 'https://github.com/HebaNu'  # Replace with your GitHub URL
       - icon: twitter
