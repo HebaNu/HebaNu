@@ -201,8 +201,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>The dataset for this study is maily attained from a 2023 survey of 850 participants from various occupations in USA. The primary objective of these datasets is to facilitate an exploration of the job market’s dynamics and their influence on urban landscapes. Specifically, participants in the study were queried about their industry sector and their preferred working method. <strong><em>To respect data confidentiality, we’ve modified and anonymized the dataset.</em></strong> This ensures compliance with data privacy guidelines without affecting the overall analysis.</p>
-<p>Recent years marked a notable transformation in work methodologies. Many professionals are adopting the Work From Home (WFH) model, while many still adhere to traditional Work On Site (WOS) practices. My study delves into 20 distinct industry sectors, examining four unique classes of working methods, as detailed below:</p>
+<section id="datasets-used-in-our-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="datasets-used-in-our-analysis">Datasets Used in Our Analysis</h4>
+<p><strong>Survey Overview:</strong></p>
+<p>Our analysis is based on datasets primarily sourced from a survey conducted in 2023. This survey, designed and executed by our research team, targeted participants from a wide range of occupations across the USA. Its focus was on examining the significant impact of remote work on urban development and residential choices. The participants provided their insights through a detailed questionnaire, which covered aspects such as working methods (remote or in-person) and their effects on housing location preferences. This rich data offers insights into behavioral patterns related to working modes, thereby illuminating the interplay between human activity and urban spatial dynamics.</p>
+<p><strong>Data Modification for Privacy and Educational Use:</strong></p>
+<p>It’s important to note that the datasets featured in these blog posts have been <em><strong>modified and synthesized for educational purposes</strong>. They demonstrate various data analysis techniques but are not suitable for real-world applications due to these modifications.</em> In compliance with data privacy guidelines, we have anonymized the dataset to maintain the confidentiality of the survey participants. However, these modifications do not detract from the overall integrity and analytical value of the data.</p>
+<p><strong>Primary Objective of the Dataset:</strong></p>
+<p>The main aim of this dataset is to explore the dynamics of the job market and their influence on urban landscapes. One of the key areas of inquiry in the survey was the industry sector and the preferred working method of the participants. By analyzing these elements, we gain a better understanding of current trends in the job market and how they shape urban environments.</p>
+<p><strong>Key Elements of the Dataset:</strong></p>
+<p>In recent years, we’ve witnessed significant shifts in work methodologies. A growing number of professionals are embracing the Work From Home (WFH) approach, while a substantial segment continues to follow traditional Work On Site (WOS) practices. This study comprehensively covers 20 distinct industry sectors, focusing on four distinct categories of working methods. The details of these methods are outlined below:</p>
 <table class="table">
 <colgroup>
 <col style="width: 15%">
@@ -231,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>In our survey ,twenty “industry sectors”or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:</p>
+<p>Twenty “industry sectors”or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:</p>
 <table class="table">
 <colgroup>
 <col style="width: 36%">
@@ -391,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>crosstab <span class="op">=</span> pd.crosstab(data[<span class="st">' Industry sector'</span>], data[<span class="st">'Working Method'</span>])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>crosstab.plot(kind<span class="op">=</span><span class="st">'bar'</span>, stacked<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>&lt;Axes: xlabel=' Industry sector'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -535,6 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,9 +7,23 @@ image: "OutPIC.png"
 code-viewfold: true
 ---
 
-The dataset for this study is maily attained from a 2023 survey of 850 participants from various occupations in USA. The primary objective of these datasets is to facilitate an exploration of the job market's dynamics and their influence on urban landscapes. Specifically, participants in the study were queried about their industry sector and their preferred working method. ***To respect data confidentiality, we've modified and anonymized the dataset.*** This ensures compliance with data privacy guidelines without affecting the overall analysis.
+#### Datasets Used in Our Analysis
 
-Recent years marked a notable transformation in work methodologies. Many professionals are adopting the Work From Home (WFH) model, while many still adhere to traditional Work On Site (WOS) practices. My study delves into 20 distinct industry sectors, examining four unique classes of working methods, as detailed below:
+**Survey Overview:**
+
+Our analysis is based on datasets primarily sourced from a survey conducted in 2023. This survey, designed and executed by our research team, targeted participants from a wide range of occupations across the USA. Its focus was on examining the significant impact of remote work on urban development and residential choices. The participants provided their insights through a detailed questionnaire, which covered aspects such as working methods (remote or in-person) and their effects on housing location preferences. This rich data offers insights into behavioral patterns related to working modes, thereby illuminating the interplay between human activity and urban spatial dynamics.
+
+**Data Modification for Privacy and Educational Use:**
+
+It's important to note that the datasets featured in these blog posts have been ***modified and synthesized for educational purposes**. They demonstrate various data analysis techniques but are not suitable for real-world applications due to these modifications.* In compliance with data privacy guidelines, we have anonymized the dataset to maintain the confidentiality of the survey participants. However, these modifications do not detract from the overall integrity and analytical value of the data.
+
+**Primary Objective of the Dataset:**
+
+The main aim of this dataset is to explore the dynamics of the job market and their influence on urban landscapes. One of the key areas of inquiry in the survey was the industry sector and the preferred working method of the participants. By analyzing these elements, we gain a better understanding of current trends in the job market and how they shape urban environments.
+
+**Key Elements of the Dataset:**
+
+In recent years, we've witnessed significant shifts in work methodologies. A growing number of professionals are embracing the Work From Home (WFH) approach, while a substantial segment continues to follow traditional Work On Site (WOS) practices. This study comprehensively covers 20 distinct industry sectors, focusing on four distinct categories of working methods. The details of these methods are outlined below:
 
 |     |                                                                                                                                            |
 |-----------|-------------------------------------------------------------|
@@ -19,7 +33,7 @@ Recent years marked a notable transformation in work methodologies. Many profess
 | 3   | Hybrid, dominated by in-person work (spending the majority of your work time at a physical office or location, with some remote work)      |
 | 4   | Hybrid, dominated by remote work (spending the majority of your work time working from home or another location, with some in-person work) |
 
-In our survey ,twenty "industry sectors"or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:
+Twenty "industry sectors"or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:
 
 | The number of industry sectors in NAICS | Description                                                               |
 |--------------------------|----------------------------------------------|
