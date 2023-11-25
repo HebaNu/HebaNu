@@ -99,7 +99,6 @@ sns.countplot(data=data, x=' Industry sector')
 plt.title('Distribution of Industry Sectors')
 
 
-
 # Plotting with horizontal bar chart
 plt.figure(figsize=(6, 5))  # Adjust figure size for horizontal plot
 
