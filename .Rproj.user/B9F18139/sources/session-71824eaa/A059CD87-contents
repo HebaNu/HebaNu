@@ -20,6 +20,7 @@ website:
         href: 'https://github.com/HebaNu'  # Replace with your GitHub URL
       - icon: twitter
         href: 'https://twitter.com/yourusername'  # Replace with your Twitter URL
+        
   # Removed invalid properties
   page-footer:
     left: 'Copyright 2023, Heba Nusair'
@@ -38,6 +39,6 @@ format:
     max-width: 500px
     html-math-method: katex
     code-fold: false
-    code-summary: Show the code
-    e-summary: Show the code
+    code-summary: "Show the code"
+    e-summary: "Show the code"
 
