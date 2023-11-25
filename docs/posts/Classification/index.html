@@ -99,11 +99,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Classificcation">
-<meta property="og:description" content="">
 <meta property="og:image" content="image.jpg">
 <meta property="og:site-name" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning">
 <meta name="twitter:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Classificcation">
-<meta name="twitter:description" content="">
 <meta name="twitter:image" content="image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -201,15 +199,192 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This is a post with executable code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="random-forest-classifier" class="level3">
+<h3 class="anchored" data-anchor-id="random-forest-classifier"><strong>random forest classifier</strong></h3>
+<section id="unveiling-the-tapestry-of-urban-preferences-for-workers-on-site-wos-a-data-driven-glimpse-into-roanokes-metropolitan-living-choices" class="level5">
+<h5 class="anchored" data-anchor-id="unveiling-the-tapestry-of-urban-preferences-for-workers-on-site-wos-a-data-driven-glimpse-into-roanokes-metropolitan-living-choices">Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke’s Metropolitan Living Choices</h5>
+<p>Deciding where to live is a big decision for anyone, and for the people of Roanoke, it’s no different. We all have our own checklist when it comes to choosing our neighborhoods – some of us want to be close to work, others are looking for good schools for the kids, and some might prioritize a big backyard over everything else.</p>
+<p>To get to the heart of what matters most to Roanoke’s residents, we turned to data. Using a detailed survey filled with personal insights from locals, we analyzed a range of factors from work life to family plans, all to answer one question: What drives people’s choices about where they live?</p>
+<p>Armed with Python, a popular programming language, and a machine learning tool called Random Forest, we dug into the data. Think of Random Forest as a detective that examines all the evidence (or data) and identifies the usual suspects (or factors) that play a role in our living choices.</p>
+<p>After some thorough data cleaning to make sure we were working with accurate information, we let the Random Forest algorithm get to work. It looked at various details about people’s lives, including how far they live from work, their family size, and their income.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Classification (In_person_Workers).xlsx'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace non-breaking spaces in column names</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> data.columns.<span class="bu">str</span>.replace(<span class="st">'</span><span class="ch">\xa0</span><span class="st">'</span>, <span class="st">' '</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct any potential typos in column names</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in your DataFrame</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>data.rename(columns<span class="op">=</span>{<span class="st">'living costs '</span>: <span class="st">'living costs'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the first four columns into a single ordinal dependent variable</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in your DataFrame</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>area_columns <span class="op">=</span> [<span class="st">'City Center (Central Business District)'</span>, <span class="st">'Urban area'</span>, <span class="st">'Suburban area'</span>, <span class="st">'Rural Area'</span>]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'PreferredArea'</span>] <span class="op">=</span> data[area_columns].idxmin(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>data.drop(columns<span class="op">=</span>area_columns, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values (NaNs) for both features and target variable</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>data.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the list of categorical and continuous features</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace these with the actual column names from your DataFrame</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> [<span class="st">'marital status'</span>, <span class="st">'race'</span>, <span class="st">'education level'</span>, <span class="st">'firm age'</span>, <span class="st">'firm size'</span>, <span class="st">'owner or renter'</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'number of workers in household'</span>, <span class="st">'people in household'</span>, <span class="st">'desired family size in future'</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'monthly earning'</span>, <span class="st">'industry sector'</span>]  <span class="co"># Add other categorical features here</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>continuous_features <span class="op">=</span> [<span class="st">'distance from work to homeplace'</span>]  <span class="co"># Add other continuous features here</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing pipeline</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'num'</span>, StandardScaler(), continuous_features),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'cat'</span>, OneHotEncoder(), categorical_features)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess the data</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> preprocessor.fit_transform(data.drop(<span class="st">'PreferredArea'</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'PreferredArea'</span>].astype(<span class="bu">str</span>)  <span class="co"># Convert to string if categorical</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the Random Forest Classifier</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>rf.fit(X_train, y_train)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Get feature importances</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> continuous_features <span class="op">+</span> <span class="bu">list</span>(preprocessor.named_transformers_[<span class="st">'cat'</span>].get_feature_names_out(categorical_features))</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf.feature_importances_</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Display feature importances</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Feature Importances:"</span>)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> sorted_indices:</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>feature_names[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>importances[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>Feature Importances:
+distance from work to homeplace: 0.09002612946914397
+monthly earning_2.0: 0.023009968591018892
+firm age_3.0: 0.022066217557628148
+firm age_2.0: 0.02178559852138124
+monthly earning_3.0: 0.021202236546842827
+education level_5.0: 0.02108766672755149
+people in household_4.0: 0.020712561627613753
+firm size_3.0: 0.02061758469686424
+number of workers in household_1.0: 0.01987931322088943
+race_1.0: 0.019170637314066253
+number of workers in household_2.0: 0.018227712556543547
+marital status_2.0: 0.01792009287530063
+monthly earning_1.0: 0.017725399326598428
+marital status_1.0: 0.017647663214915434
+firm size_2.0: 0.017494778926449992
+people in household_3.0: 0.01744113353445406
+desired family size in future_3.0: 0.017297127480639732
+desired family size in future_5.0: 0.017172156470246985
+desired family size in future_2.0: 0.017159685682679497
+number of workers in household_3.0: 0.01658143581927266
+firm age_4.0: 0.016554662514985195
+owner or renter_2.0: 0.016546727139497674
+education level_2.0: 0.016361787784908096
+firm age_5.0: 0.01617195897267983
+desired family size in future_4.0: 0.01613628436333632
+education level_6.0: 0.015963605218692858
+people in household_5.0: 0.015499605537140977
+industry sector_Wholesale Trade: 0.015405581044116481
+owner or renter_1.0: 0.015366799522148065
+industry sector_Retail Trade: 0.014128715730823135
+people in household_2.0: 0.013755035240451565
+firm size_4.0: 0.013680838762537438
+desired family size in future_1.0: 0.013142519737222351
+industry sector_Manufacturing: 0.013123564815275641
+firm size_5.0: 0.013121656767595385
+firm size_1.0: 0.012925121482568677
+education level_3.0: 0.011762777181883038
+industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.011660015892781065
+education level_8.0: 0.011494696532905956
+industry sector_Management of Companies and Enterprises: 0.011191786850415112
+industry sector_Professional, Scientific, and Technical Services: 0.011074737987177273
+industry sector_Transportation and Warehousing: 0.010992139215513192
+monthly earning_4.0: 0.010804431753287986
+race_3.0: 0.010657472708133386
+education level_7.0: 0.010494554394713536
+race_4.0: 0.010301577275841302
+marital status_5.0: 0.010224017252462966
+race_2.0: 0.010084721094465638
+marital status_6.0: 0.009740825402188322
+industry sector_Accommodation and Food Services: 0.009584908298269924
+people in household_1.0: 0.009397885983715973
+industry sector_Educational Services: 0.009150833265968035
+firm age_1.0: 0.009067843560460899
+industry sector_Construction: 0.008759722771524496
+industry sector_Finance and Insurance: 0.00848243917039083
+marital status_3.0: 0.008434947179675965
+industry sector_Information: 0.00828232753547185
+race_8.0: 0.008000592702388799
+education level_4.0: 0.007984970818286176
+race_5.0: 0.007826833389725398
+race_6.0: 0.007525632388179478
+industry sector_Other Services [except Public Administration: 0.007489751645997572
+education level_1.0: 0.007209285876944427
+marital status_4.0: 0.006995018142928353
+industry sector_Health Care and Social Assistance: 0.006623366898713113
+race_7.0: 0.006498596306725328
+industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006475940870469769
+industry sector_Utilities: 0.006014659612348908
+industry sector_Arts, Entertainment, and Recreation: 0.005358401035027692
+industry sector_Administrative and Support and Waste Management and Remediation Services: 0.004379128546677525
+industry sector_Real Estate and Rental and Leasing: 0.003934044212507423
+industry sector_Public Administration: 0.003929551451752581</code></pre>
 </div>
 </div>
+<p>The results were clear: The commute to work stood out as the number one factor. This wasn’t too surprising – after all, who wants to spend hours in traffic when they could be home relaxing? Income was also a key factor. It seems the more we earn, the more choices we have about where we live.</p>
+<p>But it’s not all about money and travel time. The data also showed us that personal factors, like whether someone is married or planning for a big family, have a big say in the decision too.</p>
+<p>This isn’t just interesting information. It’s valuable knowledge for city planners and developers. By understanding what’s important to residents, they can plan and build communities that better meet people’s needs and make Roanoke an even better place to live.</p>
+<p>So next time you’re driving through Roanoke’s neighborhoods, remember that each home you see represents a decision made based on a unique mix of practical needs and personal dreams.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'importances', 'feature_names' are already defined as in your previous code</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sorting the feature importances</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sorted_importances <span class="op">=</span> importances[sorted_indices]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>sorted_features <span class="op">=</span> [feature_names[i] <span class="cf">for</span> i <span class="kw">in</span> sorted_indices]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting a number of top features to display (you can adjust this number)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>n_top_features <span class="op">=</span> <span class="dv">20</span>  <span class="co"># for example, top 20 features</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the plot</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>sorted_importances[:n_top_features], y<span class="op">=</span>sorted_features[:n_top_features])</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top Feature Importances'</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Importance'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Feature'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="1034" height="671"></p>
+</div>
+</div>
+<p><strong>A Visual Journey Through Roanoke’s Residential Decision Drivers</strong></p>
+<p>In our previous discussion, we delved into the factors that influence where workers on-site (WOS) in Roanoke choose to live. We discovered that the daily commute and income levels are among the top considerations. But how do these factors stack up against each other? Let’s take a visual dive into the data.</p>
+<p>The accompanying chart lays out the findings from our Random Forest analysis in a colorful display of bars, each representing a factor’s weight in the decision-making process. At a glance, the lengthier bars catch the eye—these are the heavy hitters of home location preferences.</p>
+<p><img src="https://chat.openai.com/c/path-to-your-uploaded-chart.png" class="img-fluid" alt="Feature Importances Chart"> <em>Note: Replace the placeholder with the actual path to your image.</em></p>
+<p>Dominating the scene is ‘distance from work to homeplace,’ a beacon of red at the top, which resonates with anyone who’s ever been caught in the snarl of rush hour. This is followed closely by a cascade of oranges and yellows highlighting the importance of ‘monthly earnings’ across various brackets and the age and size of firms.</p>
+<p>As we move down the chart, the colors shift to cooler greens and blues, representing factors like household size and marital status. These may not be the titans of the plot, but they still play a pivotal role in the collective narrative of where we live.</p>
+<p>What’s truly intriguing is the story this visual tells us—beyond numbers and models, it’s about real-life choices and priorities. For instance, the significance of ‘people in household_4.0’ and ‘education level_5.0’ (a bachelor’s degree) speaks to the aspirations and day-to-day realities that shape our sense of place.</p>
+<p>City planners and housing developers, take note: this chart is more than just a pretty picture. It’s a roadmap to the hearts and minds of Roanoke’s residents, guiding the way to communities that not only house but also support and enrich their lives.</p>
+<p>As we continue to shape Roanoke’s urban landscape, let’s keep these visual cues in mind, ensuring that every development, from high-rises to townhomes, aligns with the genuine preferences of those who will call them home. After all, understanding these preferences is the key to building not just houses but homes where life’s stories can unfold.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,14 +1,14 @@
 {
-    "id": "9C56E932",
-    "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/Research Overview.qmd",
-    "project_path": "Research Overview.qmd",
+    "id": "823FB0E2",
+    "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Classification/index.qmd",
+    "project_path": "posts/Classification/index.qmd",
     "type": "quarto_markdown",
-    "hash": "3765590059",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1700879197474.0,
+    "created": 1700907826383.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 6,
     "properties": {
         "rmdVisualMode": "true",
         "rmdVisualWrapConfigured": "true",
@@ -16,16 +16,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "cursorPosition": "12,0",
-        "scrollLine": "0",
-        "rmdVisualModeLocation": "223:0"
+        "rmdVisualModeLocation": "6406:2412",
+        "cursorPosition": "91,0",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1700907830,
+    "lastKnownWriteTime": 1700908894,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1700907830927,
+    "last_content_update": 1700908894279,
     "read_only": false,
     "read_only_alternatives": []
 }
