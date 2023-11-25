@@ -6,7 +6,7 @@ categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
-### **random forest classifier**
+### **Random Forest Classifier**
 
 ##### Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke's Metropolitan Living Choices
 
@@ -103,11 +103,11 @@ sorted_features = [feature_names[i] for i in sorted_indices]
 n_top_features = 20  # for example, top 20 features
 
 # Creating the plot
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(8, 8))
 sns.barplot(x=sorted_importances[:n_top_features], y=sorted_features[:n_top_features])
-plt.title('Top Feature Importances')
-plt.xlabel('Importance')
-plt.ylabel('Feature')
+plt.title('Significance of factors in residential decision-making process')
+plt.xlabel('Level of importance')
+plt.ylabel('Factors')
 plt.show()
 ```
 
@@ -115,9 +115,7 @@ plt.show()
 
 In our previous discussion, we delved into the factors that influence where workers on-site (WOS) in Roanoke choose to live. We discovered that the daily commute and income levels are among the top considerations. But how do these factors stack up against each other? Let's take a visual dive into the data.
 
-The accompanying chart lays out the findings from our Random Forest analysis in a colorful display of bars, each representing a factor's weight in the decision-making process. At a glance, the lengthier bars catch the eye---these are the heavy hitters of home location preferences.
-
-![Feature Importances Chart](https://chat.openai.com/c/path-to-your-uploaded-chart.png){alt="Feature Importances Chart"} *Note: Replace the placeholder with the actual path to your image.*
+The accompanying chart lays out the findings from our Random Forest analysis in a colorful display of bars, each representing a factor's weight in the decision-making process. At a glance, the lengthier bars catch the eye---these are the heavy hitters of home location preferece.
 
 Dominating the scene is 'distance from work to homeplace,' a beacon of red at the top, which resonates with anyone who's ever been caught in the snarl of rush hour. This is followed closely by a cascade of oranges and yellows highlighting the importance of 'monthly earnings' across various brackets and the age and size of firms.
 
