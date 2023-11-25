@@ -270,81 +270,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>feature_names[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>importances[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Feature Importances:
-distance from work to homeplace: 0.09174969793381127
-monthly earning_3.0: 0.022937019675746764
-firm age_3.0: 0.022890969338009243
-monthly earning_2.0: 0.02156596817409567
-firm age_2.0: 0.021460008379621264
-people in household_3.0: 0.02053888831230428
-people in household_4.0: 0.020085095960985996
-number of workers in household_1.0: 0.019789529274295
-education level_5.0: 0.019570004334740057
-firm size_3.0: 0.019065092028986097
-desired family size in future_4.0: 0.018979387209474518
-firm age_4.0: 0.018670453099234
-education level_2.0: 0.018652014240293918
-owner or renter_2.0: 0.01838872556634251
-firm size_2.0: 0.018234612438420453
-desired family size in future_5.0: 0.01820343447459414
-race_1.0: 0.018201676380434795
-marital status_2.0: 0.01812178745939809
-firm age_5.0: 0.017485634561929524
-marital status_1.0: 0.01723016048029202
-monthly earning_1.0: 0.016960293358482825
-desired family size in future_3.0: 0.016567859172982317
-desired family size in future_2.0: 0.016236436440765514
-education level_6.0: 0.01603573254050718
-number of workers in household_2.0: 0.015201336613609643
-people in household_5.0: 0.01508019884291919
-owner or renter_1.0: 0.01496238488593608
-number of workers in household_3.0: 0.014389993623411909
-industry sector_Manufacturing: 0.0143609484197535
-firm size_4.0: 0.014173522390374902
-firm size_1.0: 0.013329129515579567
-desired family size in future_1.0: 0.013206296730855589
-industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.012842552328495259
-race_3.0: 0.012667697126210423
-education level_3.0: 0.012652356854937295
-people in household_2.0: 0.012410500529478445
-industry sector_Management of Companies and Enterprises: 0.01238536803782589
-industry sector_Wholesale Trade: 0.01231908295326173
-industry sector_Professional, Scientific, and Technical Services: 0.012091732987649038
-race_2.0: 0.011247056828657303
-industry sector_Retail Trade: 0.011226646971989525
-industry sector_Construction: 0.01073959773884714
-race_4.0: 0.010644736810019453
-firm size_5.0: 0.010580592550068409
-industry sector_Transportation and Warehousing: 0.010384044572196383
-industry sector_Educational Services: 0.010071915745078439
-education level_7.0: 0.009931061083292305
-people in household_1.0: 0.00973549151172786
-monthly earning_4.0: 0.009700944422110341
-race_8.0: 0.009153698927172042
-industry sector_Accommodation and Food Services: 0.009045897179073264
-marital status_5.0: 0.008954239870004137
-marital status_3.0: 0.008828659946391055
-industry sector_Information: 0.008594258342910345
-industry sector_Finance and Insurance: 0.008515949553436285
-education level_8.0: 0.008290251461514053
-race_5.0: 0.008225602604706143
-industry sector_Health Care and Social Assistance: 0.008001694476173217
-education level_4.0: 0.007641200003956733
-marital status_4.0: 0.0075853258601279085
-firm age_1.0: 0.007485988626125388
-marital status_6.0: 0.007472501437329649
-education level_1.0: 0.007294000896486925
-industry sector_Agriculture, Forestry, Fishing and Hunting: 0.0071108132332497595
-race_7.0: 0.00689788540929831
-race_6.0: 0.006814775383703133
-industry sector_Other Services [except Public Administration: 0.0066283681702095695
-industry sector_Arts, Entertainment, and Recreation: 0.006359287816922705
-industry sector_Utilities: 0.006313902665445216
-industry sector_Administrative and Support and Waste Management and Remediation Services: 0.0038235082295027195
-industry sector_Real Estate and Rental and Leasing: 0.003800051320680852
-industry sector_Public Administration: 0.003206467675547578</code></pre>
+distance from work to homeplace: 0.08863550690257174
+monthly earning_3.0: 0.02299345171929376
+firm age_3.0: 0.022708304828028134
+firm size_3.0: 0.021839900909916117
+firm age_2.0: 0.021164805302006186
+monthly earning_2.0: 0.02037797612213834
+firm size_2.0: 0.02036770397620795
+marital status_2.0: 0.019927497845775233
+number of workers in household_1.0: 0.019895658372202044
+education level_5.0: 0.01908137671466373
+race_1.0: 0.018711495963914585
+owner or renter_2.0: 0.01804782360639595
+owner or renter_1.0: 0.01804591442711778
+desired family size in future_5.0: 0.017811965447317425
+marital status_1.0: 0.017789842565256498
+number of workers in household_2.0: 0.01773686700699325
+people in household_3.0: 0.017704869506593054
+monthly earning_1.0: 0.017605103145178377
+desired family size in future_3.0: 0.017150849777900753
+firm age_4.0: 0.01680297066055305
+people in household_4.0: 0.01674958842636753
+industry sector_Manufacturing: 0.016412182684830117
+firm age_5.0: 0.016144213392793053
+education level_6.0: 0.01580188570887778
+education level_2.0: 0.015497073861515422
+desired family size in future_4.0: 0.015427150839818389
+desired family size in future_2.0: 0.015151024162658042
+industry sector_Wholesale Trade: 0.014924100316669735
+firm size_4.0: 0.014840275228529543
+number of workers in household_3.0: 0.014605290170853253
+industry sector_Professional, Scientific, and Technical Services: 0.014182225953681835
+people in household_2.0: 0.013874808914993162
+desired family size in future_1.0: 0.013844406249205075
+industry sector_Retail Trade: 0.013428405190367733
+race_3.0: 0.013281522308033724
+firm size_5.0: 0.013071645891208157
+people in household_5.0: 0.0129485707805355
+education level_8.0: 0.012037118759656367
+firm size_1.0: 0.01189582885470363
+industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.011655337609160194
+industry sector_Management of Companies and Enterprises: 0.010741729396644433
+industry sector_Accommodation and Food Services: 0.010623806797239177
+race_2.0: 0.010544453169508613
+education level_3.0: 0.01039140727589699
+monthly earning_4.0: 0.010025852358386038
+industry sector_Educational Services: 0.00991015593253264
+education level_7.0: 0.00985370259003696
+race_4.0: 0.009639879766283015
+industry sector_Transportation and Warehousing: 0.00935234990408359
+industry sector_Construction: 0.009161637911469837
+firm age_1.0: 0.009102273499803668
+race_5.0: 0.008798580658358056
+marital status_5.0: 0.008756364501182863
+marital status_6.0: 0.008556863601472309
+race_8.0: 0.008498558682695827
+industry sector_Finance and Insurance: 0.008253773743950182
+people in household_1.0: 0.008130933136250969
+industry sector_Information: 0.007962540675902486
+marital status_3.0: 0.007873845275265946
+education level_4.0: 0.007854596880781078
+industry sector_Health Care and Social Assistance: 0.007804269604258762
+race_7.0: 0.007727369247349387
+industry sector_Agriculture, Forestry, Fishing and Hunting: 0.0076865221447283616
+race_6.0: 0.007493538557051645
+marital status_4.0: 0.00692569303342718
+education level_1.0: 0.006564622331465519
+industry sector_Other Services [except Public Administration: 0.0065626226949219565
+industry sector_Arts, Entertainment, and Recreation: 0.006045495522466753
+industry sector_Utilities: 0.0058850829687307656
+industry sector_Real Estate and Rental and Leasing: 0.00512056503776669
+industry sector_Public Administration: 0.0039970175457434256
+industry sector_Administrative and Support and Waste Management and Remediation Services: 0.0039813554498627605</code></pre>
 </div>
 </div>
-<p>The results were clear: The commute to work stood out as the number one factor. This wasn’t too surprising – after all, who wants to spend hours in traffic when they could be home relaxing? Income was also a key factor. It seems the more we earn, the more choices we have about where we live.</p>
+<ul>
+<li><p><em>[<code>General Interpretation:</code></em></p>
+<ul>
+<li><p><em><code>The features with higher importance scores are more influential in determining the preferred living area. This doesn’t necessarily mean causation but indicates a stronger association.</code></em></p></li>
+<li><p><em><code>The model suggests that practical considerations like distance to work, firm age, earnings, and household characteristics play a significant role in determining living area preferences.</code></em></p></li>
+</ul>
+<ol type="1">
+<li><p><em><code>Caveats:</code></em></p>
+<ul>
+<li><p><em><code>The Random Forest model treats the problem as a classification task and does not inherently account for the ordinal nature of the dependent variable.</code></em></p></li>
+<li><p><em><code>The results should be interpreted as indicative rather than definitive. For more precise modeling of ordinal outcomes, specific ordinal regression models would be more appropriate.</code></em></p></li>
+</ul></li>
+</ol></li>
+<li><p><em><code>In summary, your model’s output provides a useful guide to understanding which factors are most influential in determining living area preferences, with distance from work appearing as the most significant factor according to this model.]</code></em><br>
+<br>
+The results were clear: The commute to work stood out as the number one factor. This wasn’t too surprising – after all, who wants to spend hours in traffic when they could be home relaxing? Income was also a key factor. It seems the more we earn, the more choices we have about where we live.</p></li>
+</ul>
 <p>But it’s not all about money and travel time. The data also showed us that personal factors, like whether someone is married or planning for a big family, have a big say in the decision too.</p>
 <p>This isn’t just interesting information. It’s valuable knowledge for city planners and developers. By understanding what’s important to residents, they can plan and build communities that better meet people’s needs and make Roanoke an even better place to live.</p>
 <p>So next time you’re driving through Roanoke’s neighborhoods, remember that each home you see represents a decision made based on a unique mix of practical needs and personal dreams.</p>

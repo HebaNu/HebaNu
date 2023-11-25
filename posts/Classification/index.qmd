@@ -81,7 +81,21 @@ for i in sorted_indices:
     print(f'{feature_names[i]}: {importances[i]}')
 ```
 
-The results were clear: The commute to work stood out as the number one factor. This wasn't too surprising -- after all, who wants to spend hours in traffic when they could be home relaxing? Income was also a key factor. It seems the more we earn, the more choices we have about where we live.
+-   *\[`General Interpretation:`*
+
+    -   *`The features with higher importance scores are more influential in determining the preferred living area. This doesn’t necessarily mean causation but indicates a stronger association.`*
+
+    -   *`The model suggests that practical considerations like distance to work, firm age, earnings, and household characteristics play a significant role in determining living area preferences.`*
+
+    1.  *`Caveats:`*
+
+        -   *`The Random Forest model treats the problem as a classification task and does not inherently account for the ordinal nature of the dependent variable.`*
+
+        -   *`The results should be interpreted as indicative rather than definitive. For more precise modeling of ordinal outcomes, specific ordinal regression models would be more appropriate.`*
+
+-   *`In summary, your model’s output provides a useful guide to understanding which factors are most influential in determining living area preferences, with distance from work appearing as the most significant factor according to this model.]`*\
+    \
+    The results were clear: The commute to work stood out as the number one factor. This wasn't too surprising -- after all, who wants to spend hours in traffic when they could be home relaxing? Income was also a key factor. It seems the more we earn, the more choices we have about where we live.
 
 But it's not all about money and travel time. The data also showed us that personal factors, like whether someone is married or planning for a big family, have a big say in the decision too.
 
