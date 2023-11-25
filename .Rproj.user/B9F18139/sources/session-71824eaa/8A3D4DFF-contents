@@ -26,7 +26,7 @@ The main aim of this dataset is to explore the dynamics of the job market and th
 In recent years, we've witnessed significant shifts in work methodologies. A growing number of professionals are embracing the Work From Home (WFH) approach, while a substantial segment continues to follow traditional Work On Site (WOS) practices. This study comprehensively covers 20 distinct industry sectors, focusing on four distinct categories of working methods. The details of these methods are outlined below:
 
 |     |                                                                                                                                            |
-|-----------|-------------------------------------------------------------|
+|---------------|---------------------------------------------------------|
 | \#  | Working Method                                                                                                                             |
 | 1   | Fully remote (working from home or another location)                                                                                       |
 | 2   | Fully in-person (working at a physical office or location)                                                                                 |
@@ -35,28 +35,28 @@ In recent years, we've witnessed significant shifts in work methodologies. A gro
 
 Twenty "industry sectors"or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:
 
-| The number of industry sectors in NAICS | Description                                                               |
-|--------------------------|----------------------------------------------|
-| sector 11                               | Agriculture, Forestry, Fishing and Hunting                                |
-| sector 21                               | Mining, Quarrying, and Oil and Gas Extraction                             |
-| sector 22                               | Utilities                                                                 |
-| sector 23                               | Construction                                                              |
-| sector 31-33                            | Manufacturing                                                             |
-| sector 42                               | Wholesale Trade                                                           |
-| sector 44-45                            | Retail Trade                                                              |
-| sector 48-49                            | Transportation and Warehousing                                            |
-| sector 51                               | Information                                                               |
-| sector 52                               | Finance and Insurance                                                     |
-| sector 53                               | Real Estate and Rental and Leasing                                        |
-| sector 54                               | Professional, Scientific, and Technical Services                          |
-| sector 55                               | Management of Companies and Enterprises                                   |
-| sector 56                               | Administrative and Support and Waste Management and Remediation Services) |
-| sector 61                               | Educational Services                                                      |
-| sector 62                               | Health Care and Social Assistance                                         |
-| sector 71                               | Arts, Entertainment, and Recreation                                       |
-| sector 72                               | Accommodation and Food Services                                           |
-| sector 81                               | Other Services (except Public Administration)                             |
-| sector 92                               | Public Administration (not covered in economic census)                    |
+|     | The number of industry sectors in NAICS | Description                                                               |
+|-------|-----------------------|---------------------------------------------|
+| 1   | sector 11                               | Agriculture, Forestry, Fishing and Hunting                                |
+| 2   | sector 21                               | Mining, Quarrying, and Oil and Gas Extraction                             |
+| 3   | sector 22                               | Utilities                                                                 |
+| 4   | sector 23                               | Construction                                                              |
+| 5   | sector 31-33                            | Manufacturing                                                             |
+| 6   | sector 42                               | Wholesale Trade                                                           |
+| 7   | sector 44-45                            | Retail Trade                                                              |
+| 8   | sector 48-49                            | Transportation and Warehousing                                            |
+| 9   | sector 51                               | Information                                                               |
+| 10  | sector 52                               | Finance and Insurance                                                     |
+| 11  | sector 53                               | Real Estate and Rental and Leasing                                        |
+| 12  | sector 54                               | Professional, Scientific, and Technical Services                          |
+| 13  | sector 55                               | Management of Companies and Enterprises                                   |
+| 14  | sector 56                               | Administrative and Support and Waste Management and Remediation Services) |
+| 15  | sector 61                               | Educational Services                                                      |
+| 16  | sector 62                               | Health Care and Social Assistance                                         |
+| 17  | sector 71                               | Arts, Entertainment, and Recreation                                       |
+| 18  | sector 72                               | Accommodation and Food Services                                           |
+| 19  | sector 81                               | Other Services (except Public Administration)                             |
+| 20  | sector 92                               | Public Administration (not covered in economic census)                    |
 
 Essentially, we want to see if the way people work is related to the industry they work in.**, Chi-Square Test of Independence** is used to determine whether there is an association (relationship) between two categorical variables.
 
