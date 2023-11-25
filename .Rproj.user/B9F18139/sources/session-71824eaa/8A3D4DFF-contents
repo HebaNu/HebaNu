@@ -91,21 +91,17 @@ working_method_labels = [
 ]
 
 # Plotting with adjusted figure size and subplot parameters
-plt.figure(figsize=(18, 8))  # Further increase the figure size
+plt.figure(figsize=(14, 8))  # Further increase the figure size
 
 # Industry Sector plot
 plt.subplot(1, 2, 1)
 sns.countplot(data=data, x=' Industry sector')
 plt.title('Distribution of Industry Sectors')
 
-# Working Method plot
-plt.subplot(1, 2, 2)
-sns.countplot(data=data, x='Working Method')
-plt.title('Distribution of Working Methods')
-plt.xticks(range(len(working_method_labels)), working_method_labels)  # Updated labels
+
 
 # Plotting with horizontal bar chart
-plt.figure(figsize=(12, 8))  # Adjust figure size for horizontal plot
+plt.figure(figsize=(6, 5))  # Adjust figure size for horizontal plot
 
 # Working Method plot (horizontal)
 sns.countplot(data=data, y='Working Method')
