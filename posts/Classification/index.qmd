@@ -16,7 +16,23 @@ Deciding where to live is a big decision for anyone, and for the people of Roano
 
 To get to the heart of what matters most to Roanoke's residents, we turned to data. Using a detailed survey filled with personal insights from locals, we analyzed a range of factors from work life to family plans, all to answer one question: What drives people's choices about where they live?
 
-Armed with Python, a popular programming language, and a machine learning tool called Random Forest, we dug into the data. Think of Random Forest as a detective that examines all the evidence (or data) and identifies the usual suspects (or factors) that play a role in our living choices.
+Armed with Python, a popular programming language, and a machine learning tool called **Random Forest**, we dug into the data. Think of Random Forest as a detective that examines all the evidence (or data) and identifies the usual suspects (or factors) that play a role in our living choices.
+
+The goal of using a Random Forest Classifier is to identify and quantify the factors that influence the residential preferences of on-site workers in the Roanoke Metropolitan Area. Here are the specific objectives Random Forest helps to achieve:
+
+1.  **Feature Importance:** Random Forest can determine the relative importance of each factor (like distance to work, income level, family size) in predicting residential preferences. This insight can inform urban planning and real estate development.
+
+2.  **Predictive Modeling:** It can predict an individual\'s preferred living area based on the features in the dataset, which could be useful for personalized recommendations or targeted marketing for real estate.
+
+3.  **Handling Complexity:** Random Forest is robust to complex interactions between features and can handle non-linear relationships without the need for transformation, making it well-suited for diverse and complex datasets.
+
+4.  **Reducing Overfitting:** Due to its ensemble nature (combining multiple decision trees), Random Forest is less prone to overfitting compared to individual decision trees, leading to more reliable predictions.
+
+5.  **Versatility:** It can handle both categorical and numerical data, making it versatile for datasets that contain a mix of different types of variables as is often the case in survey data.
+
+6.  **Understanding Population Segments:** By examining which features are most influential, stakeholders can understand different segments of the population better and tailor their services or policies accordingly.
+
+In essence, Random Forest acts as a powerful analytical tool that turns a complex array of data points into actionable insights about what drives people\'s choices on where to live.
 
 After some thorough data cleaning to make sure we were working with accurate information, we let the Random Forest algorithm get to work. It looked at various details about people's lives, including how far they live from work, their family size, and their income.
 
