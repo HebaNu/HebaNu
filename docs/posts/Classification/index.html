@@ -207,12 +207,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="WhereToLiveForInPersonWorkers.JPG" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Residential location choices’ factors for in-person workers</figcaption>
+<figcaption class="figure-caption"><em>Factors that might influence the residential decision-making process for Workers on_Site</em></figcaption>
 </figure>
 </div>
-<p>To get to the heart of what matters most to Roanoke’s residents, we turned to data. Using a detailed survey filled with personal insights from locals, we analyzed a range of factors from work life to family plans, all to answer one question: What drives people’s choices about where they live?</p>
+<p>To get to the heart of what matters most to Roanoke’s residents, we turned to data. Using a detailed survey filled with personal insights from locals. the datasets featured in these blog posts have been&nbsp;<em><strong>modified and synthesized for educational purposes</strong>. They demonstrate various data analysis techniques.</em> We analyzed a range of factors from work life to family plans, all to answer one question: <strong><code>What drives people's choices about where they live</code></strong>?</p>
 <p>Armed with Python, a popular programming language, and a machine learning tool called <strong>Random Forest</strong>, we dug into the data. Think of Random Forest as a detective that examines all the evidence (or data) and identifies the usual suspects (or factors) that play a role in our living choices.</p>
-<p>The goal of using a Random Forest Classifier is to identify and quantify the factors that influence the residential preferences of on-site workers in the Roanoke Metropolitan Area. Here are the specific objectives Random Forest helps to achieve:</p>
+<p>The goal of using a Random Forest Classifier is to identify and quantify the factors that influence the residential preferences of <strong>Workers on-Site (WOS)</strong> in the Roanoke Metropolitan Area. Here are the specific objectives Random Forest helps to achieve:</p>
 <ol type="1">
 <li><p><strong>Feature Importance:</strong> Random Forest can determine the relative importance of each factor (like distance to work, income level, family size) in predicting residential preferences. This insight can inform urban planning and real estate development.</p></li>
 <li><p><strong>Predictive Modeling:</strong> It can predict an individual's preferred living area based on the features in the dataset, which could be useful for personalized recommendations or targeted marketing for real estate.</p></li>
@@ -221,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Versatility:</strong> It can handle both categorical and numerical data, making it versatile for datasets that contain a mix of different types of variables as is often the case in survey data.</p></li>
 <li><p><strong>Understanding Population Segments:</strong> By examining which features are most influential, stakeholders can understand different segments of the population better and tailor their services or policies accordingly.</p></li>
 </ol>
-<p>In essence, Random Forest acts as a powerful analytical tool that turns a complex array of data points into actionable insights about what drives people's choices on where to live.</p>
+<p>In essence, <em>Random Forest acts as a powerful analytical tool that turns a complex array of data points into actionable insights about what drives people's choices on where to live</em>.</p>
 <p>After some thorough data cleaning to make sure we were working with accurate information, we let the Random Forest algorithm get to work. It looked at various details about people’s lives, including how far they live from work, their family size, and their income.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -242,122 +242,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>data.rename(columns<span class="op">=</span>{<span class="st">'living costs '</span>: <span class="st">'living costs'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the first four columns into a single ordinal dependent variable</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in your DataFrame</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in the DataFrame</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>area_columns <span class="op">=</span> [<span class="st">'City Center (Central Business District)'</span>, <span class="st">'Urban area'</span>, <span class="st">'Suburban area'</span>, <span class="st">'Rural Area'</span>]</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'PreferredArea'</span>] <span class="op">=</span> data[area_columns].idxmin(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>data.drop(columns<span class="op">=</span>area_columns, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values (NaNs) for both features and target variable</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>data.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the list of categorical and continuous features</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace these with the actual column names from your DataFrame</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> [<span class="st">'marital status'</span>, <span class="st">'race'</span>, <span class="st">'education level'</span>, <span class="st">'firm age'</span>, <span class="st">'firm size'</span>, <span class="st">'owner or renter'</span>,</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'number of workers in household'</span>, <span class="st">'people in household'</span>, <span class="st">'desired family size in future'</span>,</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'monthly earning'</span>, <span class="st">'industry sector'</span>]  <span class="co"># Add other categorical features here</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>continuous_features <span class="op">=</span> [<span class="st">'distance from work to homeplace'</span>]  <span class="co"># Add other continuous features here</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing pipeline</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'num'</span>, StandardScaler(), continuous_features),</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'cat'</span>, OneHotEncoder(), categorical_features)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ])</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess the data</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> preprocessor.fit_transform(data.drop(<span class="st">'PreferredArea'</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'PreferredArea'</span>].astype(<span class="bu">str</span>)  <span class="co"># Convert to string if categorical</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the Random Forest Classifier</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier()</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>rf.fit(X_train, y_train)</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Get feature importances</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> continuous_features <span class="op">+</span> <span class="bu">list</span>(preprocessor.named_transformers_[<span class="st">'cat'</span>].get_feature_names_out(categorical_features))</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf.feature_importances_</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For each row, it finds the column among the specified area_columns that has the minimum value </span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># (which would be equivalent to the highest preference rank, assuming 1 is the most preferred and </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># larger numbers indicate lower preferences) and stores the name of this column (i.e., the living area </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># with the highest preference for that row) as the value in the new Preferred_Living_Location column.</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Preferred_Living_Location'</span>] <span class="op">=</span> data[area_columns].idxmin(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>data.drop(columns<span class="op">=</span>area_columns, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values (NaNs) for both features and target variable</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>data.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the list of categorical and continuous features</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace these with the actual column names from the DataFrame</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> [<span class="st">'marital status'</span>, <span class="st">'race'</span>, <span class="st">'education level'</span>, <span class="st">'firm age'</span>, <span class="st">'firm size'</span>, <span class="st">'owner or renter'</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'number of workers in household'</span>, <span class="st">'people in household'</span>, <span class="st">'desired family size in future'</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'monthly earning'</span>, <span class="st">'industry sector'</span>]  <span class="co"># categorical features </span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>continuous_features <span class="op">=</span> [<span class="st">'distance from work to homeplace'</span>]  <span class="co"># continuous features here</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing pipeline</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'num'</span>, StandardScaler(), continuous_features),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'cat'</span>, OneHotEncoder(), categorical_features)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess the data</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> preprocessor.fit_transform(data.drop(<span class="st">'Preferred_Living_Location'</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'Preferred_Living_Location'</span>].astype(<span class="bu">str</span>)  <span class="co"># Convert to string if categorical</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the Random Forest Classifier</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>rf.fit(X_train, y_train)</span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Display feature importances</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Feature Importances:"</span>)</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> sorted_indices:</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>feature_names[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>importances[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Get feature importances</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> continuous_features <span class="op">+</span> <span class="bu">list</span>(preprocessor.named_transformers_[<span class="st">'cat'</span>].get_feature_names_out(categorical_features))</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf.feature_importances_</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Display feature importances</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Feature Importances:"</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> sorted_indices:</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>feature_names[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>importances[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Feature Importances:
-distance from work to homeplace: 0.09288623571545138
-firm age_2.0: 0.02445142892327092
-monthly earning_3.0: 0.02193580878992179
-firm age_3.0: 0.021789044255882954
-firm size_3.0: 0.021403073825229282
-monthly earning_2.0: 0.020638236277225396
-race_1.0: 0.020269206379686447
-education level_5.0: 0.019807067888291
-people in household_4.0: 0.019550651898186732
-marital status_1.0: 0.01906433836281585
-firm size_2.0: 0.018922515564780043
-people in household_3.0: 0.01885451009789847
-desired family size in future_5.0: 0.018664026827034545
-number of workers in household_1.0: 0.018506486535902603
-marital status_2.0: 0.01827067144880864
-firm age_5.0: 0.0175529765249993
-desired family size in future_3.0: 0.017543953927298857
-desired family size in future_4.0: 0.01737898813085539
-firm age_4.0: 0.016712736661653148
-owner or renter_1.0: 0.016690920534508963
-education level_6.0: 0.016301648212202383
-owner or renter_2.0: 0.016219999674673618
-desired family size in future_2.0: 0.015883716340273503
-education level_2.0: 0.01585797218321067
-industry sector_Manufacturing: 0.015737669460572493
-people in household_5.0: 0.015714110235344227
-number of workers in household_3.0: 0.015664851875429625
-number of workers in household_2.0: 0.015509531571961468
-monthly earning_1.0: 0.014978580234371089
-firm size_4.0: 0.014195208177649183
-people in household_2.0: 0.013893911898191814
-race_3.0: 0.013074155667212024
-firm size_5.0: 0.013045366958494863
-industry sector_Wholesale Trade: 0.01261259964747509
-industry sector_Retail Trade: 0.012370888438725842
-firm size_1.0: 0.01224656881975465
-industry sector_Management of Companies and Enterprises: 0.011971598152795766
-education level_3.0: 0.011673751475373273
-desired family size in future_1.0: 0.01166980362288416
-industry sector_Professional, Scientific, and Technical Services: 0.011527298326876186
-industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.011236439152169285
-education level_8.0: 0.010865535232861354
-race_2.0: 0.010271017031113928
-race_4.0: 0.010207566761427112
-marital status_4.0: 0.00928584421815423
-monthly earning_4.0: 0.009098626447755519
-industry sector_Accommodation and Food Services: 0.009089727297657151
-industry sector_Transportation and Warehousing: 0.009037523106729345
-education level_4.0: 0.008987722482067707
-marital status_6.0: 0.008953335664598324
-industry sector_Finance and Insurance: 0.008942986242838074
-education level_7.0: 0.008871166768983772
-marital status_3.0: 0.008663436102063406
-people in household_1.0: 0.008616361237693583
-industry sector_Construction: 0.008592617660176579
-race_8.0: 0.00854834365508955
-industry sector_Information: 0.008538058923065969
-industry sector_Educational Services: 0.008467371564374182
-marital status_5.0: 0.008441645129632101
-firm age_1.0: 0.008184545789448047
-industry sector_Health Care and Social Assistance: 0.00809444570601816
-race_5.0: 0.007981821611973118
-race_7.0: 0.007534449361221685
-education level_1.0: 0.007491934607034797
-industry sector_Other Services [except Public Administration: 0.0069804557368409684
-industry sector_Utilities: 0.006948431958358339
-industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006854765107684347
-race_6.0: 0.006652303821607408
-industry sector_Arts, Entertainment, and Recreation: 0.006497748122896226
-industry sector_Public Administration: 0.004623058154869562
-industry sector_Real Estate and Rental and Leasing: 0.003499130155609318
-industry sector_Administrative and Support and Waste Management and Remediation Services: 0.002899475644813228</code></pre>
+distance from work to homeplace: 0.09199136058934725
+monthly earning_3.0: 0.02320890468799455
+race_1.0: 0.022417999664602846
+monthly earning_2.0: 0.021960924426384046
+firm size_3.0: 0.02185468151752718
+firm age_3.0: 0.021264948560146674
+firm age_2.0: 0.02109706157275247
+marital status_2.0: 0.019105166625238708
+marital status_1.0: 0.018885940758453075
+people in household_3.0: 0.018444524580073944
+education level_6.0: 0.018427229773047442
+desired family size in future_5.0: 0.01836469455260644
+people in household_4.0: 0.018215185809588943
+desired family size in future_2.0: 0.01807573904749321
+education level_5.0: 0.018068156446570675
+desired family size in future_3.0: 0.01800344417422606
+firm age_5.0: 0.017885904414662313
+firm size_2.0: 0.017781364817912787
+number of workers in household_1.0: 0.01774682965230359
+education level_2.0: 0.017566244083778146
+number of workers in household_2.0: 0.017081547936833977
+owner or renter_2.0: 0.017032260460620816
+monthly earning_1.0: 0.016562278748844497
+owner or renter_1.0: 0.016082060613329344
+desired family size in future_4.0: 0.01580068709579696
+firm age_4.0: 0.015243702326353019
+number of workers in household_3.0: 0.014771733762387974
+firm size_4.0: 0.014706923306170643
+people in household_5.0: 0.014700879079082393
+industry sector_Wholesale Trade: 0.014433455022258521
+people in household_2.0: 0.01394164123090124
+firm size_5.0: 0.013123448297123395
+industry sector_Manufacturing: 0.01307068057784744
+desired family size in future_1.0: 0.01290967445484605
+industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.012666766631779161
+race_3.0: 0.012064406356050767
+race_2.0: 0.011797361768853983
+industry sector_Retail Trade: 0.011733329337652905
+industry sector_Professional, Scientific, and Technical Services: 0.011644011092270395
+industry sector_Management of Companies and Enterprises: 0.011523851615356302
+education level_3.0: 0.011350059186233894
+education level_8.0: 0.011275651369849841
+industry sector_Information: 0.010381517117865795
+industry sector_Accommodation and Food Services: 0.010123307378665371
+people in household_1.0: 0.010096843773448778
+industry sector_Transportation and Warehousing: 0.009979309680891543
+race_4.0: 0.009683612068366087
+firm size_1.0: 0.009591778675006143
+monthly earning_4.0: 0.009431775800941311
+education level_7.0: 0.009413848565510453
+race_8.0: 0.00933214451059684
+marital status_3.0: 0.00928178364691682
+industry sector_Educational Services: 0.008841257377181522
+industry sector_Construction: 0.008516986474617988
+race_5.0: 0.008458669585015014
+marital status_5.0: 0.008083396427534813
+firm age_1.0: 0.008075135052282082
+education level_4.0: 0.007952654951198115
+marital status_4.0: 0.007945039906250595
+industry sector_Finance and Insurance: 0.0077857108001552185
+marital status_6.0: 0.007720391729749835
+race_7.0: 0.007533384116146015
+industry sector_Health Care and Social Assistance: 0.007327232512711177
+industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006863762383101733
+race_6.0: 0.006723914438672637
+industry sector_Arts, Entertainment, and Recreation: 0.006667538164728424
+education level_1.0: 0.006588234322516284
+industry sector_Other Services [except Public Administration: 0.006293728496621882
+industry sector_Utilities: 0.005904824184829472
+industry sector_Real Estate and Rental and Leasing: 0.00413004562565351
+industry sector_Public Administration: 0.003886645514503981
+industry sector_Administrative and Support and Waste Management and Remediation Services: 0.0035028106931668285</code></pre>
 </div>
 </div>
 <ul>
@@ -373,13 +378,15 @@ industry sector_Administrative and Support and Waste Management and Remediation 
 <li><p><em><code>The results should be interpreted as indicative rather than definitive. For more precise modeling of ordinal outcomes, specific ordinal regression models would be more appropriate.</code></em></p></li>
 </ul></li>
 </ol></li>
-<li><p><em><code>In summary, your model’s output provides a useful guide to understanding which factors are most influential in determining living area preferences, with distance from work appearing as the most significant factor according to this model.]</code></em><br>
+<li><p><em><code>In summary, the model’s output provides a useful guide to understanding which factors are most influential in determining living area preferences, with distance from work appearing as the most significant factor according to this model.]</code></em><br>
 <br>
-The results were clear: The commute to work stood out as the number one factor. This wasn’t too surprising – after all, who wants to spend hours in traffic when they could be home relaxing? Income was also a key factor. It seems the more we earn, the more choices we have about where we live.</p></li>
+The results were clear: For workers who commute to work; the distance from workplace to homeplace stood out as the number one factor. This wasn’t too surprising – after all, who wants to spend hours in traffic when they could be home relaxing? Income was also a key factor. It seems the more we earn, the more choices we have about where we live.</p></li>
 </ul>
 <p>But it’s not all about money and travel time. The data also showed us that personal factors, like whether someone is married or planning for a big family, have a big say in the decision too.</p>
 <p>This isn’t just interesting information. It’s valuable knowledge for city planners and developers. By understanding what’s important to residents, they can plan and build communities that better meet people’s needs and make Roanoke an even better place to live.</p>
 <p>So next time you’re driving through Roanoke’s neighborhoods, remember that each home you see represents a decision made based on a unique mix of practical needs and personal dreams.</p>
+<p><strong>A Visual Journey Through Roanoke’s Residential Decision Drivers</strong></p>
+<p>In our previous discussion, we delved into the factors that influence where <strong>WOS</strong> in Roanoke choose to live. We discovered that the daily commute and income levels are among the top considerations. But how do these factors stack up against each other? Let’s take a visual dive into the data.</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -394,18 +401,16 @@ The results were clear: The commute to work stood out as the number one factor. 
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>n_top_features <span class="op">=</span> <span class="dv">20</span>  <span class="co"># for example, top 20 features</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the plot</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>sorted_importances[:n_top_features], y<span class="op">=</span>sorted_features[:n_top_features])</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Significance of factors in residential decision-making process'</span>)</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Level of importance'</span>)</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Factors'</span>)</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-3-output-1.png" width="886" height="671"></p>
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="811" height="597"></p>
 </div>
 </div>
-<p><strong>A Visual Journey Through Roanoke’s Residential Decision Drivers</strong></p>
-<p>In our previous discussion, we delved into the factors that influence where workers on-site (WOS) in Roanoke choose to live. We discovered that the daily commute and income levels are among the top considerations. But how do these factors stack up against each other? Let’s take a visual dive into the data.</p>
 <p>The accompanying chart lays out the findings from our Random Forest analysis in a colorful display of bars, each representing a factor’s weight in the decision-making process. At a glance, the lengthier bars catch the eye—these are the heavy hitters of home location preferece.</p>
 <p>Dominating the scene is ‘distance from work to homeplace,’ a beacon of red at the top, which resonates with anyone who’s ever been caught in the snarl of rush hour. This is followed closely by a cascade of oranges and yellows highlighting the importance of ‘monthly earnings’ across various brackets and the age and size of firms.</p>
 <p>As we move down the chart, the colors shift to cooler greens and blues, representing factors like household size and marital status. These may not be the titans of the plot, but they still play a pivotal role in the collective narrative of where we live.</p>
