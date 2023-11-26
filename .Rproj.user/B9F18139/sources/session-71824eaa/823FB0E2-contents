@@ -6,9 +6,9 @@ categories: [news, code, analysis]
 image: "WhereToLiveForInPersonWorkers.JPG"
 ---
 
-### **Random Forest Classifier**
+# **Random Forest Classifier**
 
-##### Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke's Metropolitan Living Choices
+### Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke's Metropolitan Living Choices
 
 Deciding where to live is a big decision for anyone, and for the people of Roanoke, it's no different. We all have our own checklist when it comes to choosing our neighborhoods -- some of us want to be close to work, others are looking for good schools for the kids, and some might prioritize a big backyard over everything else.
 
@@ -135,7 +135,7 @@ In our previous discussion, we delved into the factors that influence where **WO
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Assuming 'importances', 'feature_names' are already defined as in your previous code
+# Assuming 'importances', 'feature_names' are already defined as in the previous code
 # Sorting the feature importances
 sorted_indices = np.argsort(importances)[::-1]
 sorted_importances = importances[sorted_indices]
@@ -145,7 +145,7 @@ sorted_features = [feature_names[i] for i in sorted_indices]
 n_top_features = 20  # for example, top 20 features
 
 # Creating the plot
-plt.figure(figsize=(7, 7))
+plt.figure(figsize=(6.5, 6.5))
 sns.barplot(x=sorted_importances[:n_top_features], y=sorted_features[:n_top_features])
 plt.title('Significance of factors in residential decision-making process')
 plt.xlabel('Level of importance')

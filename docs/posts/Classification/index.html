@@ -191,7 +191,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#random-forest-classifier" id="toc-random-forest-classifier" class="nav-link active" data-scroll-target="#random-forest-classifier"><strong>Random Forest Classifier</strong></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -199,10 +205,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="random-forest-classifier" class="level3">
-<h3 class="anchored" data-anchor-id="random-forest-classifier"><strong>Random Forest Classifier</strong></h3>
-<section id="unveiling-the-tapestry-of-urban-preferences-for-workers-on-site-wos-a-data-driven-glimpse-into-roanokes-metropolitan-living-choices" class="level5">
-<h5 class="anchored" data-anchor-id="unveiling-the-tapestry-of-urban-preferences-for-workers-on-site-wos-a-data-driven-glimpse-into-roanokes-metropolitan-living-choices">Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke’s Metropolitan Living Choices</h5>
+<section id="random-forest-classifier" class="level1">
+<h1><strong>Random Forest Classifier</strong></h1>
+<section id="unveiling-the-tapestry-of-urban-preferences-for-workers-on-site-wos-a-data-driven-glimpse-into-roanokes-metropolitan-living-choices" class="level3">
+<h3 class="anchored" data-anchor-id="unveiling-the-tapestry-of-urban-preferences-for-workers-on-site-wos-a-data-driven-glimpse-into-roanokes-metropolitan-living-choices">Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke’s Metropolitan Living Choices</h3>
 <p>Deciding where to live is a big decision for anyone, and for the people of Roanoke, it’s no different. We all have our own checklist when it comes to choosing our neighborhoods – some of us want to be close to work, others are looking for good schools for the kids, and some might prioritize a big backyard over everything else.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -291,78 +297,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>feature_names[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>importances[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Feature Importances:
-distance from work to homeplace: 0.09199136058934725
-monthly earning_3.0: 0.02320890468799455
-race_1.0: 0.022417999664602846
-monthly earning_2.0: 0.021960924426384046
-firm size_3.0: 0.02185468151752718
-firm age_3.0: 0.021264948560146674
-firm age_2.0: 0.02109706157275247
-marital status_2.0: 0.019105166625238708
-marital status_1.0: 0.018885940758453075
-people in household_3.0: 0.018444524580073944
-education level_6.0: 0.018427229773047442
-desired family size in future_5.0: 0.01836469455260644
-people in household_4.0: 0.018215185809588943
-desired family size in future_2.0: 0.01807573904749321
-education level_5.0: 0.018068156446570675
-desired family size in future_3.0: 0.01800344417422606
-firm age_5.0: 0.017885904414662313
-firm size_2.0: 0.017781364817912787
-number of workers in household_1.0: 0.01774682965230359
-education level_2.0: 0.017566244083778146
-number of workers in household_2.0: 0.017081547936833977
-owner or renter_2.0: 0.017032260460620816
-monthly earning_1.0: 0.016562278748844497
-owner or renter_1.0: 0.016082060613329344
-desired family size in future_4.0: 0.01580068709579696
-firm age_4.0: 0.015243702326353019
-number of workers in household_3.0: 0.014771733762387974
-firm size_4.0: 0.014706923306170643
-people in household_5.0: 0.014700879079082393
-industry sector_Wholesale Trade: 0.014433455022258521
-people in household_2.0: 0.01394164123090124
-firm size_5.0: 0.013123448297123395
-industry sector_Manufacturing: 0.01307068057784744
-desired family size in future_1.0: 0.01290967445484605
-industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.012666766631779161
-race_3.0: 0.012064406356050767
-race_2.0: 0.011797361768853983
-industry sector_Retail Trade: 0.011733329337652905
-industry sector_Professional, Scientific, and Technical Services: 0.011644011092270395
-industry sector_Management of Companies and Enterprises: 0.011523851615356302
-education level_3.0: 0.011350059186233894
-education level_8.0: 0.011275651369849841
-industry sector_Information: 0.010381517117865795
-industry sector_Accommodation and Food Services: 0.010123307378665371
-people in household_1.0: 0.010096843773448778
-industry sector_Transportation and Warehousing: 0.009979309680891543
-race_4.0: 0.009683612068366087
-firm size_1.0: 0.009591778675006143
-monthly earning_4.0: 0.009431775800941311
-education level_7.0: 0.009413848565510453
-race_8.0: 0.00933214451059684
-marital status_3.0: 0.00928178364691682
-industry sector_Educational Services: 0.008841257377181522
-industry sector_Construction: 0.008516986474617988
-race_5.0: 0.008458669585015014
-marital status_5.0: 0.008083396427534813
-firm age_1.0: 0.008075135052282082
-education level_4.0: 0.007952654951198115
-marital status_4.0: 0.007945039906250595
-industry sector_Finance and Insurance: 0.0077857108001552185
-marital status_6.0: 0.007720391729749835
-race_7.0: 0.007533384116146015
-industry sector_Health Care and Social Assistance: 0.007327232512711177
-industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006863762383101733
-race_6.0: 0.006723914438672637
-industry sector_Arts, Entertainment, and Recreation: 0.006667538164728424
-education level_1.0: 0.006588234322516284
-industry sector_Other Services [except Public Administration: 0.006293728496621882
-industry sector_Utilities: 0.005904824184829472
-industry sector_Real Estate and Rental and Leasing: 0.00413004562565351
-industry sector_Public Administration: 0.003886645514503981
-industry sector_Administrative and Support and Waste Management and Remediation Services: 0.0035028106931668285</code></pre>
+distance from work to homeplace: 0.09345273131043372
+monthly earning_2.0: 0.024677292258372972
+monthly earning_3.0: 0.022493096150875046
+firm age_3.0: 0.021888450302182973
+number of workers in household_1.0: 0.021492161220722804
+firm age_2.0: 0.020436242640325075
+firm size_2.0: 0.020059716258558947
+firm size_3.0: 0.019907228636626202
+race_1.0: 0.019575629451391796
+people in household_4.0: 0.01926373363488931
+marital status_2.0: 0.01903626879958222
+education level_5.0: 0.018393013625840934
+education level_6.0: 0.018285413513748777
+people in household_3.0: 0.017728167734818657
+education level_2.0: 0.01762004653543532
+desired family size in future_2.0: 0.01693941932723661
+owner or renter_1.0: 0.016890161389622006
+desired family size in future_5.0: 0.016788655055072634
+firm age_4.0: 0.016746320119154893
+desired family size in future_3.0: 0.016494540186896212
+number of workers in household_2.0: 0.01648071440672263
+marital status_1.0: 0.01647393134084301
+monthly earning_1.0: 0.016447328749161435
+desired family size in future_4.0: 0.016288174201148822
+firm age_5.0: 0.01610041379165007
+owner or renter_2.0: 0.01588568457094935
+industry sector_Wholesale Trade: 0.015566317147060355
+people in household_5.0: 0.014650480657992397
+firm size_4.0: 0.014369595349057513
+industry sector_Manufacturing: 0.014331977262151631
+number of workers in household_3.0: 0.013855587208592278
+people in household_2.0: 0.013848039642048376
+firm size_1.0: 0.01344059163799746
+desired family size in future_1.0: 0.013426584199751986
+industry sector_Professional, Scientific, and Technical Services: 0.01281556602224366
+industry sector_Retail Trade: 0.01239001271284712
+education level_3.0: 0.012170380537394198
+race_3.0: 0.012136618658381448
+firm size_5.0: 0.012034436763723318
+industry sector_Management of Companies and Enterprises: 0.011727107140942751
+race_2.0: 0.010860955423211503
+education level_7.0: 0.01084682354294732
+industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.010650706632694908
+marital status_5.0: 0.010037644018900409
+race_8.0: 0.009950235532456244
+education level_8.0: 0.009732394342561164
+industry sector_Transportation and Warehousing: 0.009710762870216856
+industry sector_Information: 0.009583454940925733
+race_4.0: 0.009459502926191313
+monthly earning_4.0: 0.009397583590036573
+industry sector_Accommodation and Food Services: 0.009078669404785624
+marital status_6.0: 0.008939452529127674
+industry sector_Health Care and Social Assistance: 0.008798540487257244
+industry sector_Educational Services: 0.008771315906949934
+people in household_1.0: 0.00854476478350353
+firm age_1.0: 0.00831167466961105
+industry sector_Construction: 0.008309447549058824
+industry sector_Other Services [except Public Administration: 0.008112831644779295
+race_5.0: 0.007903387974819485
+race_6.0: 0.00786043603719188
+education level_4.0: 0.00785950665581931
+race_7.0: 0.007723078693205938
+industry sector_Finance and Insurance: 0.007547573067979564
+marital status_4.0: 0.007345521275073622
+education level_1.0: 0.006870531176575376
+marital status_3.0: 0.006822138624792511
+industry sector_Utilities: 0.00649279339748031
+industry sector_Agriculture, Forestry, Fishing and Hunting: 0.005463578137945157
+industry sector_Arts, Entertainment, and Recreation: 0.005082061203072899
+industry sector_Real Estate and Rental and Leasing: 0.00490634795030934
+industry sector_Public Administration: 0.0033035794494865574
+industry sector_Administrative and Support and Waste Management and Remediation Services: 0.003114875408585927</code></pre>
 </div>
 </div>
 <ul>
@@ -391,7 +397,7 @@ The results were clear: For workers who commute to work; the distance from workp
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'importances', 'feature_names' are already defined as in your previous code</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'importances', 'feature_names' are already defined as in the previous code</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sorting the feature importances</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sorted_importances <span class="op">=</span> importances[sorted_indices]</span>
@@ -401,14 +407,14 @@ The results were clear: For workers who commute to work; the distance from workp
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>n_top_features <span class="op">=</span> <span class="dv">20</span>  <span class="co"># for example, top 20 features</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the plot</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="fl">6.5</span>, <span class="fl">6.5</span>))</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>sorted_importances[:n_top_features], y<span class="op">=</span>sorted_features[:n_top_features])</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Significance of factors in residential decision-making process'</span>)</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Level of importance'</span>)</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Factors'</span>)</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-3-output-1.png" width="811" height="597"></p>
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="777" height="560"></p>
 </div>
 </div>
 <p>The accompanying chart lays out the findings from our Random Forest analysis in a colorful display of bars, each representing a factor’s weight in the decision-making process. At a glance, the lengthier bars catch the eye—these are the heavy hitters of home location preferece.</p>
