@@ -101,7 +101,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke’s Metropolitan Living Choices">
 <meta property="og:description" content="Random Forest Classifier">
 <meta property="og:image" content="WhereToLiveForInPersonWorkers.JPG">
-<meta property="og:site-name" content="BLOGS: Analyzing Urban Transformation  in the WFH Era Using Machine Learning">
+<meta property="og:site-name" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning
+">
 <meta name="twitter:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke’s Metropolitan Living Choices">
 <meta name="twitter:description" content="Random Forest Classifier">
 <meta name="twitter:image" content="WhereToLiveForInPersonWorkers.JPG">
@@ -214,13 +215,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The goal of using a Random Forest Classifier is to identify the factors that influence the residential preferences of <strong>Workers on-Site (WOS)</strong> in the Roanoke Metropolitan Area. Here are the specific objectives Random Forest helps to achieve:</p>
 <ol type="1">
 <li><p><strong>Feature Importance:</strong> Random Forest can determine the relative importance of each factor (like distance to work, income level, family size) in predicting residential preferences. This insight can inform urban planning and real estate development.</p></li>
-<li><p><strong>Predictive Modeling:</strong> It can predict an individual's preferred living area based on the features in the dataset, which could be useful for personalized recommendations or targeted marketing for real estate.</p></li>
+<li><p><strong>Predictive Modeling:</strong> It can predict an individual’s preferred living area based on the features in the dataset, which could be useful for personalized recommendations or targeted marketing for real estate.</p></li>
 <li><p><strong>Handling Complexity:</strong> Random Forest is robust to complex interactions between features and can handle non-linear relationships without the need for transformation, making it well-suited for diverse and complex datasets.</p></li>
 <li><p><strong>Reducing Overfitting:</strong> Due to its ensemble nature (combining multiple decision trees), Random Forest is less prone to overfitting compared to individual decision trees, leading to more reliable predictions.</p></li>
 <li><p><strong>Versatility:</strong> It can handle both categorical and numerical data, making it versatile for datasets that contain a mix of different types of variables as is often the case in survey data.</p></li>
 <li><p><strong>Understanding Population Segments:</strong> By examining which features are most influential, stakeholders can understand different segments of the population better and tailor their services or policies accordingly.</p></li>
 </ol>
-<p>In essence, <em>Random Forest acts as a powerful analytical tool that turns a complex array of data points into actionable insights about what drives people's choices on where to live</em>.</p>
+<p>In essence, <em>Random Forest acts as a powerful analytical tool that turns a complex array of data points into actionable insights about what drives people’s choices on where to live</em>.</p>
 <p>After some thorough data cleaning to make sure we were working with accurate information, we let the Random Forest algorithm get to work. It looked at various details about people’s lives, including how far they live from work, their family size, and their income.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -290,78 +291,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>feature_names[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>importances[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Feature Importances:
-distance from work to homeplace: 0.09134795673483298
-firm age_2.0: 0.023074392773643537
-monthly earning_3.0: 0.022657266477498737
-firm size_3.0: 0.021816278981314906
-monthly earning_2.0: 0.021510926182989727
-firm age_3.0: 0.021301928677251242
-education level_5.0: 0.020022919144890402
-marital status_2.0: 0.019428734336654454
-firm size_2.0: 0.019273227310841686
-race_1.0: 0.018699910742666706
-desired family size in future_4.0: 0.018589710218681242
-desired family size in future_5.0: 0.018142961694865054
-people in household_4.0: 0.01812797122124121
-monthly earning_1.0: 0.01766899201830778
-marital status_1.0: 0.017635635165213458
-number of workers in household_2.0: 0.017567901276625532
-firm age_5.0: 0.01748398298968119
-owner or renter_1.0: 0.017257964075481528
-education level_2.0: 0.017186282362531002
-people in household_3.0: 0.016999129508408883
-desired family size in future_3.0: 0.01667652948550059
-owner or renter_2.0: 0.01636343185271881
-number of workers in household_1.0: 0.016286507984617303
-education level_6.0: 0.01620637647074858
-people in household_5.0: 0.016203426171454885
-firm age_4.0: 0.015513115731732214
-number of workers in household_3.0: 0.015511300205766807
-desired family size in future_2.0: 0.015509759660037703
-people in household_2.0: 0.015384846544195325
-firm size_4.0: 0.014233100449458384
-firm size_5.0: 0.014189064990071729
-industry sector_Manufacturing: 0.0137793627149077
-industry sector_Retail Trade: 0.013614824190975115
-industry sector_Professional, Scientific, and Technical Services: 0.013267836369281026
-race_3.0: 0.013198104433614903
-firm size_1.0: 0.013007949805598724
-race_2.0: 0.01191079035429249
-education level_3.0: 0.011607328303381088
-industry sector_Wholesale Trade: 0.011528677967384384
-industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.011521472695800894
-industry sector_Management of Companies and Enterprises: 0.011202885541442694
-desired family size in future_1.0: 0.011186283476924203
-people in household_1.0: 0.011177302362409061
-education level_8.0: 0.011089014899877148
-education level_7.0: 0.01064710579155858
-industry sector_Information: 0.010359948439815019
-monthly earning_4.0: 0.010014692004066586
-industry sector_Transportation and Warehousing: 0.009713266923097532
-industry sector_Accommodation and Food Services: 0.009489321769968936
-race_4.0: 0.009346515037799052
-industry sector_Educational Services: 0.00920091598650286
-marital status_6.0: 0.008715043181356266
-firm age_1.0: 0.008565579703557697
-race_8.0: 0.008202521641702609
-industry sector_Construction: 0.008124913416637495
-marital status_3.0: 0.00811658517575098
-race_5.0: 0.007995148611244963
-industry sector_Health Care and Social Assistance: 0.00795471331008399
-education level_4.0: 0.007898301686822177
-marital status_4.0: 0.007558778454614109
-industry sector_Utilities: 0.0074220428626320546
-race_7.0: 0.007342039476859269
-industry sector_Finance and Insurance: 0.007331781306270937
-marital status_5.0: 0.0072312623243070894
-race_6.0: 0.006726236601333669
-industry sector_Other Services [except Public Administration: 0.006580015889284231
-education level_1.0: 0.006091515607980446
-industry sector_Agriculture, Forestry, Fishing and Hunting: 0.005941900017715658
-industry sector_Arts, Entertainment, and Recreation: 0.005920521088600963
-industry sector_Administrative and Support and Waste Management and Remediation Services: 0.004635273594982407
-industry sector_Real Estate and Rental and Leasing: 0.0035081125272754645
-industry sector_Public Administration: 0.0034025830123659657</code></pre>
+distance from work to homeplace: 0.09197299515673477
+firm age_2.0: 0.02376638837297548
+firm age_3.0: 0.023455603653686038
+monthly earning_3.0: 0.02332775972516645
+marital status_1.0: 0.020042068249500892
+number of workers in household_1.0: 0.01955583487677188
+race_1.0: 0.019549011656325735
+education level_5.0: 0.019407633004532066
+firm size_3.0: 0.019301057348421483
+desired family size in future_5.0: 0.019201159998774812
+firm size_2.0: 0.019000336208455603
+monthly earning_2.0: 0.01882541130843467
+people in household_4.0: 0.018420090367342646
+people in household_3.0: 0.018108691774182333
+marital status_2.0: 0.018024379498320836
+number of workers in household_2.0: 0.017460459153431543
+firm age_4.0: 0.017346952897457954
+firm age_5.0: 0.016935880251147888
+owner or renter_2.0: 0.016747795780249704
+desired family size in future_2.0: 0.016643667299362907
+desired family size in future_3.0: 0.016300873951180236
+monthly earning_1.0: 0.015862574818802128
+education level_2.0: 0.015831988920506673
+owner or renter_1.0: 0.015689167523578965
+desired family size in future_4.0: 0.015589840197327266
+people in household_5.0: 0.015501805086451069
+industry sector_Manufacturing: 0.015461834303841682
+number of workers in household_3.0: 0.015296305110831456
+education level_6.0: 0.01519024779919078
+firm size_4.0: 0.014724643598576835
+people in household_2.0: 0.013494727150456189
+industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.013200518536179843
+industry sector_Wholesale Trade: 0.013171543901364763
+firm size_5.0: 0.013102477035163762
+education level_3.0: 0.01300210820097624
+industry sector_Retail Trade: 0.012953190001056644
+industry sector_Management of Companies and Enterprises: 0.012860617505271428
+firm size_1.0: 0.012373742506341988
+desired family size in future_1.0: 0.011599286239343254
+race_3.0: 0.011317602671765023
+education level_8.0: 0.010989027334509323
+race_4.0: 0.010626728709297149
+monthly earning_4.0: 0.010546362289120401
+industry sector_Construction: 0.010304321172496326
+education level_7.0: 0.009969500560915246
+industry sector_Educational Services: 0.009901705599249305
+race_2.0: 0.009859984310732393
+industry sector_Transportation and Warehousing: 0.00963485776046043
+people in household_1.0: 0.009568225333149353
+race_5.0: 0.009419106677127621
+industry sector_Professional, Scientific, and Technical Services: 0.00929780694118343
+industry sector_Accommodation and Food Services: 0.00913467966797949
+firm age_1.0: 0.009078925312123787
+education level_4.0: 0.009000797431238293
+race_8.0: 0.008964584577116807
+marital status_4.0: 0.00858471006835726
+marital status_6.0: 0.00850806524874132
+industry sector_Information: 0.008392089263726471
+marital status_5.0: 0.008254228390252694
+marital status_3.0: 0.007967549974339407
+race_7.0: 0.007880121929023908
+industry sector_Health Care and Social Assistance: 0.00784869687423004
+industry sector_Finance and Insurance: 0.007383456334402168
+race_6.0: 0.006766823051166534
+industry sector_Arts, Entertainment, and Recreation: 0.006739477934049985
+industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006341157486820522
+education level_1.0: 0.006317854701384861
+industry sector_Utilities: 0.006242456890995141
+industry sector_Other Services [except Public Administration: 0.005965087645306365
+industry sector_Real Estate and Rental and Leasing: 0.004160790626097155
+industry sector_Public Administration: 0.0035663386175568347
+industry sector_Administrative and Support and Waste Management and Remediation Services: 0.0031662096473680534</code></pre>
 </div>
 </div>
 <ul>

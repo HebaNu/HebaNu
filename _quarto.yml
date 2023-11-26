@@ -1,3 +1,6 @@
+project:
+  type: website
+  output-dir: docs
 website:
   title: |
    BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning
