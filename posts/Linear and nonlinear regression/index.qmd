@@ -1,12 +1,25 @@
 ---
-title: "Linear and nonlinear regression"
+title: "The Dynamics of City Residency Preferences, A Deep Dive into Income_Residential Location Choices"
+subtitle: "Linear Regression vs. non_Linear Regression"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
-This is a post with executable code.
+### **Introduction**
+
+In the dynamic realm of urban living choices, understanding the factors influencing our habitat preferences is crucial. We embarked on a data-driven journey to explore one such factor -- income. Our goal was simple yet profound: to discern how variations in income affect preferences for living areas. For this, we turned to the ever-reliable tools of machine learning, specifically linear regression.
+
+### **The Study at a Glance**
+
+Our dataset encapsulated responses from individuals, detailing their income levels and preferred living areas -- be it the bustling city center, the vibrant urban zones, the serene suburban areas, or the tranquil rural landscapes. Our approach was straightforward:
+
+1.  We transformed **income** into a continuous scale, assigning monetary values to income brackets.
+
+2.  We converted **living area preferences** into a single, ordinal dependent variable.
+
+3.  We employed linear regression to model the relationship between these two variables.
 
 ```{python}
 import pandas as pd
@@ -15,6 +28,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Load the dataset
 data = pd.read_excel('Linear regression_WOS.xlsx')
@@ -62,12 +76,49 @@ r2 = r2_score(y_test, y_pred)
 print(f'Mean Squared Error: {mse}')
 print(f'R-squared: {r2}')
 
-# Plot the regression line and the test data points
-plt.scatter(X_test, y_test, color='black')
-plt.plot(X_test, y_pred, color='blue', linewidth=3)
-plt.xlabel('Scaled Income')
-plt.ylabel('Living Area Preference')
+# Plotting modifications start here
+# Extract the original income values corresponding to the test set
+original_income_test = X_test.index.map(lambda idx: data.loc[idx, 'continuous_income'])
+
+# Plotting with original income values
+plt.scatter(original_income_test, y_test, color='black', label='Actual Data')
+plt.scatter(original_income_test, y_pred, color='red', label='Predicted Data', alpha=0.5)
+
+# Optionally, create a more continuous line for predictions (optional, for visual enhancement)
+sorted_order = np.argsort(original_income_test)
+plt.plot(np.array(original_income_test)[sorted_order], np.array(y_pred)[sorted_order], color='blue', linewidth=2, label='Regression Line')
+
+plt.xlabel('Monthly income')
+plt.ylabel('Moving index_ from City Center to Rural Area')
 plt.title('Income vs Living Area Preference Linear Regression')
+plt.legend()
 plt.show()
 
+
 ```
+
+### **Unveiling the Results**
+
+The outcomes of our analysis were both intriguing and enlightening:
+
+-   **Mean Squared Error (MSE):** The MSE stood at 1.2229590696534407. This figure, in isolation, hinted at some variance between the predicted and actual preferences. However, this is only one piece of the puzzle.
+
+-   **R-squared Value:** Here's where the plot thickens. The R-squared value, at -0.0034801764611527286, raised eyebrows. This negative value suggested that the linear model failed to capture the essence of the relationship between income and living area preference. What does this mean? Simply put, the linear regression model we deployed might not be the right fit for this specific analysis.
+
+### **Interpreting the Outcome**
+
+This unexpected twist in our narrative compels us to introspect and question. Here are a few takeaways and considerations:
+
+-   **Non-linear Relationships:** Perhaps the bond between income and living area preference isn't a straight line but a curve or a more complex shape. Linear regression, with its assumption of linearity, might not be adept at capturing such nuances.
+
+-   **Missing Puzzle Pieces:** It's plausible that other influential factors, not included in our current model, play a significant role in shaping living area preferences.
+
+-   **Data Reflection:** The integrity and representativeness of our data demand scrutiny. Are there outliers skewing our results? Have we translated income brackets into continuous variables accurately?
+
+### **Moving Forward: A Path of Exploration**
+
+Our findings open new avenues for exploration. Alternative modeling techniques, like logistic regression or including additional variables, might offer deeper insights. Further, a comprehensive review and possible expansion of our dataset could pave the way for a more accurate portrayal of the intricate relationship between income and living area preferences.
+
+### **Conclusion**
+
+Our journey in unraveling the ties between income and living area preference has been a revealing one. While the current model may not have provided the clarity we sought, it has undoubtedly shed light on the complexities of urban living choices and the path forward in our analytical endeavors.

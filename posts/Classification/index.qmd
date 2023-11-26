@@ -1,5 +1,5 @@
 ---
-title: "Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS): A Data-Driven Glimpse into Roanoke's Metropolitan Living Choices"
+title: "Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS), A Data-Driven Glimpse into Roanoke's Metropolitan Living Choices"
 subtitle: "Random Forest Classifier"
 author: "Heba Nusair"
 date: "2023-11-06"
