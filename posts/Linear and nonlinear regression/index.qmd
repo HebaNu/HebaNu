@@ -1,5 +1,5 @@
 ---
-title: "The Dynamics of City Residency Preferences, A Deep Dive into Income_Residential Location Choices"
+title: "The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices"
 subtitle: "Linear Regression vs. non_Linear Regression"
 author: "Heba Nusair"
 date: "2023-11-06"
@@ -117,8 +117,108 @@ This unexpected twist in our narrative compels us to introspect and question. He
 
 ### **Moving Forward: A Path of Exploration**
 
-Our findings open new avenues for exploration. Alternative modeling techniques, like logistic regression or including additional variables, might offer deeper insights. Further, a comprehensive review and possible expansion of our dataset could pave the way for a more accurate portrayal of the intricate relationship between income and living area preferences.
+### **Introducing the Concept of Non-Linear Relationships**
 
-### **Conclusion**
+In our exploration of how income influences living area preferences, a linear model initially seemed like a straightforward choice. However, real-world data often tell a more complex story. Our linear model, with a surprisingly negative R-squared value, hinted at this complexity. It suggests that the relationship between income and living area preference might not be a straight line, but rather a curve or a more intricate pattern.
 
-Our journey in unraveling the ties between income and living area preference has been a revealing one. While the current model may not have provided the clarity we sought, it has undoubtedly shed light on the complexities of urban living choices and the path forward in our analytical endeavors.
+Linear regression, with its assumption of a straight-line relationship between variables, is ill-equipped to capture these nuances. This is where the idea of non-linear relationships comes into play. Such relationships are not confined to straight lines and can take various forms, like curves, which are more adept at mapping the intricate patterns often found in real-world data.
+
+### **Implementing Polynomial Regression**
+
+To explore these potential non-linear patterns, we turn to polynomial regression. This technique extends linear regression by adding polynomial terms (such as squared, cubed values) of the predictor variables. By doing so, it allows the model to bend and curve, fitting more complex relationships than a straight line ever could.
+
+Implementing polynomial regression is a straightforward extension of our current linear model. We use **`PolynomialFeatures`** from **`sklearn.preprocessing`** to transform our income data, introducing these higher-order terms. By fitting our model with these transformed features, we can capture the potential non-linear relationship between income and living area preference more effectively.
+
+```{python}
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Load the dataset
+data = pd.read_excel('Linear regression_WOS.xlsx')
+
+# Handle NaN values
+data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)
+
+# Create a new column 'living_area_preference' as the average of the Likert-scale responses
+data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].mean(axis=1)
+
+# Convert income to a continuous scale based on the provided income brackets
+income_mapping = {1.0: 625, 2.0: 2292, 3.0: 5000, 4.0: 6666}
+data['continuous_income'] = data['Monthly_income'].map(income_mapping)
+
+# Scale the income feature
+scaler = StandardScaler()
+data['scaled_income'] = scaler.fit_transform(data[['continuous_income']])
+
+# Create polynomial features
+poly = PolynomialFeatures(degree=2)
+X_poly = poly.fit_transform(data[['scaled_income']])
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X_poly, data['living_area_preference'], test_size=0.2, random_state=42)
+
+# Polynomial Regression Model
+poly_model = LinearRegression()
+poly_model.fit(X_train, y_train)
+y_pred_poly = poly_model.predict(X_test)
+mse_poly = mean_squared_error(y_test, y_pred_poly)
+r2_poly = r2_score(y_test, y_pred_poly)
+
+# Output the results for Polynomial Regression Model
+print("Polynomial Regression Model:")
+print(f"Mean Squared Error: {mse_poly}")
+print(f"R-squared: {r2_poly}")
+
+import matplotlib.pyplot as plt
+
+# Scatter plot of actual vs predicted values
+plt.scatter(y_test, y_pred_poly, alpha=0.5, color='red', label='Predicted')
+plt.scatter(y_test, y_test, alpha=0.5, color='blue', label='Actual')
+
+# Adding plot labels and title
+plt.xlabel('Actual Living Area Preference')
+plt.ylabel('Predicted Living Area Preference')
+plt.title('Polynomial Regression: Actual vs Predicted Values')
+plt.legend()
+
+# Show the plot
+plt.show()
+
+
+```
+
+### **Comparison of Linear vs. Polynomial Regression Models**
+
+In our exploration of the relationship between income and living area preference, we analyzed two different models: Linear Regression and Polynomial Regression. The outcomes offer intriguing insights:
+
+1.  **Linear Regression Model**:
+
+    -   Initially, we employed a Linear Regression model, which yielded a Mean Squared Error (MSE) of 1.2229590696534407. This suggested some variance between the predicted and actual preferences.
+
+    -   However, the R-squared value was -0.0034801764611527286, indicating a poor fit. This negative value implies that the linear model might not be suitable for capturing the relationship in our analysis.
+
+2.  **Polynomial Regression Model**:
+
+    -   Seeking improvement, we then applied a Polynomial Regression model. It showed a lower MSE of 0.12978886986451396, suggesting a closer fit to the data compared to the Linear Regression model.
+
+    -   The R-squared value improved to 0.012140786799389347. While still low, it's a positive value, indicating a slight improvement in explaining the variability of the dependent variable.
+
+### **Comparative Table**
+
+| **Model Type**        | **Mean Squared Error (MSE)** | **R-squared Value**    |
+|-----------------------|------------------------------|------------------------|
+| Linear Regression     | 1.2229590696534407           | -0.0034801764611527286 |
+| Polynomial Regression | 0.12978886986451396          | 0.012140786799389347   |
+
+### **Interpretation and Conclusion**
+
+-   **Model Fit**: The Polynomial Regression model shows a lower MSE, indicating a better fit to our data compared to the Linear Regression model.
+
+-   **Model's Explanatory Power**: Despite the improvement in R-squared value in the Polynomial Regression model, it remains low, suggesting that additional factors might influence living area preferences beyond what is captured by income alone.
+
+-   **Next Steps**: These results highlight the need to explore more complex models or additional variables that could provide a deeper understanding of the factors influencing living area preferences.
+
+This analysis underscores the importance of choosing the right model and considering multiple factors in predictive analytics, especially in complex real-world scenarios.

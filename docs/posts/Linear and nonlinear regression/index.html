@@ -9,7 +9,7 @@
 <meta name="author" content="Heba Nusair">
 <meta name="dcterms.date" content="2023-11-06">
 
-<title>BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences, A Deep Dive into Income_Residential Location Choices</title>
+<title>BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,12 +98,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences, A Deep Dive into Income_Residential Location Choices">
+<meta property="og:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices">
 <meta property="og:description" content="Linear Regression vs.&nbsp;non_Linear Regression">
 <meta property="og:image" content="image.jpg">
 <meta property="og:site-name" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning
 ">
-<meta name="twitter:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences, A Deep Dive into Income_Residential Location Choices">
+<meta name="twitter:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices">
 <meta name="twitter:description" content="Linear Regression vs.&nbsp;non_Linear Regression">
 <meta name="twitter:image" content="image.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">The Dynamics of City Residency Preferences, A Deep Dive into Income_Residential Location Choices</h1>
+      <h1 class="title">The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices</h1>
             <p class="subtitle lead">Linear Regression vs.&nbsp;non_Linear Regression</p>
                                 <div class="quarto-categories">
                 <div class="quarto-category">news</div>
@@ -315,11 +315,136 @@ R-squared: -0.0034801764611527286</code></pre>
 </section>
 <section id="moving-forward-a-path-of-exploration" class="level3">
 <h3 class="anchored" data-anchor-id="moving-forward-a-path-of-exploration"><strong>Moving Forward: A Path of Exploration</strong></h3>
-<p>Our findings open new avenues for exploration. Alternative modeling techniques, like logistic regression or including additional variables, might offer deeper insights. Further, a comprehensive review and possible expansion of our dataset could pave the way for a more accurate portrayal of the intricate relationship between income and living area preferences.</p>
 </section>
-<section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion"><strong>Conclusion</strong></h3>
-<p>Our journey in unraveling the ties between income and living area preference has been a revealing one. While the current model may not have provided the clarity we sought, it has undoubtedly shed light on the complexities of urban living choices and the path forward in our analytical endeavors.</p>
+<section id="introducing-the-concept-of-non-linear-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="introducing-the-concept-of-non-linear-relationships"><strong>Introducing the Concept of Non-Linear Relationships</strong></h3>
+<p>In our exploration of how income influences living area preferences, a linear model initially seemed like a straightforward choice. However, real-world data often tell a more complex story. Our linear model, with a surprisingly negative R-squared value, hinted at this complexity. It suggests that the relationship between income and living area preference might not be a straight line, but rather a curve or a more intricate pattern.</p>
+<p>Linear regression, with its assumption of a straight-line relationship between variables, is ill-equipped to capture these nuances. This is where the idea of non-linear relationships comes into play. Such relationships are not confined to straight lines and can take various forms, like curves, which are more adept at mapping the intricate patterns often found in real-world data.</p>
+</section>
+<section id="implementing-polynomial-regression" class="level3">
+<h3 class="anchored" data-anchor-id="implementing-polynomial-regression"><strong>Implementing Polynomial Regression</strong></h3>
+<p>To explore these potential non-linear patterns, we turn to polynomial regression. This technique extends linear regression by adding polynomial terms (such as squared, cubed values) of the predictor variables. By doing so, it allows the model to bend and curve, fitting more complex relationships than a straight line ever could.</p>
+<p>Implementing polynomial regression is a straightforward extension of our current linear model. We use <strong><code>PolynomialFeatures</code></strong> from <strong><code>sklearn.preprocessing</code></strong> to transform our income data, introducing these higher-order terms. By fitting our model with these transformed features, we can capture the potential non-linear relationship between income and living area preference more effectively.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, PolynomialFeatures</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Linear regression_WOS.xlsx'</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle NaN values</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>data.dropna(subset<span class="op">=</span>[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>, <span class="st">'Monthly_income'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column 'living_area_preference' as the average of the Likert-scale responses</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_area_preference'</span>] <span class="op">=</span> data[[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>]].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert income to a continuous scale based on the provided income brackets</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>income_mapping <span class="op">=</span> {<span class="fl">1.0</span>: <span class="dv">625</span>, <span class="fl">2.0</span>: <span class="dv">2292</span>, <span class="fl">3.0</span>: <span class="dv">5000</span>, <span class="fl">4.0</span>: <span class="dv">6666</span>}</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'continuous_income'</span>] <span class="op">=</span> data[<span class="st">'Monthly_income'</span>].<span class="bu">map</span>(income_mapping)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the income feature</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'scaled_income'</span>] <span class="op">=</span> scaler.fit_transform(data[[<span class="st">'continuous_income'</span>]])</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Create polynomial features</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>X_poly <span class="op">=</span> poly.fit_transform(data[[<span class="st">'scaled_income'</span>]])</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X_poly, data[<span class="st">'living_area_preference'</span>], test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Polynomial Regression Model</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>poly_model <span class="op">=</span> LinearRegression()</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>poly_model.fit(X_train, y_train)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>y_pred_poly <span class="op">=</span> poly_model.predict(X_test)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>mse_poly <span class="op">=</span> mean_squared_error(y_test, y_pred_poly)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>r2_poly <span class="op">=</span> r2_score(y_test, y_pred_poly)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the results for Polynomial Regression Model</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Polynomial Regression Model:"</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Squared Error: </span><span class="sc">{</span>mse_poly<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>r2_poly<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot of actual vs predicted values</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>plt.scatter(y_test, y_pred_poly, alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Predicted'</span>)</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>plt.scatter(y_test, y_test, alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Actual'</span>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding plot labels and title</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Actual Living Area Preference'</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Predicted Living Area Preference'</span>)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Polynomial Regression: Actual vs Predicted Values'</span>)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Polynomial Regression Model:
+Mean Squared Error: 0.12978886986451396
+R-squared: 0.012140786799389347</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-3-output-2.png" width="589" height="449"></p>
+</div>
+</div>
+</section>
+<section id="comparison-of-linear-vs.-polynomial-regression-models" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-of-linear-vs.-polynomial-regression-models"><strong>Comparison of Linear vs.&nbsp;Polynomial Regression Models</strong></h3>
+<p>In our exploration of the relationship between income and living area preference, we analyzed two different models: Linear Regression and Polynomial Regression. The outcomes offer intriguing insights:</p>
+<ol type="1">
+<li><p><strong>Linear Regression Model</strong>:</p>
+<ul>
+<li><p>Initially, we employed a Linear Regression model, which yielded a Mean Squared Error (MSE) of 1.2229590696534407. This suggested some variance between the predicted and actual preferences.</p></li>
+<li><p>However, the R-squared value was -0.0034801764611527286, indicating a poor fit. This negative value implies that the linear model might not be suitable for capturing the relationship in our analysis.</p></li>
+</ul></li>
+<li><p><strong>Polynomial Regression Model</strong>:</p>
+<ul>
+<li><p>Seeking improvement, we then applied a Polynomial Regression model. It showed a lower MSE of 0.12978886986451396, suggesting a closer fit to the data compared to the Linear Regression model.</p></li>
+<li><p>The R-squared value improved to 0.012140786799389347. While still low, it’s a positive value, indicating a slight improvement in explaining the variability of the dependent variable.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="comparative-table" class="level3">
+<h3 class="anchored" data-anchor-id="comparative-table"><strong>Comparative Table</strong></h3>
+<table class="table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 38%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Model Type</strong></th>
+<th><strong>Mean Squared Error (MSE)</strong></th>
+<th><strong>R-squared Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linear Regression</td>
+<td>1.2229590696534407</td>
+<td>-0.0034801764611527286</td>
+</tr>
+<tr class="even">
+<td>Polynomial Regression</td>
+<td>0.12978886986451396</td>
+<td>0.012140786799389347</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interpretation-and-conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-and-conclusion"><strong>Interpretation and Conclusion</strong></h3>
+<ul>
+<li><p><strong>Model Fit</strong>: The Polynomial Regression model shows a lower MSE, indicating a better fit to our data compared to the Linear Regression model.</p></li>
+<li><p><strong>Model’s Explanatory Power</strong>: Despite the improvement in R-squared value in the Polynomial Regression model, it remains low, suggesting that additional factors might influence living area preferences beyond what is captured by income alone.</p></li>
+<li><p><strong>Next Steps</strong>: These results highlight the need to explore more complex models or additional variables that could provide a deeper understanding of the factors influencing living area preferences.</p></li>
+</ul>
+<p>This analysis underscores the importance of choosing the right model and considering multiple factors in predictive analytics, especially in complex real-world scenarios.</p>
 
 
 </section>
