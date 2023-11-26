@@ -1,14 +1,11 @@
 {
-  "hash": "bed1956c69fc96ad1aad287754f98b15",
+  "hash": "6cdf8468520fb5b915b02759ae5cc236",
   "result": {
-    "markdown": "---\ntitle: \"Linear and nonlinear regression\"\nauthor: \"Heba Nusair\"\ndate: \"2023-11-06\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\n---\n\n\nThis is a post with executable code.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
-    "supporting": [],
-    "filters": [
-      "rmarkdown/pagebreak.lua"
+    "markdown": "---\ntitle: \"Linear and nonlinear regression\"\nauthor: \"Heba Nusair\"\ndate: \"2023-11-06\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\n---\n\nThis is a post with executable code.\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, r2_score\nimport matplotlib.pyplot as plt\n\n# Load the dataset\ndata = pd.read_excel('Linear regression_WOS.xlsx')\n\n# Drop rows with NaN values in the area preference and income columns\ndata.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)\n\n# Convert the area preferences into a single ordinal dependent variable\narea_to_number = {'City_center': 1, 'Urban_area': 2, 'Suburban_area': 3, 'Rural_area': 4}\ndata['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].idxmin(axis=1).map(area_to_number)\n\n# Convert income to a continuous scale based on the provided income brackets\nincome_mapping = {1.0: 625, 2.0: 2292, 3.0: 5000, 4.0: 6666}  # Adjust as needed\ndata['continuous_income'] = data['Monthly_income'].map(income_mapping)\n\n# Drop the original area preference columns and the 'Monthly Income' column\ndata.drop(columns=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)\n\n# Ensure no NaN values in 'continuous_income'\ndata.dropna(subset=['continuous_income'], inplace=True)\n\n# Scale the income feature\nscaler = StandardScaler()\ndata['scaled_income'] = scaler.fit_transform(data[['continuous_income']])\n\n# Prepare the features and target variable for modeling\nX = data[['scaled_income']]\ny = data['living_area_preference']\n\n# Split the data into training and testing sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Create and train the linear regression model\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\n\n# Predict on the test data\ny_pred = model.predict(X_test)\n\n# Evaluate the model's performance\nmse = mean_squared_error(y_test, y_pred)\nr2 = r2_score(y_test, y_pred)\n\n# Output the performance metrics\nprint(f'Mean Squared Error: {mse}')\nprint(f'R-squared: {r2}')\n\n# Plot the regression line and the test data points\nplt.scatter(X_test, y_test, color='black')\nplt.plot(X_test, y_pred, color='blue', linewidth=3)\nplt.xlabel('Scaled Income')\nplt.ylabel('Living Area Preference')\nplt.title('Income vs Living Area Preference Linear Regression')\nplt.show()\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nMean Squared Error: 1.2229590696534407\nR-squared: -0.0034801764611527286\n```\n:::\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-html/cell-2-output-2.png){width=589 height=449}\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files\\figure-html"
     ],
-    "includes": {},
-    "engineDependencies": {},
-    "preserve": {},
-    "postProcess": true
+    "filters": [],
+    "includes": {}
   }
 }

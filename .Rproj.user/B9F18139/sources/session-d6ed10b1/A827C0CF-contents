@@ -1,0 +1,73 @@
+---
+title: "Linear and nonlinear regression"
+author: "Heba Nusair"
+date: "2023-11-06"
+categories: [news, code, analysis]
+image: "image.jpg"
+---
+
+This is a post with executable code.
+
+```{python}
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+import matplotlib.pyplot as plt
+
+# Load the dataset
+data = pd.read_excel('Linear regression_WOS.xlsx')
+
+# Drop rows with NaN values in the area preference and income columns
+data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)
+
+# Convert the area preferences into a single ordinal dependent variable
+area_to_number = {'City_center': 1, 'Urban_area': 2, 'Suburban_area': 3, 'Rural_area': 4}
+data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].idxmin(axis=1).map(area_to_number)
+
+# Convert income to a continuous scale based on the provided income brackets
+income_mapping = {1.0: 625, 2.0: 2292, 3.0: 5000, 4.0: 6666}  # Adjust as needed
+data['continuous_income'] = data['Monthly_income'].map(income_mapping)
+
+# Drop the original area preference columns and the 'Monthly Income' column
+data.drop(columns=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)
+
+# Ensure no NaN values in 'continuous_income'
+data.dropna(subset=['continuous_income'], inplace=True)
+
+# Scale the income feature
+scaler = StandardScaler()
+data['scaled_income'] = scaler.fit_transform(data[['continuous_income']])
+
+# Prepare the features and target variable for modeling
+X = data[['scaled_income']]
+y = data['living_area_preference']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train the linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predict on the test data
+y_pred = model.predict(X_test)
+
+# Evaluate the model's performance
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+# Output the performance metrics
+print(f'Mean Squared Error: {mse}')
+print(f'R-squared: {r2}')
+
+# Plot the regression line and the test data points
+plt.scatter(X_test, y_test, color='black')
+plt.plot(X_test, y_pred, color='blue', linewidth=3)
+plt.xlabel('Scaled Income')
+plt.ylabel('Living Area Preference')
+plt.title('Income vs Living Area Preference Linear Regression')
+plt.show()
+
+```
