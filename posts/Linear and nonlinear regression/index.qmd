@@ -70,11 +70,17 @@ r2 = r2_score(y_test, y_pred)
 print(f'Mean Squared Error: {mse}')
 print(f'R-squared: {r2}')
 
+# Debugging the sizes of arrays
+print("Sizes of arrays for plotting:")
+print("X_test['scaled_income']: ", len(X_test['scaled_income']))
+print("y_test: ", len(y_test))
+print("y_pred: ", len(y_pred))
+
 # Plotting
 plt.scatter(X_test['scaled_income'].values, y_test.values, color='black', label='Actual Data')
 plt.scatter(X_test['scaled_income'].values, y_pred, color='red', label='Predicted Data', alpha=0.5)
 
-# Optionally, create a more continuous line for predictions (for visual enhancement)
+# Optionally, create a more continuous line for predictions
 sorted_order = np.argsort(X_test['scaled_income'].values)
 plt.plot(X_test['scaled_income'].values[sorted_order], y_pred[sorted_order], color='blue', linewidth=2, label='Regression Line')
 
@@ -83,7 +89,6 @@ plt.ylabel('Living Area Preference')
 plt.title('Income vs Living Area Preference Linear Regression')
 plt.legend()
 plt.show()
-
 
 
 ```
@@ -212,7 +217,7 @@ In our exploration of the relationship between income and living area preference
 ### **Comparative Table**
 
 | **Model Type**        | **Mean Squared Error (MSE)** | **R-squared Value**    |
-|-----------------------|------------------------------|------------------------|
+|----------------------|----------------------------|-----------------------|
 | Linear Regression     | 1.2229590696534407           | -0.0034801764611527286 |
 | Polynomial Regression | 0.12978886986451396          | 0.012140786799389347   |
 

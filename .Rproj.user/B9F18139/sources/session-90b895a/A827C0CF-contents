@@ -36,9 +36,9 @@ data = pd.read_excel('Income_LivingLocationPrefrences.xlsx')
 # Handle NaN values
 data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)
 
-# Convert the area preferences into a single ordinal dependent variable
+# Convert the Location preferences into a single ordinal dependent variable
 area_to_number = {'City_center': 1, 'Urban_area': 2, 'Suburban_area': 3, 'Rural_area': 4}
-data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].idxmin(axis=1).map(area_to_number)
+data['living_Location_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].idxmin(axis=1).map(area_to_number)
 
 # Convert income to a continuous scale based on the provided income brackets
 income_mapping = {1.0: 625, 2.0: 2292, 3.0: 5000, 4.0: 6666}
@@ -50,7 +50,7 @@ data['scaled_income'] = scaler.fit_transform(data[['continuous_income']])
 
 # Prepare the features and target variable for modeling
 X = data[['scaled_income']]
-y = data['living_area_preference']
+y = data['living_Location_preference']
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -70,20 +70,25 @@ r2 = r2_score(y_test, y_pred)
 print(f'Mean Squared Error: {mse}')
 print(f'R-squared: {r2}')
 
+# Debugging the sizes of arrays
+print("Sizes of arrays for plotting:")
+print("X_test['scaled_income']: ", len(X_test['scaled_income']))
+print("y_test: ", len(y_test))
+print("y_pred: ", len(y_pred))
+
 # Plotting
 plt.scatter(X_test['scaled_income'].values, y_test.values, color='black', label='Actual Data')
 plt.scatter(X_test['scaled_income'].values, y_pred, color='red', label='Predicted Data', alpha=0.5)
 
-# Optionally, create a more continuous line for predictions (for visual enhancement)
+# Optionally, create a more continuous line for predictions
 sorted_order = np.argsort(X_test['scaled_income'].values)
 plt.plot(X_test['scaled_income'].values[sorted_order], y_pred[sorted_order], color='blue', linewidth=2, label='Regression Line')
 
 plt.xlabel('Monthly income')
-plt.ylabel('Living Area Preference')
-plt.title('Income vs Living Area Preference Linear Regression')
+plt.ylabel('Living Location Preference')
+plt.title('Income vs Living Location Preference Linear Regression')
 plt.legend()
 plt.show()
-
 
 
 ```
@@ -212,7 +217,7 @@ In our exploration of the relationship between income and living area preference
 ### **Comparative Table**
 
 | **Model Type**        | **Mean Squared Error (MSE)** | **R-squared Value**    |
-|-----------------------|------------------------------|------------------------|
+|----------------------|----------------------------|-----------------------|
 | Linear Regression     | 1.2229590696534407           | -0.0034801764611527286 |
 | Polynomial Regression | 0.12978886986451396          | 0.012140786799389347   |
 
