@@ -3,7 +3,7 @@
     "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Linear and nonlinear regression/index.qmd",
     "project_path": "posts/Linear and nonlinear regression/index.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "3621531340",
     "contents": "",
     "dirty": false,
     "created": 1700977214367.0,
@@ -16,16 +16,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "8030:3623.5",
+        "rmdVisualModeLocation": "9185:4113",
         "cursorPosition": "95,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1701074701,
+    "lastKnownWriteTime": 1701076960,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1701074701802,
+    "last_content_update": 1701076960749,
     "read_only": false,
     "read_only_alternatives": []
 }

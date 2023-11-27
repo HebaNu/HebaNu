@@ -1,0 +1,81 @@
+"0","import pandas as pd"
+"0","import statsmodels.api as sm"
+"0","from sklearn.model_selection import train_test_split"
+"0",""
+"0","# Load the dataset"
+"0","data = pd.read_excel('Income_LivingLocation_GradientBoostingRegressor.xlsx')  "
+"0","# Update the path to your file"
+"0",""
+"0","# Combine the area preferences into a single ordinal variable"
+"0","def get_preference_rank(row):"
+"0","    if row['City_center'] == 1:"
+"0","        return 1"
+"0","    elif row['Urban_area'] == 1:"
+"0","        return 2"
+"0","    elif row['Suburban_area'] == 1:"
+"0","        return 3"
+"0","    elif row['Rural_area'] == 1:"
+"0","        return 4"
+"0","        "
+"0","data['living_area_preference'] = data.apply(get_preference_rank, axis=1)"
+"0",""
+"0","# Prepare the features and the target variable"
+"0","X = data[['Monthly_income', 'Education_Level', 'House_owner_or_renter', 'number of employees in household']]"
+"0","y = data['living_area_preference']"
+"0",""
+"0","# Add a constant to the model (intercept)"
+"0","X = sm.add_constant(X)"
+"0",""
+"0","# Split the data into training and testing sets"
+"0","X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
+"0",""
+"0","# Fit the ordinal regression model"
+"0","model = sm.MNLogit(y_train, X_train)"
+"0","result = model.fit()"
+"1","Optimization terminated successfully.
+         Current function value: 1.336686
+         Iterations 5
+"
+"0","# Output the model summary"
+"0","print(result.summary())"
+"1","                            MNLogit Regression Results                            
+==================================================================================
+Dep. Variable:     living_area_preference   No. Observations:                  680
+Model:                            MNLogit   Df Residuals:                      665
+Method:                               MLE   Df Model:                           12
+Date:                    Mon, 27 Nov 2023   Pseudo R-squ.:                 0.03553
+Time:   "
+"1","                         04:18:18   Log-Likelihood:                -908.95
+converged:                           True   LL-Null:                       -942.43
+Covariance Type:                nonrobust   LLR p-value:                 1.174e-09
+====================================================================================================
+        living_area_preference=2       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------"
+"1","------------------------------------
+const                                2.5322      0.630      4.020      0.000       1.298       3.767
+Monthly_income                      -0.6509      0.124     -5.230      0.000      -0.895      -0.407
+Education_Level                      0.0909      0.055      1.642      0.101      -0.018       0.199
+House_owner_or_renter               -0.6254      0.262     -2.388      0.017      -1.139      -0.112
+number of employees in household    -0.2076      0.160     -1.296 "
+"1","     0.195      -0.522       0.106
+----------------------------------------------------------------------------------------------------
+        living_area_preference=3       coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+const                                2.8972      0.633      4.575      0.000       1.656       4.138
+Monthly_income                      -0.7957      0.126     -6.294   "
+"1","   0.000      -1.043      -0.548
+Education_Level                      0.0914      0.056      1.626      0.104      -0.019       0.202
+House_owner_or_renter               -0.6095      0.264     -2.307      0.021      -1.127      -0.092
+number of employees in household    -0.2320      0.163     -1.426      0.154      -0.551       0.087
+----------------------------------------------------------------------------------------------------
+        living_area_preference=4       coef    std err          z     "
+"1"," P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+const                                0.9399      0.628      1.496      0.135      -0.292       2.171
+Monthly_income                      -0.5330      0.124     -4.314      0.000      -0.775      -0.291
+Education_Level                      0.1038      0.055      1.893      0.058      -0.004       0.211
+House_owner_or_renter               -0.0429      0.241     -0.178      0"
+"1",".859      -0.516       0.430
+number of employees in household     0.0543      0.160      0.341      0.733      -0.258       0.367
+====================================================================================================
+"

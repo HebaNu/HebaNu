@@ -329,82 +329,75 @@ y_pred:  162</code></pre>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Income_LivingLocation_GradientBoostingRegressor.xlsx'</span>)  <span class="co"># Update the path to your file</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Map the income responses to the categorical income variable</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'income_category'</span>] <span class="op">=</span> data[<span class="st">'Monthly_income'</span>].<span class="bu">map</span>({</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">'1250_or_less'</span>,</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="st">'1251_to_3333'</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="st">'greater_than_3333'</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: <span class="st">'6666_or_more'</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pd.get_dummies to convert 'income_category' into one-hot encoded variables</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>income_dummies <span class="op">=</span> pd.get_dummies(data[<span class="st">'income_category'</span>], drop_first<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming that 'City_center', 'Urban_area', 'Suburban_area', 'Rural_area' are the categories for living area preference</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># We can create an ordinal variable where 1 is most preferred and 4 is least preferred</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_area_preference'</span>] <span class="op">=</span> data[[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>]].idxmin(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">map</span>(area_to_number)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the features (including the one-hot encoded income variable) and the target variable</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.concat([income_dummies, data[[<span class="st">'Education_Level'</span>, <span class="st">'House_owner_or_renter'</span>, <span class="st">'number of employees in household'</span>]]], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'living_area_preference'</span>]</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a constant to the model (intercept)</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the ordinal regression model</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.MNLogit(y_train, X_train)</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> model.fit()</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the model summary</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Income_LivingLocation_GradientBoostingRegressor.xlsx'</span>)  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the path to your file</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the area preferences into a single ordinal variable</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_preference_rank(row):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'City_center'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'Urban_area'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">2</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'Suburban_area'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'Rural_area'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">4</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_area_preference'</span>] <span class="op">=</span> data.<span class="bu">apply</span>(get_preference_rank, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the features and the target variable</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[[<span class="st">'Monthly_income'</span>, <span class="st">'Education_Level'</span>, <span class="st">'House_owner_or_renter'</span>, <span class="st">'number of employees in household'</span>]]</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'living_area_preference'</span>]</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a constant to the model (intercept)</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the ordinal regression model</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.MNLogit(y_train, X_train)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> model.fit()</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the model summary</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Optimization terminated successfully.
-         Current function value: 1.317143
+         Current function value: 1.336686
          Iterations 5
                             MNLogit Regression Results                            
 ==================================================================================
 Dep. Variable:     living_area_preference   No. Observations:                  680
-Model:                            MNLogit   Df Residuals:                      659
-Method:                               MLE   Df Model:                           18
-Date:                    Mon, 27 Nov 2023   Pseudo R-squ.:                 0.04969
-Time:                            03:45:21   Log-Likelihood:                -895.66
-converged:                           True   LL-Null:                       -942.49
-Covariance Type:                nonrobust   LLR p-value:                 3.164e-12
+Model:                            MNLogit   Df Residuals:                      665
+Method:                               MLE   Df Model:                           12
+Date:                    Mon, 27 Nov 2023   Pseudo R-squ.:                 0.03553
+Time:                            04:23:23   Log-Likelihood:                -908.95
+converged:                           True   LL-Null:                       -942.43
+Covariance Type:                nonrobust   LLR p-value:                 1.174e-09
 ====================================================================================================
         living_area_preference=2       coef    std err          z      P&gt;|z|      [0.025      0.975]
 ----------------------------------------------------------------------------------------------------
-const                                1.3630      0.590      2.310      0.021       0.206       2.520
-1251_to_3333                         0.2804      0.395      0.709      0.478      -0.495       1.055
-6666_or_more                        -1.6061      0.414     -3.879      0.000      -2.418      -0.794
-greater_than_3333                   -0.1540      0.374     -0.412      0.681      -0.887       0.579
-Education_Level                      0.0911      0.056      1.620      0.105      -0.019       0.201
-House_owner_or_renter               -0.7678      0.268     -2.864      0.004      -1.293      -0.242
-number of employees in household    -0.2459      0.163     -1.513      0.130      -0.564       0.073
+const                                2.5322      0.630      4.020      0.000       1.298       3.767
+Monthly_income                      -0.6509      0.124     -5.230      0.000      -0.895      -0.407
+Education_Level                      0.0909      0.055      1.642      0.101      -0.018       0.199
+House_owner_or_renter               -0.6254      0.262     -2.388      0.017      -1.139      -0.112
+number of employees in household    -0.2076      0.160     -1.296      0.195      -0.522       0.106
 ----------------------------------------------------------------------------------------------------
         living_area_preference=3       coef    std err          z      P&gt;|z|      [0.025      0.975]
 ----------------------------------------------------------------------------------------------------
-const                                1.4275      0.595      2.400      0.016       0.262       2.593
-1251_to_3333                         0.4945      0.389      1.271      0.204      -0.268       1.257
-6666_or_more                        -1.7480      0.419     -4.171      0.000      -2.569      -0.927
-greater_than_3333                   -0.5055      0.380     -1.332      0.183      -1.249       0.238
-Education_Level                      0.0994      0.057      1.735      0.083      -0.013       0.212
-House_owner_or_renter               -0.7764      0.272     -2.859      0.004      -1.309      -0.244
-number of employees in household    -0.2746      0.166     -1.657      0.097      -0.599       0.050
+const                                2.8972      0.633      4.575      0.000       1.656       4.138
+Monthly_income                      -0.7957      0.126     -6.294      0.000      -1.043      -0.548
+Education_Level                      0.0914      0.056      1.626      0.104      -0.019       0.202
+House_owner_or_renter               -0.6095      0.264     -2.307      0.021      -1.127      -0.092
+number of employees in household    -0.2320      0.163     -1.426      0.154      -0.551       0.087
 ----------------------------------------------------------------------------------------------------
         living_area_preference=4       coef    std err          z      P&gt;|z|      [0.025      0.975]
 ----------------------------------------------------------------------------------------------------
-const                                0.1040      0.585      0.178      0.859      -1.043       1.251
-1251_to_3333                        -0.1956      0.395     -0.495      0.621      -0.971       0.579
-6666_or_more                        -1.4457      0.393     -3.675      0.000      -2.217      -0.675
-greater_than_3333                   -0.2155      0.366     -0.589      0.556      -0.932       0.501
-Education_Level                      0.0954      0.055      1.725      0.084      -0.013       0.204
-House_owner_or_renter               -0.1115      0.247     -0.452      0.651      -0.595       0.372
-number of employees in household     0.0431      0.161      0.268      0.789      -0.272       0.358
+const                                0.9399      0.628      1.496      0.135      -0.292       2.171
+Monthly_income                      -0.5330      0.124     -4.314      0.000      -0.775      -0.291
+Education_Level                      0.1038      0.055      1.893      0.058      -0.004       0.211
+House_owner_or_renter               -0.0429      0.241     -0.178      0.859      -0.516       0.430
+number of employees in household     0.0543      0.160      0.341      0.733      -0.258       0.367
 ====================================================================================================</code></pre>
 </div>
 </div>
@@ -429,8 +422,8 @@ number of employees in household     0.0431      0.161      0.268      0.789    
 <h3 class="anchored" data-anchor-id="comparative-table"><strong>Comparative Table</strong></h3>
 <table class="table">
 <colgroup>
-<col style="width: 29%">
-<col style="width: 38%">
+<col style="width: 30%">
+<col style="width: 37%">
 <col style="width: 31%">
 </colgroup>
 <thead>

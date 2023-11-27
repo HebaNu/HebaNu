@@ -135,25 +135,24 @@ import statsmodels.api as sm
 from sklearn.model_selection import train_test_split
 
 # Load the dataset
-data = pd.read_excel('Income_LivingLocation_GradientBoostingRegressor.xlsx')  # Update the path to your file
+data = pd.read_excel('Income_LivingLocation_GradientBoostingRegressor.xlsx')  
+# Update the path to your file
 
-# Map the income responses to the categorical income variable
-data['income_category'] = data['Monthly_income'].map({
-    1: '1250_or_less',
-    2: '1251_to_3333',
-    3: 'greater_than_3333',
-    4: '6666_or_more'
-})
+# Combine the area preferences into a single ordinal variable
+def get_preference_rank(row):
+    if row['City_center'] == 1:
+        return 1
+    elif row['Urban_area'] == 1:
+        return 2
+    elif row['Suburban_area'] == 1:
+        return 3
+    elif row['Rural_area'] == 1:
+        return 4
 
-# Use pd.get_dummies to convert 'income_category' into one-hot encoded variables
-income_dummies = pd.get_dummies(data['income_category'], drop_first=True)
+data['living_area_preference'] = data.apply(get_preference_rank, axis=1)
 
-# Assuming that 'City_center', 'Urban_area', 'Suburban_area', 'Rural_area' are the categories for living area preference
-# We can create an ordinal variable where 1 is most preferred and 4 is least preferred
-data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].idxmin(axis=1).map(area_to_number)
-
-# Prepare the features (including the one-hot encoded income variable) and the target variable
-X = pd.concat([income_dummies, data[['Education_Level', 'House_owner_or_renter', 'number of employees in household']]], axis=1)
+# Prepare the features and the target variable
+X = data[['Monthly_income', 'Education_Level', 'House_owner_or_renter', 'number of employees in household']]
 y = data['living_area_preference']
 
 # Add a constant to the model (intercept)
@@ -168,6 +167,8 @@ result = model.fit()
 
 # Output the model summary
 print(result.summary())
+
+
 
 ```
 
@@ -190,6 +191,6 @@ In our exploration of the relationship between income and living area preference
 ### **Comparative Table**
 
 | **Model Type**        | **Mean Squared Error (MSE)** | **R-squared Value**    |
-|-----------------------|------------------------------|------------------------|
+|----------------------|---------------------------|-----------------------|
 | Linear Regression     | 1.2229590696534407           | -0.0034801764611527286 |
 | Polynomial Regression | 0.12978886986451396          | 0.012140786799389347   |
