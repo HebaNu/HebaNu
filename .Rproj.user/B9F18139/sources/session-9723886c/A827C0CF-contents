@@ -170,6 +170,44 @@ print(result.summary())
 
 
 
+
+
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Assuming you have the ordinal model 'result' already fitted
+# and 'X_test' contains the test data including the 'Monthly_income' variable
+
+# Generate a range of income values (this range should cover the observed scope of incomes)
+income_range = np.linspace(X_test['Monthly_income'].min(), X_test['Monthly_income'].max(), 100)
+
+# Create a new DataFrame for prediction
+X_new = pd.DataFrame(income_range, columns=['Monthly_income'])
+
+# Add a constant if your model requires it (assuming it's named 'const' in your model)
+X_new = sm.add_constant(X_new)
+
+# Predict the probabilities for each income value
+predicted_probs = result.predict(X_new)
+
+# Plot the predicted probabilities for each category
+for i in range(predicted_probs.shape[1]):
+    plt.plot(income_range, predicted_probs[:, i], label=f'Preference {i+1}')
+
+# Customize the plot
+plt.xlabel('Monthly Income')
+plt.ylabel('Probability')
+plt.title('Predicted Living Area Preference by Monthly Income')
+plt.legend()
+plt.show()
+
+
+
+
 ```
 
 ### **Comparison of Linear vs. Polynomial Regression Models**
