@@ -1,5 +1,5 @@
 ---
-title: "The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices"
+title: "Exploring the Relationship Between Income and Living Location Preference"
 subtitle: "Linear Regression VS. non_Linear Regression"
 author: "Heba Nusair"
 date: "2023-11-06"
@@ -9,11 +9,11 @@ image: "image.jpg"
 
 ### **Introduction**
 
-In the dynamic realm of urban living choices, understanding the factors influencing our habitat preferences is crucial. We embarked on a data-driven journey to explore one such factor -- income. Our goal was simple yet profound: to discern how variations in income affect preferences for living areas. For this, we turned to the ever-reliable tools of machine learning, specifically linear regression.
+In our quest to understand how monthly income influences living location preferences, particularly among Workers From Home (WFH), we embarked on an analytical journey using linear regression. Linear regression is a statistical method that helps us understand the relationship between two variables -- in this case, income and living location preference of WFH workers.
 
 ### **The Study at a Glance**
 
-Our dataset encapsulated responses from individuals, detailing their income levels and preferred living areas -- be it the bustling city center, the vibrant urban zones, the serene suburban areas, or the tranquil rural landscapes. Our approach was straightforward:
+Our dataset encapsulated responses from individuals, detailing their income levels and preferred living areas -- be it the bustling city center, the vibrant urban zones, the serene suburban areas, or the tranquil rural landscapes; this preference of **moving from urban area to rural** is represented by "**relocating index**". Our approach was straightforward:
 
 1.  We transformed **income** into a continuous scale, assigning monetary values to income brackets.
 
@@ -36,9 +36,9 @@ data = pd.read_excel('Income_LivingLocationPrefrences.xlsx')
 # Handle NaN values
 data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)
 
-# Convert the area preferences into a single ordinal dependent variable
+# Convert the Location preferences into a single ordinal dependent variable
 area_to_number = {'City_center': 1, 'Urban_area': 2, 'Suburban_area': 3, 'Rural_area': 4}
-data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].idxmin(axis=1).map(area_to_number)
+data['living_Location_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].idxmin(axis=1).map(area_to_number)
 
 # Convert income to a continuous scale based on the provided income brackets
 income_mapping = {1.0: 625, 2.0: 2292, 3.0: 5000, 4.0: 6666}
@@ -50,7 +50,7 @@ data['scaled_income'] = scaler.fit_transform(data[['continuous_income']])
 
 # Prepare the features and target variable for modeling
 X = data[['scaled_income']]
-y = data['living_area_preference']
+y = data['living_Location_preference']
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -85,33 +85,39 @@ sorted_order = np.argsort(X_test['scaled_income'].values)
 plt.plot(X_test['scaled_income'].values[sorted_order], y_pred[sorted_order], color='blue', linewidth=2, label='Regression Line')
 
 plt.xlabel('Monthly income')
-plt.ylabel('Living Area Preference')
-plt.title('Income vs Living Area Preference Linear Regression')
+plt.ylabel('Living Location Preference:moving from urban to rural index')
+plt.title('Income vs Living Location Preference Linear Regression')
 plt.legend()
 plt.show()
 
 
 ```
 
-### **Unveiling the Results**
+### **Unveiling the Linear Regression Insights for WFH Workers**
 
-The outcomes of our analysis were both intriguing and enlightening:
+We meticulously gathered data on WFH workers and ran a linear regression model. Here's a snapshot of our findings:
 
--   **Mean Squared Error (MSE):** The MSE stood at 1.2229590696534407. This figure, in isolation, hinted at some variance between the predicted and actual preferences. However, this is only one piece of the puzzle.
+-   <div>
 
--   **R-squared Value:** Here's where the plot thickens. The R-squared value, at -0.0034801764611527286, raised eyebrows. This negative value suggested that the linear model failed to capture the essence of the relationship between income and living area preference. What does this mean? Simply put, the linear regression model we deployed might not be the right fit for this specific analysis.
+    -   **Mean Squared Error (MSE)**: Our model showed an MSE of 1.2658068009077692. This number tells us how close the model's predictions are to the actual data. Think of it as an accuracy gauge: the lower the number, the better. In our analysis, this number, though not extremely high, does indicate some level of discrepancy between what the model predicts and the real-world data of WFH workers.
 
-### **Interpreting the Outcome**
+    -   **R-squared Value**: Perhaps more tellingly, our model yielded an R-squared value of just 0.006851215790502296. This metric is crucial -- it shows how well our independent variable (income) explains the variation in our dependent variable (living location preference). The closer this value is to 1, the better. Our low R-squared value hints that our model, as it stands, might not be capturing the whole picture, especially in the context of WFH employees.
 
-This unexpected twist in our narrative compels us to introspect and question. Here are a few takeaways and considerations:
+    </div>
 
--   **Non-linear Relationships:** Perhaps the bond between income and living area preference isn't a straight line but a curve or a more complex shape. Linear regression, with its assumption of linearity, might not be adept at capturing such nuances.
+    In our analytical journey to understand how income affects living location preferences for Workers From Home (WFH), we've encountered some intriguing results. Our linear regression model produced a Mean Squared Error (MSE) of 1.2658068009077692 and an R-squared value of just 0.006851215790502296. While the MSE suggests a reasonable level of accuracy, the low R-squared value indicates that income alone may not be a strong predictor of living area preferences among WFH employees.
 
--   **Missing Puzzle Pieces:** It's plausible that other influential factors, not included in our current model, play a significant role in shaping living area preferences.
+    A glance at our regression plot further illustrates this point. The actual data points, represented by black dots, are scattered across the graph, deviating from the blue regression line that represents our model's predictions. The red dots, which mark our model's predicted values, also stray from many of the actual data points. This visual mismatch echoes the numerical findings, suggesting that the linear model doesn't fully capture the nuances of our data.
 
--   **Data Reflection:** The integrity and representativeness of our data demand scrutiny. Are there outliers skewing our results? Have we translated income brackets into continuous variables accurately?
+    The plot signals that there could be more complexity to the relationship between income and living area preferences than a simple linear model can explain. It raises the possibility that other, unconsidered factors may influence this relationship, or that the dynamics between these variables are not linear at all.
 
-### **Moving Forward: A Path of Exploration**
+    ### **Transitioning to Non-Linear Models**
+
+    This revelation leads us to our next analytical adventure -- exploring non-linear relationships. It's possible that the connection between income and living location preference for WFH workers bends and curves in ways that a simple straight line can't capture.
+
+    In our upcoming analysis, we'll dive into non-linear regression models. Non-linear regression could potentially provide a better framework for capturing the intricate patterns that seem to exist between income and where WFH employees prefer to reside. We're excited to see how this approach compares with our initial linear model and what new insights we can uncover about the factors influencing where WFH employees choose
+
+    Stay tuned as we continue to unravel the intricacies of income and living location preferences for workers from home, one model at a time!
 
 ### **Introducing the Concept of Non-Linear Relationships**
 
@@ -119,82 +125,49 @@ In our exploration of how income influences living area preferences, a linear mo
 
 Linear regression, with its assumption of a straight-line relationship between variables, is ill-equipped to capture these nuances. This is where the idea of non-linear relationships comes into play. Such relationships are not confined to straight lines and can take various forms, like curves, which are more adept at mapping the intricate patterns often found in real-world data.
 
-### **Implementing Polynomial Regression**
+### **Implementing ordinal regression model**
 
-To explore these potential non-linear patterns, we turn to polynomial regression. This technique extends linear regression by adding polynomial terms (such as squared, cubed values) of the predictor variables. By doing so, it allows the model to bend and curve, fitting more complex relationships than a straight line ever could.
-
-Implementing polynomial regression is a straightforward extension of our current linear model. We use **`PolynomialFeatures`** from **`sklearn.preprocessing`** to transform our income data, introducing these higher-order terms. By fitting our model with these transformed features, we can capture the potential non-linear relationship between income and living area preference more effectively.
+To explore these potential non-linear patterns, we turn to
 
 ```{python}
-# Since the last execution to verify the column names did not work, let's proceed with the updated code
-# for polynomial regression including the additional variable "Distance from home to work" and the plot.
-
-# I will assume the column names provided are correct and update the code accordingly.
-
-# Full code with the additional independent variable and plotting the regression curve
 import pandas as pd
-import numpy as np
+import statsmodels.api as sm
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-import matplotlib.pyplot as plt
 
 # Load the dataset
-data_path = 'Income_LivingLocationPrefrences.xlsx'
-data = pd.read_excel(data_path)
+data = pd.read_excel('Income_LivingLocation_GradientBoostingRegressor.xlsx')  # Update the path to your file
 
-# Handle NaN values
-data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income', 'Distance from home to work'], inplace=True)
+# Map the income responses to the categorical income variable
+data['income_category'] = data['Monthly_income'].map({
+    1: '1250_or_less',
+    2: '1251_to_3333',
+    3: 'greater_than_3333',
+    4: '6666_or_more'
+})
 
-# Create a new column 'living_area_preference' as the average of the Likert-scale responses
-data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].mean(axis=1)
+# Use pd.get_dummies to convert 'income_category' into one-hot encoded variables
+income_dummies = pd.get_dummies(data['income_category'], drop_first=True)
 
-# Convert income to a continuous scale based on the provided income brackets
-income_mapping = {1.0: 625, 2.0: 2292, 3.0: 5000, 4.0: 6666}
-data['continuous_income'] = data['Monthly_income'].map(income_mapping)
+# Assuming that 'City_center', 'Urban_area', 'Suburban_area', 'Rural_area' are the categories for living area preference
+# We can create an ordinal variable where 1 is most preferred and 4 is least preferred
+data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].idxmin(axis=1).map(area_to_number)
 
-# Scale the income feature and the 'Distance from home to work' feature
-scaler = StandardScaler()
-data[['scaled_income', 'scaled_distance']] = scaler.fit_transform(data[['Monthly_income', 'Distance from home to work']])
+# Prepare the features (including the one-hot encoded income variable) and the target variable
+X = pd.concat([income_dummies, data[['Education_Level', 'House_owner_or_renter', 'number of employees in household']]], axis=1)
+y = data['living_area_preference']
 
-# Create polynomial features including the new variable
-X = data[['scaled_income', 'scaled_distance']]
-poly = PolynomialFeatures(degree=2)
-X_poly = poly.fit_transform(X)
+# Add a constant to the model (intercept)
+X = sm.add_constant(X)
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X_poly, data['living_area_preference'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Polynomial Regression Model
-poly_model = LinearRegression()
-poly_model.fit(X_train, y_train)
-y_pred_poly = poly_model.predict(X_test)
-mse_poly = mean_squared_error(y_test, y_pred_poly)
-r2_poly = r2_score(y_test, y_pred_poly)
+# Fit the ordinal regression model
+model = sm.MNLogit(y_train, X_train)
+result = model.fit()
 
-# Output the results for Polynomial Regression Model
-print("Polynomial Regression Model with Distance Variable:")
-print(f"Mean Squared Error: {mse_poly}")
-print(f"R-squared: {r2_poly}")
-
-# Since we have two independent variables, we can't simply plot a 2D curve.
-# Instead, we'll plot the actual vs predicted values for one of the variables (scaled_income).
-
-# Scatter plot of actual vs predicted values
-plt.scatter(X_test[:, 1], y_test, alpha=0.5, color='blue', label='Actual')  # Scaled income for x-axis
-plt.scatter(X_test[:, 1], y_pred_poly, alpha=0.5, color='red', label='Predicted')
-
-# Adding plot labels and title
-plt.xlabel('Scaled Monthly Income')
-plt.ylabel('Predicted Living Area Preference')
-plt.title('Polynomial Regression with Distance Variable: Actual vs Predicted Values')
-plt.legend()
-
-# Show the plot
-plt.show()
-
-
+# Output the model summary
+print(result.summary())
 
 ```
 
@@ -217,16 +190,6 @@ In our exploration of the relationship between income and living area preference
 ### **Comparative Table**
 
 | **Model Type**        | **Mean Squared Error (MSE)** | **R-squared Value**    |
-|----------------------|----------------------------|-----------------------|
+|-----------------------|------------------------------|------------------------|
 | Linear Regression     | 1.2229590696534407           | -0.0034801764611527286 |
 | Polynomial Regression | 0.12978886986451396          | 0.012140786799389347   |
-
-### **Interpretation and Conclusion**
-
--   **Model Fit**: The Polynomial Regression model shows a lower MSE, indicating a better fit to our data compared to the Linear Regression model.
-
--   **Model's Explanatory Power**: Despite the improvement in R-squared value in the Polynomial Regression model, it remains low, suggesting that additional factors might influence living area preferences beyond what is captured by income alone.
-
--   **Next Steps**: These results highlight the need to explore more complex models or additional variables that could provide a deeper understanding of the factors influencing living area preferences.
-
-This analysis underscores the importance of choosing the right model and considering multiple factors in predictive analytics, especially in complex real-world scenarios.

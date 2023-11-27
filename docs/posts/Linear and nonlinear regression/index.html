@@ -9,7 +9,7 @@
 <meta name="author" content="Heba Nusair">
 <meta name="dcterms.date" content="2023-11-06">
 
-<title>BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices</title>
+<title>BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Exploring the Relationship Between Income and Living Location Preference</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,12 +98,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices">
+<meta property="og:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Exploring the Relationship Between Income and Living Location Preference">
 <meta property="og:description" content="Linear Regression VS. non_Linear Regression">
 <meta property="og:image" content="image.jpg">
 <meta property="og:site-name" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning
 ">
-<meta name="twitter:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices">
+<meta name="twitter:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Exploring the Relationship Between Income and Living Location Preference">
 <meta name="twitter:description" content="Linear Regression VS. non_Linear Regression">
 <meta name="twitter:image" content="image.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices</h1>
+      <h1 class="title">Exploring the Relationship Between Income and Living Location Preference</h1>
             <p class="subtitle lead">Linear Regression VS. non_Linear Regression</p>
                                 <div class="quarto-categories">
                 <div class="quarto-category">news</div>
@@ -205,11 +205,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h3>
-<p>In the dynamic realm of urban living choices, understanding the factors influencing our habitat preferences is crucial. We embarked on a data-driven journey to explore one such factor – income. Our goal was simple yet profound: to discern how variations in income affect preferences for living areas. For this, we turned to the ever-reliable tools of machine learning, specifically linear regression.</p>
+<p>In our quest to understand how monthly income influences living location preferences, particularly among Workers From Home (WFH), we embarked on an analytical journey using linear regression. Linear regression is a statistical method that helps us understand the relationship between two variables – in this case, income and living location preference of WFH workers.</p>
 </section>
 <section id="the-study-at-a-glance" class="level3">
 <h3 class="anchored" data-anchor-id="the-study-at-a-glance"><strong>The Study at a Glance</strong></h3>
-<p>Our dataset encapsulated responses from individuals, detailing their income levels and preferred living areas – be it the bustling city center, the vibrant urban zones, the serene suburban areas, or the tranquil rural landscapes. Our approach was straightforward:</p>
+<p>Our dataset encapsulated responses from individuals, detailing their income levels and preferred living areas – be it the bustling city center, the vibrant urban zones, the serene suburban areas, or the tranquil rural landscapes; this preference of <strong>moving from urban area to rural</strong> is represented by “<strong>relocating index</strong>”. Our approach was straightforward:</p>
 <ol type="1">
 <li><p>We transformed <strong>income</strong> into a continuous scale, assigning monetary values to income brackets.</p></li>
 <li><p>We converted <strong>living area preferences</strong> into a single, ordinal dependent variable.</p></li>
@@ -230,9 +230,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle NaN values</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>data.dropna(subset<span class="op">=</span>[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>, <span class="st">'Monthly_income'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the area preferences into a single ordinal dependent variable</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the Location preferences into a single ordinal dependent variable</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>area_to_number <span class="op">=</span> {<span class="st">'City_center'</span>: <span class="dv">1</span>, <span class="st">'Urban_area'</span>: <span class="dv">2</span>, <span class="st">'Suburban_area'</span>: <span class="dv">3</span>, <span class="st">'Rural_area'</span>: <span class="dv">4</span>}</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_area_preference'</span>] <span class="op">=</span> data[[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>]].idxmin(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">map</span>(area_to_number)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_Location_preference'</span>] <span class="op">=</span> data[[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>]].idxmin(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">map</span>(area_to_number)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert income to a continuous scale based on the provided income brackets</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>income_mapping <span class="op">=</span> {<span class="fl">1.0</span>: <span class="dv">625</span>, <span class="fl">2.0</span>: <span class="dv">2292</span>, <span class="fl">3.0</span>: <span class="dv">5000</span>, <span class="fl">4.0</span>: <span class="dv">6666</span>}</span>
@@ -244,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the features and target variable for modeling</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[[<span class="st">'scaled_income'</span>]]</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'living_area_preference'</span>]</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'living_Location_preference'</span>]</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
@@ -279,8 +279,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>plt.plot(X_test[<span class="st">'scaled_income'</span>].values[sorted_order], y_pred[sorted_order], color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Regression Line'</span>)</span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Monthly income'</span>)</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Living Area Preference'</span>)</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Income vs Living Area Preference Linear Regression'</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Living Location Preference:moving from urban to rural index'</span>)</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Income vs Living Location Preference Linear Regression'</span>)</span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -296,110 +296,116 @@ y_pred:  162</code></pre>
 </div>
 </div>
 </section>
-<section id="unveiling-the-results" class="level3">
-<h3 class="anchored" data-anchor-id="unveiling-the-results"><strong>Unveiling the Results</strong></h3>
-<p>The outcomes of our analysis were both intriguing and enlightening:</p>
+<section id="unveiling-the-linear-regression-insights-for-wfh-workers" class="level3">
+<h3 class="anchored" data-anchor-id="unveiling-the-linear-regression-insights-for-wfh-workers"><strong>Unveiling the Linear Regression Insights for WFH Workers</strong></h3>
+<p>We meticulously gathered data on WFH workers and ran a linear regression model. Here’s a snapshot of our findings:</p>
 <ul>
-<li><p><strong>Mean Squared Error (MSE):</strong> The MSE stood at 1.2229590696534407. This figure, in isolation, hinted at some variance between the predicted and actual preferences. However, this is only one piece of the puzzle.</p></li>
-<li><p><strong>R-squared Value:</strong> Here’s where the plot thickens. The R-squared value, at -0.0034801764611527286, raised eyebrows. This negative value suggested that the linear model failed to capture the essence of the relationship between income and living area preference. What does this mean? Simply put, the linear regression model we deployed might not be the right fit for this specific analysis.</p></li>
-</ul>
-</section>
-<section id="interpreting-the-outcome" class="level3">
-<h3 class="anchored" data-anchor-id="interpreting-the-outcome"><strong>Interpreting the Outcome</strong></h3>
-<p>This unexpected twist in our narrative compels us to introspect and question. Here are a few takeaways and considerations:</p>
+<li><div>
 <ul>
-<li><p><strong>Non-linear Relationships:</strong> Perhaps the bond between income and living area preference isn’t a straight line but a curve or a more complex shape. Linear regression, with its assumption of linearity, might not be adept at capturing such nuances.</p></li>
-<li><p><strong>Missing Puzzle Pieces:</strong> It’s plausible that other influential factors, not included in our current model, play a significant role in shaping living area preferences.</p></li>
-<li><p><strong>Data Reflection:</strong> The integrity and representativeness of our data demand scrutiny. Are there outliers skewing our results? Have we translated income brackets into continuous variables accurately?</p></li>
+<li><p><strong>Mean Squared Error (MSE)</strong>: Our model showed an MSE of 1.2658068009077692. This number tells us how close the model’s predictions are to the actual data. Think of it as an accuracy gauge: the lower the number, the better. In our analysis, this number, though not extremely high, does indicate some level of discrepancy between what the model predicts and the real-world data of WFH workers.</p></li>
+<li><p><strong>R-squared Value</strong>: Perhaps more tellingly, our model yielded an R-squared value of just 0.006851215790502296. This metric is crucial – it shows how well our independent variable (income) explains the variation in our dependent variable (living location preference). The closer this value is to 1, the better. Our low R-squared value hints that our model, as it stands, might not be capturing the whole picture, especially in the context of WFH employees.</p></li>
 </ul>
-</section>
-<section id="moving-forward-a-path-of-exploration" class="level3">
-<h3 class="anchored" data-anchor-id="moving-forward-a-path-of-exploration"><strong>Moving Forward: A Path of Exploration</strong></h3>
+</div>
+<p>In our analytical journey to understand how income affects living location preferences for Workers From Home (WFH), we’ve encountered some intriguing results. Our linear regression model produced a Mean Squared Error (MSE) of 1.2658068009077692 and an R-squared value of just 0.006851215790502296. While the MSE suggests a reasonable level of accuracy, the low R-squared value indicates that income alone may not be a strong predictor of living area preferences among WFH employees.</p>
+<p>A glance at our regression plot further illustrates this point. The actual data points, represented by black dots, are scattered across the graph, deviating from the blue regression line that represents our model’s predictions. The red dots, which mark our model’s predicted values, also stray from many of the actual data points. This visual mismatch echoes the numerical findings, suggesting that the linear model doesn’t fully capture the nuances of our data.</p>
+<p>The plot signals that there could be more complexity to the relationship between income and living area preferences than a simple linear model can explain. It raises the possibility that other, unconsidered factors may influence this relationship, or that the dynamics between these variables are not linear at all.</p>
+<h3 id="transitioning-to-non-linear-models" class="anchored"><strong>Transitioning to Non-Linear Models</strong></h3>
+<p>This revelation leads us to our next analytical adventure – exploring non-linear relationships. It’s possible that the connection between income and living location preference for WFH workers bends and curves in ways that a simple straight line can’t capture.</p>
+<p>In our upcoming analysis, we’ll dive into non-linear regression models. Non-linear regression could potentially provide a better framework for capturing the intricate patterns that seem to exist between income and where WFH employees prefer to reside. We’re excited to see how this approach compares with our initial linear model and what new insights we can uncover about the factors influencing where WFH employees choose</p>
+<p>Stay tuned as we continue to unravel the intricacies of income and living location preferences for workers from home, one model at a time!</p></li>
+</ul>
 </section>
 <section id="introducing-the-concept-of-non-linear-relationships" class="level3">
 <h3 class="anchored" data-anchor-id="introducing-the-concept-of-non-linear-relationships"><strong>Introducing the Concept of Non-Linear Relationships</strong></h3>
 <p>In our exploration of how income influences living area preferences, a linear model initially seemed like a straightforward choice. However, real-world data often tell a more complex story. Our linear model, with a surprisingly negative R-squared value, hinted at this complexity. It suggests that the relationship between income and living area preference might not be a straight line, but rather a curve or a more intricate pattern.</p>
 <p>Linear regression, with its assumption of a straight-line relationship between variables, is ill-equipped to capture these nuances. This is where the idea of non-linear relationships comes into play. Such relationships are not confined to straight lines and can take various forms, like curves, which are more adept at mapping the intricate patterns often found in real-world data.</p>
 </section>
-<section id="implementing-polynomial-regression" class="level3">
-<h3 class="anchored" data-anchor-id="implementing-polynomial-regression"><strong>Implementing Polynomial Regression</strong></h3>
-<p>To explore these potential non-linear patterns, we turn to polynomial regression. This technique extends linear regression by adding polynomial terms (such as squared, cubed values) of the predictor variables. By doing so, it allows the model to bend and curve, fitting more complex relationships than a straight line ever could.</p>
-<p>Implementing polynomial regression is a straightforward extension of our current linear model. We use <strong><code>PolynomialFeatures</code></strong> from <strong><code>sklearn.preprocessing</code></strong> to transform our income data, introducing these higher-order terms. By fitting our model with these transformed features, we can capture the potential non-linear relationship between income and living area preference more effectively.</p>
+<section id="implementing-ordinal-regression-model" class="level3">
+<h3 class="anchored" data-anchor-id="implementing-ordinal-regression-model"><strong>Implementing ordinal regression model</strong></h3>
+<p>To explore these potential non-linear patterns, we turn to</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since the last execution to verify the column names did not work, let's proceed with the updated code</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for polynomial regression including the additional variable "Distance from home to work" and the plot.</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># I will assume the column names provided are correct and update the code accordingly.</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Full code with the additional independent variable and plotting the regression curve</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, PolynomialFeatures</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> <span class="st">'Income_LivingLocationPrefrences.xlsx'</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(data_path)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Income_LivingLocation_GradientBoostingRegressor.xlsx'</span>)  <span class="co"># Update the path to your file</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Map the income responses to the categorical income variable</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'income_category'</span>] <span class="op">=</span> data[<span class="st">'Monthly_income'</span>].<span class="bu">map</span>({</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">'1250_or_less'</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="st">'1251_to_3333'</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="st">'greater_than_3333'</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: <span class="st">'6666_or_more'</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pd.get_dummies to convert 'income_category' into one-hot encoded variables</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>income_dummies <span class="op">=</span> pd.get_dummies(data[<span class="st">'income_category'</span>], drop_first<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle NaN values</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>data.dropna(subset<span class="op">=</span>[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>, <span class="st">'Monthly_income'</span>, <span class="st">'Distance from home to work'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column 'living_area_preference' as the average of the Likert-scale responses</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_area_preference'</span>] <span class="op">=</span> data[[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>]].mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert income to a continuous scale based on the provided income brackets</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>income_mapping <span class="op">=</span> {<span class="fl">1.0</span>: <span class="dv">625</span>, <span class="fl">2.0</span>: <span class="dv">2292</span>, <span class="fl">3.0</span>: <span class="dv">5000</span>, <span class="fl">4.0</span>: <span class="dv">6666</span>}</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'continuous_income'</span>] <span class="op">=</span> data[<span class="st">'Monthly_income'</span>].<span class="bu">map</span>(income_mapping)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the income feature and the 'Distance from home to work' feature</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>data[[<span class="st">'scaled_income'</span>, <span class="st">'scaled_distance'</span>]] <span class="op">=</span> scaler.fit_transform(data[[<span class="st">'Monthly_income'</span>, <span class="st">'Distance from home to work'</span>]])</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming that 'City_center', 'Urban_area', 'Suburban_area', 'Rural_area' are the categories for living area preference</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># We can create an ordinal variable where 1 is most preferred and 4 is least preferred</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_area_preference'</span>] <span class="op">=</span> data[[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>]].idxmin(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">map</span>(area_to_number)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the features (including the one-hot encoded income variable) and the target variable</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.concat([income_dummies, data[[<span class="st">'Education_Level'</span>, <span class="st">'House_owner_or_renter'</span>, <span class="st">'number of employees in household'</span>]]], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'living_area_preference'</span>]</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a constant to the model (intercept)</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Create polynomial features including the new variable</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[[<span class="st">'scaled_income'</span>, <span class="st">'scaled_distance'</span>]]</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> PolynomialFeatures(degree<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>X_poly <span class="op">=</span> poly.fit_transform(X)</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X_poly, data[<span class="st">'living_area_preference'</span>], test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Polynomial Regression Model</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>poly_model <span class="op">=</span> LinearRegression()</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>poly_model.fit(X_train, y_train)</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>y_pred_poly <span class="op">=</span> poly_model.predict(X_test)</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>mse_poly <span class="op">=</span> mean_squared_error(y_test, y_pred_poly)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>r2_poly <span class="op">=</span> r2_score(y_test, y_pred_poly)</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the results for Polynomial Regression Model</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Polynomial Regression Model with Distance Variable:"</span>)</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Squared Error: </span><span class="sc">{</span>mse_poly<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared: </span><span class="sc">{</span>r2_poly<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Since we have two independent variables, we can't simply plot a 2D curve.</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead, we'll plot the actual vs predicted values for one of the variables (scaled_income).</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot of actual vs predicted values</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test[:, <span class="dv">1</span>], y_test, alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Actual'</span>)  <span class="co"># Scaled income for x-axis</span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test[:, <span class="dv">1</span>], y_pred_poly, alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Predicted'</span>)</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding plot labels and title</span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Scaled Monthly Income'</span>)</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Predicted Living Area Preference'</span>)</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Polynomial Regression with Distance Variable: Actual vs Predicted Values'</span>)</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the ordinal regression model</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.MNLogit(y_train, X_train)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> model.fit()</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the model summary</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Polynomial Regression Model with Distance Variable:
-Mean Squared Error: 0.2160332716401098
-R-squared: 0.01142909612703713</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-3-output-2.png" width="621" height="449"></p>
+<pre><code>Optimization terminated successfully.
+         Current function value: 1.317143
+         Iterations 5
+                            MNLogit Regression Results                            
+==================================================================================
+Dep. Variable:     living_area_preference   No. Observations:                  680
+Model:                            MNLogit   Df Residuals:                      659
+Method:                               MLE   Df Model:                           18
+Date:                    Mon, 27 Nov 2023   Pseudo R-squ.:                 0.04969
+Time:                            03:45:21   Log-Likelihood:                -895.66
+converged:                           True   LL-Null:                       -942.49
+Covariance Type:                nonrobust   LLR p-value:                 3.164e-12
+====================================================================================================
+        living_area_preference=2       coef    std err          z      P&gt;|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+const                                1.3630      0.590      2.310      0.021       0.206       2.520
+1251_to_3333                         0.2804      0.395      0.709      0.478      -0.495       1.055
+6666_or_more                        -1.6061      0.414     -3.879      0.000      -2.418      -0.794
+greater_than_3333                   -0.1540      0.374     -0.412      0.681      -0.887       0.579
+Education_Level                      0.0911      0.056      1.620      0.105      -0.019       0.201
+House_owner_or_renter               -0.7678      0.268     -2.864      0.004      -1.293      -0.242
+number of employees in household    -0.2459      0.163     -1.513      0.130      -0.564       0.073
+----------------------------------------------------------------------------------------------------
+        living_area_preference=3       coef    std err          z      P&gt;|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+const                                1.4275      0.595      2.400      0.016       0.262       2.593
+1251_to_3333                         0.4945      0.389      1.271      0.204      -0.268       1.257
+6666_or_more                        -1.7480      0.419     -4.171      0.000      -2.569      -0.927
+greater_than_3333                   -0.5055      0.380     -1.332      0.183      -1.249       0.238
+Education_Level                      0.0994      0.057      1.735      0.083      -0.013       0.212
+House_owner_or_renter               -0.7764      0.272     -2.859      0.004      -1.309      -0.244
+number of employees in household    -0.2746      0.166     -1.657      0.097      -0.599       0.050
+----------------------------------------------------------------------------------------------------
+        living_area_preference=4       coef    std err          z      P&gt;|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+const                                0.1040      0.585      0.178      0.859      -1.043       1.251
+1251_to_3333                        -0.1956      0.395     -0.495      0.621      -0.971       0.579
+6666_or_more                        -1.4457      0.393     -3.675      0.000      -2.217      -0.675
+greater_than_3333                   -0.2155      0.366     -0.589      0.556      -0.932       0.501
+Education_Level                      0.0954      0.055      1.725      0.084      -0.013       0.204
+House_owner_or_renter               -0.1115      0.247     -0.452      0.651      -0.595       0.372
+number of employees in household     0.0431      0.161      0.268      0.789      -0.272       0.358
+====================================================================================================</code></pre>
 </div>
 </div>
 </section>
@@ -423,7 +429,7 @@ R-squared: 0.01142909612703713</code></pre>
 <h3 class="anchored" data-anchor-id="comparative-table"><strong>Comparative Table</strong></h3>
 <table class="table">
 <colgroup>
-<col style="width: 30%">
+<col style="width: 29%">
 <col style="width: 38%">
 <col style="width: 31%">
 </colgroup>
@@ -447,15 +453,6 @@ R-squared: 0.01142909612703713</code></pre>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="interpretation-and-conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="interpretation-and-conclusion"><strong>Interpretation and Conclusion</strong></h3>
-<ul>
-<li><p><strong>Model Fit</strong>: The Polynomial Regression model shows a lower MSE, indicating a better fit to our data compared to the Linear Regression model.</p></li>
-<li><p><strong>Model’s Explanatory Power</strong>: Despite the improvement in R-squared value in the Polynomial Regression model, it remains low, suggesting that additional factors might influence living area preferences beyond what is captured by income alone.</p></li>
-<li><p><strong>Next Steps</strong>: These results highlight the need to explore more complex models or additional variables that could provide a deeper understanding of the factors influencing living area preferences.</p></li>
-</ul>
-<p>This analysis underscores the importance of choosing the right model and considering multiple factors in predictive analytics, especially in complex real-world scenarios.</p>
 
 
 </section>
