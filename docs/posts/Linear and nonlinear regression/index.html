@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h3>
-<p>In an effort to understand how income influences living location preferences among Workers From Home (WFH), we embarked on a comprehensive analysis using linear regression. This statistical method helps in identifying the relationship between two variables – in this case, income and the preferred living areas of WFH workers within the metropolitan areas: City_center, Urban_area, Suburban_area, or Rural_area (See the figure).</p>
+<p>Have you ever wondered how your income might influence your choice of where to live? We delved into this question, focusing on Workers From Home (WFH), using the power of linear regression. This statistical method helps us link two crucial aspects of our lives: income and our preferred living areas within metropolitan spaces. (See the figure).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Urban_NonUrban_Rural.jpg" class="img-fluid figure-img" width="503"></p>
@@ -215,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-study-at-a-glance" class="level3">
 <h3 class="anchored" data-anchor-id="the-study-at-a-glance"><strong>The Study at a Glance</strong></h3>
-<p>Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We introduced the “relocating index” to represent this preference spectrum. The approach was as follows:</p>
+<p>Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We analyzed responses detailing income levels and preferred living areas, from busy city centers to peaceful rural settings. Our unique “relocating index” helped us turn these preferences into measurable data. So again, the variables used are processed as the following:</p>
 <ul>
 <li><p>Transforming income into a continuous scale, assigning monetary values to income brackets.</p></li>
 <li><p>Converting living area preferences into a single, ordinal dependent variable ‘Living Location Preference: <em>moving from urban to rural index</em>’.</p></li>
@@ -304,6 +304,7 @@ y_pred:  162</code></pre>
 <p><img src="index_files/figure-html/cell-2-output-2.png" width="589" height="449"></p>
 </div>
 </div>
+<p>In this plot, the actual data points (black dots) showed significant deviation from the blue regression line (the model’s predictions). The red dots, representing the model’s predicted values, also varied widely from many actual data points, indicating a mismatch between the model’s predictions and the real data.</p>
 </section>
 <section id="unveiling-the-linear-regression-insights-for-wfh-workers" class="level3">
 <h3 class="anchored" data-anchor-id="unveiling-the-linear-regression-insights-for-wfh-workers"><strong>Unveiling the Linear Regression Insights for WFH Workers</strong></h3>
@@ -312,30 +313,18 @@ y_pred:  162</code></pre>
 <li><p><strong>Mean Squared Error (MSE)</strong>: The model showed an MSE of 1.2658068009077692. This number, though not extremely high, indicates some discrepancies between the model’s predictions and the actual data.</p></li>
 <li><p><strong>R-squared Value</strong>: We obtained an R-squared value of 0.006851215790502296. This low value suggests that our model might not be capturing the complete picture, especially in the context of WFH employees.</p></li>
 </ul>
-<section id="visualization-of-the-linear-regression-model" class="level4">
-<h4 class="anchored" data-anchor-id="visualization-of-the-linear-regression-model">Visualization of the Linear Regression Model</h4>
-<p>A regression plot was used to illustrate our findings. The actual data points (black dots) showed significant deviation from the blue regression line (the model’s predictions). The red dots, representing the model’s predicted values, also varied widely from many actual data points, indicating a mismatch between the model’s predictions and the real data.</p>
-</section>
 </section>
 <section id="transitioning-to-non-linear-models" class="level3">
 <h3 class="anchored" data-anchor-id="transitioning-to-non-linear-models">Transitioning to Non-Linear Models</h3>
-<p>The visual and numerical analysis led us to consider that the relationship between income and living area preferences might not be linear. This prompted a shift towards exploring non-linear patterns.</p>
-<section id="implementing-ordinal-regression-model" class="level4">
-<h4 class="anchored" data-anchor-id="implementing-ordinal-regression-model">Implementing Ordinal Regression Model</h4>
-</section>
-</section>
-<section id="why-we-chose-an-ordinal-regression-model" class="level3">
-<h3 class="anchored" data-anchor-id="why-we-chose-an-ordinal-regression-model"><strong>Why We Chose an Ordinal Regression Model</strong></h3>
-<p>We transitioned to an Ordinal Regression Model for these key reasons:</p>
+<p>The visual and numerical analysis led us to consider that the relationship between income and living area preferences might not be linear. This prompted a shift towards exploring non-linear patterns, <strong>We Chose an Ordinal Regression Model</strong> for these key reasons:</p>
 <ol type="1">
 <li><p><strong>Appropriate for Ordinal Data</strong>: Our data on living location preferences is ordinal (ranging from city centers to rural areas). Ordinal regression accurately handles such data, unlike linear regression.</p></li>
 <li><p><strong>Captures Non-Linear Patterns</strong>: This model is better suited to reveal non-linear relationships between income and living location preferences, which our initial analysis suggested.</p></li>
 <li><p><strong>Enhanced Predictive Accuracy</strong>: Ordinal regression aligns more closely with our real-world data, potentially offering improved accuracy in predictions.</p></li>
 </ol>
-<p>In essence, the Ordinal Regression Model provides a more appropriate and nuanced analysis for our study’s specific data characteristics.</p>
 </section>
-<section id="implementing-ordinal-regression-model-1" class="level3">
-<h3 class="anchored" data-anchor-id="implementing-ordinal-regression-model-1"><strong>Implementing ordinal regression model</strong></h3>
+<section id="implementing-ordinal-regression-model" class="level3">
+<h3 class="anchored" data-anchor-id="implementing-ordinal-regression-model"><strong>Implementing ordinal regression model</strong></h3>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
@@ -384,7 +373,7 @@ Dep. Variable:     living_area_preference   No. Observations:                  6
 Model:                            MNLogit   Df Residuals:                      665
 Method:                               MLE   Df Model:                           12
 Date:                    Mon, 27 Nov 2023   Pseudo R-squ.:                 0.03553
-Time:                            05:20:37   Log-Likelihood:                -908.95
+Time:                            05:32:59   Log-Likelihood:                -908.95
 converged:                           True   LL-Null:                       -942.43
 Covariance Type:                nonrobust   LLR p-value:                 1.174e-09
 ====================================================================================================
@@ -415,8 +404,8 @@ number of employees in household     0.0543      0.160      0.341      0.733    
 </div>
 </div>
 </section>
-<section id="our-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences" class="level3">
-<h3 class="anchored" data-anchor-id="our-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences">Our Multinomial Logistic Regression analysis revealed some interesting insights about the relationship between various factors and living area preferences:</h3>
+<section id="the-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences" class="level3">
+<h3 class="anchored" data-anchor-id="the-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences">The Multinomial Logistic Regression analysis revealed some interesting insights about the relationship between various factors and living area preferences:</h3>
 <ol type="1">
 <li><p><strong>Model Convergence and Fit</strong>: The model successfully converged after 5 iterations, indicating a reliable fit to the data. The Pseudo R-squared value of 0.03553, while modest, suggests that our model has some explanatory power, though other unaccounted factors might also play a significant role.</p></li>
 <li><p><strong>Significant Predictors</strong>:</p>
