@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Research Insights Explorer Using Machine learning</title>
+<title>BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Welcome to my posts</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -71,9 +105,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -109,13 +143,11 @@ ul.task-list li input[type="checkbox"] {
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Research Insights Explorer Using Machine learning">
-<meta property="og:description" content="">
+<meta property="og:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Welcome to my posts">
 <meta property="og:image" content="./posts/CopyOfExploratory Data Analysis (EDA)2/Capture.JPG">
 <meta property="og:site-name" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning
 ">
-<meta name="twitter:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Research Insights Explorer Using Machine learning">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning - Welcome to my posts">
 <meta name="twitter:image" content="./posts/CopyOfExploratory Data Analysis (EDA)2/Capture.JPG">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -171,7 +203,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">Research Insights Explorer Using Machine learning</h1>
+      <h1 class="title">Welcome to my posts</h1>
                       </div>
   </div>
     
@@ -196,48 +228,29 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><strong>Important Note:</strong> The datasets used on these posts are modified and synthesized, so they should be used solely for educational purposes and to demonstrate data analysis techniques. Please refrain from using this data for any genuine applications.</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>quarto render</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>git push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="news,code,analysis" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1700526685945" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/CopyOfExploratory Data Analysis (EDA)2/Capture.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="news,code,analysis" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1700526685945" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="thumbnail">
+<p><a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html"> <img src="./posts/CopyOfExploratory Data Analysis (EDA)2/Capture.JPG" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html">
+<h3 class="no-anchor listing-title">
 EDA 2
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
@@ -249,31 +262,36 @@ code
 analysis
 </div>
 </div>
-<div class="card-text listing-description">
-The study and the attained dataset mainly focus on exploring the dynamic of the job market and its impact on the urban cityscape. Recent years marked a notable…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Heba Nusair
-</div>
-<div class="listing-date">
-Nov 11, 2023
-</div>
-</div>
-</div>
+<a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html">
+<div class="listing-description">
+<!-- desc(5A0113B34292)[max=175]:posts/CopyOfExploratory Data Analysis (EDA)2/index.html -->
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="news,code,analysis,plot" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1700982709643" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
-<a href="./posts/Probability theory and random variables/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Probability theory and random variables/Capture.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/CopyOfExploratory Data Analysis (EDA)2/index.html">
+<div class="listing-date">
+Nov 11, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="news,code,analysis,plot" data-listing-date-sort="1699678800000" data-listing-file-modified-sort="1700982709643" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
+<div class="thumbnail">
+<p><a href="./posts/Probability theory and random variables/index.html"> <img src="./posts/Probability theory and random variables/Capture.JPG" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Probability theory and random variables/index.html">
+<h3 class="no-anchor listing-title">
 Decoding Work Patterns, Analyzing Work From Home vs.&nbsp;Work On Site Trends in the 2023 US Job Market
-</h5>
+</h3>
+<div class="listing-subtitle">
+Probability theory and random variables, Naive Bayes classifier for multivariate Bernoulli models
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
@@ -288,31 +306,36 @@ analysis
 plot
 </div>
 </div>
-<div class="card-text listing-description">
-As we navigate through the evolving landscape of the 2023 job market, we are witnessing a significant shift in work methods. More…
+<a href="./posts/Probability theory and random variables/index.html">
+<div class="listing-description">
+<!-- desc(5A0113B34292)[max=175]:posts/Probability theory and random variables/index.html -->
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Heba Nusair
+</a>
 </div>
+<div class="metadata">
+<a href="./posts/Probability theory and random variables/index.html">
 <div class="listing-date">
 Nov 11, 2023
 </div>
-</div>
-</div>
+<div class="listing-author">
+Heba Nusair
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1699585325148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/image.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1699585325148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html"> <img src="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/image.jpg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html">
+<h3 class="no-anchor listing-title">
 Anomaly-outlier detection DBSCAN labels for scatter plot
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
@@ -324,31 +347,36 @@ code
 analysis
 </div>
 </div>
-<div class="card-text listing-description">
-This is a post with executable code.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Heba Nusair
-</div>
-<div class="listing-date">
-Nov 6, 2023
-</div>
-</div>
-</div>
+<a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html">
+<div class="listing-description">
+<!-- desc(5A0113B34292)[max=175]:posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html -->
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1700989630543" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
-<a href="./posts/Classification/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Classification/WhereToLiveForInPersonWorkers.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.html">
+<div class="listing-date">
+Nov 6, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1700989630543" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
+<div class="thumbnail">
+<p><a href="./posts/Classification/index.html"> <img src="./posts/Classification/WhereToLiveForInPersonWorkers.JPG" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Classification/index.html">
+<h3 class="no-anchor listing-title">
 Unveiling the Tapestry of Urban Preferences for Workers On Site (WOS), A Data-Driven Glimpse into Roanoke’s Metropolitan Living Choices
-</h5>
+</h3>
+<div class="listing-subtitle">
+Random Forest Classifier
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
@@ -360,31 +388,36 @@ code
 analysis
 </div>
 </div>
-<div class="card-text listing-description">
-Deciding where to live for <strong>Workers on-Site (WOS)</strong> is a big decision for everyone, and for the people of Roanoke, it’s no different. We all have our own checklist when it comes to choosing our neighborhoods – some of us…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Heba Nusair
-</div>
-<div class="listing-date">
-Nov 6, 2023
-</div>
-</div>
-</div>
+<a href="./posts/Classification/index.html">
+<div class="listing-description">
+<!-- desc(5A0113B34292)[max=175]:posts/Classification/index.html -->
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1701079998785" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<a href="./posts/Linear and nonlinear regression/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Linear and nonlinear regression/Urban_NonUrban_Rural.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/Classification/index.html">
+<div class="listing-date">
+Nov 6, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="news,code,analysis" data-listing-date-sort="1699246800000" data-listing-file-modified-sort="1701080379205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="thumbnail">
+<p><a href="./posts/Linear and nonlinear regression/index.html"> <img src="./posts/Linear and nonlinear regression/Urban_NonUrban_Rural.jpg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Linear and nonlinear regression/index.html">
+<h3 class="no-anchor listing-title">
 Exploring the Relationship Between Income and Living Location Preference
-</h5>
+</h3>
+<div class="listing-subtitle">
+A Comparative Analysis of Linear and Non-Linear Regression Models
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
@@ -396,29 +429,36 @@ code
 analysis
 </div>
 </div>
-<div class="card-text listing-description">
-In an effort to understand how income influences living location preferences among Workers From Home (WFH), we embarked on a comprehensive analysis using linear regression.…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Heba Nusair
-</div>
-<div class="listing-date">
-Nov 6, 2023
-</div>
-</div>
-</div>
+<a href="./posts/Linear and nonlinear regression/index.html">
+<div class="listing-description">
+<!-- desc(5A0113B34292)[max=175]:posts/Linear and nonlinear regression/index.html -->
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="news,code,plot" data-listing-date-sort="1698984000000" data-listing-file-modified-sort="1699585325148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./posts/Clustering/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts\Clustering\thumbnail.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/Linear and nonlinear regression/index.html">
+<div class="listing-date">
+Nov 6, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="news,code,plot" data-listing-date-sort="1698984000000" data-listing-file-modified-sort="1699585325148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./posts/Clustering/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts/Clustering/index.html --> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Clustering/index.html">
+<h3 class="no-anchor listing-title">
 Clustering
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
@@ -430,31 +470,36 @@ code
 plot
 </div>
 </div>
-<div class="card-text listing-description">
-This is the first post in a Quarto blog. Welcome!
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Heba Nusair
-</div>
-<div class="listing-date">
-Nov 3, 2023
-</div>
-</div>
-</div>
+<a href="./posts/Clustering/index.html">
+<div class="listing-description">
+<!-- desc(5A0113B34292)[max=175]:posts/Clustering/index.html -->
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="news,code,analysis" data-listing-date-sort="1698984000000" data-listing-file-modified-sort="1700907830617" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19">
-<a href="./posts/Exploratory Data Analysis (EDA)/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Exploratory Data Analysis (EDA)/OutPIC.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/Clustering/index.html">
+<div class="listing-date">
+Nov 3, 2023
+</div>
+<div class="listing-author">
+Heba Nusair
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="news,code,analysis" data-listing-date-sort="1698984000000" data-listing-file-modified-sort="1700907830617" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19">
+<div class="thumbnail">
+<p><a href="./posts/Exploratory Data Analysis (EDA)/index.html"> <img src="./posts/Exploratory Data Analysis (EDA)/OutPIC.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Exploratory Data Analysis (EDA)/index.html">
+<h3 class="no-anchor listing-title">
 Exploratory Data Analysis (EDA)
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
@@ -466,20 +511,22 @@ code
 analysis
 </div>
 </div>
-<div class="card-text listing-description">
-<strong>Survey Overview:</strong>
+<a href="./posts/Exploratory Data Analysis (EDA)/index.html">
+<div class="listing-description">
+<!-- desc(5A0113B34292)[max=175]:posts/Exploratory Data Analysis (EDA)/index.html -->
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Heba Nusair
+</a>
 </div>
+<div class="metadata">
+<a href="./posts/Exploratory Data Analysis (EDA)/index.html">
 <div class="listing-date">
 Nov 3, 2023
 </div>
-</div>
-</div>
+<div class="listing-author">
+Heba Nusair
 </div>
 </a>
+</div>
 </div>
 </div>
 <div class="listing-no-matching d-none">

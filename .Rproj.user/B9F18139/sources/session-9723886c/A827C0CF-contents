@@ -9,9 +9,9 @@ image: "Urban_NonUrban_Rural.jpg"
 
 ### **Introduction**
 
-In an effort to understand how income influences living location preferences among Workers From Home (WFH), we embarked on a comprehensive analysis using linear regression. This statistical method helps in identifying the relationship between two variables -- in this case, income and the preferred living areas of WFH workers within the metropolitan areas: City_center, Urban_area, Suburban_area, or Rural_area (See the fugure).
+In an effort to understand how income influences living location preferences among Workers From Home (WFH), we embarked on a comprehensive analysis using linear regression. This statistical method helps in identifying the relationship between two variables -- in this case, income and the preferred living areas of WFH workers within the metropolitan areas: City_center, Urban_area, Suburban_area, or Rural_area (See the figure).
 
-![The urban areas classification within metropolitan areas reported by the American Housing Survey as either urban, suburban, or rural.](Urban_NonUrban_Rural.jpg){fig-align="center" width="260"}
+![The urban areas classification in Roanoke Metropolitan Area produced by the author.](Urban_NonUrban_Rural.jpg){fig-align="center" width="503"}
 
 ### **The Study at a Glance**
 
