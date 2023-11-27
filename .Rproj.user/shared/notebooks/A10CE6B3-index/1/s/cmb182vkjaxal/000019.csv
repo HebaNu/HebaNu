@@ -7,7 +7,7 @@
 "0","import numpy as np"
 "0",""
 "0","# Load the dataset"
-"0","data = pd.read_excel('Linear regression_WOS.xlsx')"
+"0","data = pd.read_excel('Income_LivingLocationPrefrences.xlsx')"
 "0",""
 "0","# Drop rows with NaN values in the area preference and income columns"
 "0","data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)"
@@ -51,10 +51,10 @@
 "0",""
 "0","# Output the performance metrics"
 "0","print(f'Mean Squared Error: {mse}')"
-"1","Mean Squared Error: 1.2229590696534407
+"1","Mean Squared Error: 1.2296109872681262
 "
 "0","print(f'R-squared: {r2}')"
-"1","R-squared: -0.0034801764611527286
+"1","R-squared: -0.027639026375039233
 "
 "0","# Plotting modifications start here"
 "0","# Extract the original income values corresponding to the test set"
@@ -62,25 +62,27 @@
 "0",""
 "0","# Plotting with original income values"
 "0","plt.scatter(original_income_test, y_test, color='black', label='Actual Data')"
-"1","<matplotlib.collections.PathCollection object at 0x000001B18E6C7310>
+"1","<matplotlib.collections.PathCollection object at 0x000001B18FF53E90>
 "
-"1","<matplotlib.collections.PathCollection object at 0x000001B18E6C6F10>
+"1","<matplotlib.collections.PathCollection object at 0x000001B18CFE3AD0>
 "
 "0","# Optionally, create a more continuous line for predictions (optional, for visual enhancement)"
 "0","sorted_order = np.argsort(original_income_test)"
 "0","plt.plot(np.array(original_income_test)[sorted_order], np.array(y_pred)[sorted_order], color='blue', linewidth=2, label='Regression Line')"
-"1","[<matplotlib.lines.Line2D object at 0x000001B18E6D3710>]
+"1","[<matplotlib.lines.Line2D object at 0x000001B18E4E3F90>]
 "
-"0","plt.xlabel('Income')"
-"1","Text(0.5, 34.014305555555545, 'Income')
+"0","plt.xlabel('Monthly income')"
+"1","Text(0.5, 34.014305555555545, 'Monthly income')
 "
-"0","plt.ylabel('Moving index: from City Center to Rural Area')"
-"1","Text(89.6284722222222, 0.5, 'Moving index: from City Center to Rural Area')
+"0","plt.ylabel('Moving index_ from City Center to Rural Area')"
+"1","Text(89.6284722222222, 0.5, 'Moving index_ from City Center to Rural Area')
 "
 "1","Text(0.5, 1.0, 'Income vs Living Area Preference Linear Regression')
 "
-"1","<matplotlib.legend.Legend object at 0x000001B18E642C10>
+"0","plt.legend()"
+"1","<matplotlib.legend.Legend object at 0x000001B18E665050>
 "
+"0","plt.show()"
 "0",""
 "0",""
 "0",""

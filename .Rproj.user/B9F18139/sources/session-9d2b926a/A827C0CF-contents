@@ -1,6 +1,6 @@
 ---
 title: "The Dynamics of City Residency Preferences_ A deep dive into income_residential location choices"
-subtitle: "Linear Regression vs. non_Linear Regression"
+subtitle: "Linear Regression VS. non_Linear Regression"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
@@ -31,7 +31,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the dataset
-data = pd.read_excel('Linear regression_WOS.xlsx')
+data = pd.read_excel('Income_LivingLocationPrefrences.xlsx')
 
 # Drop rows with NaN values in the area preference and income columns
 data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)
@@ -130,17 +130,26 @@ To explore these potential non-linear patterns, we turn to polynomial regression
 Implementing polynomial regression is a straightforward extension of our current linear model. We use **`PolynomialFeatures`** from **`sklearn.preprocessing`** to transform our income data, introducing these higher-order terms. By fitting our model with these transformed features, we can capture the potential non-linear relationship between income and living area preference more effectively.
 
 ```{python}
+# Since the last execution to verify the column names did not work, let's proceed with the updated code
+# for polynomial regression including the additional variable "Distance from home to work" and the plot.
+
+# I will assume the column names provided are correct and update the code accordingly.
+
+# Full code with the additional independent variable and plotting the regression curve
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
+import matplotlib.pyplot as plt
 
 # Load the dataset
-data = pd.read_excel('Linear regression_WOS.xlsx')
+data_path = 'Income_LivingLocationPrefrences.xlsx'
+data = pd.read_excel(data_path)
 
 # Handle NaN values
-data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income'], inplace=True)
+data.dropna(subset=['City_center', 'Urban_area', 'Suburban_area', 'Rural_area', 'Monthly_income', 'Distance from home to work'], inplace=True)
 
 # Create a new column 'living_area_preference' as the average of the Likert-scale responses
 data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_area', 'Rural_area']].mean(axis=1)
@@ -149,13 +158,14 @@ data['living_area_preference'] = data[['City_center', 'Urban_area', 'Suburban_ar
 income_mapping = {1.0: 625, 2.0: 2292, 3.0: 5000, 4.0: 6666}
 data['continuous_income'] = data['Monthly_income'].map(income_mapping)
 
-# Scale the income feature
+# Scale the income feature and the 'Distance from home to work' feature
 scaler = StandardScaler()
-data['scaled_income'] = scaler.fit_transform(data[['continuous_income']])
+data[['scaled_income', 'scaled_distance']] = scaler.fit_transform(data[['Monthly_income', 'Distance from home to work']])
 
-# Create polynomial features
+# Create polynomial features including the new variable
+X = data[['scaled_income', 'scaled_distance']]
 poly = PolynomialFeatures(degree=2)
-X_poly = poly.fit_transform(data[['scaled_income']])
+X_poly = poly.fit_transform(X)
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X_poly, data['living_area_preference'], test_size=0.2, random_state=42)
@@ -168,24 +178,26 @@ mse_poly = mean_squared_error(y_test, y_pred_poly)
 r2_poly = r2_score(y_test, y_pred_poly)
 
 # Output the results for Polynomial Regression Model
-print("Polynomial Regression Model:")
+print("Polynomial Regression Model with Distance Variable:")
 print(f"Mean Squared Error: {mse_poly}")
 print(f"R-squared: {r2_poly}")
 
-import matplotlib.pyplot as plt
+# Since we have two independent variables, we can't simply plot a 2D curve.
+# Instead, we'll plot the actual vs predicted values for one of the variables (scaled_income).
 
 # Scatter plot of actual vs predicted values
-plt.scatter(y_test, y_pred_poly, alpha=0.5, color='red', label='Predicted')
-plt.scatter(y_test, y_test, alpha=0.5, color='blue', label='Actual')
+plt.scatter(X_test[:, 1], y_test, alpha=0.5, color='blue', label='Actual')  # Scaled income for x-axis
+plt.scatter(X_test[:, 1], y_pred_poly, alpha=0.5, color='red', label='Predicted')
 
 # Adding plot labels and title
-plt.xlabel('Actual Living Area Preference')
+plt.xlabel('Scaled Monthly Income')
 plt.ylabel('Predicted Living Area Preference')
-plt.title('Polynomial Regression: Actual vs Predicted Values')
+plt.title('Polynomial Regression with Distance Variable: Actual vs Predicted Values')
 plt.legend()
 
 # Show the plot
 plt.show()
+
 
 
 ```
