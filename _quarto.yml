@@ -38,6 +38,6 @@ format:
     toc-expand: 2
     max-width: 500px
     html-math-method: katex
-    code-fold: false
+    code-fold: true
     code-summary: Show the code
     e-summary: Show the code
