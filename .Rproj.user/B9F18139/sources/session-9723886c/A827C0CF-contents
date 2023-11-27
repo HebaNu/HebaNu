@@ -1,25 +1,29 @@
 ---
 title: "Exploring the Relationship Between Income and Living Location Preference"
-subtitle: "Linear Regression VS. non_Linear Regression"
+subtitle: "A Comparative Analysis of Linear and Non-Linear Regression Models"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
-image: "image.jpg"
+image: "Urban_NonUrban_Rural.jpg"
 ---
 
 ### **Introduction**
 
-In our quest to understand how monthly income influences living location preferences, particularly among Workers From Home (WFH), we embarked on an analytical journey using linear regression. Linear regression is a statistical method that helps us understand the relationship between two variables -- in this case, income and living location preference of WFH workers.
+In an effort to understand how income influences living location preferences among Workers From Home (WFH), we embarked on a comprehensive analysis using linear regression. This statistical method helps in identifying the relationship between two variables -- in this case, income and the preferred living areas of WFH workers within the metropolitan areas: City_center, Urban_area, Suburban_area, or Rural_area (See the fugure).
+
+![The urban areas classification within metropolitan areas reported by the American Housing Survey as either urban, suburban, or rural.](Urban_NonUrban_Rural.jpg){fig-align="center" width="260"}
 
 ### **The Study at a Glance**
 
-Our dataset encapsulated responses from individuals, detailing their income levels and preferred living areas -- be it the bustling city center, the vibrant urban zones, the serene suburban areas, or the tranquil rural landscapes; this preference of **moving from urban area to rural** is represented by "**relocating index**". Our approach was straightforward:
+Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We introduced the "relocating index" to represent this preference spectrum. The approach was as follows:
 
-1.  We transformed **income** into a continuous scale, assigning monetary values to income brackets.
+-   Transforming income into a continuous scale, assigning monetary values to income brackets.
 
-2.  We converted **living area preferences** into a single, ordinal dependent variable.
+-   Converting living area preferences into a single, ordinal dependent variable 'Living Location Preference: *moving from urban to rural index*'.
 
-3.  We employed linear regression to model the relationship between these two variables.
+### Insights from Linear Regression Analysis
+
+Employing linear regression to model the relationship between the two variables: income & Relocating index.
 
 ```{python}
 import pandas as pd
@@ -85,7 +89,7 @@ sorted_order = np.argsort(X_test['scaled_income'].values)
 plt.plot(X_test['scaled_income'].values[sorted_order], y_pred[sorted_order], color='blue', linewidth=2, label='Regression Line')
 
 plt.xlabel('Monthly income')
-plt.ylabel('Living Location Preference:moving from urban to rural index')
+plt.ylabel('Living Location Preference:Relocating index_From urban to rural')
 plt.title('Income vs Living Location Preference Linear Regression')
 plt.legend()
 plt.show()
@@ -95,39 +99,35 @@ plt.show()
 
 ### **Unveiling the Linear Regression Insights for WFH Workers**
 
-We meticulously gathered data on WFH workers and ran a linear regression model. Here's a snapshot of our findings:
+Our linear regression model yielded the following insights:
 
--   <div>
+-   **Mean Squared Error (MSE)**: The model showed an MSE of 1.2658068009077692. This number, though not extremely high, indicates some discrepancies between the model's predictions and the actual data.
 
-    -   **Mean Squared Error (MSE)**: Our model showed an MSE of 1.2658068009077692. This number tells us how close the model's predictions are to the actual data. Think of it as an accuracy gauge: the lower the number, the better. In our analysis, this number, though not extremely high, does indicate some level of discrepancy between what the model predicts and the real-world data of WFH workers.
+-   **R-squared Value**: We obtained an R-squared value of 0.006851215790502296. This low value suggests that our model might not be capturing the complete picture, especially in the context of WFH employees.
 
-    -   **R-squared Value**: Perhaps more tellingly, our model yielded an R-squared value of just 0.006851215790502296. This metric is crucial -- it shows how well our independent variable (income) explains the variation in our dependent variable (living location preference). The closer this value is to 1, the better. Our low R-squared value hints that our model, as it stands, might not be capturing the whole picture, especially in the context of WFH employees.
+#### Visualization of the Linear Regression Model
 
-    </div>
+A regression plot was used to illustrate our findings. The actual data points (black dots) showed significant deviation from the blue regression line (the model's predictions). The red dots, representing the model's predicted values, also varied widely from many actual data points, indicating a mismatch between the model's predictions and the real data.
 
-    In our analytical journey to understand how income affects living location preferences for Workers From Home (WFH), we've encountered some intriguing results. Our linear regression model produced a Mean Squared Error (MSE) of 1.2658068009077692 and an R-squared value of just 0.006851215790502296. While the MSE suggests a reasonable level of accuracy, the low R-squared value indicates that income alone may not be a strong predictor of living area preferences among WFH employees.
+### Transitioning to Non-Linear Models
 
-    A glance at our regression plot further illustrates this point. The actual data points, represented by black dots, are scattered across the graph, deviating from the blue regression line that represents our model's predictions. The red dots, which mark our model's predicted values, also stray from many of the actual data points. This visual mismatch echoes the numerical findings, suggesting that the linear model doesn't fully capture the nuances of our data.
+The visual and numerical analysis led us to consider that the relationship between income and living area preferences might not be linear. This prompted a shift towards exploring non-linear patterns.
 
-    The plot signals that there could be more complexity to the relationship between income and living area preferences than a simple linear model can explain. It raises the possibility that other, unconsidered factors may influence this relationship, or that the dynamics between these variables are not linear at all.
+#### Implementing Ordinal Regression Model
 
-    ### **Transitioning to Non-Linear Models**
+### **Why We Chose an Ordinal Regression Model**
 
-    This revelation leads us to our next analytical adventure -- exploring non-linear relationships. It's possible that the connection between income and living location preference for WFH workers bends and curves in ways that a simple straight line can't capture.
+We transitioned to an Ordinal Regression Model for these key reasons:
 
-    In our upcoming analysis, we'll dive into non-linear regression models. Non-linear regression could potentially provide a better framework for capturing the intricate patterns that seem to exist between income and where WFH employees prefer to reside. We're excited to see how this approach compares with our initial linear model and what new insights we can uncover about the factors influencing where WFH employees choose
+1.  **Appropriate for Ordinal Data**: Our data on living location preferences is ordinal (ranging from city centers to rural areas). Ordinal regression accurately handles such data, unlike linear regression.
 
-    Stay tuned as we continue to unravel the intricacies of income and living location preferences for workers from home, one model at a time!
+2.  **Captures Non-Linear Patterns**: This model is better suited to reveal non-linear relationships between income and living location preferences, which our initial analysis suggested.
 
-### **Introducing the Concept of Non-Linear Relationships**
+3.  **Enhanced Predictive Accuracy**: Ordinal regression aligns more closely with our real-world data, potentially offering improved accuracy in predictions.
 
-In our exploration of how income influences living area preferences, a linear model initially seemed like a straightforward choice. However, real-world data often tell a more complex story. Our linear model, with a surprisingly negative R-squared value, hinted at this complexity. It suggests that the relationship between income and living area preference might not be a straight line, but rather a curve or a more intricate pattern.
-
-Linear regression, with its assumption of a straight-line relationship between variables, is ill-equipped to capture these nuances. This is where the idea of non-linear relationships comes into play. Such relationships are not confined to straight lines and can take various forms, like curves, which are more adept at mapping the intricate patterns often found in real-world data.
+In essence, the Ordinal Regression Model provides a more appropriate and nuanced analysis for our study's specific data characteristics.
 
 ### **Implementing ordinal regression model**
-
-To explore these potential non-linear patterns, we turn to
 
 ```{python}
 import pandas as pd
@@ -170,65 +170,24 @@ print(result.summary())
 
 
 
-
-
-
-
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Assuming you have the ordinal model 'result' already fitted
-# and 'X_test' contains the test data including the 'Monthly_income' variable
-
-# Generate a range of income values (this range should cover the observed scope of incomes)
-income_range = np.linspace(X_test['Monthly_income'].min(), X_test['Monthly_income'].max(), 100)
-
-# Create a new DataFrame for prediction
-X_new = pd.DataFrame(income_range, columns=['Monthly_income'])
-
-# Add a constant if your model requires it (assuming it's named 'const' in your model)
-X_new = sm.add_constant(X_new)
-
-# Predict the probabilities for each income value
-predicted_probs = result.predict(X_new)
-
-# Plot the predicted probabilities for each category
-for i in range(predicted_probs.shape[1]):
-    plt.plot(income_range, predicted_probs[:, i], label=f'Preference {i+1}')
-
-# Customize the plot
-plt.xlabel('Monthly Income')
-plt.ylabel('Probability')
-plt.title('Predicted Living Area Preference by Monthly Income')
-plt.legend()
-plt.show()
-
-
-
-
 ```
 
-### **Comparison of Linear vs. Polynomial Regression Models**
+### Our Multinomial Logistic Regression analysis revealed some interesting insights about the relationship between various factors and living area preferences:
 
-In our exploration of the relationship between income and living area preference, we analyzed two different models: Linear Regression and Polynomial Regression. The outcomes offer intriguing insights:
+1.  **Model Convergence and Fit**: The model successfully converged after 5 iterations, indicating a reliable fit to the data. The Pseudo R-squared value of 0.03553, while modest, suggests that our model has some explanatory power, though other unaccounted factors might also play a significant role.
 
-1.  **Linear Regression Model**:
+2.  **Significant Predictors**:
 
-    -   Initially, we employed a Linear Regression model, which yielded a Mean Squared Error (MSE) of 1.2229590696534407. This suggested some variance between the predicted and actual preferences.
+    -   **Monthly Income**: This was a significant predictor across all living area preferences (2, 3, and 4). The negative coefficients (-0.6509, -0.7957, and -0.5330) indicate that as monthly income increases, the likelihood of preferring urban (2) or suburban (3) areas over rural (4) areas decreases.
 
-    -   However, the R-squared value was -0.0034801764611527286, indicating a poor fit. This negative value implies that the linear model might not be suitable for capturing the relationship in our analysis.
+    -   **House Ownership Status**: This variable also showed significance in influencing living area preference, with negative coefficients suggesting that those who own houses or are renters are less likely to prefer urban or suburban areas compared to rural ones.
 
-2.  **Polynomial Regression Model**:
+3.  **Other Factors**:
 
-    -   Seeking improvement, we then applied a Polynomial Regression model. It showed a lower MSE of 0.12978886986451396, suggesting a closer fit to the data compared to the Linear Regression model.
+    -   **Education Level**: While the coefficients were positive, suggesting a higher likelihood of preferring urban or suburban areas with increased education level, the significance was marginal.
 
-    -   The R-squared value improved to 0.012140786799389347. While still low, it's a positive value, indicating a slight improvement in explaining the variability of the dependent variable.
+    -   **Number of Employees in Household**: This factor did not show a strong influence on living area preference, as indicated by the higher p-values.
 
-### **Comparative Table**
+4.  **Coefficient Interpretation**: The coefficients for each predictor vary for different living area preferences, reflecting the complex nature of these relationships. For instance, the impact of monthly income is more pronounced in preferring suburban areas (living_area_preference=3) than in urban or rural areas.
 
-| **Model Type**        | **Mean Squared Error (MSE)** | **R-squared Value**    |
-|----------------------|---------------------------|-----------------------|
-| Linear Regression     | 1.2229590696534407           | -0.0034801764611527286 |
-| Polynomial Regression | 0.12978886986451396          | 0.012140786799389347   |
+In conclusion, our Multinomial Logistic Regression model sheds light on how factors like income and house ownership status significantly influence living area preferences among WFH workers. The nuanced differences in coefficients across different living areas underscore the complexity of these relationships.
