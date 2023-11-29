@@ -3,7 +3,7 @@ project:
   output-dir: docs
 website:
   title: |
-   BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning
+   BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era
   description: >
     Provide a machine learning code example in Urban Transformation in the Work
     From Home Era Analysis.

@@ -1,0 +1,41 @@
+---
+title: "EDA 2"
+author: "Heba Nusair"
+date: "2023-11-11"
+categories: [news, code, analysis]
+type: grid
+image: "Capture.JPG"
+code-viewfold: true
+---
+
+The study and the attained dataset mainly focus on exploring the dynamic of the job market and its impact on the urban cityscape. Recent years marked a notable transformation in work methodologies. Many professionals are adopting the Work From Home (WFH) model, while many still adhere to traditional Work On Site (WOS) practices. My study delves into 20 distinct industry sectors, examining four unique classes of working methods and styles, as detailed below:
+
+|     |                         |
+|-----|-------------------------|
+| 1   | Working On-Site \[WOS\] |
+| 2   | Work From Home \[WFH\]  |
+
+The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. ***To respect data confidentiality, we've modified and anonymized the dataset.*** This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
+
+```{python}
+# Load necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+```
+
+**Study the relationship between nominal variables (Industry sector and Working Method)statistical analyses:**\
+1- **Chi-Square Test of Independence**: The Chi-Square test can be used to determine whether there is an association (relationship) between two categorical variables. In your case, you can use it to test if there is a relationship between Industry sector and Working Method. The null hypothesis (H0) is that the two variables are independent, and the alternative hypothesis (Ha) is that there is a significant association between them.
+
+```{python}
+
+# Load necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import chi2_contingency
+
+
+```

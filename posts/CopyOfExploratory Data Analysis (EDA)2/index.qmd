@@ -39,10 +39,3 @@ from scipy.stats import chi2_contingency
 
 
 ```
-
-**2-Visualization**: You can create visualizations to explore the relationship visually. For example, you can create a stacked bar chart to see how the distribution of Working Method varies across different Industry sectors. This can help you identify patterns or differences.
-
-```{python}
-
-
-```
