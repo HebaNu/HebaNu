@@ -45,7 +45,7 @@ Model:                            MNLogit   Df Residuals:                      6
 Method:                               MLE   Df Model:                           12
 Date:                    Mon, 27 Nov 2023   Pseudo R-squ.:                 0.03553
 Time:   "
-"1","                         04:59:08   Log-Likelihood:                -908.95
+"1","                         13:44:50   Log-Likelihood:                -908.95
 converged:                           True   LL-Null:                       -942.43
 Covariance Type:                nonrobust   LLR p-value:                 1.174e-09
 ====================================================================================================

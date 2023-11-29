@@ -109,7 +109,7 @@ Our linear regression model yielded the following insights:
 
 ### Transitioning to Non-Linear Models
 
-The visual and numerical analysis led us to consider that the relationship between income and living area preferences might not be linear. This prompted a shift towards exploring non-linear patterns, **We Chose an Ordinal Regression Model** for these key reasons:
+The visual and numerical analysis led us to consider that the relationship between income and living area preferences might not be linear. This prompted a shift towards exploring non-linear patterns, **We Chose a** Multinomial Logistic Regression!!!! for these key reasons:
 
 1.  **Appropriate for Ordinal Data**: Our data on living location preferences is ordinal (ranging from city centers to rural areas). Ordinal regression accurately handles such data, unlike linear regression.
 
@@ -117,7 +117,15 @@ The visual and numerical analysis led us to consider that the relationship betwe
 
 3.  **Enhanced Predictive Accuracy**: Ordinal regression aligns more closely with our real-world data, potentially offering improved accuracy in predictions.
 
-### **Implementing ordinal regression model**
+### **Implementing** Multinomial Logistic Regression Analysis
+
+In this analysis. the location preferences into a single variable suggests that the resulting data is ordinal in nature. Here's why:
+
+-   The values assigned (1 for 'City_center', 2 for 'Urban_area', 3 for 'Suburban_area', and 4 for 'Rural_area') imply an order or ranking.
+
+-   The order seems to represent a gradient from the most urbanized area ('City_center') to the least ('Rural_area').
+
+Given this structure, the variable 'preference rank' would be more appropriate for ordinal regression analysis since it reflects a clear order or hierarchy in the data.
 
 ```{python}
 import pandas as pd

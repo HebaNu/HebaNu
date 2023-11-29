@@ -5,8 +5,31 @@ date: "2023-11-03"
 categories: [news, code, plot]
 ---
 
-This is the first post in a Quarto blog. Welcome!
-
-![](thumbnail.jpg)
-
 Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+
+```{python}
+import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+# Load the data
+df = pd.read_csv('xy2.csv')
+
+# Assuming you're using 3 clusters (adjust as necessary)
+kmeans = KMeans(n_clusters=3, random_state=0)
+kmeans.fit(df[['X', 'Y']])
+
+# Assign the cluster labels to the DataFrame
+df['Cluster'] = kmeans.labels_
+
+# Plotting the clusters
+plt.scatter(df['X'], df['Y'], c=df['Cluster'], cmap='viridis')
+plt.title('K-Means Clustering of Home Locations')
+plt.xlabel('X (Longitude)')
+plt.ylabel('Y (Latitude)')
+plt.colorbar(label='Cluster Label')
+plt.show()
+
+```
+
+\

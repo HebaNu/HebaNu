@@ -1,0 +1,32 @@
+"0","import pandas as pd"
+"0","from sklearn.cluster import KMeans"
+"0","import matplotlib.pyplot as plt"
+"0",""
+"0","# Load the data"
+"0","df = pd.read_csv('xy2.csv')"
+"0",""
+"0","# Assuming you're using 3 clusters (adjust as necessary)"
+"0","kmeans = KMeans(n_clusters=3, random_state=0)"
+"0","kmeans.fit(df[['X', 'Y']])"
+"2","C:\Users\NUSAI\ANACON~1\Lib\site-packages\sklearn\cluster\_kmeans.py:1412: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  super()._check_params_vs_input(X, default_n_init=10)
+"
+"1","KMeans(n_clusters=3, random_state=0)
+"
+"0","# Assign the cluster labels to the DataFrame"
+"0","df['Cluster'] = kmeans.labels_"
+"0",""
+"0","# Plotting the clusters"
+"0","plt.scatter(df['X'], df['Y'], c=df['Cluster'], cmap='viridis')"
+"1","<matplotlib.collections.PathCollection object at 0x000002416A9616D0>
+"
+"1","Text(0.5, 1.0, 'K-Means Clustering of Home Locations')
+"
+"1","Text(0.5, 34.014305555555545, 'X (Longitude)')
+"
+"1","Text(89.6284722222222, 0.5, 'Y (Latitude)')
+"
+"1","<matplotlib.colorbar.Colorbar object at 0x000002416A992ED0>
+"
+"0",""
+"0",""

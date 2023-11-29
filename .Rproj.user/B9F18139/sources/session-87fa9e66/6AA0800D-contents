@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  title: |
+   BLOGS: Analyzing Urban Transformation in the WFH Era Using Machine Learning
+  description: >
+    Provide a machine learning code example in Urban Transformation in the Work
+    From Home Era Analysis.
+  twitter-card: true
+  open-graph: true
+  reader-mode: true
+  page-navigation: true
+  repo-branch: main
+  repo-url: 'https://hebanu.github.io/HebaNu/About.html'
+  navbar:
+    search: true
+    right:
+      - About.qmd
+      - Research Overview.qmd
+      - icon: github
+        href: 'https://github.com/HebaNu'
+      - icon: twitter
+        href: 'https://twitter.com/yourusername'
+  page-footer:
+    left: 'Copyright 2023, Heba Nusair'
+    right:
+      - icon: github
+        href: 'https://github.com/HebaNu'
+      - icon: twitter
+        href: 'https://twitter.com'
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true
+    toc-depth: 2
+    toc-expand: 2
+    max-width: 500px
+    html-math-method: katex
+    code-fold: true
+    code-summary: Show the code
+    e-summary: Show the code
