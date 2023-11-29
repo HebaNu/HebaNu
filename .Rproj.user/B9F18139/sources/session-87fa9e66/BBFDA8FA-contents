@@ -1,11 +1,18 @@
 ---
-title: "Clustering"
+title: "Geographic clustering, a powerful analytical tool to uncover the urban patterns of human settlement within Roanoke and Salem cities"
 author: "Heba Nusair"
-date: "2023-11-03"
-categories: [news, code, plot]
+date: "2023-11-06"
+categories: [news, code, analysis]
+image: "RoanokeAndSalemCities.JPG"
 ---
 
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+In the bustling urban landscapes and the serene outskirts of Roanoke and Salem cities, every homeplace tells a story. Geographic clustering, a powerful analytical tool, allows us to uncover these stories by revealing the invisible patterns of human settlement and organization within these spaces. This analysis goes beyond mere numbers and dots on a map; it provides us with the insight to understand how populations distribute themselves across regions and how this distribution may affect and be affected by socio-economic factors.
+
+![](RoanokeAndSalemCities.JPG)
+
+In this exploration, we dive into the spatial heart of Roanoke and Salem, employing a data-driven approach to demystify the geographic distribution and density of home locations. By utilizing the K-Means clustering technique, we aim to transcend the traditional narratives of urban planning and offer a unique lens through which we can comprehend the dynamics of these cities.
+
+Join me on this cartographic journey as we navigate through the coordinates, interpret the clusters, and stitch together the fabric of these communities, one cluster at a time.
 
 ```{python}
 import pandas as pd
@@ -32,7 +39,19 @@ plt.show()
 
 ```
 
-\
+**Data Description**:
+
+-   Describe the dataset used, including the source of the data, if applicable.
+
+-   Explain that each data point represents a home location with its longitude (X) and latitude (Y) coordinates.
+
+**Methodology**:
+
+-   Justify why K-Means clustering is suitable for geographic distribution analysis.
+
+-   Discuss the data preprocessing steps, such as standardization of the coordinates.
+
+-   Mention the decision to exclude the industry sector from the clustering to focus on geographic distribution.\
 
 ```{python}
 import pandas as pd
@@ -68,3 +87,27 @@ plt.colorbar(label='Cluster Label')
 plt.show()
 
 ```
+
+**Clustering Results**:
+
+-   Present the scatter plot with the K-Means clustering output.
+
+-   Interpret the plot, noting the number of clusters, color coding, and any patterns or dense regions that are immediately apparent.
+
+-   Discuss any insights that can be drawn from the distribution of the clusters.
+
+**Discussion**:
+
+-   Reflect on the meaning of the clusters in a real-world context. For example, do the clusters correspond to known urban, suburban, or rural areas?
+
+-   Discuss any potential factors that might explain the observed clustering pattern.
+
+-   If the clusters overlap significantly, consider discussing potential reasons and whether this reflects the true nature of the data distribution.
+
+**Conclusion**:
+
+-   Summarize the key findings of the analysis.
+
+-   Highlight the importance of geographic clustering in understanding population distribution.
+
+-   Suggest possible implications or applications of this analysis for urban planning, resource allocation, or other relevant fields.
