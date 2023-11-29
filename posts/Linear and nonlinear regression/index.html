@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Heba Nusair">
+<meta name="dcterms.date" content="2023-11-06">
+
+<title>BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Exploring the Relationship Between Income and Living Location Preference</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Exploring the Relationship Between Income and Living Location Preference">
+<meta property="og:description" content="A Comparative Analysis of Linear and Non-Linear Regression Models">
+<meta property="og:image" content="Urban_NonUrban_Rural.jpg">
+<meta property="og:site-name" content="BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era
+">
+<meta name="twitter:title" content="BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Exploring the Relationship Between Income and Living Location Preference">
+<meta name="twitter:description" content="A Comparative Analysis of Linear and Non-Linear Regression Models">
+<meta name="twitter:image" content="Urban_NonUrban_Rural.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../About.html" rel="" target="">
+ <span class="menu-text">About!</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Research Overview.html" rel="" target="">
+ <span class="menu-text">Research Overview</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/HebaNu" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/yourusername" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Exploring the Relationship Between Income and Living Location Preference</h1>
+            <p class="subtitle lead">A Comparative Analysis of Linear and Non-Linear Regression Models</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Heba Nusair </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 6, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h3>
+<p>Have you ever wondered how your income might influence your choice of where to live? We delved into this question, focusing on Workers From Home (WFH), using the power of linear regression. This statistical method helps us link two crucial aspects of our lives: income and our preferred living areas within metropolitan spaces. (See the figure).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Urban_NonUrban_Rural.jpg" class="img-fluid figure-img" width="503"></p>
+<figcaption class="figure-caption">The urban areas classification in Roanoke Metropolitan Area produced by the author.</figcaption>
+</figure>
+</div>
+</section>
+<section id="the-study-at-a-glance" class="level3">
+<h3 class="anchored" data-anchor-id="the-study-at-a-glance"><strong>The Study at a Glance</strong></h3>
+<p>Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We analyzed responses detailing income levels and preferred living areas, from busy city centers to peaceful rural settings. Our unique “relocating index” helped us turn these preferences into measurable data. So again, the variables used are processed as the following:</p>
+<ul>
+<li><p>Transforming income into a continuous scale, assigning monetary values to income brackets.</p></li>
+<li><p>Converting living area preferences into a single, ordinal dependent variable ‘Living Location Preference: <em>moving from urban to rural index</em>’.</p></li>
+</ul>
+</section>
+<section id="insights-from-linear-regression-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="insights-from-linear-regression-analysis">Insights from Linear Regression Analysis</h3>
+<p>Employing linear regression to model the relationship between the two variables: income &amp; Relocating index.</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Income_LivingLocationPrefrences.xlsx'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle NaN values</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>data.dropna(subset<span class="op">=</span>[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>, <span class="st">'Monthly_income'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the Location preferences into a single ordinal dependent variable</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>area_to_number <span class="op">=</span> {<span class="st">'City_center'</span>: <span class="dv">1</span>, <span class="st">'Urban_area'</span>: <span class="dv">2</span>, <span class="st">'Suburban_area'</span>: <span class="dv">3</span>, <span class="st">'Rural_area'</span>: <span class="dv">4</span>}</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_Location_preference'</span>] <span class="op">=</span> data[[<span class="st">'City_center'</span>, <span class="st">'Urban_area'</span>, <span class="st">'Suburban_area'</span>, <span class="st">'Rural_area'</span>]].idxmin(axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">map</span>(area_to_number)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert income to a continuous scale based on the provided income brackets</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>income_mapping <span class="op">=</span> {<span class="fl">1.0</span>: <span class="dv">625</span>, <span class="fl">2.0</span>: <span class="dv">2292</span>, <span class="fl">3.0</span>: <span class="dv">5000</span>, <span class="fl">4.0</span>: <span class="dv">6666</span>}</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'continuous_income'</span>] <span class="op">=</span> data[<span class="st">'Monthly_income'</span>].<span class="bu">map</span>(income_mapping)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the income feature</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'scaled_income'</span>] <span class="op">=</span> scaler.fit_transform(data[[<span class="st">'continuous_income'</span>]])</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the features and target variable for modeling</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[[<span class="st">'scaled_income'</span>]]</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'living_Location_preference'</span>]</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and train the linear regression model</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on the test data</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the model's performance</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y_test, y_pred)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the performance metrics</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'R-squared: </span><span class="sc">{</span>r2<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Debugging the sizes of arrays</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sizes of arrays for plotting:"</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"X_test['scaled_income']: "</span>, <span class="bu">len</span>(X_test[<span class="st">'scaled_income'</span>]))</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"y_test: "</span>, <span class="bu">len</span>(y_test))</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"y_pred: "</span>, <span class="bu">len</span>(y_pred))</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test[<span class="st">'scaled_income'</span>].values, y_test.values, color<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="st">'Actual Data'</span>)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test[<span class="st">'scaled_income'</span>].values, y_pred, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Predicted Data'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Optionally, create a more continuous line for predictions</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>sorted_order <span class="op">=</span> np.argsort(X_test[<span class="st">'scaled_income'</span>].values)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>plt.plot(X_test[<span class="st">'scaled_income'</span>].values[sorted_order], y_pred[sorted_order], color<span class="op">=</span><span class="st">'blue'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Regression Line'</span>)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Monthly income'</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Living Location Preference:Relocating index_From urban to rural'</span>)</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Income vs Living Location Preference Linear Regression'</span>)</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Squared Error: 1.2658068009077692
+R-squared: 0.006851215790502296
+Sizes of arrays for plotting:
+X_test['scaled_income']:  162
+y_test:  162
+y_pred:  162</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-2-output-2.png" width="589" height="449"></p>
+</div>
+</div>
+<p>In this plot, the actual data points (black dots) showed significant deviation from the blue regression line (the model’s predictions). The red dots, representing the model’s predicted values, also varied widely from many actual data points, indicating a mismatch between the model’s predictions and the real data.</p>
+</section>
+<section id="unveiling-the-linear-regression-insights-for-wfh-workers" class="level3">
+<h3 class="anchored" data-anchor-id="unveiling-the-linear-regression-insights-for-wfh-workers"><strong>Unveiling the Linear Regression Insights for WFH Workers</strong></h3>
+<p>Our linear regression model yielded the following insights:</p>
+<ul>
+<li><p><strong>Mean Squared Error (MSE)</strong>: The model showed an MSE of 1.2658068009077692. This number, though not extremely high, indicates some discrepancies between the model’s predictions and the actual data.</p></li>
+<li><p><strong>R-squared Value</strong>: We obtained an R-squared value of 0.006851215790502296. This low value suggests that our model might not be capturing the complete picture, especially in the context of WFH employees.</p></li>
+</ul>
+</section>
+<section id="transitioning-to-non-linear-models" class="level3">
+<h3 class="anchored" data-anchor-id="transitioning-to-non-linear-models">Transitioning to Non-Linear Models</h3>
+<p>The visual and numerical analysis led us to consider that the relationship between income and living area preferences might not be linear. This prompted a shift towards exploring non-linear patterns, <strong>We Chose a</strong> Multinomial Logistic Regression!!!! for these key reasons:</p>
+<ol type="1">
+<li><p><strong>Appropriate for Ordinal Data</strong>: Our data on living location preferences is ordinal (ranging from city centers to rural areas). Ordinal regression accurately handles such data, unlike linear regression.</p></li>
+<li><p><strong>Captures Non-Linear Patterns</strong>: This model is better suited to reveal non-linear relationships between income and living location preferences, which our initial analysis suggested.</p></li>
+<li><p><strong>Enhanced Predictive Accuracy</strong>: Ordinal regression aligns more closely with our real-world data, potentially offering improved accuracy in predictions.</p></li>
+</ol>
+</section>
+<section id="implementing-multinomial-logistic-regression-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="implementing-multinomial-logistic-regression-analysis"><strong>Implementing</strong> Multinomial Logistic Regression Analysis</h3>
+<p>In this analysis. the location preferences into a single variable suggests that the resulting data is ordinal in nature. Here’s why:</p>
+<ul>
+<li><p>The values assigned (1 for ‘City_center’, 2 for ‘Urban_area’, 3 for ‘Suburban_area’, and 4 for ‘Rural_area’) imply an order or ranking.</p></li>
+<li><p>The order seems to represent a gradient from the most urbanized area (‘City_center’) to the least (‘Rural_area’).</p></li>
+</ul>
+<p>Given this structure, the variable ‘preference rank’ would be more appropriate for ordinal regression analysis since it reflects a clear order or hierarchy in the data.</p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Income_LivingLocation_GradientBoostingRegressor.xlsx'</span>)  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the path to your file</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the area preferences into a single ordinal variable</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_preference_rank(row):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'City_center'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'Urban_area'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">2</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'Suburban_area'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'Rural_area'</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">4</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'living_area_preference'</span>] <span class="op">=</span> data.<span class="bu">apply</span>(get_preference_rank, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the features and the target variable</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[[<span class="st">'Monthly_income'</span>, <span class="st">'Education_Level'</span>, <span class="st">'House_owner_or_renter'</span>, <span class="st">'number of employees in household'</span>]]</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'living_area_preference'</span>]</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a constant to the model (intercept)</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the ordinal regression model</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.MNLogit(y_train, X_train)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> model.fit()</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Output the model summary</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Optimization terminated successfully.
+         Current function value: 1.336686
+         Iterations 5
+                            MNLogit Regression Results                            
+==================================================================================
+Dep. Variable:     living_area_preference   No. Observations:                  680
+Model:                            MNLogit   Df Residuals:                      665
+Method:                               MLE   Df Model:                           12
+Date:                    Wed, 29 Nov 2023   Pseudo R-squ.:                 0.03553
+Time:                            00:14:47   Log-Likelihood:                -908.95
+converged:                           True   LL-Null:                       -942.43
+Covariance Type:                nonrobust   LLR p-value:                 1.174e-09
+====================================================================================================
+        living_area_preference=2       coef    std err          z      P&gt;|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+const                                2.5322      0.630      4.020      0.000       1.298       3.767
+Monthly_income                      -0.6509      0.124     -5.230      0.000      -0.895      -0.407
+Education_Level                      0.0909      0.055      1.642      0.101      -0.018       0.199
+House_owner_or_renter               -0.6254      0.262     -2.388      0.017      -1.139      -0.112
+number of employees in household    -0.2076      0.160     -1.296      0.195      -0.522       0.106
+----------------------------------------------------------------------------------------------------
+        living_area_preference=3       coef    std err          z      P&gt;|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+const                                2.8972      0.633      4.575      0.000       1.656       4.138
+Monthly_income                      -0.7957      0.126     -6.294      0.000      -1.043      -0.548
+Education_Level                      0.0914      0.056      1.626      0.104      -0.019       0.202
+House_owner_or_renter               -0.6095      0.264     -2.307      0.021      -1.127      -0.092
+number of employees in household    -0.2320      0.163     -1.426      0.154      -0.551       0.087
+----------------------------------------------------------------------------------------------------
+        living_area_preference=4       coef    std err          z      P&gt;|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------------
+const                                0.9399      0.628      1.496      0.135      -0.292       2.171
+Monthly_income                      -0.5330      0.124     -4.314      0.000      -0.775      -0.291
+Education_Level                      0.1038      0.055      1.893      0.058      -0.004       0.211
+House_owner_or_renter               -0.0429      0.241     -0.178      0.859      -0.516       0.430
+number of employees in household     0.0543      0.160      0.341      0.733      -0.258       0.367
+====================================================================================================</code></pre>
+</div>
+</div>
+</section>
+<section id="the-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences" class="level3">
+<h3 class="anchored" data-anchor-id="the-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences">The Multinomial Logistic Regression analysis revealed some interesting insights about the relationship between various factors and living area preferences:</h3>
+<ol type="1">
+<li><p><strong>Model Convergence and Fit</strong>: The model successfully converged after 5 iterations, indicating a reliable fit to the data. The Pseudo R-squared value of 0.03553, while modest, suggests that our model has some explanatory power, though other unaccounted factors might also play a significant role.</p></li>
+<li><p><strong>Significant Predictors</strong>:</p>
+<ul>
+<li><p><strong>Monthly Income</strong>: This was a significant predictor across all living area preferences (2, 3, and 4). The negative coefficients (-0.6509, -0.7957, and -0.5330) indicate that as monthly income increases, the likelihood of preferring urban (2) or suburban (3) areas over rural (4) areas decreases.</p></li>
+<li><p><strong>House Ownership Status</strong>: This variable also showed significance in influencing living area preference, with negative coefficients suggesting that those who own houses or are renters are less likely to prefer urban or suburban areas compared to rural ones.</p></li>
+</ul></li>
+<li><p><strong>Other Factors</strong>:</p>
+<ul>
+<li><p><strong>Education Level</strong>: While the coefficients were positive, suggesting a higher likelihood of preferring urban or suburban areas with increased education level, the significance was marginal.</p></li>
+<li><p><strong>Number of Employees in Household</strong>: This factor did not show a strong influence on living area preference, as indicated by the higher p-values.</p></li>
+</ul></li>
+<li><p><strong>Coefficient Interpretation</strong>: The coefficients for each predictor vary for different living area preferences, reflecting the complex nature of these relationships. For instance, the impact of monthly income is more pronounced in preferring suburban areas (living_area_preference=3) than in urban or rural areas.</p></li>
+</ol>
+<p>In conclusion, our Multinomial Logistic Regression model sheds light on how factors like income and house ownership status significantly influence living area preferences among WFH workers. The nuanced differences in coefficients across different living areas underscore the complexity of these relationships.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Heba Nusair</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/HebaNu">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
