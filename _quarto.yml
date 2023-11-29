@@ -20,8 +20,10 @@ website:
       - Research Overview.qmd
       - icon: github
         href: 'https://github.com/HebaNu'
-      - icon: twitter
-        href: 'https://twitter.com/yourusername'
+      - icon: linkedin
+        href: 'https://www.linkedin.com/in/heba-nusair-02667b188/'
+      - icon: facebook
+        href: 'https://www.facebook.com/heba.nsair'
   page-footer:
     left: 'Copyright 2023, Heba Nusair'
     right:
