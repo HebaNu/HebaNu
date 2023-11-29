@@ -140,7 +140,7 @@ from sklearn.metrics import confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Assuming y_test and y_pred are already defined from your BernoulliNB model
+# Assuming y_test and y_pred are already defined from BernoulliNB model
 cm = confusion_matrix(y_test, y_pred)
 sns.heatmap(cm, annot=True, fmt="d")
 plt.title('Confusion Matrix for BernoulliNB Model')
@@ -176,26 +176,6 @@ plt.title('ROC Curve for BernoulliNB Model')
 plt.show()
 
 ```
-
-**Classification Report**: Presents precision, recall, f1-score for each class.
-
-```{python}
-from sklearn.metrics import classification_report
-import pandas as pd
-
-report = classification_report(y_test, y_pred, output_dict=True)
-df_report = pd.DataFrame(report).transpose()
-
-df_report.drop(['accuracy'], inplace=True)  # Drop accuracy as it's not a class-specific metric
-df_report.plot(kind='bar', figsize=(10, 7))
-plt.title('Classification Report for BernoulliNB Model')
-plt.ylabel('Score')
-plt.show()
-```
-
-Please note that in order to generate a ROC curve or Precision-Recall curve, you need the probability scores or decision function, not just the predicted labels. If **`y_pred`** contains only class labels, you would need to use the **`predict_proba`** or **`decision_function`** method of your classifier to obtain these scores.
-
-These code snippets are intended to be run in your local Python environment, and you'll need to ensure that **`y_test`** and **`y_pred`** are defined in your workspace after running your **`BernoulliNB`** model. If you encounter any issues with these plots or if you require further customization, feel free to ask for additional guidance.
 
 **Conclusions:** Through our analysis, we aim to provide a clear picture of the current job market and its evolving nature. Whether it's adapting to remote work setups or understanding the necessity of on-site roles, our study sheds light on these important trends.
 
