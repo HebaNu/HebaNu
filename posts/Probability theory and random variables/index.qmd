@@ -5,7 +5,7 @@ author: "Heba Nusair"
 date: "2023-11-11"
 categories: [news, code, analysis, plot]
 type: grid
-image: "Capture.JPG"
+image: "work-from-home-vs-work-from-office-e1678776814995.jpg"
 code-fold: true
 code-viewfold: true
 ---

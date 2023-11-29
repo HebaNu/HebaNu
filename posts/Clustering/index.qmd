@@ -1,5 +1,6 @@
 ---
-title: "Geographic clustering, a powerful analytical tool to uncover the urban patterns of human settlement within Roanoke and Salem cities"
+title: "Clustering Homeplaces: Unveiling Spatial Patterns in Roanoke and Salem"
+subtitle: "How K-Means Reveals the Geographic Heartbeat of Cities"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
