@@ -4,7 +4,7 @@ subtitle: "Random Forest Classifier"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
-image: "WhereToLiveForInPersonWorkers.JPG"
+image: "confused-c2e1e9d14491a9486d996da945debcc9d6ce7170-s1100-c50.jpg"
 ---
 
 Deciding where to live for **Workers on-Site (WOS)** is a big decision for everyone, and for the people of Roanoke, it's no different. We all have our own checklist when it comes to choosing our neighborhoods -- some of us want to be close to work, others are looking for good schools for the kids, and some might prioritize a big backyard over everything else.
