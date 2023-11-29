@@ -1,5 +1,5 @@
 ---
-title: "Decoding Work Patterns, Analyzing Work From Home vs. Work On Site Trends in the 2023 US Job Market"
+title: "Predicting Work Trends with Naive Bayes: Remote or On-Site Across Industries"
 subtitle: "Probability theory and random variables, Naive Bayes classifier for multivariate Bernoulli models"
 author: "Heba Nusair"
 date: "2023-11-11"
