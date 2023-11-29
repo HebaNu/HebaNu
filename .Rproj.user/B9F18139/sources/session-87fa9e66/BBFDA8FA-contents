@@ -38,41 +38,33 @@ plt.show()
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
-from sklearn.compose import ColumnTransformer
 import matplotlib.pyplot as plt
 
 # Load the data
 df = pd.read_csv('Homeplaces in Roanoke and Salem Cities.csv')
 
-# Convert categorical data to numerical
-df['Employee_t'] = df['Employee_t'].astype('category').cat.codes
+# Select only the geographic coordinates
+df_geo = df[['X', 'Y']]
 
 # Standardizing the features (important for K-Means)
-ct = ColumnTransformer([
-    ("norm1", StandardScaler(), ['X', 'Y']),
-    ("norm2", StandardScaler(), ['Employee_t'])
-], remainder='passthrough')
-
-df_scaled = ct.fit_transform(df)
+scaler = StandardScaler()
+df_geo_scaled = scaler.fit_transform(df_geo)
 
 # KMeans clustering
 kmeans = KMeans(n_clusters=5, n_init=10)
-clusters = kmeans.fit_predict(df_scaled)
+clusters = kmeans.fit_predict(df_geo_scaled)
 
 # Adding cluster labels to your dataframe
 df['Cluster'] = clusters
 
 # Plotting the clusters
 plt.figure(figsize=(10, 6))
-colors = ['red', 'green', 'blue', 'purple', 'orange']
-for i in range(kmeans.n_clusters):
-    plt.scatter(df[df['Cluster'] == i]['X'], df[df['Cluster'] == i]['Y'], 
-                color=colors[i], label=f'Cluster {i}')
+plt.scatter(df['X'], df['Y'], c=df['Cluster'], cmap='viridis', marker='o')
 
-plt.title('Homeplaces Clustering in Roanoke and Salem Cities')
+plt.title('Geographic Distribution of Homeplaces in Roanoke and Salem Cities')
 plt.xlabel('Longitude')
 plt.ylabel('Latitude')
-plt.legend()
+plt.colorbar(label='Cluster Label')
 plt.show()
 
 ```
