@@ -4,12 +4,12 @@ subtitle: "A Comparative Analysis of Linear and Non-Linear Regression Models"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
-image: "Urban_NonUrban_Rural.jpg"
+image: "images.jfif"
 ---
 
 ### **Introduction**
 
-Have you ever wondered how your income might influence your choice of where to live? We delved into this question, focusing on Workers From Home (WFH), using the power of linear regression. This statistical method helps us link two crucial aspects of our lives: income and our preferred living areas within metropolitan spaces. (See the figure).
+Living in Roanoke: Does Your Income Decide Your Address? We've dived into the world of Roanoke's remote workers to see how much their earnings influence where they live. Using linear regression, we've connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the figure below! (See the figure).
 
 ![The urban areas classification in Roanoke Metropolitan Area produced by the author.](Urban_NonUrban_Rural.jpg){fig-align="center" width="503"}
 
