@@ -1,10 +1,27 @@
 ---
-title: "Anomaly-outlier detection DBSCAN labels for scatter plot"
+title: "Beyond the Cluster: Spotting the Outliers in Roanoke and Salem"
+subtitle: "Uncovering Hidden Residential Gems with DBSCAN Anomaly Detection"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
 image: "image.jpg"
 ---
+
+**Introduction:**
+
+Discovering anomalies can reveal much about a city's living patterns that conventional clustering might miss. In Roanoke and Salem cities, we dive into the uncommon, the outliers, the unique homeplaces that form the fabric of urban and suburban life. Using DBSCAN, an unsupervised machine learning algorithm, we identify these anomalies, offering insights into how and where people choose to live outside the expected clusters.
+
+**The Power of Anomaly Detection:**
+
+Anomaly detection stands at the frontier of data analysis, challenging the status quo by highlighting data points that don't fit in. In the context of urban landscapes, these anomalies could signify emerging neighborhoods, atypical living arrangements, or socio-economic factors influencing residential choices.
+
+**DBSCAN: A Primer:**
+
+Density-Based Spatial Clustering of Applications with Noise (DBSCAN) is a robust algorithm that groups closely packed points together while labeling points that lie alone in low-density regions as outliers. Unlike K-Means, DBSCAN doesn't require pre-specifying the number of clusters, making it ideal for real-world data that's messy and unpredictable.
+
+**Methodology:**
+
+We began with standardizing our geographical data to give each homeplace an equal footing. Next, we employed the DBSCAN algorithm, fine-tuning its parameters through a k-distance graph to ensure optimal clustering. This method distinguishes between the core points, the border points, and the noise, providing us with a granular view of residential distributions.
 
 ```{python}
 from sklearn.cluster import DBSCAN
@@ -59,3 +76,19 @@ plt.colorbar(scatter, label='Cluster Label')
 plt.show()
 
 ```
+
+**Insights and Patterns:**
+
+Upon analyzing the DBSCAN results, we observed distinct groupings that form the expected centers of habitation, but more intriguingly, we found scattered, isolated points. These outliers could indicate rural homes or unique urban spaces resisting typical cluster formations.
+
+**Visualization:**
+
+The accompanying scatter plot vividly illustrates these findings. Each point represents a homeplace, with color-coded clusters and outliers clearly marked. This visualization is not just a map but a narrative of diversity in residential choices.
+
+**Conclusion:**
+
+Through this DBSCAN anomaly detection exercise, we've uncovered the hidden layers of Roanoke and Salem's residential tapestry. Such analyses can inform urban planning, real estate development, and community services by acknowledging not just the majority, but the unique cases that contribute to the cities' character.
+
+**Next Steps:**
+
+As we continue to explore the data, comparing the results of K-Means and DBSCAN will be our next endeavor. Stay tuned for a comprehensive analysis where we juxtapose the general trends with the unique anomalies to paint a complete picture of urban settlement patterns.

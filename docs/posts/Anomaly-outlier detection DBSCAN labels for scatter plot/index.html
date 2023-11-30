@@ -9,7 +9,7 @@
 <meta name="author" content="Heba Nusair">
 <meta name="dcterms.date" content="2023-11-06">
 
-<title>BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Anomaly-outlier detection DBSCAN labels for scatter plot</title>
+<title>BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Beyond the Cluster: Spotting the Outliers in Roanoke and Salem</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,11 +98,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Anomaly-outlier detection DBSCAN labels for scatter plot">
+<meta property="og:title" content="BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Beyond the Cluster: Spotting the Outliers in Roanoke and Salem">
+<meta property="og:description" content="Uncovering Hidden Residential Gems with DBSCAN Anomaly Detection">
 <meta property="og:image" content="image.jpg">
 <meta property="og:site-name" content="BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era
 ">
-<meta name="twitter:title" content="BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Anomaly-outlier detection DBSCAN labels for scatter plot">
+<meta name="twitter:title" content="BLOGS: Urban Evolution_ Machine Learning in the Remote Work Era - Beyond the Cluster: Spotting the Outliers in Roanoke and Salem">
+<meta name="twitter:description" content="Uncovering Hidden Residential Gems with DBSCAN Anomaly Detection">
 <meta name="twitter:image" content="image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -163,7 +165,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Anomaly-outlier detection DBSCAN labels for scatter plot</h1>
+      <h1 class="title">Beyond the Cluster: Spotting the Outliers in Roanoke and Salem</h1>
+            <p class="subtitle lead">Uncovering Hidden Residential Gems with DBSCAN Anomaly Detection</p>
                                 <div class="quarto-categories">
                 <div class="quarto-category">news</div>
                 <div class="quarto-category">code</div>
@@ -205,6 +208,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p><strong>Introduction:</strong></p>
+<p>Discovering anomalies can reveal much about a city’s living patterns that conventional clustering might miss. In Roanoke and Salem cities, we dive into the uncommon, the outliers, the unique homeplaces that form the fabric of urban and suburban life. Using DBSCAN, an unsupervised machine learning algorithm, we identify these anomalies, offering insights into how and where people choose to live outside the expected clusters.</p>
+<p><strong>The Power of Anomaly Detection:</strong></p>
+<p>Anomaly detection stands at the frontier of data analysis, challenging the status quo by highlighting data points that don’t fit in. In the context of urban landscapes, these anomalies could signify emerging neighborhoods, atypical living arrangements, or socio-economic factors influencing residential choices.</p>
+<p><strong>DBSCAN: A Primer:</strong></p>
+<p>Density-Based Spatial Clustering of Applications with Noise (DBSCAN) is a robust algorithm that groups closely packed points together while labeling points that lie alone in low-density regions as outliers. Unlike K-Means, DBSCAN doesn’t require pre-specifying the number of clusters, making it ideal for real-world data that’s messy and unpredictable.</p>
+<p><strong>Methodology:</strong></p>
+<p>We began with standardizing our geographical data to give each homeplace an equal footing. Next, we employed the DBSCAN algorithm, fine-tuning its parameters through a k-distance graph to ensure optimal clustering. This method distinguishes between the core points, the border points, and the noise, providing us with a granular view of residential distributions.</p>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
@@ -266,6 +277,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="index_files/figure-html/cell-2-output-2.png" width="793" height="523"></p>
 </div>
 </div>
+<p><strong>Insights and Patterns:</strong></p>
+<p>Upon analyzing the DBSCAN results, we observed distinct groupings that form the expected centers of habitation, but more intriguingly, we found scattered, isolated points. These outliers could indicate rural homes or unique urban spaces resisting typical cluster formations.</p>
+<p><strong>Visualization:</strong></p>
+<p>The accompanying scatter plot vividly illustrates these findings. Each point represents a homeplace, with color-coded clusters and outliers clearly marked. This visualization is not just a map but a narrative of diversity in residential choices.</p>
+<p><strong>Conclusion:</strong></p>
+<p>Through this DBSCAN anomaly detection exercise, we’ve uncovered the hidden layers of Roanoke and Salem’s residential tapestry. Such analyses can inform urban planning, real estate development, and community services by acknowledging not just the majority, but the unique cases that contribute to the cities’ character.</p>
+<p><strong>Next Steps:</strong></p>
+<p>As we continue to explore the data, comparing the results of K-Means and DBSCAN will be our next endeavor. Stay tuned for a comprehensive analysis where we juxtapose the general trends with the unique anomalies to paint a complete picture of urban settlement patterns.</p>
 
 
 

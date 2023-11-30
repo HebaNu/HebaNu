@@ -1,11 +1,13 @@
 ---
-title: "Geographic Clustering: Uncovering the Urban Patterns of Human Settlement in Roanoke and Salem Cities"
-subtitle: "Employing K-Means to Map and Understand Residential Densities"
+title: "Geographic Clustering: Urban Tapestry: Decoding Roanoke and Salem's Living Patterns"
+subtitle: "Insights from K-Means Clustering on Residential Concentrations"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
 image: "RoanokeAndSalemCities.JPG"
 ---
+
+**Introduction:**
 
 In the bustling urban landscapes and the serene outskirts of Roanoke and Salem cities, every homeplace tells a story. Geographic clustering, a powerful analytical tool, allows us to uncover these stories by revealing the invisible patterns of human settlement and organization within these spaces. This analysis goes beyond mere numbers and dots on a map; it provides us with the insight to understand how populations distribute themselves across regions and how this distribution may affect and be affected by socio-economic factors.
 
