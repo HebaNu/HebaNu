@@ -2,7 +2,7 @@
 title: "Clustering vs. Anomaly Detection: A Comparative Study of Roanoke and Salem's Residential Landscapes"
 subtitle: "K-Means and DBSCAN Side by Side"
 author: "Heba Nusair"
-date: "2023-11-30"
+date: "2023-11-1"
 categories: [news, code, analysis]
 image: "image.jpg"
 ---
