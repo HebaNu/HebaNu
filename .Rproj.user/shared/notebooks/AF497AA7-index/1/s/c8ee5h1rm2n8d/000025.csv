@@ -5,9 +5,6 @@
 "0","import matplotlib.pyplot as plt"
 "0","import numpy as np"
 "0",""
-"0","# Correct file path should be provided here"
-"0","file_path = 'posts/Anomaly-outlier detection DBSCAN labels for scatter plot/WorkersHomeplacesNewUpdate.csv'"
-"0",""
 "0","# Load the data"
 "0","df = pd.read_csv('WorkersHomeplacesNewUpdate.csv')"
 "0",""
@@ -28,22 +25,19 @@
 "0","plt.figure(figsize=(12, 6))"
 "1","<Figure size 1200x600 with 0 Axes>
 "
-"0","plt.plot(distances)"
-"1","[<matplotlib.lines.Line2D object at 0x00000268880F6950>]
+"1","[<matplotlib.lines.Line2D object at 0x00000269068E1D10>]
 "
 "0","plt.title('k-distance Graph')"
 "1","Text(0.5, 1.0, 'k-distance Graph')
 "
-"0","plt.xlabel('Point index')"
 "1","Text(0.5, 0, 'Point index')
 "
 "1","Text(0, 0.5, 'Distance to 3rd nearest neighbor')
 "
-"0","plt.show()"
 "0",""
 "0","# After identifying a new eps value from the graph, adjust eps and min_samples"
-"0","eps_value = 0.05  # This is an example, adjust based on your k-distance graph"
-"0","min_samples_value = 20  # This is an example, adjust based on your dataset"
+"0","eps_value = 0.05  # This is an example, adjust based on the k-distance graph"
+"0","min_samples_value = 20  # This is an example, adjust based on the dataset"
 "0",""
 "0","# Perform DBSCAN clustering with the new parameters"
 "0","dbscan = DBSCAN(eps=eps_value, min_samples=min_samples_value)"
@@ -56,7 +50,6 @@
 "0","plt.figure(figsize=(10, 6))"
 "1","<Figure size 1000x600 with 0 Axes>
 "
-"0","scatter = plt.scatter(df['X'], df['Y'], c=df['Cluster'], cmap='viridis', marker='o')"
 "0","plt.title('Adjusted DBSCAN Clustering of Homeplaces')"
 "1","Text(0.5, 1.0, 'Adjusted DBSCAN Clustering of Homeplaces')
 "
@@ -65,6 +58,5 @@
 "
 "1","Text(0, 0.5, 'Latitude')
 "
-"1","<matplotlib.colorbar.Colorbar object at 0x00000269052D1E50>
+"1","<matplotlib.colorbar.Colorbar object at 0x00000269068E3F90>
 "
-"0","plt.show()"
