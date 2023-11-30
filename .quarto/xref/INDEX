@@ -88,5 +88,8 @@
   },
   "posts/Attempt/index.qmd": {
     "index.html": "cd8b6be9"
+  },
+  "posts/Clustering vs. Anomaly Detection/index.qmd": {
+    "index.html": "a49e2632"
   }
 }
