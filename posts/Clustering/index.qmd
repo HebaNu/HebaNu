@@ -9,7 +9,7 @@ image: "RoanokeAndSalemCities.JPG"
 
 In the bustling urban landscapes and the serene outskirts of Roanoke and Salem cities, every homeplace tells a story. Geographic clustering, a powerful analytical tool, allows us to uncover these stories by revealing the invisible patterns of human settlement and organization within these spaces. This analysis goes beyond mere numbers and dots on a map; it provides us with the insight to understand how populations distribute themselves across regions and how this distribution may affect and be affected by socio-economic factors.
 
-![**A Tapestry of Settlement:** *Over 55,000 points represent workers' homeplaces scattered across the Roanoke and Salem cities, Painting a vivid picture of the urban landscape. Each point is a nexus of life and activity, contributing to the rich pattern of local habitation*. ](RoanokeAndSalemCities.JPG)
+![**A Tapestry of Settlement:** *Over 55,000 points represent workers' homeplaces scattered across the Roanoke and Salem cities, Painting a vivid picture of the urban landscape. Each point is a nexus of life and activity, contributing to the rich pattern of local habitation*.](RoanokeAndSalemCities.JPG)
 
 In this exploration, we dive into the spatial heart of Roanoke and Salem, employing a data-driven approach to demystify the geographic distribution and density of home locations. By utilizing the K-Means clustering technique, we aim to transcend the traditional narratives of urban planning and offer a unique lens through which we can comprehend the dynamics of these cities.
 
