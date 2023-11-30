@@ -1,0 +1,92 @@
+"0","import pandas as pd"
+"0","from sklearn.cluster import KMeans"
+"0","from sklearn.preprocessing import StandardScaler"
+"0","import matplotlib.pyplot as plt"
+"0",""
+"0","# Make sure to use the correct file path"
+"0","file_path = 'WorkersHomeplacesNewUpdate.csv'  # Use the correct path to your CSV file"
+"0","# Load the data"
+"0","df = pd.read_csv(file_path)"
+"2","Traceback (most recent call last):
+  File ""<string>"", line 1, in <module>
+  File ""[90m]8;line = 211;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\util\_decorators.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\util\_decorators.py]8;;[39m"", line 211, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 331;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\util\_decorators.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\util\_decorators.py]8;;[39m"", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 950;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\parsers\readers.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\parsers\readers.py]8;;[39m"", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 605;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\parsers\readers.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\parsers\readers.py]8;;[39m"", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 1442;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\parsers\readers.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\parsers\readers.py]8;;[39m"", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 1735;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\parsers\readers.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\parsers\readers.py]8;;[39m"", line 1735, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File ""[90m]8;line = 856;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\common.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\common.py]8;;[39m"", line 856, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'WorkersHomeplacesNewUpdate.csv'
+"
+"0","# Load the data"
+"0","df = pd.read_csv('WorkersHomeplacesNewUpdate.csv')"
+"2","Traceback (most recent call last):
+  File ""<string>"", line 1, in <module>
+  File ""[90m]8;line = 211;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\util\_decorators.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\util\_decorators.py]8;;[39m"", line 211, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 331;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\util\_decorators.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\util\_decorators.py]8;;[39m"", line 331, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 950;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\parsers\readers.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\parsers\readers.py]8;;[39m"", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 605;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\parsers\readers.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\parsers\readers.py]8;;[39m"", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 1442;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\parsers\readers.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\parsers\readers.py]8;;[39m"", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""[90m]8;line = 1735;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\parsers\readers.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\parsers\readers.py]8;;[39m"", line 1735, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File ""[90m]8;line = 856;file://C:\Users\NUSAI\anaconda3\Lib\site-packages\pandas\io\common.pyC:\Users\NUSAI\ANACON~1\Lib\site-packages\pandas\io\common.py]8;;[39m"", line 856, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'WorkersHomeplacesNewUpdate.csv'
+"
+"0","# Select only the geographic coordinates"
+"0","df_geo = df[['X', 'Y']]"
+"0",""
+"0","# Standardizing the features (important for K-Means)"
+"0","scaler = StandardScaler()"
+"0","df_geo_scaled = scaler.fit_transform(df_geo)"
+"0",""
+"0","# KMeans clustering"
+"0","kmeans = KMeans(n_clusters=5, n_init=10)"
+"0","clusters = kmeans.fit_predict(df_geo_scaled)"
+"0",""
+"0","# Adding cluster labels to dataframe"
+"0","df['Cluster'] = clusters"
+"0",""
+"0","# Plotting the clusters"
+"0","plt.figure(figsize=(10, 6))"
+"1","<Figure size 1000x600 with 0 Axes>
+"
+"1","<matplotlib.collections.PathCollection object at 0x0000026887FCFCD0>
+"
+"0","plt.title('Geographic Distribution of Homeplaces in Roanoke and Salem Cities')"
+"1","Text(0.5, 1.0, 'Geographic Distribution of Homeplaces in Roanoke and Salem Cities')
+"
+"1","Text(0.5, 0, 'Longitude')
+"
+"1","Text(0, 0.5, 'Latitude')
+"
+"1","<matplotlib.colorbar.Colorbar object at 0x0000026887F91E50>
+"
+"0",""
+"0",""

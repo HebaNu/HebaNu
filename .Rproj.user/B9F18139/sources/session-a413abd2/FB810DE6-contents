@@ -7,9 +7,27 @@ image: "image.jpg"
 ---
 
 ```{python}
-# Assuming you have already standardized your data and have df_geo_scaled ready
+from sklearn.cluster import DBSCAN
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import NearestNeighbors
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
-# Plot the k-distance graph again with a zoomed-in scale if necessary
+# Correct file path should be provided here
+file_path = 'posts/Anomaly-outlier detection DBSCAN labels for scatter plot/WorkersHomeplacesNewUpdate.csv'
+
+# Load the data
+df = pd.read_csv('WorkersHomeplacesNewUpdate.csv')
+
+# Select only the geographic coordinates
+df_geo = df[['X', 'Y']]
+
+# Standardizing the features
+scaler = StandardScaler()
+df_geo_scaled = scaler.fit_transform(df_geo)
+
+# Plot the k-distance graph
 nbrs = NearestNeighbors(n_neighbors=4).fit(df_geo_scaled)
 distances, indices = nbrs.kneighbors(df_geo_scaled)
 
@@ -24,10 +42,10 @@ plt.ylabel('Distance to 3rd nearest neighbor')
 plt.show()
 
 # After identifying a new eps value from the graph, adjust eps and min_samples
-eps_value = 0.05  # Adjust this value based on your k-distance graph
-min_samples_value = 20  # Adjust this value based on your dataset
+eps_value = 0.05  # This is an example, adjust based on your k-distance graph
+min_samples_value = 20  # This is an example, adjust based on your dataset
 
-# Perform DBSCAN clustering by changing parameters
+# Perform DBSCAN clustering with the new parameters
 dbscan = DBSCAN(eps=eps_value, min_samples=min_samples_value)
 clusters = dbscan.fit_predict(df_geo_scaled)
 
@@ -37,11 +55,10 @@ df['Cluster'] = clusters
 # Plot the clusters with the new parameters
 plt.figure(figsize=(10, 6))
 scatter = plt.scatter(df['X'], df['Y'], c=df['Cluster'], cmap='viridis', marker='o')
-plt.title('Adjusted DBSCAN Clustering of Homeplaces in Roanoke and Salem Cities')
+plt.title('Adjusted DBSCAN Clustering of Homeplaces')
 plt.xlabel('Longitude')
 plt.ylabel('Latitude')
 plt.colorbar(scatter, label='Cluster Label')
 plt.show()
-
 
 ```

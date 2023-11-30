@@ -59,7 +59,6 @@ plt.xlabel('Longitude')
 plt.ylabel('Latitude')
 plt.colorbar(label='Cluster Label')
 plt.show()
-
 ```
 
 What we get is a straightforward, unfiltered view of how communities in these cities are shaped -- a true representation of the area's residential dynamics.
