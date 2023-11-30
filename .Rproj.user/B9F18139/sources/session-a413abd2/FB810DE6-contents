@@ -14,9 +14,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Correct file path should be provided here
-file_path = 'posts/Anomaly-outlier detection DBSCAN labels for scatter plot/WorkersHomeplacesNewUpdate.csv'
-
 # Load the data
 df = pd.read_csv('WorkersHomeplacesNewUpdate.csv')
 
@@ -42,8 +39,8 @@ plt.ylabel('Distance to 3rd nearest neighbor')
 plt.show()
 
 # After identifying a new eps value from the graph, adjust eps and min_samples
-eps_value = 0.05  # This is an example, adjust based on your k-distance graph
-min_samples_value = 20  # This is an example, adjust based on your dataset
+eps_value = 0.05  # This is an example, adjust based on the k-distance graph
+min_samples_value = 20  # This is an example, adjust based on the dataset
 
 # Perform DBSCAN clustering with the new parameters
 dbscan = DBSCAN(eps=eps_value, min_samples=min_samples_value)
