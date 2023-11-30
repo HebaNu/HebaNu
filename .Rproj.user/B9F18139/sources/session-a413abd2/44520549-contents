@@ -8,21 +8,21 @@ image: "OutPIC.png"
 code-viewfold: true
 ---
 
-#### Datasets Used in Our Analysis
+### Datasets Used in Our Analysis
 
-**Survey Overview:**
+#### **Survey Overview:**
 
 Our analysis is based on datasets primarily sourced from a survey conducted in 2023. This survey, designed and executed by our research team, targeted participants from a wide range of occupations across the USA. Its focus was on examining the significant impact of remote work on urban development and residential choices. The participants provided their insights through a detailed questionnaire, which covered aspects such as working methods (remote or in-person) and their effects on housing location preferences. This rich data offers insights into behavioral patterns related to working modes, thereby illuminating the interplay between human activity and urban spatial dynamics.
 
-**Data Modification for Privacy and Educational Use:**
+#### **Data Modification for Privacy and Educational Use:**
 
 It's important to note that the datasets featured in these blog posts have been ***modified and synthesized for educational purposes**. They demonstrate various data analysis techniques but are not suitable for real-world applications due to these modifications.* In compliance with data privacy guidelines, we have anonymized the dataset to maintain the confidentiality of the survey participants. However, these modifications do not detract from the overall integrity and analytical value of the data.
 
-**Primary Objective of the Dataset:**
+#### **Primary Objective of the Dataset:**
 
 The main aim of this dataset is to explore the dynamics of the job market and their influence on urban landscapes. One of the key areas of inquiry in the survey was the industry sector and the preferred working method of the participants. By analyzing these elements, we gain a better understanding of current trends in the job market and how they shape urban environments.
 
-**Key Elements of the Dataset:**
+#### **Key Elements of the Dataset:**
 
 In recent years, we've witnessed significant shifts in work methodologies. A growing number of professionals are embracing the Work From Home (WFH) approach, while a substantial segment continues to follow traditional Work On Site (WOS) practices. This study comprehensively covers 20 distinct industry sectors, focusing on four distinct categories of working methods. The details of these methods are outlined below:
 

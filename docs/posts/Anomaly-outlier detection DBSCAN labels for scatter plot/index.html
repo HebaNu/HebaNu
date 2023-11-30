@@ -208,13 +208,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><strong>Introduction:</strong></p>
+<section id="introduction" class="level4">
+<h4 class="anchored" data-anchor-id="introduction"><strong>Introduction:</strong></h4>
 <p>Discovering anomalies can reveal much about a city’s living patterns that conventional clustering might miss. In Roanoke and Salem cities, we dive into the uncommon, the outliers, the unique homeplaces that form the fabric of urban and suburban life. Using DBSCAN, an unsupervised machine learning algorithm, we identify these anomalies, offering insights into how and where people choose to live outside the expected clusters.</p>
-<p><strong>The Power of Anomaly Detection:</strong></p>
+</section>
+<section id="the-power-of-anomaly-detection" class="level4">
+<h4 class="anchored" data-anchor-id="the-power-of-anomaly-detection"><strong>The Power of Anomaly Detection:</strong></h4>
 <p>Anomaly detection stands at the frontier of data analysis, challenging the status quo by highlighting data points that don’t fit in. In the context of urban landscapes, these anomalies could signify emerging neighborhoods, atypical living arrangements, or socio-economic factors influencing residential choices.</p>
-<p><strong>DBSCAN: A Primer:</strong></p>
+</section>
+<section id="dbscan-a-primer" class="level4">
+<h4 class="anchored" data-anchor-id="dbscan-a-primer"><strong>DBSCAN: A Primer:</strong></h4>
 <p>Density-Based Spatial Clustering of Applications with Noise (DBSCAN) is a robust algorithm that groups closely packed points together while labeling points that lie alone in low-density regions as outliers. Unlike K-Means, DBSCAN doesn’t require pre-specifying the number of clusters, making it ideal for real-world data that’s messy and unpredictable.</p>
-<p><strong>Methodology:</strong></p>
+</section>
+<section id="methodology" class="level4">
+<h4 class="anchored" data-anchor-id="methodology"><strong>Methodology:</strong></h4>
 <p>We began with standardizing our geographical data to give each homeplace an equal footing. Next, we employed the DBSCAN algorithm, fine-tuning its parameters through a k-distance graph to ensure optimal clustering. This method distinguishes between the core points, the border points, and the noise, providing us with a granular view of residential distributions.</p>
 <div class="cell" data-execution_count="1">
 <details>
@@ -265,16 +272,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="index_files/figure-html/cell-2-output-1.png" width="793" height="523"></p>
 </div>
 </div>
-<p><strong>Insights and Patterns:</strong></p>
+</section>
+<section id="insights-and-patterns" class="level4">
+<h4 class="anchored" data-anchor-id="insights-and-patterns"><strong>Insights and Patterns:</strong></h4>
 <p>Upon analyzing the DBSCAN results, we observed distinct groupings that form the expected centers of habitation, but more intriguingly, we found scattered, isolated points. These outliers could indicate rural homes or unique urban spaces resisting typical cluster formations.</p>
-<p><strong>Visualization:</strong></p>
+</section>
+<section id="visualization" class="level4">
+<h4 class="anchored" data-anchor-id="visualization"><strong>Visualization:</strong></h4>
 <p>The accompanying scatter plot vividly illustrates these findings. Each point represents a homeplace, with color-coded clusters and outliers clearly marked. This visualization is not just a map but a narrative of diversity in residential choices.</p>
-<p><strong>Conclusion:</strong></p>
+</section>
+<section id="conclusion" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion"><strong>Conclusion:</strong></h4>
 <p>Through this DBSCAN anomaly detection exercise, we’ve uncovered the hidden layers of Roanoke and Salem’s residential tapestry. Such analyses can inform urban planning, real estate development, and community services by acknowledging not just the majority, but the unique cases that contribute to the cities’ character.</p>
-<p><strong>Next Steps:</strong></p>
+</section>
+<section id="next-steps" class="level4">
+<h4 class="anchored" data-anchor-id="next-steps"><strong>Next Steps:</strong></h4>
 <p>As we continue to explore the data, comparing the results of K-Means and DBSCAN will be our next endeavor. Stay tuned for a comprehensive analysis where we juxtapose the general trends with the unique anomalies to paint a complete picture of urban settlement patterns.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

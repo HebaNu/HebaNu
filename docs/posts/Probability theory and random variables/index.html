@@ -209,21 +209,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<section id="introduction" class="level4">
+<h4 class="anchored" data-anchor-id="introduction"><strong>Introduction:</strong></h4>
 <p>As we navigate through the evolving landscape of the 2023 job market, we are witnessing a significant shift in work methods. More people are embracing Work From Home (WFH) while others continue with Work On Site (WOS). This post helps to understand how these work methods vary across different jobs in the USA.</p>
-<p><strong>My Approach:</strong> For this analysis, I’ve utilized the Naive Bayes classifier for multivariate Bernoulli models. This method is excellent for sorting jobs into two main categories: WFH and WOS. It’s a practical choice for my study because it efficiently handles binary data—like choosing between remote or on-site work.</p>
-<p><strong>About the Data:</strong> The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. <strong><em>To respect data confidentiality, we’ve modified and anonymized the dataset.</em></strong> This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.</p>
+</section>
+<section id="my-approach" class="level4">
+<h4 class="anchored" data-anchor-id="my-approach"><strong>My Approach:</strong></h4>
+<p>For this analysis, I’ve utilized the Naive Bayes classifier for multivariate Bernoulli models. This method is excellent for sorting jobs into two main categories: WFH and WOS. It’s a practical choice for my study because it efficiently handles binary data—like choosing between remote or on-site work.</p>
+</section>
+<section id="about-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="about-the-data"><strong>About the Data:</strong></h4>
+<p>The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. <strong><em>To respect data confidentiality, we’ve modified and anonymized the dataset.</em></strong> This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Survey participants.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">The survey participants from workers and their working method (WFH, or WON).</figcaption>
 </figure>
 </div>
-<p><strong>Industry Breakdown:</strong> The study categorized 20 main category for jobs according to the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here’s a table of these industry sectors:</p>
+</section>
+<section id="industry-breakdown" class="level4">
+<h4 class="anchored" data-anchor-id="industry-breakdown"><strong>Industry Breakdown:</strong></h4>
+<p>The study categorized 20 main category for jobs according to the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here’s a table of these industry sectors:</p>
 <table class="table">
 <colgroup>
 <col style="width: 6%">
 <col style="width: 50%">
-<col style="width: 43%">
+<col style="width: 42%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -336,7 +347,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p><strong>Goal:</strong> My goal is to provide a clear and real picture of the changing work styles. I am not just analyzing numbers; I am uncovering the stories they tell about how people are adapting to new work environments, be it remotely or on-site.</p>
-<p><strong>Why I Chose the Naive Bayes Classifier for Multivariate Bernoulli Models:</strong></p>
+</section>
+<section id="why-i-chose-the-naive-bayes-classifier-for-multivariate-bernoulli-models" class="level4">
+<h4 class="anchored" data-anchor-id="why-i-chose-the-naive-bayes-classifier-for-multivariate-bernoulli-models"><strong>Why I Chose the Naive Bayes Classifier for Multivariate Bernoulli Models:</strong></h4>
 <p>In my exploration of work methods—remote and on-site—the Naive Bayes classifier for multivariate Bernoulli models shines with its simplicity and effectiveness. It excels at evaluating probabilities, helping determine whether a job is more likely to be remote or on-site based on its industry sector. This algorithm’s strength lies in its straightforward approach, providing clear baseline assessments that guide our analysis across different industry sectors. Dive Into the Code Behind the Analysis:<br>
 x: The industry sector: [jobs categories From 1 to 20]<br>
 y: The work method: 1 for WOS [Work on Site], 2 for WFH [Work From Home]<br>
@@ -401,7 +414,9 @@ Accuracy: 0.7647058823529411</code></pre>
 </code></pre>
 </div>
 </div>
-<p><strong>Insights from Our Model: Understanding the Work Trends</strong></p>
+</section>
+<section id="insights-from-our-model-understanding-the-work-trends" class="level4">
+<h4 class="anchored" data-anchor-id="insights-from-our-model-understanding-the-work-trends"><strong>Insights from Our Model: Understanding the Work Trends</strong></h4>
 <p>The results from our BernoulliNB model offer fascinating insights into the current work trends. The model is predicting class 2.0 for WFH [Work From Home] with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).</p>
 <p>For class 1.0, however, the model does not predict any instances correctly, which suggests that either there’s an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. <strong>The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.</strong></p>
 <p>The macro avg and weighted avg for precision, recall, and f1-score provide a summary of the effectiveness of the model across the classes. The low macro avg for precision and f1-score indicates that one of the classes does not perform well, which we already know is class 1.0.</p>
@@ -460,10 +475,17 @@ Accuracy: 0.7647058823529411</code></pre>
 <p><img src="index_files/figure-html/cell-5-output-1.png" width="589" height="449"></p>
 </div>
 </div>
-<p><strong>Conclusions:</strong> Through our analysis, we aim to provide a clear picture of the current job market and its evolving nature. Whether it’s adapting to remote work setups or understanding the necessity of on-site roles, our study sheds light on these important trends.</p>
-<p><strong>Final Thoughts:</strong> As the world of work continues to change, we’re here to keep you informed and help you understand these shifts. Stay tuned for more insights and analyses on the changing job landscape!</p>
+</section>
+<section id="conclusions" class="level4">
+<h4 class="anchored" data-anchor-id="conclusions"><strong>Conclusions:</strong></h4>
+<p>Through our analysis, we aim to provide a clear picture of the current job market and its evolving nature. Whether it’s adapting to remote work setups or understanding the necessity of on-site roles, our study sheds light on these important trends.</p>
+</section>
+<section id="final-thoughts" class="level4">
+<h4 class="anchored" data-anchor-id="final-thoughts"><strong>Final Thoughts:</strong></h4>
+<p>As the world of work continues to change, we’re here to keep you informed and help you understand these shifts. Stay tuned for more insights and analyses on the changing job landscape!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

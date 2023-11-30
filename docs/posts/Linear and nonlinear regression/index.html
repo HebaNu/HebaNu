@@ -208,8 +208,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h3>
+<section id="introduction" class="level4">
+<h4 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h4>
 <p>Living in Roanoke: Does Your Income Decide Your Address? We’ve dived into the world of Roanoke’s remote workers to see how much their earnings influence where they live. Using linear regression, we’ve connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the figure below! (See the figure).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -218,16 +218,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="the-study-at-a-glance" class="level3">
-<h3 class="anchored" data-anchor-id="the-study-at-a-glance"><strong>The Study at a Glance</strong></h3>
+<section id="the-study-at-a-glance" class="level4">
+<h4 class="anchored" data-anchor-id="the-study-at-a-glance"><strong>The Study at a Glance</strong></h4>
 <p>Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We analyzed responses detailing income levels and preferred living areas, from busy city centers to peaceful rural settings. Our unique “relocating index” helped us turn these preferences into measurable data. So again, the variables used are processed as the following:</p>
 <ul>
 <li><p>Transforming income into a continuous scale, assigning monetary values to income brackets.</p></li>
 <li><p>Converting living area preferences into a single, ordinal dependent variable ‘Living Location Preference: <em>moving from urban to rural index</em>’.</p></li>
 </ul>
 </section>
-<section id="insights-from-linear-regression-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="insights-from-linear-regression-analysis">Insights from Linear Regression Analysis</h3>
+<section id="insights-from-linear-regression-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="insights-from-linear-regression-analysis">Insights from Linear Regression Analysis</h4>
 <p>Employing linear regression to model the relationship between the two variables: income &amp; Relocating index.</p>
 <div class="cell" data-execution_count="1">
 <details>
@@ -314,16 +314,16 @@ y_pred:  162</code></pre>
 </div>
 <p>In this plot, the actual data points (black dots) showed significant deviation from the blue regression line (the model’s predictions). The red dots, representing the model’s predicted values, also varied widely from many actual data points, indicating a mismatch between the model’s predictions and the real data.</p>
 </section>
-<section id="unveiling-the-linear-regression-insights-for-wfh-workers" class="level3">
-<h3 class="anchored" data-anchor-id="unveiling-the-linear-regression-insights-for-wfh-workers"><strong>Unveiling the Linear Regression Insights for WFH Workers</strong></h3>
+<section id="unveiling-the-linear-regression-insights-for-wfh-workers" class="level4">
+<h4 class="anchored" data-anchor-id="unveiling-the-linear-regression-insights-for-wfh-workers"><strong>Unveiling the Linear Regression Insights for WFH Workers</strong></h4>
 <p>Our linear regression model yielded the following insights:</p>
 <ul>
 <li><p><strong>Mean Squared Error (MSE)</strong>: The model showed an MSE of 1.2658068009077692. This number, though not extremely high, indicates some discrepancies between the model’s predictions and the actual data.</p></li>
 <li><p><strong>R-squared Value</strong>: We obtained an R-squared value of 0.006851215790502296. This low value suggests that our model might not be capturing the complete picture, especially in the context of WFH employees.</p></li>
 </ul>
 </section>
-<section id="transitioning-to-non-linear-models" class="level3">
-<h3 class="anchored" data-anchor-id="transitioning-to-non-linear-models">Transitioning to Non-Linear Models</h3>
+<section id="transitioning-to-non-linear-models" class="level4">
+<h4 class="anchored" data-anchor-id="transitioning-to-non-linear-models">Transitioning to Non-Linear Models</h4>
 <p>The visual and numerical analysis led us to consider that the relationship between income and living area preferences might not be linear. This prompted a shift towards exploring non-linear patterns, <strong>We Chose a</strong> Multinomial Logistic Regression!!!! for these key reasons:</p>
 <ol type="1">
 <li><p><strong>Appropriate for Ordinal Data</strong>: Our data on living location preferences is ordinal (ranging from city centers to rural areas). Ordinal regression accurately handles such data, unlike linear regression.</p></li>
@@ -331,8 +331,8 @@ y_pred:  162</code></pre>
 <li><p><strong>Enhanced Predictive Accuracy</strong>: Ordinal regression aligns more closely with our real-world data, potentially offering improved accuracy in predictions.</p></li>
 </ol>
 </section>
-<section id="implementing-multinomial-logistic-regression-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="implementing-multinomial-logistic-regression-analysis"><strong>Implementing</strong> Multinomial Logistic Regression Analysis</h3>
+<section id="implementing-multinomial-logistic-regression-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="implementing-multinomial-logistic-regression-analysis"><strong>Implementing</strong> Multinomial Logistic Regression Analysis</h4>
 <p>In this analysis. the location preferences into a single variable suggests that the resulting data is ordinal in nature. Here’s why:</p>
 <ul>
 <li><p>The values assigned (1 for ‘City_center’, 2 for ‘Urban_area’, 3 for ‘Suburban_area’, and 4 for ‘Rural_area’) imply an order or ranking.</p></li>
@@ -389,8 +389,8 @@ y_pred:  162</code></pre>
 Dep. Variable:     living_area_preference   No. Observations:                  680
 Model:                            MNLogit   Df Residuals:                      665
 Method:                               MLE   Df Model:                           12
-Date:                    Wed, 29 Nov 2023   Pseudo R-squ.:                 0.03553
-Time:                            06:11:22   Log-Likelihood:                -908.95
+Date:                    Thu, 30 Nov 2023   Pseudo R-squ.:                 0.03553
+Time:                            17:25:07   Log-Likelihood:                -908.95
 converged:                           True   LL-Null:                       -942.43
 Covariance Type:                nonrobust   LLR p-value:                 1.174e-09
 ====================================================================================================
@@ -421,8 +421,8 @@ number of employees in household     0.0543      0.160      0.341      0.733    
 </div>
 </div>
 </section>
-<section id="the-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences" class="level3">
-<h3 class="anchored" data-anchor-id="the-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences">The Multinomial Logistic Regression analysis revealed some interesting insights about the relationship between various factors and living area preferences:</h3>
+<section id="the-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences" class="level4">
+<h4 class="anchored" data-anchor-id="the-multinomial-logistic-regression-analysis-revealed-some-interesting-insights-about-the-relationship-between-various-factors-and-living-area-preferences">The Multinomial Logistic Regression analysis revealed some interesting insights about the relationship between various factors and living area preferences:</h4>
 <ol type="1">
 <li><p><strong>Model Convergence and Fit</strong>: The model successfully converged after 5 iterations, indicating a reliable fit to the data. The Pseudo R-squared value of 0.03553, while modest, suggests that our model has some explanatory power, though other unaccounted factors might also play a significant role.</p></li>
 <li><p><strong>Significant Predictors</strong>:</p>

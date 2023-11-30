@@ -7,13 +7,13 @@ categories: [news, code, analysis]
 image: "images.jfif"
 ---
 
-### **Introduction**
+#### **Introduction**
 
 Living in Roanoke: Does Your Income Decide Your Address? We've dived into the world of Roanoke's remote workers to see how much their earnings influence where they live. Using linear regression, we've connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the figure below! (See the figure).
 
 ![The urban areas classification in Roanoke Metropolitan Area produced by the author.](Urban_NonUrban_Rural.jpg){fig-align="center" width="503"}
 
-### **The Study at a Glance**
+#### **The Study at a Glance**
 
 Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We analyzed responses detailing income levels and preferred living areas, from busy city centers to peaceful rural settings. Our unique "relocating index" helped us turn these preferences into measurable data. So again, the variables used are processed as the following:
 
@@ -21,7 +21,7 @@ Our dataset included responses from individuals, detailing their income levels a
 
 -   Converting living area preferences into a single, ordinal dependent variable 'Living Location Preference: *moving from urban to rural index*'.
 
-### Insights from Linear Regression Analysis
+#### Insights from Linear Regression Analysis
 
 Employing linear regression to model the relationship between the two variables: income & Relocating index.
 
@@ -99,7 +99,7 @@ plt.show()
 
 In this plot, the actual data points (black dots) showed significant deviation from the blue regression line (the model's predictions). The red dots, representing the model's predicted values, also varied widely from many actual data points, indicating a mismatch between the model's predictions and the real data.
 
-### **Unveiling the Linear Regression Insights for WFH Workers**
+#### **Unveiling the Linear Regression Insights for WFH Workers**
 
 Our linear regression model yielded the following insights:
 
@@ -107,7 +107,7 @@ Our linear regression model yielded the following insights:
 
 -   **R-squared Value**: We obtained an R-squared value of 0.006851215790502296. This low value suggests that our model might not be capturing the complete picture, especially in the context of WFH employees.
 
-### Transitioning to Non-Linear Models
+#### Transitioning to Non-Linear Models
 
 The visual and numerical analysis led us to consider that the relationship between income and living area preferences might not be linear. This prompted a shift towards exploring non-linear patterns, **We Chose a** Multinomial Logistic Regression!!!! for these key reasons:
 
@@ -117,7 +117,7 @@ The visual and numerical analysis led us to consider that the relationship betwe
 
 3.  **Enhanced Predictive Accuracy**: Ordinal regression aligns more closely with our real-world data, potentially offering improved accuracy in predictions.
 
-### **Implementing** Multinomial Logistic Regression Analysis
+#### **Implementing** Multinomial Logistic Regression Analysis
 
 In this analysis. the location preferences into a single variable suggests that the resulting data is ordinal in nature. Here's why:
 
@@ -170,7 +170,7 @@ print(result.summary())
 
 ```
 
-### The Multinomial Logistic Regression analysis revealed some interesting insights about the relationship between various factors and living area preferences:
+#### The Multinomial Logistic Regression analysis revealed some interesting insights about the relationship between various factors and living area preferences:
 
 1.  **Model Convergence and Fit**: The model successfully converged after 5 iterations, indicating a reliable fit to the data. The Pseudo R-squared value of 0.03553, while modest, suggests that our model has some explanatory power, though other unaccounted factors might also play a significant role.
 

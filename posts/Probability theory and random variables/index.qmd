@@ -10,63 +10,71 @@ code-fold: true
 code-viewfold: true
 ---
 
+#### **Introduction:**
+
 As we navigate through the evolving landscape of the 2023 job market, we are witnessing a significant shift in work methods. More people are embracing Work From Home (WFH) while others continue with Work On Site (WOS). This post helps to understand how these work methods vary across different jobs in the USA.
 
-**My Approach:** For this analysis, I've utilized the Naive Bayes classifier for multivariate Bernoulli models. This method is excellent for sorting jobs into two main categories: WFH and WOS. It's a practical choice for my study because it efficiently handles binary data---like choosing between remote or on-site work.
+#### **My Approach:** 
 
-**About the Data:** The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. ***To respect data confidentiality, we've modified and anonymized the dataset.*** This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
+For this analysis, I've utilized the Naive Bayes classifier for multivariate Bernoulli models. This method is excellent for sorting jobs into two main categories: WFH and WOS. It's a practical choice for my study because it efficiently handles binary data---like choosing between remote or on-site work.
+
+#### **About the Data:** 
+
+The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. ***To respect data confidentiality, we've modified and anonymized the dataset.*** This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
 
 ![The survey participants from workers and their working method (WFH, or WON).](Survey%20participants.png)
 
-**Industry Breakdown:** The study categorized 20 main category for jobs according to the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of these industry sectors:
+#### **Industry Breakdown:** 
 
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### \# | ###### The **o**ccupations categories are based on the 6-digit (SOC) system from the U.S. (BLS) | ###### Industry Sector: **O**ccupational **C**lassification                       |
-+===========+=================================================================================================+===================================================================================+
-| ###### 1  | ###### **Number of jobs in NAICS sector 11**                                                    | ###### (Agriculture, Forestry, Fishing and Hunting)                               |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 2  | ###### cns02 Number of jobs in NAICS sector 21                                                  | ###### (Mining, Quarrying, and Oil and Gas Extraction)                            |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 3  | ###### cns03 Number of jobs in NAICS sector 22                                                  | ###### (Utilities)                                                                |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 4  | ###### cns04 Number of jobs in NAICS sector 23                                                  | ###### (Construction)                                                             |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 5  | ###### cns05 Number of jobs in NAICS sector 31‐33                                               | ###### (Manufacturing)                                                            |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 6  | ###### cns06 Number of jobs in NAICS sector 42                                                  | ###### (Wholesale Trade)                                                          |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 7  | ###### cns07 Number of jobs in NAICS sector 44‐45                                               | ###### (Retail Trade)                                                             |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 8  | ###### cns08 Number of jobs in NAICS sector 48‐49                                               | ###### (Transportation and Warehousing)                                           |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 9  | ###### cns09 Number of jobs in NAICS sector 51                                                  | ###### (Information)                                                              |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 10 | ###### cns10 Number of jobs in NAICS sector 52                                                  | ###### (Finance and Insurance)                                                    |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 11 | ###### cns11 Number of jobs in NAICS sector 53                                                  | ###### (Real Estate and Rental and Leasing)                                       |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 12 | ###### cns12 Number of jobs in NAICS sector 54                                                  | ###### (Professional, Scientific, and Technical Services)                         |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 13 | ###### cns13 Number of jobs in NAICS sector 55                                                  | ###### (Management of Companies and Enterprises)                                  |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 14 | ###### cns14 Number of jobs in NAICS sector 56                                                  | ###### (Administrative and Support and Waste Management and Remediation Services) |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 15 | ###### cns15 Number of jobs in NAICS sector 61                                                  | ###### (Educational Services)                                                     |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 16 | ###### cns16 Number of jobs in NAICS sector 62                                                  | ###### (Health Care and Social Assistance)                                        |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 17 | ###### cns17 Number of jobs in NAICS sector 71                                                  | ###### (Arts, Entertainment, and Recreation)                                      |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 18 | ###### cns18 Number of jobs in NAICS sector 72                                                  | ###### (Accommodation and Food Services)                                          |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 19 | ###### cns19 Number of jobs in NAICS sector 81                                                  | ###### (Other Services \[except Public Administration\])                          |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| ###### 20 | ###### cns20 Number of jobs in NAICS sector 92                                                  | ###### (Public Administration)                                                    |
-+-----------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+The study categorized 20 main category for jobs according to the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of these industry sectors:
+
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### \#  | ###### The **o**ccupations categories are based on the 6-digit (SOC) system from the U.S. (BLS) | ###### Industry Sector: **O**ccupational **C**lassification                       |
++============+=================================================================================================+===================================================================================+
+| ###### 1   | ###### **Number of jobs in NAICS sector 11**                                                    | ###### (Agriculture, Forestry, Fishing and Hunting)                               |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 2   | ###### cns02 Number of jobs in NAICS sector 21                                                  | ###### (Mining, Quarrying, and Oil and Gas Extraction)                            |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 3   | ###### cns03 Number of jobs in NAICS sector 22                                                  | ###### (Utilities)                                                                |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 4   | ###### cns04 Number of jobs in NAICS sector 23                                                  | ###### (Construction)                                                             |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 5   | ###### cns05 Number of jobs in NAICS sector 31‐33                                               | ###### (Manufacturing)                                                            |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 6   | ###### cns06 Number of jobs in NAICS sector 42                                                  | ###### (Wholesale Trade)                                                          |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 7   | ###### cns07 Number of jobs in NAICS sector 44‐45                                               | ###### (Retail Trade)                                                             |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 8   | ###### cns08 Number of jobs in NAICS sector 48‐49                                               | ###### (Transportation and Warehousing)                                           |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 9   | ###### cns09 Number of jobs in NAICS sector 51                                                  | ###### (Information)                                                              |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 10  | ###### cns10 Number of jobs in NAICS sector 52                                                  | ###### (Finance and Insurance)                                                    |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 11  | ###### cns11 Number of jobs in NAICS sector 53                                                  | ###### (Real Estate and Rental and Leasing)                                       |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 12  | ###### cns12 Number of jobs in NAICS sector 54                                                  | ###### (Professional, Scientific, and Technical Services)                         |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 13  | ###### cns13 Number of jobs in NAICS sector 55                                                  | ###### (Management of Companies and Enterprises)                                  |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 14  | ###### cns14 Number of jobs in NAICS sector 56                                                  | ###### (Administrative and Support and Waste Management and Remediation Services) |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 15  | ###### cns15 Number of jobs in NAICS sector 61                                                  | ###### (Educational Services)                                                     |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 16  | ###### cns16 Number of jobs in NAICS sector 62                                                  | ###### (Health Care and Social Assistance)                                        |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 17  | ###### cns17 Number of jobs in NAICS sector 71                                                  | ###### (Arts, Entertainment, and Recreation)                                      |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 18  | ###### cns18 Number of jobs in NAICS sector 72                                                  | ###### (Accommodation and Food Services)                                          |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 19  | ###### cns19 Number of jobs in NAICS sector 81                                                  | ###### (Other Services \[except Public Administration\])                          |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| ###### 20  | ###### cns20 Number of jobs in NAICS sector 92                                                  | ###### (Public Administration)                                                    |
++------------+-------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 **Goal:** My goal is to provide a clear and real picture of the changing work styles. I am not just analyzing numbers; I am uncovering the stories they tell about how people are adapting to new work environments, be it remotely or on-site.
 
-**Why I Chose the Naive Bayes Classifier for Multivariate Bernoulli Models:**
+#### **Why I Chose the Naive Bayes Classifier for Multivariate Bernoulli Models:**
 
 In my exploration of work methods---remote and on-site---the Naive Bayes classifier for multivariate Bernoulli models shines with its simplicity and effectiveness. It excels at evaluating probabilities, helping determine whether a job is more likely to be remote or on-site based on its industry sector. This algorithm's strength lies in its straightforward approach, providing clear baseline assessments that guide our analysis across different industry sectors. Dive Into the Code Behind the Analysis:\
 x: The industry sector: \[jobs categories From 1 to 20\]\
@@ -119,7 +127,7 @@ import warnings
 warnings.filterwarnings("ignore")
 ```
 
-**Insights from Our Model: Understanding the Work Trends**
+#### **Insights from Our Model: Understanding the Work Trends**
 
 The results from our BernoulliNB model offer fascinating insights into the current work trends. The model is predicting class 2.0 for WFH \[Work From Home\] with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).
 
@@ -177,6 +185,10 @@ plt.show()
 
 ```
 
-**Conclusions:** Through our analysis, we aim to provide a clear picture of the current job market and its evolving nature. Whether it's adapting to remote work setups or understanding the necessity of on-site roles, our study sheds light on these important trends.
+#### **Conclusions:** 
 
-**Final Thoughts:** As the world of work continues to change, we're here to keep you informed and help you understand these shifts. Stay tuned for more insights and analyses on the changing job landscape!
+Through our analysis, we aim to provide a clear picture of the current job market and its evolving nature. Whether it's adapting to remote work setups or understanding the necessity of on-site roles, our study sheds light on these important trends.
+
+#### **Final Thoughts:** 
+
+As the world of work continues to change, we're here to keep you informed and help you understand these shifts. Stay tuned for more insights and analyses on the changing job landscape!

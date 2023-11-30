@@ -7,11 +7,11 @@ categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
-**Introduction:**
+#### **Introduction:**
 
 In previous explorations, we've separately investigated the residential patterns of Roanoke and Salem cities through two different lenses: K-Means clustering and DBSCAN anomaly detection. Now, we bring these perspectives together, comparing their insights to offer a more nuanced understanding of urban living.
 
-**Comparative Analysis:**
+#### **Comparative Analysis:**
 
 Here's a snapshot of what each method revealed about the same dataset:
 
@@ -24,16 +24,16 @@ Here's a snapshot of what each method revealed about the same dataset:
 | **Results Interpretation**  | Clusters represent common residential groupings, indicating popular areas for settlement. | Highlights both common groupings and anomalies, providing insight into standard and atypical residential choices. |
 | **Use-Cases**               | Ideal for segmenting areas into clear, defined neighborhoods.                             | Suited for identifying unique living spaces, potential for new developments, and rural or isolated homes.         |
 
-**Insights and Patterns:**
+#### **Insights and Patterns:**
 
 -   *K-Means Clustering* provided us with a bird's-eye view of residential densities, helping to identify the most and least populated areas.
 
 -   *DBSCAN Anomaly Detection* cut through the noise to spotlight the unexpected, revealing where residents break the mold of traditional urban living.
 
-**Visualization:**
+#### **Visualization:**
 
 We present the contrasting visuals from both analyses. The K-Means map shows clustered zones of varying sizes, while the DBSCAN plot illuminates outliers alongside the clusters.
 
-**Conclusion:**
+#### **Conclusion:**
 
 Each method paints a part of the picture: K-Means outlines the collective rhythm of city life, while DBSCAN tunes into the soloists. Together, they compose a symphony of urban and suburban existence, a composition as diverse as the cities themselves.
