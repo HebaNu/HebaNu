@@ -4,7 +4,7 @@ subtitle: "The Future of Work and Cityscapes: An Exploratory Data Analysis"
 author: "Heba Nusair"
 date: "11.3.2023"
 categories: [news, code, analysis]
-image: "OutPIC.png"
+image: "download.jpg"
 code-viewfold: true
 ---
 
