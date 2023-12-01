@@ -49,7 +49,7 @@ data = pd.read_excel('Classification (In_person_Workers).xlsx')
 data.columns = data.columns.str.replace('\xa0', ' ', regex=True)
 
 # Correct any potential typos in column names
-# Ensure these column names exactly match those in your DataFrame
+# Ensure these column names exactly match those in DataFrame
 data.rename(columns={'living costs ': 'living costs'}, inplace=True)
 
 # Convert the first four columns into a single ordinal dependent variable

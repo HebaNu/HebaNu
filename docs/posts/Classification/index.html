@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> data.columns.<span class="bu">str</span>.replace(<span class="st">'</span><span class="ch">\xa0</span><span class="st">'</span>, <span class="st">' '</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct any potential typos in column names</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in your DataFrame</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in DataFrame</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>data.rename(columns<span class="op">=</span>{<span class="st">'living costs '</span>: <span class="st">'living costs'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the first four columns into a single ordinal dependent variable</span></span>
@@ -299,78 +299,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Feature Importances:
-distance from work to homeplace: 0.09208089305335408
-firm age_3.0: 0.023416628944443307
-firm age_2.0: 0.02240938617423798
-firm size_3.0: 0.021960455301975785
-monthly earning_2.0: 0.021730349477508813
-monthly earning_3.0: 0.021169661362810812
-people in household_3.0: 0.019542402169299766
-marital status_2.0: 0.019248308937273233
-number of workers in household_1.0: 0.01901848437327954
-owner or renter_2.0: 0.01878229441224591
-firm size_2.0: 0.018725887516167317
-people in household_4.0: 0.0185402057096412
-firm age_4.0: 0.018410437914987702
-race_1.0: 0.01813395830094342
-desired family size in future_5.0: 0.017888544166475086
-firm age_5.0: 0.01788622507539638
-education level_5.0: 0.01711617568391683
-marital status_1.0: 0.01679842278918678
-education level_2.0: 0.016711141178355583
-education level_6.0: 0.016060106732178274
-industry sector_Manufacturing: 0.016046061875347746
-number of workers in household_2.0: 0.01601492274496306
-desired family size in future_4.0: 0.01591515949108339
-number of workers in household_3.0: 0.015875370860094093
-desired family size in future_3.0: 0.015856977340919152
-people in household_5.0: 0.01576170308621429
-desired family size in future_2.0: 0.015504525463190443
-owner or renter_1.0: 0.015391404408841349
-monthly earning_1.0: 0.015125757843962915
-firm size_5.0: 0.014773976530264217
-firm size_4.0: 0.013652021448688309
-industry sector_Wholesale Trade: 0.013587577383640892
-people in household_2.0: 0.013575470737134379
-race_3.0: 0.013104668042282202
-firm size_1.0: 0.01282010354514757
-industry sector_Professional, Scientific, and Technical Services: 0.012720252126842255
-industry sector_Retail Trade: 0.012428842104580999
-desired family size in future_1.0: 0.012395010530580166
-industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.011919447046121927
-industry sector_Management of Companies and Enterprises: 0.011832841769346363
-education level_3.0: 0.011818938887225811
-monthly earning_4.0: 0.011258530167360841
-industry sector_Transportation and Warehousing: 0.01030667345609924
-education level_7.0: 0.010036845082616725
-industry sector_Information: 0.009976099214426515
-education level_8.0: 0.009838372376832468
-industry sector_Educational Services: 0.009569272960058292
-race_2.0: 0.009344109043648127
-industry sector_Construction: 0.009287276911850108
-people in household_1.0: 0.009018796450142056
-industry sector_Accommodation and Food Services: 0.00888895012949622
-firm age_1.0: 0.008835733007302478
-race_4.0: 0.008802757644339156
-industry sector_Finance and Insurance: 0.008694617400533972
-marital status_3.0: 0.008658000399044359
-marital status_5.0: 0.008589698442216668
-race_8.0: 0.008410913048218364
-education level_4.0: 0.008249845141186889
-marital status_6.0: 0.008138947630528888
-industry sector_Health Care and Social Assistance: 0.00811110346733394
-race_7.0: 0.007819928549855805
-race_5.0: 0.007624088745457004
-marital status_4.0: 0.007124383883059234
-education level_1.0: 0.00694676394267105
-industry sector_Arts, Entertainment, and Recreation: 0.006868224616202844
-industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006791984946081143
-industry sector_Utilities: 0.006626295863339866
-industry sector_Other Services [except Public Administration: 0.006401779241334148
-race_6.0: 0.005903030553878435
-industry sector_Public Administration: 0.0040742536753326335
-industry sector_Real Estate and Rental and Leasing: 0.004037109527011782
-industry sector_Administrative and Support and Waste Management and Remediation Services: 0.004014611942391406</code></pre>
+distance from work to homeplace: 0.09228132723229249
+monthly earning_3.0: 0.024148839071488067
+firm age_2.0: 0.022935863861109636
+firm age_3.0: 0.02122391621020074
+monthly earning_2.0: 0.020783663620347056
+education level_5.0: 0.020653470426281503
+firm size_3.0: 0.02034207935790657
+people in household_4.0: 0.019266243879879442
+race_1.0: 0.019242256512618724
+marital status_1.0: 0.019237845176204603
+firm size_2.0: 0.01874106843684573
+number of workers in household_1.0: 0.018713667452961328
+education level_6.0: 0.017913477861755792
+people in household_3.0: 0.017783898951600045
+desired family size in future_5.0: 0.01778047079532624
+number of workers in household_2.0: 0.01771273142433138
+owner or renter_1.0: 0.01770318150939709
+marital status_2.0: 0.01725290229886583
+firm age_4.0: 0.017237933820219948
+people in household_2.0: 0.016794579058149725
+monthly earning_1.0: 0.016778328315243677
+desired family size in future_4.0: 0.016652782478828322
+firm age_5.0: 0.016592085732534928
+education level_2.0: 0.015744783098587796
+desired family size in future_3.0: 0.015408155969984511
+people in household_5.0: 0.015318805532424016
+industry sector_Wholesale Trade: 0.015174448609564574
+desired family size in future_2.0: 0.01509218448163076
+owner or renter_2.0: 0.015038109486142348
+industry sector_Manufacturing: 0.014888830151766017
+firm size_4.0: 0.014424851355392216
+number of workers in household_3.0: 0.013811662549186613
+industry sector_Retail Trade: 0.013643682810658647
+education level_8.0: 0.013319100123416855
+desired family size in future_1.0: 0.013225824830833259
+race_3.0: 0.01264152427808419
+firm size_1.0: 0.012291195321131243
+education level_3.0: 0.011933615115593273
+firm size_5.0: 0.011849427141072712
+industry sector_Professional, Scientific, and Technical Services: 0.01162647794021858
+industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.011373470030613751
+education level_7.0: 0.01086313540218218
+race_2.0: 0.010839564643162734
+industry sector_Management of Companies and Enterprises: 0.010499250508493613
+industry sector_Educational Services: 0.010116703982221167
+industry sector_Construction: 0.010075869221661806
+monthly earning_4.0: 0.009803340931731505
+industry sector_Accommodation and Food Services: 0.009438631627692954
+race_4.0: 0.009361906935201473
+firm age_1.0: 0.00867904338063921
+race_5.0: 0.008636089078463603
+industry sector_Transportation and Warehousing: 0.008581812311183632
+marital status_6.0: 0.008557369514806169
+marital status_5.0: 0.008480881193814698
+race_8.0: 0.008449487791337558
+industry sector_Information: 0.008342546141312869
+people in household_1.0: 0.00820440607865543
+industry sector_Finance and Insurance: 0.008140889074664776
+education level_4.0: 0.007749292244883506
+marital status_3.0: 0.007632102516179065
+race_6.0: 0.007462367625859009
+industry sector_Health Care and Social Assistance: 0.007390498350431917
+marital status_4.0: 0.0070797483731633625
+race_7.0: 0.006820772846583942
+education level_1.0: 0.006727826950739678
+industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006643213668498233
+industry sector_Utilities: 0.0061539432077504065
+industry sector_Other Services [except Public Administration: 0.006148716787689669
+industry sector_Arts, Entertainment, and Recreation: 0.005683039175908794
+industry sector_Public Administration: 0.004525346378880228
+industry sector_Real Estate and Rental and Leasing: 0.004252060097972498
+industry sector_Administrative and Support and Waste Management and Remediation Services: 0.004081381647544099</code></pre>
 </div>
 </div>
 <section id="general-interpretation" class="level4">
