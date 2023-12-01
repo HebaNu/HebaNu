@@ -33,7 +33,9 @@ website:
         href: 'https://twitter.com'
 format:
   html:
-    theme: darkly
+    theme:
+      light: [flatly, light.scss]
+      dark: [darkly, dark.scss]
     css: styles.css
     toc: true
     toc-depth: 2
