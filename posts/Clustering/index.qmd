@@ -1,5 +1,5 @@
 ---
-title: "Geographic Clustering: Urban Tapestry: Decoding Roanoke and Salem's Living Patterns"
+title: "Urban Clustering: Decoding Roanoke and Salem's Living Patterns"
 subtitle: "Insights from K-Means Clustering on Residential Concentrations"
 author: "Heba Nusair"
 date: "2023-11-06"

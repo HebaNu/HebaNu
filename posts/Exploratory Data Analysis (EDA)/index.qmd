@@ -1,5 +1,5 @@
 ---
-title: "Exploratory Data Analysis (EDA)"
+title: "Exploratory Data Analysis"
 subtitle: "The Future of Work and Cityscapes: An Exploratory Data Analysis"
 author: "Heba Nusair"
 date: "11.3.2023"
