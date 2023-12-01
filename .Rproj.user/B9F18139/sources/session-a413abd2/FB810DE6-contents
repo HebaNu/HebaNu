@@ -76,6 +76,8 @@ Upon analyzing the DBSCAN results, we observed distinct groupings that form the 
 
 The accompanying scatter plot vividly illustrates these findings. Each point represents a homeplace, with color-coded clusters and outliers clearly marked. This visualization is not just a map but a narrative of diversity in residential choices.
 
+![Overlaping the output of DBSCAN output and Roanoke and Salem map](DBSCAN and Map overlap.jpg)
+
 #### **Conclusion:**
 
 Through this DBSCAN anomaly detection exercise, we've uncovered the hidden layers of Roanoke and Salem's residential tapestry. Such analyses can inform urban planning, real estate development, and community services by acknowledging not just the majority, but the unique cases that contribute to the cities' character.
