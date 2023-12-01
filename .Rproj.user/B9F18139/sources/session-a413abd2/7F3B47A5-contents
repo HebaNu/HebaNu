@@ -33,16 +33,15 @@ website:
         href: 'https://twitter.com'
 format:
   html:
-    page-layout: full
-    theme:
-      light: [flatly, light.scss]
-      dark: [darkly, dark.scss]
+    theme: darkly
     css: styles.css
-    grid:
-      sidebar-width: 150px
-      body-width: 1800px
-      margin-width: 250px
-execute:
-  freeze: true
-  cache: true
+    toc: true
+    toc-depth: 2
+    toc-expand: 2
+    max-width: 500px
+    html-math-method: katex
+    code-fold: true
+    code-summary: Show the code
+    e-summary: Show the code
+
 
