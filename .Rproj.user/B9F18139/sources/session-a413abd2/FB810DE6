@@ -3,7 +3,7 @@
     "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.qmd",
     "project_path": "posts/Anomaly-outlier detection DBSCAN labels for scatter plot/index.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "1618157911",
     "contents": "",
     "dirty": false,
     "created": 1701316598192.0,
@@ -18,14 +18,14 @@
         "rmdVisualMode": "true",
         "rmdVisualWrapConfigured": "true",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "269:0"
+        "rmdVisualModeLocation": "270:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1701410527,
+    "lastKnownWriteTime": 1701412648,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1701410527353,
+    "last_content_update": 1701412648745,
     "read_only": false,
     "read_only_alternatives": []
 }

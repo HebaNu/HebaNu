@@ -231,148 +231,146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Classification (In_person_Workers).xlsx'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace non-breaking spaces in column names</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> data.columns.<span class="bu">str</span>.replace(<span class="st">'</span><span class="ch">\xa0</span><span class="st">'</span>, <span class="st">' '</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct any potential typos in column names</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in your DataFrame</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data.rename(columns<span class="op">=</span>{<span class="st">'living costs '</span>: <span class="st">'living costs'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the first four columns into a single ordinal dependent variable</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in the DataFrame</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>area_columns <span class="op">=</span> [<span class="st">'City Center (Central Business District)'</span>, <span class="st">'Urban area'</span>, <span class="st">'Suburban area'</span>, <span class="st">'Rural Area'</span>]</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># For each row, it finds the column among the specified area_columns that has the minimum value </span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># (which would be equivalent to the highest preference rank, assuming 1 is the most preferred and </span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># larger numbers indicate lower preferences) and stores the name of this column (i.e., the living area </span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># with the highest preference for that row) as the value in the new Preferred_Living_Location column.</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Preferred_Living_Location'</span>] <span class="op">=</span> data[area_columns].idxmin(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>data.drop(columns<span class="op">=</span>area_columns, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values (NaNs) for both features and target variable</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>data.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the list of categorical and continuous features</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace these with the actual column names from the DataFrame</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> [<span class="st">'marital status'</span>, <span class="st">'race'</span>, <span class="st">'education level'</span>, <span class="st">'firm age'</span>, <span class="st">'firm size'</span>, <span class="st">'owner or renter'</span>,</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'number of workers in household'</span>, <span class="st">'people in household'</span>, <span class="st">'desired family size in future'</span>,</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'monthly earning'</span>, <span class="st">'industry sector'</span>]  <span class="co"># categorical features </span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>continuous_features <span class="op">=</span> [<span class="st">'distance from work to homeplace'</span>]  <span class="co"># continuous features here</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing pipeline</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'num'</span>, StandardScaler(), continuous_features),</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'cat'</span>, OneHotEncoder(), categorical_features)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    ])</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess the data</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> preprocessor.fit_transform(data.drop(<span class="st">'Preferred_Living_Location'</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'Preferred_Living_Location'</span>].astype(<span class="bu">str</span>)  <span class="co"># Convert to string if categorical</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the Random Forest Classifier</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier()</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>rf.fit(X_train, y_train)</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Get feature importances</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> continuous_features <span class="op">+</span> <span class="bu">list</span>(preprocessor.named_transformers_[<span class="st">'cat'</span>].get_feature_names_out(categorical_features))</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf.feature_importances_</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Display feature importances</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Feature Importances:"</span>)</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> sorted_indices:</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>feature_names[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>importances[i]<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_excel(<span class="st">'Classification (In_person_Workers).xlsx'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace non-breaking spaces in column names</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> data.columns.<span class="bu">str</span>.replace(<span class="st">'</span><span class="ch">\xa0</span><span class="st">'</span>, <span class="st">' '</span>, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct any potential typos in column names</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in your DataFrame</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>data.rename(columns<span class="op">=</span>{<span class="st">'living costs '</span>: <span class="st">'living costs'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the first four columns into a single ordinal dependent variable</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure these column names exactly match those in the DataFrame</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>area_columns <span class="op">=</span> [<span class="st">'City Center (Central Business District)'</span>, <span class="st">'Urban area'</span>, <span class="st">'Suburban area'</span>, <span class="st">'Rural Area'</span>]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For each row, it finds the column among the specified area_columns that has the minimum value </span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># (which would be equivalent to the highest preference rank, assuming 1 is the most preferred and </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># larger numbers indicate lower preferences) and stores the name of this column (i.e., the living area </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># with the highest preference for that row) as the value in the new Preferred_Living_Location column.</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Preferred_Living_Location'</span>] <span class="op">=</span> data[area_columns].idxmin(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>data.drop(columns<span class="op">=</span>area_columns, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values (NaNs) for both features and target variable</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>data.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the list of categorical and continuous features</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace these with the actual column names from the DataFrame</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> [<span class="st">'marital status'</span>, <span class="st">'race'</span>, <span class="st">'education level'</span>, <span class="st">'firm age'</span>, <span class="st">'firm size'</span>, <span class="st">'owner or renter'</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'number of workers in household'</span>, <span class="st">'people in household'</span>, <span class="st">'desired family size in future'</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'monthly earning'</span>, <span class="st">'industry sector'</span>]  <span class="co"># categorical features </span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>continuous_features <span class="op">=</span> [<span class="st">'distance from work to homeplace'</span>]  <span class="co"># continuous features here</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing pipeline</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'num'</span>, StandardScaler(), continuous_features),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'cat'</span>, OneHotEncoder(), categorical_features)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess the data</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> preprocessor.fit_transform(data.drop(<span class="st">'Preferred_Living_Location'</span>, axis<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'Preferred_Living_Location'</span>].astype(<span class="bu">str</span>)  <span class="co"># Convert to string if categorical</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the Random Forest Classifier</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>rf.fit(X_train, y_train)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Get feature importances</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> continuous_features <span class="op">+</span> <span class="bu">list</span>(preprocessor.named_transformers_[<span class="st">'cat'</span>].get_feature_names_out(categorical_features))</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf.feature_importances_</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Display feature importances</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Feature Importances:"</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> sorted_indices:</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>feature_names[i]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>importances[i]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Feature Importances:
-distance from work to homeplace: 0.09329533112624357
-firm age_3.0: 0.02424930451302162
-monthly earning_3.0: 0.0223545383667649
-marital status_2.0: 0.021029396184512984
-firm age_2.0: 0.020997036903579805
-firm size_3.0: 0.020704592181966925
-monthly earning_2.0: 0.02065299616212844
-number of workers in household_1.0: 0.02061460285623862
-education level_5.0: 0.020548173034470735
-desired family size in future_5.0: 0.019920904018151737
-people in household_4.0: 0.019075534649067936
-owner or renter_2.0: 0.019003143815399498
-marital status_1.0: 0.01847273974413312
-race_1.0: 0.01841707464739946
-firm size_2.0: 0.017832435183546703
-education level_2.0: 0.017590609638732276
-monthly earning_1.0: 0.017461323444450345
-number of workers in household_3.0: 0.017108671930236168
-firm age_5.0: 0.01698172814474285
-people in household_3.0: 0.01684513328402974
-owner or renter_1.0: 0.016764567547018737
-number of workers in household_2.0: 0.016550565651443985
-education level_6.0: 0.016307179215413727
-desired family size in future_4.0: 0.015973922287573834
-firm age_4.0: 0.015551202720928144
-desired family size in future_3.0: 0.015525800855427853
-people in household_5.0: 0.014875600281760298
-firm size_4.0: 0.014836263727922764
-industry sector_Manufacturing: 0.014678265726233649
-desired family size in future_2.0: 0.014636788244589274
-people in household_2.0: 0.014185852989262138
-race_3.0: 0.012724669870718868
-industry sector_Management of Companies and Enterprises: 0.012612803940203123
-education level_3.0: 0.012576665632231025
-firm size_1.0: 0.012176275379562
-industry sector_Wholesale Trade: 0.011872109565995955
-industry sector_Retail Trade: 0.01180487602462331
-firm size_5.0: 0.011793751000555384
-desired family size in future_1.0: 0.01171563573641372
-industry sector_Professional, Scientific, and Technical Services: 0.011361341073498496
-education level_8.0: 0.011132041862723374
-industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.01098901995051992
-race_2.0: 0.010837239229228475
-education level_7.0: 0.01012178742841415
-industry sector_Educational Services: 0.00997542474373274
-people in household_1.0: 0.009782358795321756
-marital status_6.0: 0.009781393243981647
-race_4.0: 0.009669229800917722
-monthly earning_4.0: 0.009202728014120141
-firm age_1.0: 0.009136533830397123
-industry sector_Construction: 0.009053676381996043
-marital status_4.0: 0.008746169755447928
-industry sector_Accommodation and Food Services: 0.008609723813636975
-industry sector_Transportation and Warehousing: 0.008539375934797921
-race_5.0: 0.008375645641079588
-industry sector_Information: 0.008298400092239335
-industry sector_Finance and Insurance: 0.00813489042852567
-race_6.0: 0.007881556968606608
-education level_4.0: 0.007847749761276734
-industry sector_Utilities: 0.007797410097049339
-marital status_5.0: 0.007789205842779423
-education level_1.0: 0.007762612207931861
-marital status_3.0: 0.0077282411100404146
-race_8.0: 0.007508825757337184
-industry sector_Health Care and Social Assistance: 0.007372508754409735
-race_7.0: 0.0067521425070023785
-industry sector_Other Services [except Public Administration: 0.006585373774077092
-industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006371092913793431
-industry sector_Arts, Entertainment, and Recreation: 0.006061103594295629
-industry sector_Public Administration: 0.0038343378382703856
-industry sector_Real Estate and Rental and Leasing: 0.003808192706251781
-industry sector_Administrative and Support and Waste Management and Remediation Services: 0.002834599919603912</code></pre>
+distance from work to homeplace: 0.09208089305335408
+firm age_3.0: 0.023416628944443307
+firm age_2.0: 0.02240938617423798
+firm size_3.0: 0.021960455301975785
+monthly earning_2.0: 0.021730349477508813
+monthly earning_3.0: 0.021169661362810812
+people in household_3.0: 0.019542402169299766
+marital status_2.0: 0.019248308937273233
+number of workers in household_1.0: 0.01901848437327954
+owner or renter_2.0: 0.01878229441224591
+firm size_2.0: 0.018725887516167317
+people in household_4.0: 0.0185402057096412
+firm age_4.0: 0.018410437914987702
+race_1.0: 0.01813395830094342
+desired family size in future_5.0: 0.017888544166475086
+firm age_5.0: 0.01788622507539638
+education level_5.0: 0.01711617568391683
+marital status_1.0: 0.01679842278918678
+education level_2.0: 0.016711141178355583
+education level_6.0: 0.016060106732178274
+industry sector_Manufacturing: 0.016046061875347746
+number of workers in household_2.0: 0.01601492274496306
+desired family size in future_4.0: 0.01591515949108339
+number of workers in household_3.0: 0.015875370860094093
+desired family size in future_3.0: 0.015856977340919152
+people in household_5.0: 0.01576170308621429
+desired family size in future_2.0: 0.015504525463190443
+owner or renter_1.0: 0.015391404408841349
+monthly earning_1.0: 0.015125757843962915
+firm size_5.0: 0.014773976530264217
+firm size_4.0: 0.013652021448688309
+industry sector_Wholesale Trade: 0.013587577383640892
+people in household_2.0: 0.013575470737134379
+race_3.0: 0.013104668042282202
+firm size_1.0: 0.01282010354514757
+industry sector_Professional, Scientific, and Technical Services: 0.012720252126842255
+industry sector_Retail Trade: 0.012428842104580999
+desired family size in future_1.0: 0.012395010530580166
+industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.011919447046121927
+industry sector_Management of Companies and Enterprises: 0.011832841769346363
+education level_3.0: 0.011818938887225811
+monthly earning_4.0: 0.011258530167360841
+industry sector_Transportation and Warehousing: 0.01030667345609924
+education level_7.0: 0.010036845082616725
+industry sector_Information: 0.009976099214426515
+education level_8.0: 0.009838372376832468
+industry sector_Educational Services: 0.009569272960058292
+race_2.0: 0.009344109043648127
+industry sector_Construction: 0.009287276911850108
+people in household_1.0: 0.009018796450142056
+industry sector_Accommodation and Food Services: 0.00888895012949622
+firm age_1.0: 0.008835733007302478
+race_4.0: 0.008802757644339156
+industry sector_Finance and Insurance: 0.008694617400533972
+marital status_3.0: 0.008658000399044359
+marital status_5.0: 0.008589698442216668
+race_8.0: 0.008410913048218364
+education level_4.0: 0.008249845141186889
+marital status_6.0: 0.008138947630528888
+industry sector_Health Care and Social Assistance: 0.00811110346733394
+race_7.0: 0.007819928549855805
+race_5.0: 0.007624088745457004
+marital status_4.0: 0.007124383883059234
+education level_1.0: 0.00694676394267105
+industry sector_Arts, Entertainment, and Recreation: 0.006868224616202844
+industry sector_Agriculture, Forestry, Fishing and Hunting: 0.006791984946081143
+industry sector_Utilities: 0.006626295863339866
+industry sector_Other Services [except Public Administration: 0.006401779241334148
+race_6.0: 0.005903030553878435
+industry sector_Public Administration: 0.0040742536753326335
+industry sector_Real Estate and Rental and Leasing: 0.004037109527011782
+industry sector_Administrative and Support and Waste Management and Remediation Services: 0.004014611942391406</code></pre>
 </div>
 </div>
 <section id="general-interpretation" class="level4">
@@ -399,27 +397,25 @@ The results were clear: For workers who commute to work; the distance from workp
 <div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'importances', 'feature_names' are already defined as in the previous code</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Sorting the feature importances</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>sorted_importances <span class="op">=</span> importances[sorted_indices]</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>sorted_features <span class="op">=</span> [feature_names[i] <span class="cf">for</span> i <span class="kw">in</span> sorted_indices]</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting a number of top features to display (you can adjust this number)</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>n_top_features <span class="op">=</span> <span class="dv">20</span>  <span class="co"># for example, top 20 features</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the plot</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="fl">6.5</span>, <span class="fl">6.5</span>))</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>sorted_importances[:n_top_features], y<span class="op">=</span>sorted_features[:n_top_features])</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Significance of factors in residential decision-making process'</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Level of importance'</span>)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Factors'</span>)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'importances', 'feature_names' are already defined as in the previous code</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sorting the feature importances</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> np.argsort(importances)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>sorted_importances <span class="op">=</span> importances[sorted_indices]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>sorted_features <span class="op">=</span> [feature_names[i] <span class="cf">for</span> i <span class="kw">in</span> sorted_indices]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting a number of top features to display (you can adjust this number)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>n_top_features <span class="op">=</span> <span class="dv">20</span>  <span class="co"># for example, top 20 features</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the plot</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="fl">6.5</span>, <span class="fl">6.5</span>))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>sorted_importances[:n_top_features], y<span class="op">=</span>sorted_features[:n_top_features])</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Significance of factors in residential decision-making process'</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Level of importance'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Factors'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="index_files/figure-html/cell-3-output-1.png" width="777" height="560"></p>
