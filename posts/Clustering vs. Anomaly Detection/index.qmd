@@ -3,7 +3,7 @@ title: "URBAN Insights: K-Means vs. DBSCAN in Decoding Roanoke and Salem’s Res
 subtitle: "K-Means and DBSCAN Side by Side"
 author: "Heba Nusair"
 date: "2023-11-1"
-categories: [news, code, analysis]
+categories: [research, code, analysis]
 image: "COMPARE.jpg"
 ---
 

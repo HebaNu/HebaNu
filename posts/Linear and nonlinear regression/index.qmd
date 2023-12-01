@@ -3,7 +3,7 @@ title: "Exploring the Relationship Between Income and Living Location Preference
 subtitle: "A Comparative Analysis of Linear and Non-Linear Regression Models"
 author: "Heba Nusair"
 date: "2023-11-10"
-categories: [news, code, analysis]
+categories: [research, code, analysis, plot]
 image: "images.jfif"
 ---
 

@@ -3,7 +3,7 @@ title: "Beyond the Cluster: Spotting the Outliers in Roanoke and Salem"
 subtitle: "Uncovering Hidden Residential Gems with DBSCAN Anomaly Detection"
 author: "Heba Nusair"
 date: "2023-11-06"
-categories: [news, code, analysis]
+categories: [research, code, analysis, plot]
 image: "Bryan Vargas.jpg"
 echo: fenced
 ---

@@ -3,7 +3,7 @@ title: "Unveiling the Tapestry of Residential Preferences for Workers, A Data-Dr
 subtitle: "Random Forest Classifier"
 author: "Heba Nusair"
 date: "2023-11-20"
-categories: [news, code, analysis]
+categories: [research, code, analysis, plot]
 image: "confused-c2e1e9d14491a9486d996da945debcc9d6ce7170-s1100-c50.jpg"
 ---
 
@@ -104,7 +104,7 @@ for i in sorted_indices:
 
 #### **General Interpretation:**
 
--   The features with higher importance scores are more influential in determining the preferred living area. This doesn\'t necessarily mean causation but indicates a stronger association.
+-   The features with higher importance scores are more influential in determining the preferred living area. This doesn't necessarily mean causation but indicates a stronger association.
 
 -   The model suggests that practical considerations like distance to work, firm age, earnings, and household characteristics play a significant role in determining living area preferences.
 
@@ -114,7 +114,7 @@ for i in sorted_indices:
 
 -   The results should be interpreted as indicative rather than definitive. For more precise modeling of ordinal outcomes, specific ordinal regression models would be more appropriate.
 
-In summary, the model\'s output provides a useful guide to understanding which factors are most influential in determining living area preferences, with distance from work appearing as the most significant factor according to this model.\]\
+In summary, the model's output provides a useful guide to understanding which factors are most influential in determining living area preferences, with distance from work appearing as the most significant factor according to this model.\]\
 \
 The results were clear: For workers who commute to work; the distance from workplace to homeplace stood out as the number one factor. This wasn't too surprising -- after all, who wants to spend hours in traffic when they could be home relaxing? Income was also a key factor. It seems the more we earn, the more choices we have about where we live.
 

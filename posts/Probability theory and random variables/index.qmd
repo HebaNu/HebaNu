@@ -3,7 +3,7 @@ title: "Predicting Work Trends Across Industries with Naive Bayes: Remote or On-
 subtitle: "Probability theory and random variables, Naive Bayes classifier for multivariate Bernoulli models"
 author: "Heba Nusair"
 date: "2023-11-25"
-categories: [news, code, analysis, plot]
+categories: [research, code, analysis, plot]
 type: grid
 image: "work-from-home-vs-work-from-office-e1678776814995.jpg"
 code-fold: true
