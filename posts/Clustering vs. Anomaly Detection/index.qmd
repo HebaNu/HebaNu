@@ -9,7 +9,11 @@ image: "image.jpg"
 
 #### **Introduction:**
 
-In previous explorations, we've separately investigated the residential patterns of Roanoke and Salem cities through two different lenses: K-Means clustering and DBSCAN anomaly detection. Now, we bring these perspectives together, comparing their insights to offer a more nuanced understanding of urban living.
+In the quest to decode the living patterns of Roanoke and Salem, our exploration has evolved. We've delved into the fabric of these cities with a dual approach: the methodical partitioning of K-Means clustering and the intuitive scrutiny of DBSCAN anomaly detection. This blog unveils a side-by-side analysis, bridging the gap between regimented clusters and the organic sprawl of outliers to paint a comprehensive picture of urban living.
+
+By juxtaposing the delineated neighborhoods identified by K-Means with the nuanced anomalies unearthed by DBSCAN, we reveal not just where residents are choosing to live, but how these patterns reflect the unique character of each city. From the densely woven centers to the individualistic fringes, this comparative study offers a multi-dimensional view of urban sprawl, giving voice to both the harmony of the collective and the distinct notes of the individual.
+
+Join us as we navigate through the clustered chorus of the cities' heartbeats and into the quiet corners of outlier enclaves, discovering a richer narrative of Roanoke and Salem's residential landscapes.
 
 #### **Comparative Analysis:**
 
@@ -18,7 +22,7 @@ Here's a snapshot of what each method revealed about the same dataset:
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | **Feature**                       | **K-Means Clustering**                                                                        | **DBSCAN Anomaly Detection**                                                                                          |
 +===================================+===============================================================================================+=======================================================================================================================+
-|                                   | ![](Clustering.JPG)                                                                           | ![](BDSCAN.png)                                                                                                       |
+|                                   | ![](Clustering.JPG){width="803"}                                                              | ![](BDSCAN.png)                                                                                                       |
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | ##### **Objective**               | To partition the dataset into **distinct, non-overlapping clusters** based on **proximity**.  | To identify **core groups** and **outliers** based on **density**.                                                    |
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
@@ -26,7 +30,7 @@ Here's a snapshot of what each method revealed about the same dataset:
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | ##### **Cluster Shape**           | Assumes **spherical** clusters.                                                               | Can detect clusters of **arbitrary shapes**.                                                                          |
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| ##### **Sensitivity to Outliers** | Can be **sensitive to outliers**, which may skew the clustering.                              | **Robust to outliers**, labels them as **noise**.                                                                     |
+| ##### **Sensitivity to Outliers** | **Sensitive to outliers**, which may skew the clustering.                                     | **Robust to outliers**, labels them as **noise**.                                                                     |
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | ##### **Results Interpretation**  | Clusters represent common residential groupings, indicating **popular areas** for settlement. | Highlights **both common groupings and anomalies**, providing insight into standard and atypical residential choices. |
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
