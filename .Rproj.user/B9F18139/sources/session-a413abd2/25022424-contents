@@ -14,17 +14,17 @@ code-viewfold: true
 
 As we navigate through the evolving landscape of the 2023 job market, we are witnessing a significant shift in work methods. More people are embracing Work From Home (WFH) while others continue with Work On Site (WOS). This post helps to understand how these work methods vary across different jobs in the USA.
 
-#### **My Approach:** 
+#### **My Approach:**
 
 For this analysis, I've utilized the Naive Bayes classifier for multivariate Bernoulli models. This method is excellent for sorting jobs into two main categories: WFH and WOS. It's a practical choice for my study because it efficiently handles binary data---like choosing between remote or on-site work.
 
-#### **About the Data:** 
+#### **About the Data:**
 
 The data comes from a 2023 survey of 850 participants from various occupations. Participants were asked about their industry sector and working method. ***To respect data confidentiality, we've modified and anonymized the dataset.*** This ensures compliance with data privacy guidelines without affecting the overall analysis and insights.
 
 ![The survey participants from workers and their working method (WFH, or WON).](Survey%20participants.png)
 
-#### **Industry Breakdown:** 
+#### **Industry Breakdown:**
 
 The study categorized 20 main category for jobs according to the North American Industry Classification System (NAICS), aligning with the 6-digit Standard Occupational Classification (SOC) system from the U.S. Bureau of Labor Statistics (BLS). Here's a table of these industry sectors:
 
@@ -81,6 +81,7 @@ x: The industry sector: \[jobs categories From 1 to 20\]\
 y: The work method: 1 for WOS \[Work on Site\], 2 for WFH \[Work From Home\]\
 
 ```{python}
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import BernoulliNB
@@ -185,10 +186,10 @@ plt.show()
 
 ```
 
-#### **Conclusions:** 
+#### **Conclusions:**
 
 Through our analysis, we aim to provide a clear picture of the current job market and its evolving nature. Whether it's adapting to remote work setups or understanding the necessity of on-site roles, our study sheds light on these important trends.
 
-#### **Final Thoughts:** 
+#### **Final Thoughts:**
 
 As the world of work continues to change, we're here to keep you informed and help you understand these shifts. Stay tuned for more insights and analyses on the changing job landscape!

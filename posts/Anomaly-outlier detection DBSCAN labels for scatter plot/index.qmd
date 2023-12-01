@@ -5,6 +5,7 @@ author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
 image: "Bryan Vargas.jpg"
+echo: fenced
 ---
 
 #### **Introduction:**
