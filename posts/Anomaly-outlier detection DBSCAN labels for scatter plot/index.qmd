@@ -4,7 +4,7 @@ subtitle: "Uncovering Hidden Residential Gems with DBSCAN Anomaly Detection"
 author: "Heba Nusair"
 date: "2023-11-06"
 categories: [news, code, analysis]
-image: "DBSCAN2"
+image: "DBSCAN2.jpg"
 ---
 
 #### **Introduction:**
