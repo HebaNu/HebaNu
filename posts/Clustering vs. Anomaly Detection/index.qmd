@@ -4,7 +4,7 @@ subtitle: "K-Means and DBSCAN Side by Side"
 author: "Heba Nusair"
 date: "2023-11-1"
 categories: [news, code, analysis]
-image: "image.jpg"
+image: "COMPARE.jpg"
 ---
 
 #### **Introduction:**
