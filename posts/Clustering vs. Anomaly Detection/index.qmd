@@ -21,8 +21,8 @@ Here's a snapshot of what each method revealed about the same dataset:
 
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | **Feature**                       | **K-Means Clustering**                                                                        | **DBSCAN Anomaly Detection**                                                                                          |
-+===================================+===============================================================================================+=======================================================================================================================+
-|                                   | ![](Clustering.JPG){width="818"}                                                              | ![](BDSCAN.png)                                                                                                       |
++===================================+:=============================================================================================:+:=====================================================================================================================:+
+|                                   | ![](Clustering.JPG){width="803"}                                                              | ![](BDSCAN.png)                                                                                                       |
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | ##### **Objective**               | To partition the dataset into **distinct, non-overlapping clusters** based on **proximity**.  | To identify **core groups** and **outliers** based on **density**.                                                    |
 +-----------------------------------+-----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
@@ -45,7 +45,7 @@ Here's a snapshot of what each method revealed about the same dataset:
 
 #### **Visualization:**
 
-We present the contrasting visuals from both analyses. The K-Means map shows clustered zones of varying sizes, while the DBSCAN plot illuminates outliers alongside the clusters.
+We present the contrasting visuals from both analyses. The K-Means map shows clustered zones of varying sizes, while the DBSCAN plot illuminates the intricate tapestry of living spaces by dissecting dense cores, transitional zones, and the outliers, and gains an unprecedented view of the region\'s residential heartbeat. DBSCAN anomaly detection could shows the diversity and complexity in urban and suburban living. These insights are instrumental for urban planners and stakeholders, offering a data-driven foundation for decisions that embrace both the well-established neighborhoods and the burgeoning communities, as well as the unique outliers that give Roanoke and Salem their distinct character.
 
 #### **Conclusion:**
 
