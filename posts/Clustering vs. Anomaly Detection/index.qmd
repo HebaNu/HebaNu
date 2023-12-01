@@ -1,5 +1,5 @@
 ---
-title: "Clustering vs. Anomaly Detection: A Comparative Study of Roanoke and Salem's Residential Landscapes"
+title: "Clustering vs. DBSCAN Anomaly Detection: A Comparative Study of Roanoke and Salem's Residential Landscapes"
 subtitle: "K-Means and DBSCAN Side by Side"
 author: "Heba Nusair"
 date: "2023-11-1"
