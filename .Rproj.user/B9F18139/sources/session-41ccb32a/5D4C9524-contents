@@ -130,9 +130,9 @@ warnings.filterwarnings("ignore")
 
 #### **Insights from Our Model: Understanding the Work Trends**
 
-The results from our BernoulliNB model offer fascinating insights into the current work trends. The model is predicting class 2.0 for WFH \[Work From Home\] with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).
+The results from our BernoulliNB model offer fascinating insights into the current work trends. The model is predicting class 2.0 WFH \[Work From Home\] with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).
 
-For class 1.0, however, the model does not predict any instances correctly, which suggests that either there's an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. **The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.**
+For class 1.0 WOS \[Work on Site\], however, the model does not predict any instances correctly, which suggests that either there's an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. ***The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.***
 
 The macro avg and weighted avg for precision, recall, and f1-score provide a summary of the effectiveness of the model across the classes. The low macro avg for precision and f1-score indicates that one of the classes does not perform well, which we already know is class 1.0.
 

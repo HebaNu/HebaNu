@@ -401,8 +401,8 @@ y: The work method: 1 for WOS [Work on Site], 2 for WFH [Work From Home]<br>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
 
-         1.0       0.00      0.00      0.00        40
-         2.0       0.76      1.00      0.87       130
+           1       0.00      0.00      0.00        40
+           2       0.76      1.00      0.87       130
 
     accuracy                           0.76       170
    macro avg       0.38      0.50      0.43       170
@@ -420,8 +420,8 @@ Accuracy: 0.7647058823529411</code></pre>
 </section>
 <section id="insights-from-our-model-understanding-the-work-trends" class="level4">
 <h4 class="anchored" data-anchor-id="insights-from-our-model-understanding-the-work-trends"><strong>Insights from Our Model: Understanding the Work Trends</strong></h4>
-<p>The results from our BernoulliNB model offer fascinating insights into the current work trends. The model is predicting class 2.0 for WFH [Work From Home] with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).</p>
-<p>For class 1.0, however, the model does not predict any instances correctly, which suggests that either there’s an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. <strong>The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.</strong></p>
+<p>The results from our BernoulliNB model offer fascinating insights into the current work trends. The model is predicting class 2.0 WFH [Work From Home] with high precision (76%) and recall (100%), which means for this class, it performs well both in terms of the accuracy of the positive predictions it makes (precision) and its ability to find all the positive instances (recall).</p>
+<p>For class 1.0 WOS [Work on Site], however, the model does not predict any instances correctly, which suggests that either there’s an issue with the distribution of your classes (perhaps class 1.0 is underrepresented), or that the features do not provide enough information to distinguish class 1.0 from class 2.0. <strong><em>The overall accuracy of the model is 76.47%, which means that it correctly predicts the class for 76.47% of the test set.</em></strong></p>
 <p>The macro avg and weighted avg for precision, recall, and f1-score provide a summary of the effectiveness of the model across the classes. The low macro avg for precision and f1-score indicates that one of the classes does not perform well, which we already know is class 1.0.</p>
 <p>The f1-score is a harmonic mean of precision and recall and is a useful metric when you have classes that are imbalanced. In my case, the f1-score for class 1.0 [WOS] is 0.00, indicating poor performance for this class.</p>
 <p>Generally, the Naive Bayes classifier for multivariate Bernoulli models proves to be an effective and reliable tool for classification tasks. Its ability to handle binary data, like our work method categories, contributes to its robustness and applicability in various analytical scenarios.</p>

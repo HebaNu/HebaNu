@@ -1,14 +1,14 @@
 {
-    "id": "ED4A1648",
-    "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Exploratory Data Analysis (EDA)/index.qmd",
-    "project_path": "posts/Exploratory Data Analysis (EDA)/index.qmd",
+    "id": "D16F8808",
+    "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/posts/Classification/index.qmd",
+    "project_path": "posts/Classification/index.qmd",
     "type": "quarto_markdown",
-    "hash": "1574380226",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1701420119416.0,
+    "created": 1701420085701.0,
     "source_on_save": false,
-    "relative_order": 6,
+    "relative_order": 4,
     "properties": {
         "rmdVisualMode": "true",
         "rmdVisualWrapConfigured": "true",
@@ -16,16 +16,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "342:0",
         "cursorPosition": "0,0",
-        "scrollLine": "0",
-        "rmdVisualModeLocation": "199:0"
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1701420237,
+    "lastKnownWriteTime": 1701420235,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1701420237118,
+    "last_content_update": 1701420235999,
     "read_only": false,
     "read_only_alternatives": []
 }
