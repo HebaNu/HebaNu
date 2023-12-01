@@ -3,7 +3,7 @@
     "path": "C:/Users/NUSAI/Desktop/Machine learning/HebaNu.github.io/HebaNu.github.io/HebaNu/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "0",
+    "hash": "882689321",
     "contents": "",
     "dirty": false,
     "created": 1701415674481.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "49,13",
-        "scrollLine": "21"
+        "cursorPosition": "47,0",
+        "scrollLine": "19"
     },
     "folds": "",
-    "lastKnownWriteTime": 1701417757,
+    "lastKnownWriteTime": 1701419054,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1701417757391,
+    "last_content_update": 1701419054655,
     "read_only": false,
     "read_only_alternatives": []
 }
