@@ -427,9 +427,9 @@ Accuracy: 0.7647058823529411</code></pre>
 <p>The f1-score is a harmonic mean of precision and recall and is a useful metric when you have classes that are imbalanced. In my case, the f1-score for class 1.0 [WOS] is 0.00, indicating poor performance for this class.</p>
 <p>Generally, the Naive Bayes classifier for multivariate Bernoulli models proves to be an effective and reliable tool for classification tasks. Its ability to handle binary data, like our work method categories, contributes to its robustness and applicability in various analytical scenarios.</p>
 <p><strong><em>To create plots</em></strong> that visualize the performance of your <strong><code>BernoulliNB</code></strong> model, you would typically look at the confusion matrix, precision-recall, and possibly ROC curves. Below are examples of how you could generate each of these plots using <strong><code>matplotlib</code></strong> and <strong><code>scikit-learn</code></strong>:</p>
-<ol type="1">
-<li><strong>Confusion Matrix</strong>: Visualizes the correct and incorrect predictions compared to the actual values.</li>
-</ol>
+</section>
+<section id="confusion-matrix-visualizes-the-correct-and-incorrect-predictions-compared-to-the-actual-values." class="level4">
+<h4 class="anchored" data-anchor-id="confusion-matrix-visualizes-the-correct-and-incorrect-predictions-compared-to-the-actual-values."><strong>Confusion Matrix</strong>: Visualizes the correct and incorrect predictions compared to the actual values.</h4>
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
@@ -449,7 +449,10 @@ Accuracy: 0.7647058823529411</code></pre>
 <p><img src="index_files/figure-html/cell-4-output-1.png" width="556" height="449"></p>
 </div>
 </div>
-<p><strong>ROC Curve</strong>: Plots the true positive rate against the false positive rate.</p>
+<p>This confusion matrix from our BernoulliNB model reveals a contrast in predictive accuracy between the two classes. While it excels at identifying Work On Site (WOS) instances with a 100% success rate, it falls short regarding Work From Home (WFH) predictions, misclassifying all as WOS. This pattern indicates a strong model bias toward WOS, suggesting the need for further tuning to balance the recognition of both work types and a deeper dive into the feature set and model parameters to ensure a fair representation of the evolving work landscape.</p>
+</section>
+<section id="roc-curve-plots-the-true-positive-rate-against-the-false-positive-rate." class="level4">
+<h4 class="anchored" data-anchor-id="roc-curve-plots-the-true-positive-rate-against-the-false-positive-rate."><strong>ROC Curve</strong>: Plots the true positive rate against the false positive rate.</h4>
 <div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
@@ -479,13 +482,18 @@ Accuracy: 0.7647058823529411</code></pre>
 <p><img src="index_files/figure-html/cell-5-output-1.png" width="589" height="449"></p>
 </div>
 </div>
+<p>The ROC Curve visualizes the performance of the BernoulliNB model by plotting the true positive rate against the false positive rate at various threshold settings. The AUC, or Area Under the Curve, is 0.60, which indicates the model’s ability to distinguish between the classes. While an AUC of 1 represents a perfect model, an AUC closer to 0.5 suggests the model performs no better than random chance. Therefore, with an AUC of 0.60, our model shows some ability to differentiate between WFH and WOS, but there’s room for improvement.</p>
 </section>
 <section id="conclusion-decoding-work-trends-with-data" class="level4">
 <h4 class="anchored" data-anchor-id="conclusion-decoding-work-trends-with-data"><strong>Conclusion: Decoding Work Trends with Data</strong></h4>
 <p>Our exploration of the job market through the Naive Bayes classifier has revealed some clear trends. We’ve seen a strong presence of on-site work, while remote work remains less predictable, hinting at a potential mismatch in our data or a sign of emerging work patterns.</p>
-<p><strong>From Data to Insights</strong></p>
+</section>
+<section id="from-data-to-insights" class="level4">
+<h4 class="anchored" data-anchor-id="from-data-to-insights"><strong>From Data to Insights</strong></h4>
 <p>We’re not just crunching numbers; we’re seeking stories that reflect real-life work experiences. Our goal is to provide a snapshot of how people are adjusting to new work realities, and we’ll keep refining our approach to get the full picture.</p>
-<p><strong>What’s Next?</strong></p>
+</section>
+<section id="whats-next" class="level4">
+<h4 class="anchored" data-anchor-id="whats-next"><strong>What’s Next?</strong></h4>
 <p>We’ll continue to monitor these trends and bring you fresh insights. Stay tuned for more updates as we delve deeper into the world of work and what it means for all of us in these changing times.</p>
 
 

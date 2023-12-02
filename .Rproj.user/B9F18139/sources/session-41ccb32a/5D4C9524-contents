@@ -144,7 +144,7 @@ Generally, the Naive Bayes classifier for multivariate Bernoulli models proves t
 
 ***To create plots*** that visualize the performance of your **`BernoulliNB`** model, you would typically look at the confusion matrix, precision-recall, and possibly ROC curves. Below are examples of how you could generate each of these plots using **`matplotlib`** and **`scikit-learn`**:
 
-1.  **Confusion Matrix**: Visualizes the correct and incorrect predictions compared to the actual values.
+#### **Confusion Matrix**: Visualizes the correct and incorrect predictions compared to the actual values.
 
 ```{python}
 from sklearn.metrics import confusion_matrix
@@ -161,7 +161,9 @@ plt.show()
 
 ```
 
-**ROC Curve**: Plots the true positive rate against the false positive rate.
+This confusion matrix from our BernoulliNB model reveals a contrast in predictive accuracy between the two classes. While it excels at identifying Work On Site (WOS) instances with a 100% success rate, it falls short regarding Work From Home (WFH) predictions, misclassifying all as WOS. This pattern indicates a strong model bias toward WOS, suggesting the need for further tuning to balance the recognition of both work types and a deeper dive into the feature set and model parameters to ensure a fair representation of the evolving work landscape.
+
+#### **ROC Curve**: Plots the true positive rate against the false positive rate.
 
 ```{python}
 from sklearn.metrics import roc_curve, auc
@@ -188,14 +190,16 @@ plt.show()
 
 ```
 
+The ROC Curve visualizes the performance of the BernoulliNB model by plotting the true positive rate against the false positive rate at various threshold settings. The AUC, or Area Under the Curve, is 0.60, which indicates the model's ability to distinguish between the classes. While an AUC of 1 represents a perfect model, an AUC closer to 0.5 suggests the model performs no better than random chance. Therefore, with an AUC of 0.60, our model shows some ability to differentiate between WFH and WOS, but there's room for improvement.
+
 #### **Conclusion: Decoding Work Trends with Data**
 
 Our exploration of the job market through the Naive Bayes classifier has revealed some clear trends. We've seen a strong presence of on-site work, while remote work remains less predictable, hinting at a potential mismatch in our data or a sign of emerging work patterns.
 
-**From Data to Insights**
+#### **From Data to Insights**
 
 We're not just crunching numbers; we're seeking stories that reflect real-life work experiences. Our goal is to provide a snapshot of how people are adjusting to new work realities, and we'll keep refining our approach to get the full picture.
 
-**What's Next?**
+#### **What's Next?**
 
 We'll continue to monitor these trends and bring you fresh insights. Stay tuned for more updates as we delve deeper into the world of work and what it means for all of us in these changing times.
