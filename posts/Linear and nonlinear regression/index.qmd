@@ -9,17 +9,15 @@ image: "images.jfif"
 
 #### **Introduction**
 
-Living in Roanoke: Does Your Income Decide Your Address? We've dived into the world of Roanoke's remote workers to see how much their earnings influence where they live. Using linear regression, we've connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the figure below! (See the figure).
+Living in Roanoke: Does Your Income Decide Your Address? We've dived into the world of Roanoke's remote workers to see how much their earnings influence where they live. Using linear regression, we've connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the map below!
 
-![The urban areas classification in Roanoke Metropolitan Area produced by the author.](Urban_NonUrban_Rural.jpg){fig-align="center" width="503"}
+![**Mapping Roanoke's Living Spaces:** This map outlines the urban, suburban, and rural zones within the Roanoke Metropolitan Area, highlighting the diverse residential options. Source: Author's own creation.](Urban_NonUrban_Rural.jpg){fig-align="center" width="503"}
 
-#### **The Study at a Glance**
+Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We analyzed responses detailing income levels and preferred living areas, from busy city centers to peaceful rural settings; (City_center, Urban_area, Suburban_area, Rural_area, Monthly_income). Our unique "relocating index" helped us turn these preferences into measurable data. So again, the variables used are processed as the following:
 
-Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We analyzed responses detailing income levels and preferred living areas, from busy city centers to peaceful rural settings. Our unique "relocating index" helped us turn these preferences into measurable data. So again, the variables used are processed as the following:
+-   **Income** is converted into a continuous scale, assigning monetary values to income brackets.
 
--   Transforming income into a continuous scale, assigning monetary values to income brackets.
-
--   Converting living area preferences into a single, ordinal dependent variable 'Living Location Preference: *moving from urban to rural index*'.
+-   **living location preferences** is converted into a single, ordinal dependent variable: *moving from urban to rural index*'.
 
 #### Insights from Linear Regression Analysis
 

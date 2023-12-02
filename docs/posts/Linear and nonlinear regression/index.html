@@ -214,20 +214,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level4">
 <h4 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h4>
-<p>Living in Roanoke: Does Your Income Decide Your Address? We’ve dived into the world of Roanoke’s remote workers to see how much their earnings influence where they live. Using linear regression, we’ve connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the figure below! (See the figure).</p>
+<p>Living in Roanoke: Does Your Income Decide Your Address? We’ve dived into the world of Roanoke’s remote workers to see how much their earnings influence where they live. Using linear regression, we’ve connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the map below!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Urban_NonUrban_Rural.jpg" class="img-fluid figure-img" width="503"></p>
-<figcaption class="figure-caption">The urban areas classification in Roanoke Metropolitan Area produced by the author.</figcaption>
+<figcaption class="figure-caption"><strong>Mapping Roanoke’s Living Spaces:</strong> This map outlines the urban, suburban, and rural zones within the Roanoke Metropolitan Area, highlighting the diverse residential options. Source: Author’s own creation.</figcaption>
 </figure>
 </div>
-</section>
-<section id="the-study-at-a-glance" class="level4">
-<h4 class="anchored" data-anchor-id="the-study-at-a-glance"><strong>The Study at a Glance</strong></h4>
-<p>Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We analyzed responses detailing income levels and preferred living areas, from busy city centers to peaceful rural settings. Our unique “relocating index” helped us turn these preferences into measurable data. So again, the variables used are processed as the following:</p>
+<p>Our dataset included responses from individuals, detailing their income levels and their preferred living areas, ranging from the bustling city center to the tranquil rural landscapes. We analyzed responses detailing income levels and preferred living areas, from busy city centers to peaceful rural settings; (City_center, Urban_area, Suburban_area, Rural_area, Monthly_income). Our unique “relocating index” helped us turn these preferences into measurable data. So again, the variables used are processed as the following:</p>
 <ul>
-<li><p>Transforming income into a continuous scale, assigning monetary values to income brackets.</p></li>
-<li><p>Converting living area preferences into a single, ordinal dependent variable ‘Living Location Preference: <em>moving from urban to rural index</em>’.</p></li>
+<li><p><strong>Income</strong> is converted into a continuous scale, assigning monetary values to income brackets.</p></li>
+<li><p><strong>living location preferences</strong> is converted into a single, ordinal dependent variable: <em>moving from urban to rural index</em>’.</p></li>
 </ul>
 </section>
 <section id="insights-from-linear-regression-analysis" class="level4">
@@ -393,8 +390,8 @@ y_pred:  162</code></pre>
 Dep. Variable:     living_area_preference   No. Observations:                  680
 Model:                            MNLogit   Df Residuals:                      665
 Method:                               MLE   Df Model:                           12
-Date:                    Fri, 01 Dec 2023   Pseudo R-squ.:                 0.03553
-Time:                            03:45:28   Log-Likelihood:                -908.95
+Date:                    Sat, 02 Dec 2023   Pseudo R-squ.:                 0.03553
+Time:                            14:13:05   Log-Likelihood:                -908.95
 converged:                           True   LL-Null:                       -942.43
 Covariance Type:                nonrobust   LLR p-value:                 1.174e-09
 ====================================================================================================
