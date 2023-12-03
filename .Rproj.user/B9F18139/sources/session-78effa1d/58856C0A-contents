@@ -13,21 +13,21 @@ In the bustling urban landscapes and the serene outskirts of Roanoke and Salem c
 
 ![**A Tapestry of Settlement:** *Over 55,000 points represent workers' homeplaces scattered across the Roanoke and Salem cities, Painting a vivid picture of the urban landscape. Each point is a nexus of life and activity, contributing to the rich pattern of local habitation*.](RoanokeAndSalemCities.JPG)
 
-In this exploration, we dive into the spatial heart of Roanoke and Salem, employing a data-driven approach to demystify the geographic distribution and density of home locations. By utilizing the K-Means clustering technique, we aim to transcend the traditional narratives of urban planning and offer a unique lens through which we can comprehend the dynamics of these cities.
+In this exploration, we dive into the spatial heart of Roanoke and Salem, employing a data-driven approach to demystify the geographic distribution and density of home locations. Employing **advanced GIS (Geographic Information Systems) and spatial analysis tools**, we've dissected the residential concentrations, offering a granular look at the urban fabric of Roanoke and Salem. By utilizing the **K-Means clustering technique**, we aim to transcend the traditional narratives of urban planning and offer a unique lens through which we can comprehend the dynamics of these cities.
 
 Join me on this cartographic journey as we navigate through the coordinates, interpret the clusters, and stitch together the fabric of these communities, one cluster at a time.
 
 #### **Data Description**:
 
-This dataset, retrieved from the web-based mapping tool [OnTheMap](https://onthemap.ces.census.gov/), reveals the intricate interplay between workers' employment locations and their residences. Carefully processed through Geographic Information Systems (GIS), the data presents a detailed residential fabric of 55,494 workers' homeplaces in Roanoke and Salem cities. Each data point is a precise coordinate, marking the longitude (X) and latitude (Y) of individual dwellings. Together, they form an urban mosaic that not only maps out dense habitational clusters but also embodies the vibrant core of these communities, inviting us to explore the complex narrative of local settlement patterns.
+This dataset, retrieved from the web-based mapping tool [OnTheMap](https://onthemap.ces.census.gov/), reveals the intricate interplay between workers' employment locations and their residences. Carefully processed through GIS software, the dataset is a testament to the capabilities of spatial analysis in revealing detailed patterns of habitation. *the data presents a detailed residential fabric of 55,494 workers' homeplaces in Roanoke and Salem cities*. Each data point is a precise coordinate, marking the longitude (X) and latitude (Y) of individual dwellings. Together, they form an urban mosaic that not only maps out dense habitational clusters but also embodies the vibrant core of these communities, inviting us to explore the complex narrative of local settlement patterns.
 
 #### **Methodology**:
 
--   **Choosing the Right Tool**: We employed K-Means clustering, a method perfect for drawing virtual boundaries around homes that are close together. It's like sketching out neighborhoods based on where people live.
+-   **Choosing the Right Tool**: We employed **K-Means clustering**, a method perfect for drawing virtual boundaries around homes that are close together. It's like sketching out neighborhoods based on where people live.
 
--   **Data Standardization**: Before clustering, we standardized the home coordinates. This ensures that every home, regardless of its actual geographical position, is treated equally in our analysis.
+-   **Data Standardization**: Before clustering, we standardized **the home coordinates (***the longitude (X) and latitude (Y) of individual dwellings***)**. This ensures that every home, regardless of its actual geographical position, is treated equally in the spatial analysis.
 
--   **Focused Analysis**: We consciously left out job types from our study. Why? To focus solely on where people live. This allowed us to paint a clear picture of the residential layouts in Roanoke and Salem, unclouded by other factors.
+-   **Focused Analysis**: We consciously left out 'Industry section' from our study. Why? To focus solely on where people live. This allowed us to paint a clear picture of the residential layouts in Roanoke and Salem, not influenced by other factors.
 
 ```{python}
 import pandas as pd
