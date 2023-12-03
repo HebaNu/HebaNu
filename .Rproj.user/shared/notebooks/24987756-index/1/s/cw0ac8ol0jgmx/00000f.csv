@@ -1,0 +1,41 @@
+"0","import matplotlib.pyplot as plt"
+"0","import seaborn as sns"
+"0",""
+"0","# Assuming 'importances', 'feature_names' are already defined as in the previous code"
+"0","# Sorting the feature importances"
+"0","sorted_indices = np.argsort(importances)[::-1]"
+"2","Traceback (most recent call last):
+  File ""<string>"", line 1, in <module>
+NameError: name 'np' is not defined
+"
+"0","sorted_importances = importances[sorted_indices]"
+"2","Traceback (most recent call last):
+  File ""<string>"", line 1, in <module>
+NameError: name 'importances' is not defined
+"
+"0","sorted_features = [feature_names[i] for i in sorted_indices]"
+"2","Traceback (most recent call last):
+  File ""<string>"", line 1, in <module>
+NameError: name 'sorted_indices' is not defined
+"
+"0","# Selecting a number of top features to display (you can adjust this number)"
+"0","n_top_features = 20  # for example, top 20 features"
+"0",""
+"0","# Creating the plot"
+"0","plt.figure(figsize=(6.5, 6.5))"
+"1","<Figure size 650x650 with 0 Axes>
+"
+"0","sns.barplot(x=sorted_importances[:n_top_features], y=sorted_features[:n_top_features])"
+"2","Traceback (most recent call last):
+  File ""<string>"", line 1, in <module>
+NameError: name 'sorted_importances' is not defined
+"
+"0","plt.title('Significance of factors in residential decision-making process')"
+"1","Text(0.5, 1.0, 'Significance of factors in residential decision-making process')
+"
+"1","Text(0.5, 0, 'Level of importance')
+"
+"1","Text(0, 0.5, 'Factors')
+"
+"0","plt.show()"
+"0",""
