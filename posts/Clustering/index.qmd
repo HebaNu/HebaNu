@@ -27,7 +27,7 @@ This dataset, retrieved from the web-based mapping tool [OnTheMap](https://onthe
 
 -   **Data Standardization**: Before clustering, we standardized **the home coordinates (***the longitude (X) and latitude (Y) of individual dwellings***)**. This ensures that every home, regardless of its actual geographical position, is treated equally in the spatial analysis.
 
--   **Focused Analysis**: We consciously left out 'Industry section' from our study. Why? To focus solely on where people live. This allowed us to paint a clear picture of the residential layouts in Roanoke and Salem, not influenced by other factors.
+-   **Focused Analysis**: We consciously left out 'Industry Sectors' from our study. Why? To focus solely on where people live. This allowed us to paint a clear picture of the residential layouts in Roanoke and Salem, not influenced by other factors.
 
 ```{python}
 import pandas as pd
