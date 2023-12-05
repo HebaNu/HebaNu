@@ -126,11 +126,11 @@ plt.show()
 
 ```
 
-The output of the Chi-Square Test of Independence gives us a chi-square statistic of approximately 163.69 and a p-value of approximately 3.00e-12. The degrees of freedom (dof) for this test is 57.
+The output of the Chi-Square Test of Independence gives us a chi-square statistic of approximately 163.69 and a p-value of approximately 3.00e-12. The degree of freedom (dof) for this test is 57.
 
 -   **Chi-Square Statistic (χ²):** The score of 163.69 is much higher than what we'd expect by chance, suggesting *a strong relationship between work method and industry sector*.
 
--   **P-Value:** At a value of approximately *3.00e-12*, this is well *below the standard threshold of 0.05,* Given the p-value is less than 0.05, you would reject the null hypothesis (H0) and conclude that **there is a statistically significant association between the 'Industry sector' and 'Working Method.**' This means the way people work is related to the industry they work in.
+-   **P-Value:** At a value of approximately *3.00e-12*, this is well *below the standard threshold of 0.05,* we would reject the null hypothesis (H0) and conclude that **there is a statistically significant association between the 'Industry sector' and 'Working Method.**' This means the way people work is related to the industry they work in.
 
 -   **Degrees of Freedom (dof):** With 57 degrees of freedom, our test has a wide variety of potential outcomes, reinforcing the robustness of our chi-square statistic.
 
