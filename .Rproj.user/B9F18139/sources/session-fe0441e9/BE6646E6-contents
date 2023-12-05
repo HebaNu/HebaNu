@@ -9,7 +9,7 @@ image: "images.jfif"
 
 #### **Introduction**
 
-Living in Roanoke: Does Your Income Decide Your Address? We've dived into the world of Roanoke's remote workers to see how much their earnings influence where they live. Using linear regression, we've connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the map below!
+Living in Roanoke: Does Your Income Decide Your Address? We've dived into the world of Roanoke's **remote workers** to see how much their earnings influence where they live. Using linear regression, we've connected the dots between income and neighborhood choices in this vibrant metropolitan area. Check out our eye-opening findings in the map below!
 
 ![**Mapping Roanoke's Living Spaces:** This map outlines the urban, suburban, and rural zones within the Roanoke Metropolitan Area, highlighting the diverse residential options. Source: Author's own creation.](Urban_NonUrban_Rural.jpg){fig-align="center" width="503"}
 

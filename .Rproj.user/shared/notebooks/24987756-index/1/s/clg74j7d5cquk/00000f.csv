@@ -1,0 +1,150 @@
+"0",""
+"0","import pandas as pd"
+"0","import numpy as np"
+"0","from sklearn.model_selection import train_test_split"
+"0","from sklearn.preprocessing import StandardScaler, OneHotEncoder"
+"0","from sklearn.compose import ColumnTransformer"
+"0","from sklearn.ensemble import RandomForestClassifier"
+"0",""
+"0","# Load the dataset"
+"0","data = pd.read_excel('Classification (In_person_Workers).xlsx')"
+"0",""
+"0","# Replace non-breaking spaces in column names"
+"0","data.columns = data.columns.str.replace('\xa0', ' ', regex=True)"
+"0",""
+"0","# Correct any potential typos in column names"
+"0","# Ensure these column names exactly match those in DataFrame"
+"0","data.rename(columns={'living costs ': 'living costs'}, inplace=True)"
+"0",""
+"0","# Convert the first four columns into a single ordinal dependent variable"
+"0","# Ensure these column names exactly match those in the DataFrame"
+"0","area_columns = ['City Center (Central Business District)', 'Urban area', 'Suburban area', 'Rural Area']"
+"0","# For each row, it finds the column among the specified area_columns that has the minimum value "
+"0","# (which would be equivalent to the highest preference rank, assuming 1 is the most preferred and "
+"0","# larger numbers indicate lower preferences) and stores the name of this column (i.e., the living area "
+"0","# with the highest preference for that row) as the value in the new Preferred_Living_Location column."
+"0",""
+"0","data['Preferred_Living_Location'] = data[area_columns].idxmin(axis=1)"
+"0","data.drop(columns=area_columns, inplace=True)"
+"0",""
+"0","# Handle missing values (NaNs) for both features and target variable"
+"0","data.dropna(inplace=True)"
+"0",""
+"0","# Define the list of categorical and continuous features"
+"0","# Replace these with the actual column names from the DataFrame"
+"0","categorical_features = ['marital status', 'race', 'education level', 'firm age', 'firm size', 'owner or renter',"
+"0","                        'number of workers in household', 'people in household', 'desired family size in future',"
+"0","                        'monthly earning', 'industry sector']  # categorical features "
+"0","continuous_features = ['distance from work to homeplace']  # continuous features here"
+"0",""
+"0","# Preprocessing pipeline"
+"0","preprocessor = ColumnTransformer("
+"0","    transformers=["
+"0","        ('num', StandardScaler(), continuous_features),"
+"0","        ('cat', OneHotEncoder(), categorical_features)"
+"0","    ])"
+"0",""
+"0","# Preprocess the data"
+"0","X = preprocessor.fit_transform(data.drop('Preferred_Living_Location', axis=1))"
+"0","y = data['Preferred_Living_Location'].astype(str)  # Convert to string if categorical"
+"0",""
+"0","# Split the data"
+"0","X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
+"0",""
+"0","# Train the Random Forest Classifier"
+"0","rf = RandomForestClassifier()"
+"0","rf.fit(X_train, y_train)"
+"1","RandomForestClassifier()
+"
+"0","# Get feature importances"
+"0","feature_names = continuous_features + list(preprocessor.named_transformers_['cat'].get_feature_names_out(categorical_features))"
+"0","importances = rf.feature_importances_"
+"0","sorted_indices = np.argsort(importances)[::-1]"
+"0",""
+"0","# Display feature importances"
+"0","print(""Feature Importances:"")"
+"1","Feature Importances:
+"
+"0","for i in sorted_indices:"
+"0","    print(f'{feature_names[i]}: {importances[i]}')"
+"0",""
+"1","distance from work to homeplace: 0.09257980013532142
+monthly earning_3.0: 0.02388355693678607
+firm age_2.0: 0.02210562879358768
+monthly earning_2.0: 0.021359393532172213
+firm age_3.0: 0.02134518935554012
+firm size_3.0: 0.020285302420516224
+race_1.0: 0.019960281221656953
+number of workers in household_1.0: 0.019118653353052437
+monthly earning_1.0: 0.018562895233937792
+number of workers in household_2.0: 0.01830263933353569
+education level_5.0: 0.018148956287357663
+marital status_1.0: 0.01785816951"
+"1","1489868
+people in household_3.0: 0.017810216593920136
+firm size_2.0: 0.01758791981756475
+education level_6.0: 0.017554228518449483
+firm age_5.0: 0.01752539422034478
+marital status_2.0: 0.01749747602141297
+people in household_4.0: 0.01696154248089462
+people in household_5.0: 0.016884529609521092
+owner or renter_2.0: 0.016867322716478048
+desired family size in future_4.0: 0.01674709472545476
+desired family size in future_5.0: 0.016467285941403183
+firm size_4.0: 0.016341309841973285
+firm age_4.0: 0"
+"1",".016068426005959296
+desired family size in future_3.0: 0.01596518289134033
+owner or renter_1.0: 0.015627071841402287
+desired family size in future_2.0: 0.015553137797326137
+industry sector_Manufacturing: 0.01508239866559214
+number of workers in household_3.0: 0.014539997986633775
+education level_2.0: 0.014455434762549008
+people in household_2.0: 0.014102920286730174
+firm size_5.0: 0.013986043983417492
+industry sector_Wholesale Trade: 0.013868582672658161
+industry sector_Retail Trade: 0.01327498649"
+"1","0474094
+desired family size in future_1.0: 0.01302672022766343
+firm size_1.0: 0.012411642457454953
+industry sector_Mining, Quarrying, and Oil and Gas Extraction: 0.01190030212800055
+industry sector_Professional, Scientific, and Technical Services: 0.011814266902449976
+education level_3.0: 0.011710394567118065
+education level_7.0: 0.010866648493048692
+race_3.0: 0.010777816171772281
+industry sector_Construction: 0.010685399299783597
+education level_8.0: 0.010531896499478752
+industry sector_Managemen"
+"1","t of Companies and Enterprises: 0.010516677888070836
+monthly earning_4.0: 0.01023583520738086
+industry sector_Transportation and Warehousing: 0.010011499946219566
+industry sector_Educational Services: 0.00993928753218314
+race_4.0: 0.009811803926384428
+race_2.0: 0.009430344250157813
+industry sector_Health Care and Social Assistance: 0.009241297318078892
+marital status_6.0: 0.009223135165104071
+marital status_5.0: 0.009040299081255837
+industry sector_Information: 0.009033991949354643
+people in house"
+"1","hold_1.0: 0.008951107546295144
+marital status_3.0: 0.00882152390646461
+race_5.0: 0.00878739988553364
+marital status_4.0: 0.008468528439934203
+firm age_1.0: 0.008465596323392038
+industry sector_Accommodation and Food Services: 0.008403584336347199
+education level_4.0: 0.008246705487811925
+race_8.0: 0.007750032567103018
+industry sector_Finance and Insurance: 0.0076279829554475
+industry sector_Agriculture, Forestry, Fishing and Hunting: 0.007266858479902247
+education level_1.0: 0.0072428326993764355"
+"1","
+race_7.0: 0.0071585119534063255
+industry sector_Utilities: 0.006860767554367476
+race_6.0: 0.006791311532490445
+industry sector_Other Services [except Public Administration: 0.006657075530918826
+industry sector_Arts, Entertainment, and Recreation: 0.006485746318371541
+industry sector_Public Administration: 0.004157516590228182
+industry sector_Real Estate and Rental and Leasing: 0.003987760448093171
+industry sector_Administrative and Support and Waste Management and Remediation Services: 0.00338092844"
+"1","71016383
+"
