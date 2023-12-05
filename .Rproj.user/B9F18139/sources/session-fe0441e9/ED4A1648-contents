@@ -27,7 +27,7 @@ The main aim of this dataset is to explore the dynamics of the job market and th
 In recent years, we've witnessed significant shifts in work methodologies. A growing number of professionals are embracing the Work From Home (WFH) approach, while a substantial segment continues to follow traditional Work On Site (WOS) practices. This study comprehensively covers 20 distinct industry sectors, focusing on four distinct categories of working methods. The details of these methods are outlined below:
 
 |     |                                                                                                                                            |
-|-----|--------------------------------------------------------------------------------------------------------------------------------------------|
+|-----------|-------------------------------------------------------------|
 | \#  | Working Method                                                                                                                             |
 | 1   | Fully remote (working from home or another location)                                                                                       |
 | 2   | Fully in-person (working at a physical office or location)                                                                                 |
@@ -37,7 +37,7 @@ In recent years, we've witnessed significant shifts in work methodologies. A gro
 Twenty "industry sectors"or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:
 
 |     | The number of industry sectors in NAICS | Description                                                               |
-|-----|-----------------------------------------|---------------------------------------------------------------------------|
+|--------------|--------------------|---------------------------------------|
 | 1   | sector 11                               | Agriculture, Forestry, Fishing and Hunting                                |
 | 2   | sector 21                               | Mining, Quarrying, and Oil and Gas Extraction                             |
 | 3   | sector 22                               | Utilities                                                                 |
@@ -74,11 +74,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import chi2_contingency
 
-# Load your dataset without specifying encoding
+# Load dataset without specifying encoding
 data = pd.read_excel('Industry sector and working method.xlsx')
 
+# Clean the column names
+data.columns = data.columns.str.strip()
+
+
 # Summary statistics for Industry sector
-industry_stats = data[' Industry sector'].value_counts()
+industry_stats = data['Industry sector'].value_counts()
 
 # Summary statistics for Working Method
 method_stats = data['Working Method'].value_counts()
@@ -91,12 +95,20 @@ working_method_labels = [
     'Hybrid, dominated by\nremote work'
 ]
 
+# Creating a contingency table
+contingency_table = pd.crosstab(data['Industry sector'], data['Working Method'])
+
+# Performing the Chi-Square Test of Independence
+chi2, p, dof, expected = chi2_contingency(contingency_table)
+
+chi2, p, dof, expected
+
 # Plotting with adjusted figure size and subplot parameters
 plt.figure(figsize=(14, 8))  # Further increase the figure size
 
 # Industry Sector plot
 plt.subplot(1, 2, 1)
-sns.countplot(data=data, x=' Industry sector')
+sns.countplot(data=data, x='Industry sector')
 plt.title('Distribution of Industry Sectors')
 
 
@@ -114,11 +126,21 @@ plt.show()
 
 ```
 
-Alos, this plot is designed to visually explore the relationship between the industry sectors of employees and their working methods. It illustrates how the distribution of working methods varies across different industry sectors, allowing us to identify notable patterns or differences. Such visualizations are crucial for understanding the dynamics of the job market, particularly in the context of evolving work methodologies.
+The output of the Chi-Square Test of Independence gives us a chi-square statistic of approximately 163.69 and a p-value of approximately 3.00e-12. The degrees of freedom (dof) for this test is 57.
+
+-   **Chi-Square Statistic (χ²):** The score of 163.69 is much higher than what we'd expect by chance, suggesting *a strong relationship between work method and industry sector*.
+
+-   **P-Value:** At a value of approximately *3.00e-12*, this is well *below the standard threshold of 0.05,* Given the p-value is less than 0.05, you would reject the null hypothesis (H0) and conclude that **there is a statistically significant association between the 'Industry sector' and 'Working Method.**' This means the way people work is related to the industry they work in.
+
+-   **Degrees of Freedom (dof):** With 57 degrees of freedom, our test has a wide variety of potential outcomes, reinforcing the robustness of our chi-square statistic.
+
+-   **Expected Frequencies:** These numbers show us the distribution we'd expect if there were no relationship at all between the industry sector and the working method. But our actual data deviates from this, which backs up our finding of a significant association.
+
+Also, the plot is designed to visually explore the relationship between the industry sectors of employees and their working methods. It illustrates how the distribution of working methods varies across different industry sectors, allowing us to identify notable patterns or differences. Such visualizations are crucial for understanding the dynamics of the job market, particularly in the context of evolving work methodologies.
 
 ```{python}
 
-crosstab = pd.crosstab(data[' Industry sector'], data['Working Method'])
+crosstab = pd.crosstab(data['Industry sector'], data['Working Method'])
 crosstab.plot(kind='bar', stacked=True)
 
 ```

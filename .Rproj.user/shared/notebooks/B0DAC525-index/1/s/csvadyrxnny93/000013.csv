@@ -1,0 +1,92 @@
+"0","# Load necessary libraries"
+"0","import pandas as pd"
+"0","import matplotlib.pyplot as plt"
+"0","import seaborn as sns"
+"0","from scipy.stats import chi2_contingency"
+"0",""
+"0","# Load your dataset without specifying encoding"
+"0","data = pd.read_excel('Industry sector and working method.xlsx')"
+"0",""
+"0","# Clean the column names"
+"0","data.columns = data.columns.str.strip()"
+"0",""
+"0","# Confirm the column names"
+"0","print(data.columns)"
+"1","Index(['Response ID', 'Industry sector', 'Working Method'], dtype='object')
+"
+"0","# Summary statistics for Industry sector"
+"0","industry_stats = data['Industry sector'].value_counts()"
+"0",""
+"0","# Summary statistics for Working Method"
+"0","method_stats = data['Working Method'].value_counts()"
+"0",""
+"0","# Custom labels for Working Method, with line breaks"
+"0","working_method_labels = ["
+"0","    'Fully remote\n(working from home or another location)',"
+"0","    'Fully in-person\n(working at a physical office or location)',"
+"0","    'Hybrid, dominated by\nin-person work',"
+"0","    'Hybrid, dominated by\nremote work'"
+"0","]"
+"0",""
+"0","# Creating a contingency table"
+"0","contingency_table = pd.crosstab(data['Industry sector'], data['Working Method'])"
+"0",""
+"0","# Performing the Chi-Square Test of Independence"
+"0","chi2, p, dof, expected = chi2_contingency(contingency_table)"
+"0",""
+"0","chi2, p, dof, expected"
+"1","(163.68777281130448, 3.007204248307361e-12, 57, array([[ 5.84958872, 18.44183314, 10.40423032,  3.30434783],
+       [ 4.00235018, 12.61809636,  7.1186839 ,  2.26086957],
+       [ 6.00352526, 18.92714454, 10.67802585,  3.39130435],
+       [ 8.1586369 , 25.72150411, 14.51116334,  4.60869565],
+       [12.31492362, 38.82491187, 21.90364277,  6.95652174],
+       [ 6.00352526, 18.92714454, 10.67802585,  3.39130435],
+       [11.2373678 , 35.42773208, 19.98707403,  6.34782609],
+       [ 7.54289072, 23.780258"
+"1","52, 13.4159812 ,  4.26086957],
+       [ 9.8519389 , 31.05992949, 17.52291422,  5.56521739],
+       [ 7.08108108, 22.32432432, 12.59459459,  4.        ],
+       [ 3.84841363, 12.13278496,  6.84488837,  2.17391304],
+       [ 8.00470035, 25.23619271, 14.2373678 ,  4.52173913],
+       [ 7.38895417, 23.29494712, 13.14218566,  4.17391304],
+       [ 4.00235018, 12.61809636,  7.1186839 ,  2.26086957],
+       [ 8.46650999, 26.69212691, 15.05875441,  4.7826087 ],
+       [ 4.92596945, 15.52996475,  8.76145711,"
+"0","# Plotting with adjusted figure size and subplot parameters"
+"1","  2.7826087 ],
+       [ 3.54054054, 11.16216216,  6.2972973 ,  2.        ],
+       [ 4.31022327, 13.58871915,  7.66627497,  2.43478261],
+       [ 5.07990599, 16.01527615,  9.03525264,  2.86956522],
+       [ 3.386604  , 10.67685076,  6.02350176,  1.91304348]]))
+"
+"0","plt.figure(figsize=(14, 8))  # Further increase the figure size"
+"1","<Figure size 1400x800 with 0 Axes>
+"
+"0","# Industry Sector plot"
+"0","plt.subplot(1, 2, 1)"
+"1","<Axes: >
+"
+"0","sns.countplot(data=data, x='Industry sector')"
+"1","<Axes: xlabel='Industry sector', ylabel='count'>
+"
+"1","Text(0.5, 1.0, 'Distribution of Industry Sectors')
+"
+"0","# Plotting with horizontal bar chart"
+"0","plt.figure(figsize=(6, 5))  # Adjust figure size for horizontal plot"
+"1","<Figure size 600x500 with 0 Axes>
+"
+"0","# Working Method plot (horizontal)"
+"0","sns.countplot(data=data, y='Working Method')"
+"1","<Axes: xlabel='count', ylabel='Working Method'>
+"
+"0","plt.title('Distribution of Working Methods')"
+"1","Text(0.5, 1.0, 'Distribution of Working Methods')
+"
+"0","plt.yticks(range(len(working_method_labels)), working_method_labels)  # Set y-axis labels"
+"1","([<matplotlib.axis.YTick object at 0x000001F78BB91C10>, <matplotlib.axis.YTick object at 0x000001F78594DF90>, <matplotlib.axis.YTick object at 0x000001F78596A890>, <matplotlib.axis.YTick object at 0x000001F785763510>], [Text(0, 0, 'Fully remote\n(working from home or another location)'), Text(0, 1, 'Fully in-person\n(working at a physical office or location)'), Text(0, 2, 'Hybrid, dominated by\nin-person work'), Text(0, 3, 'Hybrid, dominated by\nremote work')])
+"
+"0","plt.tight_layout()"
+"0","plt.show()"
+"0",""
+"0",""
+"0",""
