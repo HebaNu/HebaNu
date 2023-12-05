@@ -1,5 +1,5 @@
 [2,"\n"]
-[1,"Terminating existing preview server....DONE\n\nRendering:\n"]
+[1,"Rendering:\n"]
 [1,"\r[ 1/11] About.qmd\n"]
 [1,"\r[ 2/11] index.ipynb\n"]
 [1,"\r[ 3/11] posts\\Anomaly-outlier detection DBSCAN labels for scatter plot\\index.qmd\n"]
@@ -14,5 +14,5 @@
 [1,"\r[10/11] Research Insights Explorer Using Machine learning.qmd\n"]
 [1,"\r[11/11] Research Overview.qmd\n"]
 [1,"\n"]
-[1,"Watching files for changes\nBrowse at http://localhost:3395/\n"]
+[1,"Watching files for changes\nBrowse at http://localhost:4591/\n"]
 [1,"GET: /\n"]

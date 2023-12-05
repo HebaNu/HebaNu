@@ -103,6 +103,25 @@ chi2, p, dof, expected = chi2_contingency(contingency_table)
 
 chi2, p, dof, expected
 
+
+
+
+```
+
+The output of the Chi-Square Test of Independence gives us a chi-square statistic of approximately 163.69 and a p-value of approximately 3.00e-12. The degree of freedom (dof) for this test is 57.
+
+-   **Chi-Square Statistic (χ²):** The score of 163.69 is much higher than what we'd expect by chance, suggesting *a strong relationship between work method and industry sector*.
+
+-   **P-Value:** At a value of approximately *3.00e-12*, this is well *below the standard threshold of 0.05,* we would reject the null hypothesis (H0) and conclude that **there is a statistically significant association between the 'Industry sector' and 'Working Method.**' This means the way people work is related to the industry they work in.
+
+-   **Degrees of Freedom (dof):** With 57 degrees of freedom, our test has a wide variety of potential outcomes, reinforcing the robustness of our chi-square statistic.
+
+-   **Expected Frequencies:** These numbers show us the distribution we'd expect if there were no relationship at all between the industry sector and the working method. But our actual data deviates from this, which backs up our finding of a significant association.
+
+Also, the plot is designed to visually explore the relationship between the industry sectors of employees and their working methods. It illustrates how the distribution of working methods varies across different industry sectors, allowing us to identify notable patterns or differences. Such visualizations are crucial for understanding the dynamics of the job market, particularly in the context of evolving work methodologies.
+
+```{python}
+
 # Plotting with adjusted figure size and subplot parameters
 plt.figure(figsize=(14, 8))  # Further increase the figure size
 
@@ -122,23 +141,6 @@ plt.yticks(range(len(working_method_labels)), working_method_labels)  # Set y-ax
 
 plt.tight_layout()
 plt.show()
-
-
-```
-
-The output of the Chi-Square Test of Independence gives us a chi-square statistic of approximately 163.69 and a p-value of approximately 3.00e-12. The degree of freedom (dof) for this test is 57.
-
--   **Chi-Square Statistic (χ²):** The score of 163.69 is much higher than what we'd expect by chance, suggesting *a strong relationship between work method and industry sector*.
-
--   **P-Value:** At a value of approximately *3.00e-12*, this is well *below the standard threshold of 0.05,* we would reject the null hypothesis (H0) and conclude that **there is a statistically significant association between the 'Industry sector' and 'Working Method.**' This means the way people work is related to the industry they work in.
-
--   **Degrees of Freedom (dof):** With 57 degrees of freedom, our test has a wide variety of potential outcomes, reinforcing the robustness of our chi-square statistic.
-
--   **Expected Frequencies:** These numbers show us the distribution we'd expect if there were no relationship at all between the industry sector and the working method. But our actual data deviates from this, which backs up our finding of a significant association.
-
-Also, the plot is designed to visually explore the relationship between the industry sectors of employees and their working methods. It illustrates how the distribution of working methods varies across different industry sectors, allowing us to identify notable patterns or differences. Such visualizations are crucial for understanding the dynamics of the job market, particularly in the context of evolving work methodologies.
-
-```{python}
 
 crosstab = pd.crosstab(data['Industry sector'], data['Working Method'])
 crosstab.plot(kind='bar', stacked=True)

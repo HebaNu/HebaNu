@@ -416,33 +416,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Performing the Chi-Square Test of Independence</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>chi2, p, dof, expected <span class="op">=</span> chi2_contingency(contingency_table)</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>chi2, p, dof, expected</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting with adjusted figure size and subplot parameters</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))  <span class="co"># Further increase the figure size</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Industry Sector plot</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>data, x<span class="op">=</span><span class="st">'Industry sector'</span>)</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Industry Sectors'</span>)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting with horizontal bar chart</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))  <span class="co"># Adjust figure size for horizontal plot</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Working Method plot (horizontal)</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>data, y<span class="op">=</span><span class="st">'Working Method'</span>)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Working Methods'</span>)</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="bu">range</span>(<span class="bu">len</span>(working_method_labels)), working_method_labels)  <span class="co"># Set y-axis labels</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>chi2, p, dof, expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-2-output-1.png" width="537" height="671"></p>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-2-output-2.png" width="570" height="468"></p>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(163.68777281130448,
+ 3.007204248307361e-12,
+ 57,
+ array([[ 5.84958872, 18.44183314, 10.40423032,  3.30434783],
+        [ 4.00235018, 12.61809636,  7.1186839 ,  2.26086957],
+        [ 6.00352526, 18.92714454, 10.67802585,  3.39130435],
+        [ 8.1586369 , 25.72150411, 14.51116334,  4.60869565],
+        [12.31492362, 38.82491187, 21.90364277,  6.95652174],
+        [ 6.00352526, 18.92714454, 10.67802585,  3.39130435],
+        [11.2373678 , 35.42773208, 19.98707403,  6.34782609],
+        [ 7.54289072, 23.78025852, 13.4159812 ,  4.26086957],
+        [ 9.8519389 , 31.05992949, 17.52291422,  5.56521739],
+        [ 7.08108108, 22.32432432, 12.59459459,  4.        ],
+        [ 3.84841363, 12.13278496,  6.84488837,  2.17391304],
+        [ 8.00470035, 25.23619271, 14.2373678 ,  4.52173913],
+        [ 7.38895417, 23.29494712, 13.14218566,  4.17391304],
+        [ 4.00235018, 12.61809636,  7.1186839 ,  2.26086957],
+        [ 8.46650999, 26.69212691, 15.05875441,  4.7826087 ],
+        [ 4.92596945, 15.52996475,  8.76145711,  2.7826087 ],
+        [ 3.54054054, 11.16216216,  6.2972973 ,  2.        ],
+        [ 4.31022327, 13.58871915,  7.66627497,  2.43478261],
+        [ 5.07990599, 16.01527615,  9.03525264,  2.86956522],
+        [ 3.386604  , 10.67685076,  6.02350176,  1.91304348]]))</code></pre>
 </div>
 </div>
 <p>The output of the Chi-Square Test of Independence gives us a chi-square statistic of approximately 163.69 and a p-value of approximately 3.00e-12. The degree of freedom (dof) for this test is 57.</p>
@@ -456,14 +455,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>crosstab <span class="op">=</span> pd.crosstab(data[<span class="st">'Industry sector'</span>], data[<span class="st">'Working Method'</span>])</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>crosstab.plot(kind<span class="op">=</span><span class="st">'bar'</span>, stacked<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting with adjusted figure size and subplot parameters</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))  <span class="co"># Further increase the figure size</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Industry Sector plot</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>data, x<span class="op">=</span><span class="st">'Industry sector'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Industry Sectors'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting with horizontal bar chart</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))  <span class="co"># Adjust figure size for horizontal plot</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Working Method plot (horizontal)</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>data, y<span class="op">=</span><span class="st">'Working Method'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Working Methods'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="bu">range</span>(<span class="bu">len</span>(working_method_labels)), working_method_labels)  <span class="co"># Set y-axis labels</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>crosstab <span class="op">=</span> pd.crosstab(data[<span class="st">'Industry sector'</span>], data[<span class="st">'Working Method'</span>])</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>crosstab.plot(kind<span class="op">=</span><span class="st">'bar'</span>, stacked<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="537" height="671"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-3-output-2.png" width="570" height="468"></p>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>&lt;Axes: xlabel='Industry sector'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-3-output-2.png" width="566" height="433"></p>
+<p><img src="index_files/figure-html/cell-3-output-4.png" width="566" height="433"></p>
 </div>
 </div>
 <p>Additionally, the dataset contains several key elements that will be crucial for our upcoming statistical analyses. The most important elements include:</p>
