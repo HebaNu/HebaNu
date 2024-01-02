@@ -27,7 +27,7 @@ The main aim of this dataset is to explore the dynamics of the job market and th
 In recent years, we've witnessed significant shifts in work methodologies. A growing number of professionals are embracing the Work From Home (WFH) approach, while a substantial segment continues to follow traditional Work On Site (WOS) practices. This study comprehensively covers 20 distinct industry sectors, focusing on four distinct categories of working methods. The details of these methods are outlined below:
 
 |     |                                                                                                                                            |
-|-----------|-------------------------------------------------------------|
+|-----|--------------------------------------------------------------------------------------------------------------------------------------------|
 | \#  | Working Method                                                                                                                             |
 | 1   | Fully remote (working from home or another location)                                                                                       |
 | 2   | Fully in-person (working at a physical office or location)                                                                                 |
@@ -37,7 +37,7 @@ In recent years, we've witnessed significant shifts in work methodologies. A gro
 Twenty "industry sectors"or jobs are addressed based on the NAICS (North American Industry Classification System) to the 2-digit industry level. these jobs are as the following:
 
 |     | The number of industry sectors in NAICS | Description                                                               |
-|--------------|--------------------|---------------------------------------|
+|-----|-----------------------------------------|---------------------------------------------------------------------------|
 | 1   | sector 11                               | Agriculture, Forestry, Fishing and Hunting                                |
 | 2   | sector 21                               | Mining, Quarrying, and Oil and Gas Extraction                             |
 | 3   | sector 22                               | Utilities                                                                 |
